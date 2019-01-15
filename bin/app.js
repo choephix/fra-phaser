@@ -20,23 +20,20 @@ var GameScene = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     GameScene.prototype.preload = function () {
-        this.load.image('dumoria', 'https://c.staticblitz.com/assets/client/icons/ui/blue-lightning-b6f0711fda280ec6bd873c9391fc89c4.png');
-        this.load.image('circle', 'http://localhost:8111/assets/circle4 glow.jpg');
-        this.load.image('circle2', 'http://localhost:8111/assets/rk.jpg');
-        this.load.image('tile', 'http://localhost:8111/assets/emoji/2b1c.png');
-        this.load.image('bot', 'http://localhost:8111/assets/emoji/1f989.png');
-        this.load.spritesheet('gal', 'http://localhost:8111/assets/xplo/explosion (2).png', { frameWidth: 128, frameHeight: 128, startFrame: 0 });
-        this.load.setBaseURL('http://labs.phaser.io');
-        this.load.spritesheet('mummy', 'assets/sprites/metalslug_mummy37x45.png', { frameWidth: 37, frameHeight: 45, endFrame: 4 });
-        this.load.image('sky', 'assets/skies/lightblue.png');
-        this.load.image('logo', 'assets/sprites/phaser3-logo.png');
-        this.load.image('red', 'assets/particles/sparkle1.png');
+        this.load.image('circle', 'assets/circle4 glow.jpg');
+        this.load.image('circle2', 'assets/rk.jpg');
+        this.load.image('tile', 'assets/emoji/2b1c.png');
+        this.load.image('bot', 'assets/emoji/1f989.png');
+        this.load.spritesheet('gal', 'assets/xplo/explosion (2).png', { frameWidth: 128, frameHeight: 128, startFrame: 0 });
+        this.load.spritesheet('mummy', 'https://labs.phaser.io/assets/sprites/metalslug_mummy37x45.png', { frameWidth: 37, frameHeight: 45, endFrame: 17 });
+        this.load.image('sky', 'https://labs.phaser.io/assets/skies/lightblue.png');
+        this.load.image('logo', 'https://labs.phaser.io/assets/sprites/phaser3-logo.png');
+        this.load.image('red', 'https://labs.phaser.io/assets/particles/sparkle1.png');
     };
     GameScene.prototype.geX = function (v) { return 128 + v * 65; };
     GameScene.prototype.geY = function (v) { return 250 + v * 65; };
     GameScene.prototype.create = function () {
         this.add.image(400, 300, 'sky');
-        this.add.sprite(500, 500, 'dumoria').blendMode = Phaser.BlendModes.ADD;
         var container = this.add.container(200, 200);
         var W = 9;
         var H = 9;
@@ -49,15 +46,15 @@ var GameScene = /** @class */ (function (_super) {
             this.add.sprite(this.geX(b[0]), this.geY(b[1]), "bot").setScale(.5);
         }
         this.addParticles(this.geX(4), this.geY(4));
-        // let gun = this.add.sprite(200, 200, 'cocksheet')
-        // this.anims.create({
-        //     key: 'cock',
-        //     frames: this.anims.generateFrameNumbers('cocksheet',{}),
-        //     frameRate: 12,
-        //     repeat: -1
-        // })
-        // gun.anims.load('cock');
-        // gun.anims.play('cock');
+        var mummy = this.add.sprite(200, 200, 'mummy');
+        this.anims.create({
+            key: 'w',
+            frames: this.anims.generateFrameNumbers('mummy', {}),
+            frameRate: 12,
+            repeat: -1
+        });
+        mummy.anims.load('w');
+        mummy.anims.play('w');
         var walki = this.add.sprite(200, 400, 'gal');
         this.anims.create({
             key: 'walk',
