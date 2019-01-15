@@ -1,0 +1,4 @@
+{
+  "port": 8111,  
+  "server": { "baseDir": "./bin" }
+}
