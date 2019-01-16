@@ -1,5 +1,3 @@
-import { Skill } from './skills'
-
 export class Game 
 {
   public tiles:Tile[] = []
@@ -181,6 +179,8 @@ export class Game
     return bots
   }
 }
+
+export default Game;
 
 class Tile
 {

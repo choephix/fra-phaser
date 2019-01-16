@@ -1,6 +1,6 @@
-import { Game } from './game'
+import { Game } from './Game'
 import { GameConsts } from './game-consts'
-import { Skill, SkillBook } from './skills'
+import { Skill, SkillBook } from './Skill'
 
 export class GameSession
 {

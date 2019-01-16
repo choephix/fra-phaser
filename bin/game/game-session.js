@@ -1,70 +1,59 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var game_1 = require("./game");
-var game_consts_1 = require("./game-consts");
-var skills_1 = require("./skills");
-var GameSession = /** @class */ (function () {
-    function GameSession() {
-    }
-    Object.defineProperty(GameSession.prototype, "gameOver", {
-        get: function () { return this.currentGame.over && !this.currentGame.player; },
-        enumerable: true,
-        configurable: true
-    });
-    GameSession.prototype.reset = function () {
-        this.skills = skills_1.SkillBook.makeSkillList();
+import { Game } from './Game';
+import { GameConsts } from './game-consts';
+import { SkillBook } from './Skill';
+export class GameSession {
+    get gameOver() { return this.currentGame.over && !this.currentGame.player; }
+    reset() {
+        this.skills = SkillBook.makeSkillList();
         this.usedSkills = [];
-        this.score = game_consts_1.GameConsts.scoreRewards.initial;
+        this.score = GameConsts.scoreRewards.initial;
         this.currentStageNumber = 1;
         this.currentGame = this.makeGame();
-    };
-    GameSession.prototype.next = function () {
+    }
+    next() {
         this.usedSkills = [];
-        this.score += game_consts_1.GameConsts.scoreRewards.levelClear;
+        this.score += GameConsts.scoreRewards.levelClear;
         this.currentStageNumber++;
         this.currentGame = this.makeGame();
-    };
+    }
     ///
-    GameSession.prototype.onGameEvent = function (e) {
+    onGameEvent(e) {
         console.log(e);
         switch (e) {
             case "move":
-                this.score += game_consts_1.GameConsts.scoreRewards.move;
+                this.score += GameConsts.scoreRewards.move;
                 break;
             case "kill":
-                this.score += game_consts_1.GameConsts.scoreRewards.botDeath;
+                this.score += GameConsts.scoreRewards.botDeath;
                 break;
             case "autokill":
-                this.score += game_consts_1.GameConsts.scoreRewards.botDeathAuto;
+                this.score += GameConsts.scoreRewards.botDeathAuto;
                 break;
             case "over":
-                this.score += game_consts_1.GameConsts.scoreRewards.levelClear;
-                for (var _i = 0, _a = this.skills; _i < _a.length; _i++) {
-                    var skill = _a[_i];
+                this.score += GameConsts.scoreRewards.levelClear;
+                for (let skill of this.skills)
                     if (!skill.infiniteUses)
                         if (this.usedSkills.indexOf(skill) < 0)
-                            this.score += game_consts_1.GameConsts.scoreRewards.levelClearPerUnusedSkil;
-                }
+                            this.score += GameConsts.scoreRewards.levelClearPerUnusedSkil;
                 break;
         }
-    };
-    GameSession.prototype.useSkill = function (skill) {
+    }
+    useSkill(skill) {
         if (this.canUseSkill(skill)) {
             skill.func(this.currentGame);
             this.usedSkills.push(skill);
             //this.coins -= skill.price
             this.currentGame.recheck();
         }
-    };
-    GameSession.prototype.canUseSkill = function (skill) { return skill.infiniteUses || this.usedSkills.indexOf(skill) < 0; };
+    }
+    canUseSkill(skill) { return skill.infiniteUses || this.usedSkills.indexOf(skill) < 0; }
     ///
-    GameSession.prototype.makeGame = function () {
-        var _this = this;
-        var params = this.makeGameParams(this.currentStageNumber);
-        return new game_1.Game(params.w, params.h, params.bots, function (e) { return _this.onGameEvent(e); });
-    };
-    GameSession.prototype.makeGameParams = function (lvl) {
-        var params = {};
+    makeGame() {
+        let params = this.makeGameParams(this.currentStageNumber);
+        return new Game(params.w, params.h, params.bots, (e) => this.onGameEvent(e));
+    }
+    makeGameParams(lvl) {
+        let params = {};
         switch (lvl) {
             case 1:
                 params.w = 9;
@@ -111,7 +100,5 @@ var GameSession = /** @class */ (function () {
         }
         params.bots = params.w + lvl;
         return params;
-    };
-    return GameSession;
-}());
-exports.GameSession = GameSession;
+    }
+}

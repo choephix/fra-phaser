@@ -43,3 +43,4 @@ export class SkillBook {
         ];
     }
 }
+export default Skill;
