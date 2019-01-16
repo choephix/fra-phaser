@@ -1,7 +1,25 @@
+"use strict";
 /// <reference path="../def/phaser.d.ts" />
 // import './style.css';
-class GameScene1 extends Phaser.Scene {
-    preload() {
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var GameScene1 = /** @class */ (function (_super) {
+    __extends(GameScene1, _super);
+    function GameScene1() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    GameScene1.prototype.preload = function () {
         this.load.image('dumoria', 'https://c.staticblitz.com/assets/client/icons/ui/blue-lightning-b6f0711fda280ec6bd873c9391fc89c4.png');
         this.load.image('circle', 'http://localhost:8111/assets/circle4 glow.jpg');
         this.load.spritesheet('cocksheet', 'https://i.imgur.com/circle4 glow.png', { frameWidth: 280, frameHeight: 160, endFrame: 4 });
@@ -11,8 +29,8 @@ class GameScene1 extends Phaser.Scene {
         this.load.image('sky', 'assets/skies/lightblue.png');
         this.load.image('logo', 'assets/sprites/phaser3-logo.png');
         this.load.image('red', 'assets/particles/red.png');
-    }
-    create() {
+    };
+    GameScene1.prototype.create = function () {
         this.add.image(400, 300, 'sky');
         this.add.sprite(500, 500, 'dumoria').blendMode = Phaser.BlendModes.ADD;
         this.add.sprite(500, 500, 'circle').blendMode = Phaser.BlendModes.ADD;
@@ -25,7 +43,7 @@ class GameScene1 extends Phaser.Scene {
         // })
         // gun.anims.load('cock');
         // gun.anims.play('cock');
-        let walki = this.add.sprite(200, 400, 'gal');
+        var walki = this.add.sprite(200, 400, 'gal');
         this.anims.create({
             key: 'walk',
             frames: this.anims.generateFrameNumbers('gal', {}),
@@ -41,8 +59,9 @@ class GameScene1 extends Phaser.Scene {
         emitter.blendMode = Phaser.BlendModes.SCREEN;
         var logo = this.add.image(400, 100, 'logo');
         emitter.startFollow(logo);
-    }
-}
+    };
+    return GameScene1;
+}(Phaser.Scene));
 var config = {
     title: "Furry Robots Attak",
     version: "0.2.0",
