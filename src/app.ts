@@ -18,7 +18,7 @@ var phaser:Phaser.Game
 const config:GameConfig = {
   title: "Furry Robots Attak",
   version: "0.2.0",
-  type: Phaser.CANVAS,
+  type: Phaser.AUTO,
   parent: "phaser",
   backgroundColor: "#014",
   height: window.innerHeight,
@@ -45,8 +45,7 @@ function create()
   sky.setOrigin(0,0)
   
   title = this.add.image(0, 0, 'logo');
-
-  this.gameScale.setMode('resize');
+  
   onresize()
 }
 
