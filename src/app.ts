@@ -28,9 +28,7 @@ class GameScene extends Phaser.Scene
     this.load.image('tile', 'assets/emoji/2b1c.png');
     this.load.image('bot', 'assets/emoji/1f989.png');
 
-    this.load.spritesheet(
-      'gal',
-      'assets/xplo/explosion (2).png',
+    this.load.spritesheet( 'gal', 'assets/xplo/explosion (2).png',
       { frameWidth: 128, frameHeight: 128, startFrame:0 }
     )
 
@@ -75,16 +73,6 @@ class GameScene extends Phaser.Scene
     mummy.anims.load('w');
     mummy.anims.play('w');
 
-    let walki = this.add.sprite(200, 400, 'gal')
-    this.anims.create({
-        key: 'walk',
-        frames: this.anims.generateFrameNumbers('gal',{}),
-        frameRate: 30,
-        repeat: -1
-    })
-    walki.anims.load('walk');
-    walki.anims.play('walk');
-
     let c
     c = this.add.sprite(this.geX(4),this.geY(4), 'circle')
     c.blendMode = Phaser.BlendModes.ADD;
@@ -96,6 +84,24 @@ class GameScene extends Phaser.Scene
         repeat: -1
     });
     console.log(1,1,1,c)
+
+    this.input.on("pointerdown",e=>this.boom(e.x,e.y))
+    this.input.on("pointermove",e=>this.boom(e.x,e.y))
+  }
+
+  boom(x:number,y:number)
+  {
+    this.anims.create({
+        key: 'walk',
+        frames: this.anims.generateFrameNumbers('gal',{}),
+        frameRate: 20,
+        repeat: 0
+    })
+    let walki = this.add.sprite(x, y, 'gal')
+    walki.setRotation(2.0*Math.PI*Math.random())
+    walki.anims.load('walk');
+    walki.anims.play('walk');
+    walki.on('animationcomplete', e=>walki.destroy(), this);
   }
 
   addParticles(x:number,y:number)
