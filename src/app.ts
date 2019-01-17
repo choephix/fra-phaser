@@ -1,10 +1,20 @@
 /// <reference path="../def/phaser.d.ts" />
 // import './style.css';
 
+import {Skill} from "./game/skills"
+
+export class App {
+  start() {
+    console.log(456,new Skill)
+  }
+}
+
 class GameScene extends Phaser.Scene
 {
   preload()
   {
+    console.log(new Skill)
+
     this.load.image('circle', 'assets/circle4 glow.jpg');
     this.load.image('circle2', 'assets/rk.jpg');
 
@@ -42,7 +52,7 @@ class GameScene extends Phaser.Scene
       for(let ix=0;ix<W;ix++)
         this.add.sprite( this.geX(ix), this.geY(iy), "tile" ).setScale(.5)
 
-    let ba = [[1,1],[2,3],[7,1],[7,2],[5,7],[0,6]]
+    let ba = [[1,1],[2,3],[7,1],[7,2],[8,4],[5,7],[0,6]]
     for(let b of ba)
       this.add.sprite( this.geX(b[0]), this.geY(b[1]), "bot" ).setScale(.5)
     this.addParticles(this.geX(4),this.geY(4))
