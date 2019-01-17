@@ -5,6 +5,8 @@
 /tmp
 /out-tsc
 /bin/**/*.js
+/bin/*.js
+!/bin/lib/*.*
 
 # dependencies
 /node_modules
