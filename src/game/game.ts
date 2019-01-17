@@ -201,3 +201,5 @@ class Decoy {
   active:boolean
   constructor ( public tile:Tile ) {}
 }
+
+export default Game;
