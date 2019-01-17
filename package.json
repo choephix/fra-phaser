@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "lite": "lite-server",
+    "lite": "lite-server --host 0.0.0.0",
     "start": "concurrently \"npm run tsc:w\" \"npm run lite\" "
   },
   "author": "cx",
