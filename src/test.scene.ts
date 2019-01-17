@@ -1,3 +1,5 @@
+/// <reference path="phaser.d.ts" />
+
 import {Skill} from "./game/skills"
 
 export class TestGameScene extends Phaser.Scene

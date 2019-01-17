@@ -18,6 +18,7 @@
     "typescript": "^3.2.2"
   },
   "dependencies": {
-    "phaser": "^3.15.1"
+    "phaser": "^3.15.1",
+    "phaser-plugin-game-scale": "github:samme/phaser-plugin-game-scale"
   }
 }

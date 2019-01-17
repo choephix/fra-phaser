@@ -1,35 +1,60 @@
-/// <reference path="./phaser.d.ts" />
-// import './style.css';
+/// <reference path="phaser.d.ts" />
 
 import {Skill} from "./game/skills"
 import {Game} from "./game/game"
 import {TestGameScene} from "test.scene"
 
-export class App {
-  start() {
-    console.log(456,new Skill)
-    let g = new Game(20,20,20,e=>console.warn(e))
-    g.moveTo(g.getTile(1,1))
-    g.moveTo(g.getTile(2,2))
-    g.moveTo(g.getTile(3,3))
-    console.log(g)
+export class App 
+{
+  start() 
+  {
+    phaser = new Phaser.Game(config);
+    // window.addEventListener('resize', () => onresize());
   }
 }
 
+var phaser:Phaser.Game
 
-var config:GameConfig = {
+const config:GameConfig = {
   title: "Furry Robots Attak",
   version: "0.2.0",
-  type: Phaser.AUTO,
+  type: Phaser.CANVAS,
   parent: "phaser",
   backgroundColor: "#014",
   height: window.innerHeight,
-  width: window.innerHeight*3/4,
-  // width: window.innerHeight*9/16,
-  // width: window.innerWidth,
+  width: window.innerWidth,
   zoom: 1,
-  scene: new TestGameScene({})
+  scene: {preload:preload,create:create},
+  // scene: new TestGameScene({}),  
 }
-var game:Phaser.Game = new Phaser.Game(config);
 
-console.log(game)
+let sky:Phaser.GameObjects.Image
+let title:Phaser.GameObjects.Image
+
+function preload()
+{
+  this.load.image('sky', 'assets/bg.jpg');
+  this.load.image('logo', 'https://labs.phaser.io/assets/sprites/phaser3-logo.png');
+  this.load.image('tile', 'assets/emoji/2b1c.png');
+  this.load.image('bot', 'assets/emoji/1f989.png');
+}
+
+function create()
+{
+  sky = this.add.image(0, 0, 'sky');
+  sky.setOrigin(0,0)
+  
+  title = this.add.image(0, 0, 'logo');
+
+  this.gameScale.setMode('resize');
+  onresize()
+}
+
+function onresize()
+{
+  phaser.resize( window.innerWidth, window.innerHeight );
+  phaser.scene.resize( window.innerWidth, window.innerHeight )
+  sky.setDisplaySize( window.innerWidth, window.innerHeight )
+  title.x = window.innerWidth * .5
+  title.y = 200
+}
