@@ -19,3 +19,5 @@ class Rewards
   botDeath:number
   botDeathAuto:number
 }
+
+console.log(this)

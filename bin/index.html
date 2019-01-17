@@ -6,14 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="//cdn.jsdelivr.net/npm/phaser@3.15/dist/phaser.min.js"></script>
-  <script src="https://requirejs.org/docs/release/2.3.6/comments/require.js"></script>
-  <script>
-    console.log(123456)
-    requirejs.config({ baseUrl: './' });
-    requirejs(['app','game/game','game/skills']);
-    console.log(456789)
-  </script>
 </head>
 <body ontouchstart="test(event)">
   <style>
@@ -22,5 +14,15 @@
       body { flex-grow: 1; }
   </style>
   <div id="phaser">where is it</div>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/3.0.0/system.js"></script>  -->
+  <!-- <script src="https://requirejs.org/docs/release/2.3.6/comments/require.js"></script> -->
+  <script src="https://unpkg.com/almond@0.3.3/almond.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/phaser@3.15/dist/phaser.min.js"></script> -->
+  <script src="phaser.js"></script>
+  <script src="bundle.js"></script>
+  <!-- <script>require(['bundle'])</script> -->
+  <script>
+      require(['app']);    
+  </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 import { Skill } from './skills'
-
+console.log(this)
 export class Game 
 {
   public tiles:Tile[] = []

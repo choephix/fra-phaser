@@ -1,10 +1,19 @@
 /// <reference path="./phaser.d.ts" />
-// import Phaser = require('../def/phaser')
+import Phaser = require('phaser')
 // import * as Phaser from 'phaser';
 import {Skill} from "./game/skills"
-import * as Phaser from 'phaser'
+// import Phaser from 'phaser'
 
 // declare var Phaser: any;
+console.log(1)
+console.log(2)
+console.log(3)
+console.log(Phaser)
+console.log(Phaser)
+console.log(Phaser)
+console.log(Phaser)
+console.log(Phaser)
+console.log(Phaser)
 console.log(Phaser)
 
 var config:GameConfig = {
@@ -31,3 +40,5 @@ var config:GameConfig = {
   }
 }
 var game:Phaser.Game = new Phaser.Game(config);
+
+console.log(game)
