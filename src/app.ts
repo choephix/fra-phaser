@@ -1,11 +1,18 @@
-/// <reference path="../def/phaser.d.ts" />
+/// <reference path="./phaser.d.ts" />
 // import './style.css';
 
 import {Skill} from "./game/skills"
+import {Game} from "./game/game"
 
 export class App {
   start() {
     console.log(456,new Skill)
+
+    let g = new Game(20,20,20,e=>console.warn(e))
+    g.moveTo(g.getTile(1,1))
+    g.moveTo(g.getTile(2,2))
+    g.moveTo(g.getTile(3,3))
+    console.log(g)
   }
 }
 
@@ -42,6 +49,7 @@ class GameScene extends Phaser.Scene
   create()
   {
     this.add.image(400, 300, 'sky');
+    this.add.image(400, 100, 'logo');
 
     var container = this.add.container(200,200);
 
@@ -87,8 +95,7 @@ class GameScene extends Phaser.Scene
         duration: 10000,
         repeat: -1
     });
-
-    this.add.image(400, 100, 'logo');
+    console.log(1,1,1,c)
   }
 
   addParticles(x:number,y:number)
@@ -113,17 +120,7 @@ var config:GameConfig = {
   // width: window.innerHeight*9/16,
   // width: window.innerWidth,
   zoom: 1,
-  scene: {
-    preload()
-    {
-      this.load.image('sky', 'https://labs.phaser.io/assets/skies/lightblue.png');
-      console.log( new Skill )
-    },  
-    create()
-    {
-      this.add.image(400, 300, 'sky');
-    }
-  }
+  scene: new GameScene({})
 }
 var game:Phaser.Game = new Phaser.Game(config);
 

@@ -14,6 +14,7 @@ var __extends = (this && this.__extends) || (function () {
 define("game/game", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    console.log(this);
     var Game = /** @class */ (function () {
         function Game(W, H, BOTS, raiseEvent) {
             this.W = W;
@@ -209,10 +210,12 @@ define("game/game", ["require", "exports"], function (require, exports) {
         }
         return Decoy;
     }());
+    exports.default = Game;
 });
 define("game/skills", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    console.log(this);
     var Skill = /** @class */ (function () {
         function Skill() {
         }
@@ -269,9 +272,9 @@ define("game/skills", ["require", "exports"], function (require, exports) {
     }());
     exports.SkillBook = SkillBook;
 });
-/// <reference path="../def/phaser.d.ts" />
+/// <reference path="./phaser.d.ts" />
 // import './style.css';
-define("app", ["require", "exports", "game/skills"], function (require, exports, skills_1) {
+define("app", ["require", "exports", "game/skills", "game/game"], function (require, exports, skills_1, game_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var App = /** @class */ (function () {
@@ -279,6 +282,11 @@ define("app", ["require", "exports", "game/skills"], function (require, exports,
         }
         App.prototype.start = function () {
             console.log(456, new skills_1.Skill);
+            var g = new game_1.Game(20, 20, 20, function (e) { return console.warn(e); });
+            g.moveTo(g.getTile(1, 1));
+            g.moveTo(g.getTile(2, 2));
+            g.moveTo(g.getTile(3, 3));
+            console.log(g);
         };
         return App;
     }());
@@ -304,6 +312,7 @@ define("app", ["require", "exports", "game/skills"], function (require, exports,
         GameScene.prototype.geY = function (v) { return 250 + v * 65; };
         GameScene.prototype.create = function () {
             this.add.image(400, 300, 'sky');
+            this.add.image(400, 100, 'logo');
             var container = this.add.container(200, 200);
             var W = 9;
             var H = 9;
@@ -344,7 +353,7 @@ define("app", ["require", "exports", "game/skills"], function (require, exports,
                 duration: 10000,
                 repeat: -1
             });
-            this.add.image(400, 100, 'logo');
+            console.log(1, 1, 1, c);
         };
         GameScene.prototype.addParticles = function (x, y) {
             var particles = this.add.particles('red');
@@ -370,31 +379,36 @@ define("app", ["require", "exports", "game/skills"], function (require, exports,
         scene: new GameScene({})
     };
     var game = new Phaser.Game(config);
-    function test() {
-        alert("ouch!");
-    }
+    console.log(game);
 });
-var GameConsts = /** @class */ (function () {
-    function GameConsts() {
-    }
-    GameConsts.scoreRewards = {
-        initial: 0,
-        levelClear: 0,
-        levelClearPerUnusedSkil: 250,
-        move: 0,
-        botDeath: 0,
-        botDeathAuto: 100
-    };
-    return GameConsts;
-}());
-var Rewards = /** @class */ (function () {
-    function Rewards() {
-    }
-    return Rewards;
-}());
-define("game/game-session", ["require", "exports", "game/game", "./game-consts", "game/skills"], function (require, exports, game_1, game_consts_1, skills_2) {
+define("game/game-consts", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    var GameConsts = /** @class */ (function () {
+        function GameConsts() {
+        }
+        GameConsts.scoreRewards = {
+            initial: 0,
+            levelClear: 0,
+            levelClearPerUnusedSkil: 250,
+            move: 0,
+            botDeath: 0,
+            botDeathAuto: 100
+        };
+        return GameConsts;
+    }());
+    exports.GameConsts = GameConsts;
+    var Rewards = /** @class */ (function () {
+        function Rewards() {
+        }
+        return Rewards;
+    }());
+    console.log(this);
+});
+define("game/game-session", ["require", "exports", "game/game", "game/game-consts", "game/skills"], function (require, exports, game_2, game_consts_1, skills_2) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    console.log(this);
     var GameSession = /** @class */ (function () {
         function GameSession() {
         }
@@ -453,7 +467,7 @@ define("game/game-session", ["require", "exports", "game/game", "./game-consts",
         GameSession.prototype.makeGame = function () {
             var _this = this;
             var params = this.makeGameParams(this.currentStageNumber);
-            return new game_1.Game(params.w, params.h, params.bots, function (e) { return _this.onGameEvent(e); });
+            return new game_2.Game(params.w, params.h, params.bots, function (e) { return _this.onGameEvent(e); });
         };
         GameSession.prototype.makeGameParams = function (lvl) {
             var params = {};

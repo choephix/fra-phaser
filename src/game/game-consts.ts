@@ -1,4 +1,4 @@
-class GameConsts
+export class GameConsts
 {
   public static scoreRewards:Rewards = {
     initial: 0,
