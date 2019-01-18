@@ -1,3 +1,5 @@
+import { IEventDispatcher } from "./events";
+
 export class Game 
 {
   public tiles:Tile[] = []
@@ -6,15 +8,13 @@ export class Game
 
   public decoy:Decoy
   public frozenTurns:number = 0
-  public invulnerableTurns:number = 0
   public auto:boolean = false
 
   public over:boolean
   public get victory():boolean { return !this.player.dead }
   public get aliveBots():Bot[] { return this.bots.filter(bot=>!bot.dead) }
 
-  constructor( public W:number, public H:number, public BOTS:number,
-               public raiseEvent:($type:string)=>void )
+  constructor( public W: number, public H: number, public BOTS: number, public events:IEventDispatcher )
   {
     for ( let ix = 0; ix < W; ix++ )
       for ( let iy = 0; iy < H; iy++ )
@@ -39,6 +39,12 @@ export class Game
     }
 
     this.decoy = new Decoy( pt )
+  }
+
+  public start()
+  {
+    this.events.raise( "gamestart" )
+    this.events.raise( "change" )
   }
 
   public runAuto()
@@ -93,11 +99,9 @@ export class Game
     {
       if ( this.frozenTurns > 0 )
         this.frozenTurns--
-      if ( this.invulnerableTurns > 0 )
-        this.invulnerableTurns--      
       for ( let bot of this.bots )
         bot.stunned = false
-      this.raiseEvent( "move" )
+      this.events.raise( "move" )
     }
   }
 
@@ -116,8 +120,8 @@ export class Game
       {
         for ( let bot of bots )
           this.killBot( bot )
-        if ( this.invulnerableTurns < 1 || p.tile !== tile )
-          tile.busted = true
+        tile.busted = true
+        this.events.raise( "tilebust", tile )
       }
       if ( tile.busted )
       {
@@ -139,18 +143,22 @@ export class Game
     if ( this.aliveBots.length < 1 )
     {
       this.over = true
-      this.raiseEvent("over")
+      this.events.raise("gameover")
     }
+    
+    this.events.raise( "change" )
   }
 
   public canMove( bot:Bot )
   { return this.frozenTurns < 1 && !bot.dead && !bot.stunned }
 
-  public killBot( bot )
+  public killBot( bot:Bot, collision:boolean )
   {
+    if ( bot.dead )
+      return
     bot.dead = true
     if ( !this.player.dead )
-      this.raiseEvent( this.auto ? "autokill" : "kill" )
+      this.events.raise( "kill", bot, collision, this.auto )
   }
 
   public getRandomTile()
@@ -158,7 +166,7 @@ export class Game
     return this.tiles[ Math.floor( this.tiles.length * Math.random() ) ]
   }
 
-  public getTile( x, y )
+  public getTile( x: number, y: number )
   {
     //if ( x < 0 ) x += this.W
     //if ( y < 0 ) y += this.H

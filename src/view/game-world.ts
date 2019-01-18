@@ -41,18 +41,22 @@ export class GameWorld extends Phaser.GameObjects.Container
 
     document.addEventListener( "keydown", e => this.onKeyDown(e))
 
-    this.session = new GameSession
-
-    this.resetGame()
-
     this.ctrl = new TouchController( ( x, y ) => this.moveMayBe(x,y) )
     this.scene.input.on( "pointerdown", e => this.ctrl.start( e.x, e.y ) )
     this.scene.input.on( "pointermove", e => this.ctrl.move( e.x, e.y ) )
     this.scene.input.on( "pointerup", e => this.ctrl.end() )
+
+    this.session = new GameSession
+    this.session.events.on( "gamestart", () => this.buildWorld() )
+    this.session.events.on( "change", () => this.onAnyChange() )
+
+    this.resetGame()
   }
 
-  update( duration:number=150 )
+  onAnyChange()
   {
+    console.log("CHANGEEE!")
+
     for ( let o of this.things )
     {
       let x = o.model.hasOwnProperty( 'x' ) ? o.model.x : o.model.tile.x
@@ -67,7 +71,7 @@ export class GameWorld extends Phaser.GameObjects.Container
         x: x,
         y: y + ( fall ? 150 : 0 ),
         alpha: fall ? 0 : ( o.model.frozen ? .25 : 17 ),
-        duration: duration
+        duration: 150
       })
     }
   }
@@ -81,13 +85,11 @@ export class GameWorld extends Phaser.GameObjects.Container
   continueGame()
   {
     this.session.next()
-    this.buildWorld()
   }
 
   resetGame()
   {
     this.session.reset()
-    this.buildWorld()
   }
 
   buildWorld()
@@ -100,7 +102,7 @@ export class GameWorld extends Phaser.GameObjects.Container
       this.addThing( this.scene.add.image( 0, 0, 'tile' )
                     .setScale( .55 )
                     .setRotation(Phaser.Math.FloatBetween(-.05,.05))
-                    .setTint( Phaser.Display.Color.HSLToColor(0, 0, Phaser.Math.FloatBetween(.85, 1) ).color ), 
+                    .setTint( Phaser.Display.Color.HSLToColor(.1, Math.random()*.25, Phaser.Math.FloatBetween(.85, 1) ).color ), 
                     model )
 
     for ( let model of g.bots )
@@ -115,14 +117,11 @@ export class GameWorld extends Phaser.GameObjects.Container
     p.anims.load( "player-idle" )
     p.anims.play( "player-idle" )
     this.addThing( p, g.player )
-
-    this.update()
   }
 
   useSkill( skill:Skill )
   {
     this.session.useSkill( skill )
-    this.update()
   }
 
   moveMayBe( dx: number, dy: number )
@@ -135,7 +134,6 @@ export class GameWorld extends Phaser.GameObjects.Container
       this.game.moveTo( next )
       this.game.endTurn()
     }
-    this.update()
   }
 
   ///

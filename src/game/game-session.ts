@@ -24,6 +24,7 @@ export class GameSession
 
     this.currentStageNumber = 1
     this.currentGame = this.makeGame()
+    this.currentGame.start()
   }
 
   public next():void
@@ -33,31 +34,26 @@ export class GameSession
     
     this.currentStageNumber ++
     this.currentGame = this.makeGame()
+    this.currentGame.start()
   }
 
   ///
 
-  private onGameEvent( e:string )
-  { 
-    console.log(e)
-    switch(e)
+  private addEventListeners()
+  {
+    this.events.on( "any", console.log )
+    this.events.on( "over", () => onGameOver() )
+    this.events.on( "move", () => this.score += GameConsts.scoreRewards.move )
+    this.events.on( "kill", () => this.score += GameConsts.scoreRewards.botDeath )
+    this.events.on( "autokill", () => this.score += GameConsts.scoreRewards.botDeathAuto )
+
+    function onGameOver()
     {
-      case "move":
-        this.score += GameConsts.scoreRewards.move
-        break
-      case "kill":
-        this.score += GameConsts.scoreRewards.botDeath
-        break
-      case "autokill":
-        this.score += GameConsts.scoreRewards.botDeathAuto
-        break
-      case "over":
-        this.score += GameConsts.scoreRewards.levelClear
-        for ( let skill of this.skills )
-          if ( !skill.infiniteUses )
-            if ( this.usedSkills.indexOf( skill ) < 0 )
-              this.score += GameConsts.scoreRewards.levelClearPerUnusedSkil
-        break
+      this.score += GameConsts.scoreRewards.levelClear
+      for ( let skill of this.skills )
+        if ( !skill.infiniteUses )
+          if ( this.usedSkills.indexOf( skill ) < 0 )
+            this.score += GameConsts.scoreRewards.levelClearPerUnusedSkil
     }
   }
 
@@ -67,6 +63,7 @@ export class GameSession
     {
       skill.func( this.currentGame )
       this.usedSkills.push(skill)
+      this.events.raise("playerspecial",skill)
       //this.coins -= skill.price
       this.currentGame.recheck()
     }
@@ -80,8 +77,7 @@ export class GameSession
   private makeGame():Game
   {
     let params = this.makeGameParams( this.currentStageNumber )
-    let game = new Game( params.w, params.h, params.bots, 
-                     (e) => this.onGameEvent(e) )
+    let game = new Game( params.w, params.h, params.bots, this.events )
     return game
   }
 

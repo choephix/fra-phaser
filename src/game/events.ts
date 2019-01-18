@@ -1,19 +1,22 @@
-export class EventBus
+export class EventBus implements IEventDispatcher
 {
-  private handlers:EventHandler[] = []
+  private handlers: { type: string; func: Function }[] = []
 
   public on(type:string,call:Function)
   { this.handlers.push({type:type,func:call}) }
   
-  public raise(type:string,...rest)
+  public raise( type:string, ...rest:any )
   {
+    console.log(type,...rest)
     for ( let handler of this.handlers )
-      if ( handler.type === type || handler.type === "any" )
+      if ( handler.type === type )
         handler.func(...rest)
+      else
+      if ( handler.type === "any")
+        handler.func( type, ...rest )
   }
 }
-
-class EventHandler { type:string; func:Function }
+export interface IEventDispatcher { raise( type:string, ...rest:any ):void; }
 
 const EVENTS = [
   "gamestart",
