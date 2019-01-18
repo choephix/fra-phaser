@@ -28,7 +28,7 @@ const config: GameConfig = {
 
 let sky:Phaser.GameObjects.Image
 let title:Phaser.GameObjects.Image
-let world:GameWorld
+let world: GameWorld
 
 function preload()
 {
@@ -36,11 +36,18 @@ function preload()
   this.load.image( 'logo', 'https://labs.phaser.io/assets/sprites/phaser3-logo.png' )
   this.load.image( 'tile', 'assets/emoji/2b1c.png' )
   this.load.image( 'bot', 'assets/emoji/1f989.png' )
-  this.load.image( 'circle', 'assets/circle4 glow.jpg' );
+  this.load.image( 'circle', 'assets/circle4 glow.jpg' )
+  this.load.spritesheet( 'boom', 'assets/xplo/explosion (2).png', { frameWidth: 128, frameHeight: 128 } )
 }
 
 function create()
 {
+  this.anims.create({
+    key: "xplode",
+    frames: this.anims.generateFrameNumbers("boom", {}),
+    frameRate: 30
+  })
+
   sky = this.add.image(0, 0, 'sky')
   sky.setOrigin(0,0)
   
@@ -53,8 +60,11 @@ function create()
   title.x = w * .5
   title.y = 160
 
-  world = new GameWorld( this, .5*w, .5*h )
+  world = new GameWorld( this, .5*w, .55*h )
   world.initialize()
+
+  this.input.on( "pointerdown", e => world.boom( e.x, e.y ) )
+  this.input.on( "pointermove", e => world.boom( e.x, e.y ) )
 }
 
 function update()

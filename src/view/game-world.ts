@@ -13,14 +13,26 @@ export class GameWorld extends Phaser.GameObjects.Container
   {
     this.scene.add.existing(this)
 
-    let c = this.scene.add.image(0, 0, "circle")
-                          .setBlendMode(Phaser.BlendModes.ADD)
-                          .setScale(.5)
+    let c
+    c = this.scene.add.image( 0, 0, "circle" )
+      .setBlendMode( Phaser.BlendModes.ADD )
+      .setScale( .5 )
     this.add( c )
     this.scene.tweens.add( {
       targets: c,
       rotation: -Math.PI * 2,
       duration: 50000,
+      repeat: -1
+    } )
+    c = this.scene.add.image( 0, 0, "circle" )
+      .setBlendMode( Phaser.BlendModes.ADD )
+      .setScale( 1.5 )
+      .setAlpha(.05)
+    this.add( c )
+    this.scene.tweens.add( {
+      targets: c,
+      rotation: -Math.PI * 2,
+      duration: 150000,
       repeat: -1
     } )
 
@@ -31,6 +43,16 @@ export class GameWorld extends Phaser.GameObjects.Container
     this.resetGame()
   }
 
+  boom( x: number, y: number )
+  {
+    let boom = this.scene.add.sprite( x, y, 'boom' )
+    boom.setRotation( 2.0 * Math.PI * Math.random() )
+    boom.anims.load( "xplode" )
+    boom.anims.play( "xplode" )
+    boom.on( 'animationcomplete', () => boom.destroy(), this );
+    this.add(boom)
+  }
+
   update( duration:number=150 )
   {
     for ( let o of this.things )
@@ -38,13 +60,15 @@ export class GameWorld extends Phaser.GameObjects.Container
       let x = o.model.hasOwnProperty( 'x' ) ? o.model.x : o.model.tile.x
       let y = o.model.hasOwnProperty( 'y' ) ? o.model.y : o.model.tile.y
       x = ( x - this.game.W * 0.5 + .5 ) * 70
-      y = ( y - this.game.H * 0.4 + .5 ) * 70
+      y = ( y - this.game.H * 0.5 + .5 ) * 70
+
+      let fall = o.model.dead || o.model.busted
 
       this.scene.tweens.add({
         targets: o.view,
         x: x,
-        y: y,
-        alpha: o.model.dead || o.model.busted ? 0 : 1,
+        y: y + ( fall ? 150 : 0 ),
+        alpha: fall ? 0 : ( o.model.frozen ? .25 : 17 ),
         duration: duration
       })
     }
@@ -70,7 +94,7 @@ export class GameWorld extends Phaser.GameObjects.Container
 
   buildWorld()
   {
-    for (let thing of this.things) thing.destroy()
+    for (let thing of this.things) thing.view.destroy()
 
     let g = this.session.currentGame
 
@@ -96,6 +120,7 @@ export class GameWorld extends Phaser.GameObjects.Container
   useSkill( skill:Skill )
   {
     this.session.useSkill( skill )
+    this.update()
   }
 
   moveMayBe( dx: number, dy: number )
@@ -125,12 +150,19 @@ export class GameWorld extends Phaser.GameObjects.Container
       if ( e.code === "KeyD" || e.code === "Numpad6" ) this.moveMayBe( 1, 0 )
       if ( e.code === "KeyZ" || e.code === "Numpad1" ) this.moveMayBe( -1, 1 )
       if ( e.code === "KeyX" || e.code === "Numpad2" ) this.moveMayBe( 0, 1 )
-      if ( e.code === "KeyC" || e.code === "Numpad3" ) this.moveMayBe( 1, 1 )
+      if ( e.code === "KeyC" || e.code === "Numpad3" ) this.moveMayBe(1, 1)
+      if ( e.code === "Backquote" || e.code === "NumpadAdd" )      this.useSkill( this.session.skills[ 0 ] )
+      if ( e.code === "Digit1"    || e.code === "NumpadDivide" )   this.useSkill( this.session.skills[ 1 ] )
+      if ( e.code === "Digit2"    || e.code === "NumpadMultiply" ) this.useSkill( this.session.skills[ 2 ] )
+      if ( e.code === "Digit3"    || e.code === "NumpadSubtract" ) this.useSkill( this.session.skills[ 3 ] )
+      if ( e.code === "Enter"     || e.code === "NumpadEnter" )    this.useSkill( this.session.skills[ 4 ] )
       if ( e.code === "KeyF" ) document.documentElement.requestFullscreen()
     }
     else
     {
-      ( this.session.gameOver ? this.session.reset : this.session.next )()
+      if( this.game.victory )
+        this.continueGame()
+      else this.resetGame()
     }
   }
 }
