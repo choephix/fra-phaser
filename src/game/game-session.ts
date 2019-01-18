@@ -1,6 +1,7 @@
 import { Game } from './game'
 import { GameConsts } from './game-consts'
 import { Skill, SkillBook } from './skills'
+import { EventBus } from './events';
 
 export class GameSession
 {
@@ -11,10 +12,9 @@ export class GameSession
 
   public score:number
   public usedSkills:Skill[]
-  
-  public get gameOver():boolean 
-  { return this.currentGame.over && !this.currentGame.player  }
 
+  public events:EventBus = new EventBus
+  
   public reset():void
   {
     this.skills = SkillBook.makeSkillList()
@@ -39,7 +39,7 @@ export class GameSession
 
   private onGameEvent( e:string )
   { 
-      console.log(e)
+    console.log(e)
     switch(e)
     {
       case "move":
@@ -80,8 +80,9 @@ export class GameSession
   private makeGame():Game
   {
     let params = this.makeGameParams( this.currentStageNumber )
-    return new Game( params.w, params.h, params.bots, 
+    let game = new Game( params.w, params.h, params.bots, 
                      (e) => this.onGameEvent(e) )
+    return game
   }
 
   private makeGameParams( lvl:number ):any
