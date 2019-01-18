@@ -1,5 +1,5 @@
 import { Game } from './game'
-console.log(this)
+
 export class Skill {
   icon:string
   name:string

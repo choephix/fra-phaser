@@ -1,7 +1,7 @@
 import { Game } from './game'
 import { GameConsts } from './game-consts'
 import { Skill, SkillBook } from './skills'
-console.log(this)
+
 export class GameSession
 {
   public currentGame:Game
