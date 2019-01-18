@@ -30,7 +30,7 @@ export class GameWorld extends Phaser.GameObjects.Container
     c = this.scene.add.image( 0, 0, "circle" )
       .setBlendMode( Phaser.BlendModes.ADD )
       .setScale( 1.5 )
-      .setAlpha(.05)
+      .setAlpha( .05 )
     this.add( c )
     this.scene.tweens.add( {
       targets: c,
@@ -99,7 +99,8 @@ export class GameWorld extends Phaser.GameObjects.Container
     for ( let model of g.tiles )
       this.addThing( this.scene.add.image( 0, 0, 'tile' )
                     .setScale( .55 )
-                    .setRotation(.06-0.12*Math.random()), 
+                    .setRotation(Phaser.Math.FloatBetween(-.05,.05))
+                    .setTint( Phaser.Display.Color.HSLToColor(0, 0, Phaser.Math.FloatBetween(.85, 1) ).color ), 
                     model )
 
     for ( let model of g.bots )
@@ -107,10 +108,13 @@ export class GameWorld extends Phaser.GameObjects.Container
                     .setScale( .6 ), 
                     model )
 
-    this.addThing( this.scene.add.image( 0, 0, 'bot' )
-                  .setScale( .6 )
-                  .setTint( 0x00FFFF ), 
-                  g.player )
+    let p = this.scene.add
+      .sprite(0, 0, "player")
+      .setScale(0.6)
+      // .setTint(0x00ffff)
+    p.anims.load( "player-idle" )
+    p.anims.play( "player-idle" )
+    this.addThing( p, g.player )
 
     this.update()
   }

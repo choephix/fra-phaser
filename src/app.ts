@@ -33,20 +33,28 @@ let world: GameWorld
 
 function preload()
 {
-  this.load.image( "sky", "assets/sky-checkers.jpg" )
   this.load.image( 'logo', 'https://labs.phaser.io/assets/sprites/phaser3-logo.png' )
+  this.load.image( "sky", "assets/sky-checkers.jpg" )
   this.load.image( 'tile', 'assets/emoji/2b1c.png' )
-  this.load.image( 'bot', 'assets/emoji/1f989.png' )
-  this.load.image( 'circle', 'assets/circle4 glow.jpg' )
+  this.load.image( "bot", "assets/emoji/1f989.png" )
+  this.load.spritesheet( "player", "assets/pikachu.png", { frameWidth: 154, frameHeight: 158, margin:0, spacing:0 } )
   this.load.spritesheet( 'boom', 'assets/xplo/explosion (2).png', { frameWidth: 128, frameHeight: 128 } )
+  this.load.image( 'circle', 'assets/circle-1.jpg' )
 }
 
-function create() {
-  this.anims.create({
+function create()
+{
+  this.anims.create( {
+    key: "player-idle",
+    frames: this.anims.generateFrameNumbers( "player", {} ),
+    frameRate: 10,
+    repeat: -1
+  } )
+  this.anims.create( {
     key: "xplode",
-    frames: this.anims.generateFrameNumbers("boom", {}),
+    frames: this.anims.generateFrameNumbers( "boom", {} ),
     frameRate: 30,
-  })
+  } )
 
   sky = this.add.image(0, 0, "sky")
   sky.setOrigin(0, 0)
