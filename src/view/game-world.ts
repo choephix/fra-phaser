@@ -1,11 +1,14 @@
 import { Skill } from "../game/skills"
 import { Game } from "../game/game"
 import { GameSession } from "../game/game-session"
+import { TouchController } from "./ctrl";
 
 export class GameWorld extends Phaser.GameObjects.Container
 {
-  public session: GameSession
-  public get game(): Game { return this.session ? this.session.currentGame : null }
+  session: GameSession
+  ctrl: TouchController
+  
+  get game(): Game { return this.session ? this.session.currentGame : null }
 
   private things:any[] = []
 
@@ -41,16 +44,11 @@ export class GameWorld extends Phaser.GameObjects.Container
     this.session = new GameSession
 
     this.resetGame()
-  }
 
-  boom( x: number, y: number )
-  {
-    let boom = this.scene.add.sprite( x, y, 'boom' )
-    boom.setRotation( 2.0 * Math.PI * Math.random() )
-    boom.anims.load( "xplode" )
-    boom.anims.play( "xplode" )
-    boom.on( 'animationcomplete', () => boom.destroy(), this );
-    this.add(boom)
+    this.ctrl = new TouchController( ( x, y ) => this.moveMayBe(x,y) )
+    this.scene.input.on( "pointerdown", e => this.ctrl.start( e.x, e.y ) )
+    this.scene.input.on( "pointermove", e => this.ctrl.move( e.x, e.y ) )
+    this.scene.input.on( "pointerup", e => this.ctrl.end() )
   }
 
   update( duration:number=150 )

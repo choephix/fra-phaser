@@ -31,7 +31,7 @@ export class TouchController
     }
   }
 
-  end( e )
+  end()
   {
     if ( this.active && ( !this.stay || !this.indelay ) )
     {
