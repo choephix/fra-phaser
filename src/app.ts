@@ -22,6 +22,7 @@ const config: GameConfig = {
   backgroundColor: "#014",
   width: getDimensions().w,
   height: getDimensions().h,
+  resolution: 1,
   zoom: 1,
   scene: { init : console.log, preload: preload, create: create, update : update },
   // scene: new TestGameScene({}),
