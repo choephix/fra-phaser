@@ -73,7 +73,7 @@ function create()
   world = new GameWorld(this, 0.5 * w, 0.55 * h)
   world.initialize()
 
-  this.input.on( "pointerdown", (e,o) => boom( e.x, e.y ) )
+  // this.input.on( "pointerdown", (e,o) => boom( e.x, e.y ) )
   // this.input.on( "pointermove", (e,o) => boom( e.x, e.y ) )
   let scene = this
   function boom( x: number, y: number )
@@ -82,6 +82,7 @@ function create()
     boom.setRotation( 2.0 * Math.PI * Math.random() )
     boom.anims.load( "xplode" )
     boom.anims.play( "xplode" )
+    boom.setTint("#369")
     boom.on( 'animationcomplete', () => boom.destroy() );
   }
 }

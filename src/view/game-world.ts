@@ -1,7 +1,8 @@
-import { Skill } from "../game/skills"
+import { Skill, SkillBook } from "../game/skills"
 import { Game } from "../game/game"
 import { GameSession } from "../game/game-session"
 import { TouchController } from "./ctrl";
+import { GameEvent } from "src/game/events";
 
 export class GameWorld extends Phaser.GameObjects.Container
 {
@@ -11,6 +12,7 @@ export class GameWorld extends Phaser.GameObjects.Container
   get game(): Game { return this.session ? this.session.currentGame : null }
 
   private things:any[] = []
+  private zone: Phaser.GameObjects.Image 
 
   public initialize()
   {
@@ -42,16 +44,54 @@ export class GameWorld extends Phaser.GameObjects.Container
     document.addEventListener( "keydown", e => this.onKeyDown(e))
 
     this.ctrl = new TouchController( ( x, y ) => this.moveMayBe(x,y) )
-    this.scene.input.on( "pointerdown", e => this.ctrl.start( e.x, e.y ) )
-    this.scene.input.on( "pointermove", e => this.ctrl.move( e.x, e.y ) )
-    this.scene.input.on( "pointerup", e => this.ctrl.end() )
+
+    this.zone = this.scene.add.image( 0, 0, "tile" )
+    this.zone
+      .setAlpha(.1)
+      .setTintFill(0x0)
+      .setScale( 7, 7)
+      .setInteractive( { useHandCursor: true } )
+      .on( "pointerdown", e => this.ctrl.start( e.x, e.y ) )
+      .on( "pointermove", e => this.ctrl.move( e.x, e.y ) )
+      .on( "pointerup", e => this.ctrl.end() )
+      .on( "pointerdown", e => { if ( this.game.over ) this.initNextStage() } )
+    this.add( this.zone )
+
+    this.scene.input
+    this.scene.input
+    this.scene.input
+    this.scene.input
 
     this.session = new GameSession
-    this.session.events.on( "gamestart", () => this.buildWorld() )
-    this.session.events.on( "change", () => this.onAnyChange() )
-    this.session.events.on( "botdie", () => this.onAnyChange() )
+    this.session.events.on( GameEvent.GAMESTART, () => this.buildWorld() )
+    this.session.events.on( GameEvent.CHANGE, () => this.onAnyChange() )
+    this.session.events.on( GameEvent.BOTDIE, (bot,collision) => 
+    {
+      if ( collision )
+      {
+        let x = ( bot.tile.x - this.game.W * 0.5 + .5 ) * 70 + Phaser.Math.FloatBetween(-25,25)
+        let y = ( bot.tile.y - this.game.H * 0.5 + .5 ) * 70 + Phaser.Math.FloatBetween(-25,25)
+        let boom = this.scene.add.sprite( x, y, "boom" )
+        boom.setRotation( 2.0 * Math.PI * Math.random() )
+        boom.setScale(1.5)
+        boom.anims.load( "xplode" )
+        boom.anims.play( "xplode" )
+        boom.on( 'animationcomplete', () => boom.destroy() );
+        this.add(boom)
+      }
+    } )
+    this.session.reset()
 
-    this.resetGame()
+    let skills = SkillBook.makeSkillList()
+    for ( let i in skills )
+    {
+      let label = skills[ i ].icon + " " + skills[ i ].name
+      let button: any = this.scene.add.text( 50, 100 + 25 * i, label, { fill: '#Ff0' } )
+        .setInteractive( { useHandCursor: true } )
+        .on( 'pointerdown', () => this.useSkill( this.session.skills[ i ] ) )
+        .on( 'pointerover', () => button.setStyle( { fill: "#FFF" } ) )
+        .on( 'pointerout', () => button.setStyle( { fill: "#Ff0" } ) )
+    }
   }
 
   onAnyChange()
@@ -62,8 +102,8 @@ export class GameWorld extends Phaser.GameObjects.Container
     {
       let x = o.model.hasOwnProperty( 'x' ) ? o.model.x : o.model.tile.x
       let y = o.model.hasOwnProperty( 'y' ) ? o.model.y : o.model.tile.y
-      x = ( x - this.game.W * 0.5 + .5 ) * 70
-      y = ( y - this.game.H * 0.5 + .5 ) * 70
+      x = ( x - this.game.W * 0.5 + .5 ) * 70 + Phaser.Math.FloatBetween(-1,1)
+      y = ( y - this.game.H * 0.5 + .5 ) * 70 + Phaser.Math.FloatBetween(-1,1)
 
       let fall = o.model.dead || o.model.busted
 
@@ -83,23 +123,14 @@ export class GameWorld extends Phaser.GameObjects.Container
     this.things.push( {view:view,model:model})
   }
 
-  continueGame()
+  initNextStage()
   {
-    this.session.next()
-  }
-
-  resetGame()
-  {
-    this.session.reset()
-    this.session.skills.forEach( ( skill, i ) =>
-    {
-      let label = skill.icon + " " + skill.name
-      let button:any = this.scene.add.text( 50, 100 + 25 * i, label, { fill: '#Ff0' } )
-        .setInteractive( { useHandCursor: true } )
-        .on( 'pointerdown', () => this.useSkill( skill ) )
-        .on( 'pointerover', () => button.setStyle( { fill: "#FFF" } ) )
-        .on( 'pointerout', () => button.setStyle( { fill:"#Ff0"}) )
-    } )
+    if ( !this.game || !this.game.over )
+      return
+    if ( this.game.victory )
+      this.session.next()
+    else
+      this.session.reset()
   }
 
   buildWorld()
@@ -112,13 +143,19 @@ export class GameWorld extends Phaser.GameObjects.Container
       this.addThing( this.scene.add.image( 0, 0, 'tile' )
                     .setScale( .55 )
                     .setRotation(Phaser.Math.FloatBetween(-.05,.05))
-                    .setTint( Phaser.Display.Color.HSLToColor(.1, Math.random()*.25, Phaser.Math.FloatBetween(.85, 1) ).color ), 
-                    model )
+                    .setTint( Phaser.Display.Color.HSLToColor(
+                                .1, Math.random()*.25, 
+                                Phaser.Math.FloatBetween(.85, 1) ).color )
+                    , model )
 
     for ( let model of g.bots )
       this.addThing( this.scene.add.image( 0, 0, 'bot' )
-                    .setScale( .6 ), 
-                    model )
+                    .setScale( .6 )
+                    .setTint( Phaser.Display.Color.HSLToColor( 
+                                Phaser.Math.FloatBetween( 0, 1 ), 
+                                Math.random() * .25,
+                                Phaser.Math.FloatBetween( .85, 1 ) ).color )
+                    , model )
 
     let p = this.scene.add
       .sprite(0, 0, "player")
@@ -127,6 +164,13 @@ export class GameWorld extends Phaser.GameObjects.Container
     p.anims.load( "player-idle" )
     p.anims.play( "player-idle" )
     this.addThing( p, g.player )
+
+    this.zone.setSize( this.game.W * 70, this.game.H * 70 )
+            
+
+    let scale = window.innerWidth / ( this.game.W * 70 + 200 )
+    console.log( window.innerWidth, this.game.W * 70 )
+    this.setScale( scale )
   }
 
   useSkill( skill:Skill )
@@ -136,6 +180,8 @@ export class GameWorld extends Phaser.GameObjects.Container
 
   moveMayBe( dx: number, dy: number )
   {
+    if ( this.game.over )
+      return
     let x = this.game.player.tile.x
     let y = this.game.player.tile.y
     let next = this.game.getTile( x + dx, y + dy )
@@ -169,10 +215,6 @@ export class GameWorld extends Phaser.GameObjects.Container
       if ( e.code === "KeyF" ) document.documentElement.requestFullscreen()
     }
     else
-    {
-      if( this.game.victory )
-        this.continueGame()
-      else this.resetGame()
-    }
+      this.initNextStage()
   }
 }
