@@ -1,45 +1,35 @@
 export class EventBus implements IEventDispatcher
 {
-  private handlers: { type: string; func: Function }[] = []
+  private handlers: { type: GameEvent; func: Function }[] = []
 
-  public on(type:string,call:Function)
+  public on(type:GameEvent,call:Function)
   { this.handlers.push({type:type,func:call}) }
   
-  public raise( type:string, ...rest:any )
+  public raise( type: GameEvent, ...rest:any )
   {
     console.log(type,...rest)
     for ( let handler of this.handlers )
       if ( handler.type === type )
         handler.func(...rest)
       else
-      if ( handler.type === "any")
+      if ( handler.type === GameEvent.ANY )
         handler.func( type, ...rest )
   }
 }
-export interface IEventDispatcher { raise( type:string, ...rest:any ):void; }
+export interface IEventDispatcher { raise( type: GameEvent, ...rest:any ):void; }
 
-const EVENTS = [
-  "gamestart",
-  "gameover",
-  "change",
-  "botspawn",      // to
-  "botmove",       // from, to
-  "botdie",        // collision/fall
-  "playerspawn",   // to
-  "playermove",    // from, to
-  "playerspecial", // skill
-  "playerdie",     // collision/fall
-  "tilebust",      // tile
-]
-
-
-// export class Events
-// {
-//   public static readonly GAME_START:string = "gamestart"
-//   public static readonly GAME_OVER:string = "gamestart"
-//   public static readonly TURN_END:string = "gamestart"
-//   public static readonly BOT_MOVE:string = "gamestart"
-//   public static readonly BOT_DEAD:string = "gamestart"
-//   public static readonly PLAYER_MOVE:string = "gamestart"
-//   public static readonly GAME_START:string = "gamestart"
-// }
+export enum GameEvent
+{
+  ANY,
+  GAMESTART,
+  GAMEOVER,
+  CHANGE,
+  BOTSPAWN,      // to
+  BOTMOVE,       // from, to
+  BOTDIE,        // collision/fall
+  PLAYERSPAWN,   // to
+  PLAYERMOVE,    // from, to
+  PLAYERSPECIAL, // skill
+  PLAYERDIE,     // collision/fall
+  TILEBUST,      // tile
+}

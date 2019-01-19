@@ -1,4 +1,4 @@
-import { IEventDispatcher } from "./events";
+import { IEventDispatcher, GameEvent } from "./events";
 
 export class Game 
 {
@@ -43,8 +43,8 @@ export class Game
 
   public start()
   {
-    this.events.raise( "gamestart" )
-    this.events.raise( "change" )
+    this.events.raise( GameEvent.GAMESTART )
+    this.recheck()
   }
 
   public runAuto()
@@ -90,6 +90,7 @@ export class Game
       if ( t.y > by ) by++
       if ( t.y < by ) by--
       bot.tile = this.getTile( bx, by )
+      this.events.raise( GameEvent.BOTMOVE )
     }
 
     this.recheck()
@@ -101,7 +102,7 @@ export class Game
         this.frozenTurns--
       for ( let bot of this.bots )
         bot.stunned = false
-      this.events.raise( "move" )
+      this.events.raise( GameEvent.PLAYERMOVE )
     }
   }
 
@@ -119,15 +120,15 @@ export class Game
       if ( bust )
       {
         for ( let bot of bots )
-          this.killBot( bot )
+          this.killBot( bot, true )
         tile.busted = true
-        this.events.raise( "tilebust", tile )
+        this.events.raise( GameEvent.TILEBUST, tile )
       }
       if ( tile.busted )
       {
         for ( let bot of this.bots )
           if ( !bot.dead && bot.tile === tile )
-            this.killBot( bot )
+            this.killBot( bot, false )
       }
     }
 
@@ -143,10 +144,10 @@ export class Game
     if ( this.aliveBots.length < 1 )
     {
       this.over = true
-      this.events.raise("gameover")
+      this.events.raise( GameEvent.GAMEOVER )
     }
-    
-    this.events.raise( "change" )
+
+    this.events.raise( GameEvent.CHANGE )
   }
 
   public canMove( bot:Bot )
@@ -158,7 +159,7 @@ export class Game
       return
     bot.dead = true
     if ( !this.player.dead )
-      this.events.raise( "kill", bot, collision, this.auto )
+      this.events.raise( GameEvent.BOTDIE, bot, collision, this.auto )
   }
 
   public getRandomTile()

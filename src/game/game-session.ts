@@ -1,7 +1,7 @@
 import { Game } from './game'
 import { GameConsts } from './game-consts'
 import { Skill, SkillBook } from './skills'
-import { EventBus } from './events';
+import { EventBus, GameEvent } from './events';
 
 export class GameSession
 {
@@ -41,11 +41,11 @@ export class GameSession
 
   private addEventListeners()
   {
-    this.events.on( "any", console.log )
-    this.events.on( "over", () => onGameOver() )
-    this.events.on( "move", () => this.score += GameConsts.scoreRewards.move )
-    this.events.on( "kill", () => this.score += GameConsts.scoreRewards.botDeath )
-    this.events.on( "autokill", () => this.score += GameConsts.scoreRewards.botDeathAuto )
+    this.events.on( GameEvent.ANY, console.log )
+    this.events.on( GameEvent.GAMEOVER, () => onGameOver() )
+    this.events.on( GameEvent.PLAYERMOVE, () => this.score += GameConsts.scoreRewards.move )
+    // this.events.on( GameEvent.BOTDIE, () => this.score += GameConsts.scoreRewards.botDeath )
+    // this.events.on( GameEvent.BOTDIE, () => this.score += GameConsts.scoreRewards.botDeathAuto )
 
     function onGameOver()
     {
@@ -63,8 +63,7 @@ export class GameSession
     {
       skill.func( this.currentGame )
       this.usedSkills.push(skill)
-      this.events.raise("playerspecial",skill)
-      //this.coins -= skill.price
+      this.events.raise( GameEvent.PLAYERSPECIAL,skill)
       this.currentGame.recheck()
     }
   }

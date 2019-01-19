@@ -49,6 +49,7 @@ export class GameWorld extends Phaser.GameObjects.Container
     this.session = new GameSession
     this.session.events.on( "gamestart", () => this.buildWorld() )
     this.session.events.on( "change", () => this.onAnyChange() )
+    this.session.events.on( "botdie", () => this.onAnyChange() )
 
     this.resetGame()
   }
@@ -90,6 +91,15 @@ export class GameWorld extends Phaser.GameObjects.Container
   resetGame()
   {
     this.session.reset()
+    this.session.skills.forEach( ( skill, i ) =>
+    {
+      let label = skill.icon + " " + skill.name
+      let button:any = this.scene.add.text( 50, 100 + 25 * i, label, { fill: '#Ff0' } )
+        .setInteractive( { useHandCursor: true } )
+        .on( 'pointerdown', () => this.useSkill( skill ) )
+        .on( 'pointerover', () => button.setStyle( { fill: "#FFF" } ) )
+        .on( 'pointerout', () => button.setStyle( { fill:"#Ff0"}) )
+    } )
   }
 
   buildWorld()
