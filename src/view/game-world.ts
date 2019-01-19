@@ -57,11 +57,6 @@ export class GameWorld extends Phaser.GameObjects.Container
       .on( "pointerdown", e => { if ( this.game.over ) this.initNextStage() } )
     this.add( this.zone )
 
-    this.scene.input
-    this.scene.input
-    this.scene.input
-    this.scene.input
-
     this.session = new GameSession
     this.session.events.on( GameEvent.GAMESTART, () => this.buildWorld() )
     this.session.events.on( GameEvent.CHANGE, () => this.onAnyChange() )
