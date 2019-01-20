@@ -47,11 +47,12 @@ export class TouchController
   /// VISUALS & INPUT
 
   R_STAY: number = 30
-  R_CANCEL: number = 330
+  R_CANCEL: number = 1330
   get stay(): boolean { return this.drag.length <= this.R_STAY }
   get cancel(): boolean { return this.drag.length > this.R_CANCEL }
   get indelay(): boolean { return Date.now() - this.drag.begintime < 100 }
-  get active(): boolean { return this.drag && !this.cancel }
+  get timedout(): boolean { return Date.now() - this.drag.begintime > 1000 }
+  get active(): boolean { return this.drag && !this.cancel && !this.timedout }
   get tranformAttribute(): string
   {
     let fi = this.stay ? 0 : this.drag.moveAngle
