@@ -5,7 +5,7 @@ import { TouchController } from "./ctrl";
 import { GameEvent } from "src/game/events";
 import { GameWorldView } from "./game-world-view";
 
-export class GameWorld extends Phaser.GameObjects.Container
+export class GameWorld
 {
   session: GameSession
   ctrl: TouchController
@@ -13,12 +13,34 @@ export class GameWorld extends Phaser.GameObjects.Container
   
   get game(): Game { return this.session ? this.session.currentGame : null }
 
-  private zone: Phaser.GameObjects.Image 
+  private zone: Phaser.GameObjects.Image
+
+  constructor( public scene:Phaser.Scene, x:number, y:number )
+  {
+    this.view = new GameWorldView( this.scene, x, y )
+    this.view.addBackground()
+    this.scene.add.existing( this.view )
+
+    document.addEventListener( "keydown", e => this.onKeyDown( e ) )
+
+    this.ctrl = new TouchController( ( x, y ) => this.moveMayBe( x, y ) )
+
+    this.zone = this.scene.add.image( 0, 0, "tile" )
+    this.zone
+      .setAlpha( .1 )
+      .setTintFill( 0x0 )
+      .setScale( 7, 7 )
+      .setInteractive( { useHandCursor: true } )
+      .on( "pointerdown", e => this.ctrl.start( e.x, e.y ) )
+      .on( "pointermove", e => this.ctrl.move( e.x, e.y ) )
+      .on( "pointerup", e => this.ctrl.end() )
+      .on( "pointerdown", e => { if ( this.game.over ) this.initNextStage() } )
+    this.view.add( this.zone )
+
+  }
 
   public initialize()
   {
-    this.scene.add.existing(this)
-
     document.addEventListener( "keydown", e => this.onKeyDown(e) )
 
     this.ctrl = new TouchController( ( x, y ) => this.moveMayBe(x,y) )
@@ -33,12 +55,7 @@ export class GameWorld extends Phaser.GameObjects.Container
       .on( "pointermove", e => this.ctrl.move( e.x, e.y ) )
       .on( "pointerup",   e => this.ctrl.end() )
       .on( "pointerdown", e => { if ( this.game.over ) this.initNextStage() } )
-    this.add( this.zone )
-
-    this.view = new GameWorldView( this.scene )
-    this.view.initBackground()
-    this.scene.add.existing(this.view)
-    this.add(this.view)
+    this.view.add( this.zone )
 
     this.session = new GameSession
     this.session.events.on( GameEvent.GAMESTART, () => this.buildWorld() )
@@ -64,14 +81,16 @@ export class GameWorld extends Phaser.GameObjects.Container
     this.session.reset()
 
     let skills = SkillBook.makeSkillList()
-    for ( let i in skills )
+    for ( let si in skills )
     {
-      let label = skills[ i ].icon + " " + skills[ i ].name
-      let button: any = this.scene.add.text( 50, 100 + 25 * i, label, { fill: '#Ff0' } )
-        .setInteractive( { useHandCursor: true } )
-        .on( 'pointerdown', () => this.useSkill( this.session.skills[ i ] ) )
-        .on( 'pointerover', () => button.setStyle( { fill: "#FFF" } ) )
-        .on( 'pointerout', () => button.setStyle( { fill: "#Ff0" } ) )
+      let label = skills[ si ].icon + " " + skills[ si ].name
+      let button:Phaser.GameObjects.Text;
+      let x = 50, y = 100 + si * 25
+      button = this.scene.add.text( x, y, label, { fill: '#Ff0' } )
+      button.setInteractive( { useHandCursor: true } )
+      button.on( 'pointerdown', () => this.useSkill( this.session.skills[ si ] ) )
+            .on( 'pointerover', () => button.setStyle( { fill: "#FFF" } ) )
+            .on( 'pointerout', () => button.setStyle( { fill: "#Ff0" } ) )
     }
   }
 
@@ -143,7 +162,7 @@ export class GameWorld extends Phaser.GameObjects.Container
             
 
     let scale = window.innerWidth / ( this.game.W * 70 + 200 )
-    this.setScale( scale )
+    this.view.setScale( scale )
   }
 
   useSkill( skill:Skill )
@@ -166,28 +185,4 @@ export class GameWorld extends Phaser.GameObjects.Container
   }
 
   ///
-
-  onKeyDown( e: KeyboardEvent )
-  {
-    if ( this.game && !this.game.over )
-    {
-      if ( e.code === "KeyQ" || e.code === "Numpad7" ) this.moveMayBe( -1, -1 )
-      if ( e.code === "KeyW" || e.code === "Numpad8" ) this.moveMayBe( 0, -1 )
-      if ( e.code === "KeyE" || e.code === "Numpad9" ) this.moveMayBe( 1, -1 )
-      if ( e.code === "KeyA" || e.code === "Numpad4" ) this.moveMayBe( -1, 0 )
-      if ( e.code === "KeyS" || e.code === "Numpad5" ) this.moveMayBe( 0, 0 )
-      if ( e.code === "KeyD" || e.code === "Numpad6" ) this.moveMayBe( 1, 0 )
-      if ( e.code === "KeyZ" || e.code === "Numpad1" ) this.moveMayBe( -1, 1 )
-      if ( e.code === "KeyX" || e.code === "Numpad2" ) this.moveMayBe( 0, 1 )
-      if ( e.code === "KeyC" || e.code === "Numpad3" ) this.moveMayBe(1, 1)
-      if ( e.code === "Backquote" || e.code === "NumpadAdd" )      this.useSkill( this.session.skills[ 0 ] )
-      if ( e.code === "Digit1"    || e.code === "NumpadDivide" )   this.useSkill( this.session.skills[ 1 ] )
-      if ( e.code === "Digit2"    || e.code === "NumpadMultiply" ) this.useSkill( this.session.skills[ 2 ] )
-      if ( e.code === "Digit3"    || e.code === "NumpadSubtract" ) this.useSkill( this.session.skills[ 3 ] )
-      if ( e.code === "Enter"     || e.code === "NumpadEnter" )    this.useSkill( this.session.skills[ 4 ] )
-      if ( e.code === "KeyF" ) document.documentElement.requestFullscreen()
-    }
-    else
-      this.initNextStage()
-  }
 }

@@ -15,7 +15,7 @@ export class GameWorldView extends Phaser.GameObjects.Container
   getActorX( v ) { return this.getTileX( v ) - 20 }
   getActorY( v ) { return this.getTileY( v ) - 20 }
 
-  initBackground()
+  addBackground()
   {
     let c
     c = this.scene.add.image( 0, 0, "circle" )

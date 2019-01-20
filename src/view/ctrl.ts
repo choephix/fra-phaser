@@ -1,3 +1,5 @@
+import { GameWorld } from "./game-world";
+
 export class TouchController
 {
   drag: Drag
@@ -102,5 +104,37 @@ class Drag
       case -45: return [ 1, -1 ]
     }
     return [ 0, 0 ]
+  }
+}
+
+export class KeyboardController
+{
+  constructor ( private world:GameWorld )
+  {
+    document.addEventListener( "keydown", e => onKeyDown.apply( world, [e] ) )
+
+    function onKeyDown( e: KeyboardEvent )
+    {
+      if ( this.game && !this.game.over )
+      {
+        if ( e.code === "KeyQ" || e.code === "Numpad7" ) this.moveMayBe( -1, -1 )
+        if ( e.code === "KeyW" || e.code === "Numpad8" ) this.moveMayBe( 0, -1 )
+        if ( e.code === "KeyE" || e.code === "Numpad9" ) this.moveMayBe( 1, -1 )
+        if ( e.code === "KeyA" || e.code === "Numpad4" ) this.moveMayBe( -1, 0 )
+        if ( e.code === "KeyS" || e.code === "Numpad5" ) this.moveMayBe( 0, 0 )
+        if ( e.code === "KeyD" || e.code === "Numpad6" ) this.moveMayBe( 1, 0 )
+        if ( e.code === "KeyZ" || e.code === "Numpad1" ) this.moveMayBe( -1, 1 )
+        if ( e.code === "KeyX" || e.code === "Numpad2" ) this.moveMayBe( 0, 1 )
+        if ( e.code === "KeyC" || e.code === "Numpad3" ) this.moveMayBe( 1, 1 )
+        if ( e.code === "Backquote" || e.code === "NumpadAdd" ) this.useSkill( this.session.skills[ 0 ] )
+        if ( e.code === "Digit1" || e.code === "NumpadDivide" ) this.useSkill( this.session.skills[ 1 ] )
+        if ( e.code === "Digit2" || e.code === "NumpadMultiply" ) this.useSkill( this.session.skills[ 2 ] )
+        if ( e.code === "Digit3" || e.code === "NumpadSubtract" ) this.useSkill( this.session.skills[ 3 ] )
+        if ( e.code === "Enter" || e.code === "NumpadEnter" ) this.useSkill( this.session.skills[ 4 ] )
+        if ( e.code === "KeyF" ) document.documentElement.requestFullscreen()
+      }
+      else
+        this.initNextStage()
+    }
   }
 }
