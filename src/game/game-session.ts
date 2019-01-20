@@ -41,7 +41,6 @@ export class GameSession
 
   private addEventListeners()
   {
-    this.events.on( GameEvent.ANY, console.log )
     this.events.on( GameEvent.GAMEOVER, () => onGameOver() )
     this.events.on( GameEvent.PLAYERMOVE, () => this.score += GameConsts.scoreRewards.move )
     // this.events.on( GameEvent.BOTDIE, () => this.score += GameConsts.scoreRewards.botDeath )

@@ -113,16 +113,19 @@ export class Game
 
     for ( let tile of this.tiles )
     {
-      let bots:Bot[] = this.getBotsOn( tile )
-      let bust = bots.length > 1 
-              || ( bots.length > 0 && tile === p.tile )
-              || ( bots.length > 0 && tile === d.tile )
-      if ( bust )
+      if ( !tile.busted )
       {
-        for ( let bot of bots )
-          this.killBot( bot, true )
-        tile.busted = true
-        this.events.raise( GameEvent.TILEBUST, tile )
+        let bots:Bot[] = this.getBotsOn( tile )
+        let bust = bots.length > 1 
+                || ( bots.length > 0 && tile === p.tile )
+                || ( bots.length > 0 && tile === d.tile )
+        if ( bust )
+        {
+          for ( let bot of bots )
+            this.killBot( bot, true )
+          tile.busted = true
+          this.events.raise( GameEvent.TILEBUST, tile )
+        }
       }
       if ( tile.busted )
       {

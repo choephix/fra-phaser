@@ -7,7 +7,7 @@ export class EventBus implements IEventDispatcher
   
   public raise( type: GameEvent, ...rest:any )
   {
-    console.log(type,...rest)
+    // console.log(type,...rest)
     for ( let handler of this.handlers )
       if ( handler.type === type )
         handler.func(...rest)

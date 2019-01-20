@@ -8,40 +8,17 @@ export class GameWorld extends Phaser.GameObjects.Container
 {
   session: GameSession
   ctrl: TouchController
+  view: GameWorldView
   
   get game(): Game { return this.session ? this.session.currentGame : null }
 
-  private things:any[] = []
   private zone: Phaser.GameObjects.Image 
 
   public initialize()
   {
     this.scene.add.existing(this)
 
-    let c
-    c = this.scene.add.image( 0, 0, "circle" )
-      .setBlendMode( Phaser.BlendModes.ADD )
-      .setScale( .5 )
-    this.add( c )
-    this.scene.tweens.add( {
-      targets: c,
-      rotation: -Math.PI * 2,
-      duration: 50000,
-      repeat: -1
-    } )
-    c = this.scene.add.image( 0, 0, "circle" )
-      .setBlendMode( Phaser.BlendModes.ADD )
-      .setScale( 1.5 )
-      .setAlpha( .05 )
-    this.add( c )
-    this.scene.tweens.add( {
-      targets: c,
-      rotation: -Math.PI * 2,
-      duration: 150000,
-      repeat: -1
-    } )
-
-    document.addEventListener( "keydown", e => this.onKeyDown(e))
+    document.addEventListener( "keydown", e => this.onKeyDown(e) )
 
     this.ctrl = new TouchController( ( x, y ) => this.moveMayBe(x,y) )
 
@@ -57,23 +34,30 @@ export class GameWorld extends Phaser.GameObjects.Container
       .on( "pointerdown", e => { if ( this.game.over ) this.initNextStage() } )
     this.add( this.zone )
 
+    this.view = new GameWorldView( this.scene )
+    this.scene.add.existing(this.view)
+    this.add(this.view)
+
     this.session = new GameSession
     this.session.events.on( GameEvent.GAMESTART, () => this.buildWorld() )
     this.session.events.on( GameEvent.CHANGE, () => this.onAnyChange() )
     this.session.events.on( GameEvent.BOTDIE, (bot,collision) => 
     {
-      if ( collision )
-      {
-        let x = ( bot.tile.x - this.game.W * 0.5 + .5 ) * 70 + Phaser.Math.FloatBetween(-25,25)
-        let y = ( bot.tile.y - this.game.H * 0.5 + .5 ) * 70 + Phaser.Math.FloatBetween(-25,25)
-        let boom = this.scene.add.sprite( x, y, "boom" )
-        boom.setRotation( 2.0 * Math.PI * Math.random() )
-        boom.setScale(1.5)
-        boom.anims.load( "xplode" )
-        boom.anims.play( "xplode" )
-        boom.on( 'animationcomplete', () => boom.destroy() );
-        this.add(boom)
-      }
+      this.scene.time.delayedCall(Math.random()*150, () => {
+        if ( collision )
+        {
+          let x = bot.tile.x + Phaser.Math.FloatBetween( -.5, .5 )
+          let y = bot.tile.y + Phaser.Math.FloatBetween( -.5, .5 )
+          this.view.shockwave( x, y, 2.0 )
+          this.view.boom( x,y )
+        }
+        else
+        {
+          let x = bot.tile.x
+          let y = bot.tile.y
+          this.view.shockwave( x, y, 0.5 )
+        }
+      }, [], this )
     } )
     this.session.reset()
 
@@ -91,9 +75,7 @@ export class GameWorld extends Phaser.GameObjects.Container
 
   onAnyChange()
   {
-    console.log("CHANGEEE!")
-
-    for ( let o of this.things )
+    for ( let o of this.view.things )
     {
       let x = o.model.hasOwnProperty( 'x' ) ? o.model.x : o.model.tile.x
       let y = o.model.hasOwnProperty( 'y' ) ? o.model.y : o.model.tile.y
@@ -105,19 +87,13 @@ export class GameWorld extends Phaser.GameObjects.Container
       this.scene.tweens.add({
         targets: o.view,
         x: x,
-        y: y + ( fall ? 150 : 0 ),
+        y: y + ( fall ? 30 : 0 ),
         alpha: fall ? 0 : ( o.model.frozen ? .25 : 17 ),
-        duration: 150
+        duration: 100
       })
     }
   }
   
-  addThing( view:Phaser.GameObjects.GameObject, model:any )
-  {
-    this.add( view )
-    this.things.push( {view:view,model:model})
-  }
-
   initNextStage()
   {
     if ( !this.game || !this.game.over )
@@ -130,12 +106,13 @@ export class GameWorld extends Phaser.GameObjects.Container
 
   buildWorld()
   {
-    for (let thing of this.things) thing.view.destroy()
+    this.view.purgeAllThings()
+    this.view.game = this.game
 
     let g = this.session.currentGame
 
     for ( let model of g.tiles )
-      this.addThing( this.scene.add.image( 0, 0, 'tile' )
+      this.view.addThing( this.scene.add.image( 0, 0, 'tile' )
                     .setScale( .55 )
                     .setRotation(Phaser.Math.FloatBetween(-.05,.05))
                     .setTint( Phaser.Display.Color.HSLToColor(
@@ -144,7 +121,7 @@ export class GameWorld extends Phaser.GameObjects.Container
                     , model )
 
     for ( let model of g.bots )
-      this.addThing( this.scene.add.image( 0, 0, 'bot' )
+      this.view.addThing( this.scene.add.image( 0, 0, 'bot' )
                     .setScale( .6 )
                     .setTint( Phaser.Display.Color.HSLToColor( 
                                 Phaser.Math.FloatBetween( 0, 1 ), 
@@ -158,13 +135,12 @@ export class GameWorld extends Phaser.GameObjects.Container
       // .setTint(0x00ffff)
     p.anims.load( "player-idle" )
     p.anims.play( "player-idle" )
-    this.addThing( p, g.player )
+    this.view.addThing( p, g.player )
 
     this.zone.setSize( this.game.W * 70, this.game.H * 70 )
             
 
     let scale = window.innerWidth / ( this.game.W * 70 + 200 )
-    console.log( window.innerWidth, this.game.W * 70 )
     this.setScale( scale )
   }
 
@@ -211,5 +187,93 @@ export class GameWorld extends Phaser.GameObjects.Container
     }
     else
       this.initNextStage()
+  }
+}
+
+export class GameWorldView extends Phaser.GameObjects.Container
+{
+  TILESIZE: number = 70
+
+  public game: Game
+  public things: any[] = []
+
+  get viewW() { return this.TILESIZE * this.game.W }
+  get viewH() { return this.TILESIZE * this.game.H }
+
+  getTileX( v ) { return this.TILESIZE * ( v - this.game.W * 0.5 + .5 ) }
+  getTileY( v ) { return this.TILESIZE * ( v - this.game.H * 0.5 + .5 ) }
+  getActorX( v ) { return this.getTileX( v ) - 20 }
+  getActorY( v ) { return this.getTileY( v ) - 20 }
+
+  initBackground()
+  {
+    let c
+    c = this.scene.add.image( 0, 0, "circle" )
+      .setBlendMode( Phaser.BlendModes.ADD )
+      .setScale( .5 )
+    this.add( c )
+    this.scene.tweens.add( {
+      targets: c,
+      rotation: -Math.PI * 2,
+      duration: 50000,
+      repeat: -1
+    } )
+    c = this.scene.add.image( 0, 0, "circle" )
+      .setBlendMode( Phaser.BlendModes.ADD )
+      .setScale( 1.5 )
+      .setAlpha( .05 )
+    this.add( c )
+    this.scene.tweens.add( {
+      targets: c,
+      rotation: -Math.PI * 2,
+      duration: 150000,
+      repeat: -1
+    } )
+  }
+
+  //
+
+  purgeAllThings()
+  {
+    for ( let thing of this.things ) 
+      thing.view.destroy()
+    this.things.length = 0
+  }
+
+  addThing( view: Phaser.GameObjects.GameObject, model: any )
+  {
+    this.add( view )
+    this.things.push( { view: view, model: model } )
+  }
+
+  // ANI
+
+  shockwave( x, y, size )
+  {
+    let wave = this.scene.add.sprite( this.getTileX( x ), this.getTileY( y ), "wave" )
+              .setRotation( 2.0 * Math.PI * Math.random() )
+              .setScale( .1 * size)
+              .setAlpha(.25)
+    this.scene.tweens.add( {
+      targets: wave,
+      onComplete: ()=>wave.destroy(),
+      scaleX: size,
+      scaleY: size,
+      alpha: 0,
+      ease: 'Circ.easeOut',
+      duration: 300
+    } )
+    this.add( wave )
+  }
+
+  boom( x, y )
+  {
+    let boom = this.scene.add.sprite( this.getTileX( x ), this.getTileY( y ), "boom" )
+    boom.setRotation( 2.0 * Math.PI * Math.random() )
+    boom.setScale( 1.0 )
+    boom.anims.load( "xplode" )
+    boom.anims.play( "xplode" )
+    boom.on( 'animationcomplete', () => boom.destroy() );
+    this.add( boom )
   }
 }

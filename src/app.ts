@@ -40,6 +40,7 @@ function preload()
   this.load.image( "bot", "assets/emoji/1f989.png" )
   this.load.spritesheet( "player", "assets/pikachu.png", { frameWidth: 154, frameHeight: 158, margin:0, spacing:0 } )
   this.load.spritesheet( 'boom', 'assets/xplo/explosion (2).png', { frameWidth: 128, frameHeight: 128 } )
+  this.load.image( "wave", "assets/wave.png" )
   this.load.image( 'circle', 'assets/circle-1.jpg' )
 }
 
