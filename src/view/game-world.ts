@@ -21,8 +21,6 @@ export class GameWorld
     this.view.addBackground()
     this.scene.add.existing( this.view )
 
-    document.addEventListener( "keydown", e => this.onKeyDown( e ) )
-
     this.ctrl = new TouchController( ( x, y ) => this.moveMayBe( x, y ) )
 
     this.zone = this.scene.add.image( 0, 0, "tile" )
@@ -34,26 +32,6 @@ export class GameWorld
       .on( "pointerdown", e => this.ctrl.start( e.x, e.y ) )
       .on( "pointermove", e => this.ctrl.move( e.x, e.y ) )
       .on( "pointerup", e => this.ctrl.end() )
-      .on( "pointerdown", e => { if ( this.game.over ) this.initNextStage() } )
-    this.view.add( this.zone )
-
-  }
-
-  public initialize()
-  {
-    document.addEventListener( "keydown", e => this.onKeyDown(e) )
-
-    this.ctrl = new TouchController( ( x, y ) => this.moveMayBe(x,y) )
-
-    this.zone = this.scene.add.image( 0, 0, "tile" )
-    this.zone
-      .setAlpha(.1)
-      .setTintFill(0x0)
-      .setScale( 7, 7)
-      .setInteractive( { useHandCursor: true } )
-      .on( "pointerdown", e => this.ctrl.start( e.x, e.y ) )
-      .on( "pointermove", e => this.ctrl.move( e.x, e.y ) )
-      .on( "pointerup",   e => this.ctrl.end() )
       .on( "pointerdown", e => { if ( this.game.over ) this.initNextStage() } )
     this.view.add( this.zone )
 

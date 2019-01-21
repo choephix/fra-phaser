@@ -38,6 +38,8 @@ function preload()
   this.load.image( "sky", "assets/sky-checkers.jpg" )
   this.load.image( 'tile', 'assets/emoji/2b1c.png' )
   this.load.image( "bot", "assets/emoji/1f989.png" )
+  this.load.spritesheet( "player2", "assets/SaraFullSheet.png", { 
+    frameWidth: 64, frameHeight: 64, margin:0, spacing:0, startFrame:26, endframe: 8 } )
   this.load.spritesheet( "player", "assets/pikachu.png", { frameWidth: 154, frameHeight: 158, margin:0, spacing:0 } )
   this.load.spritesheet( 'boom', 'assets/xplo/explosion (2).png', { frameWidth: 128, frameHeight: 128 } )
   this.load.image( "wave", "assets/wave.png" )
@@ -72,7 +74,6 @@ function create()
   title.y = 160
 
   world = new GameWorld(this, 0.5 * w, 0.55 * h)
-  world.initialize()
 
   // this.input.on( "pointerdown", (e,o) => boom( e.x, e.y ) )
   // this.input.on( "pointermove", (e,o) => boom( e.x, e.y ) )
