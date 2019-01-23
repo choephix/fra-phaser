@@ -76,8 +76,8 @@ export class GameWorld
   {
     for ( let o of this.view.things )
     {
-      let x = o.model.hasOwnProperty( 'x' ) ? o.model.x : o.model.tile.x
-      let y = o.model.hasOwnProperty( 'y' ) ? o.model.y : o.model.tile.y
+      let x = o.model.hasOwnProperty( 'x' ) ? o.model.x : ( o.model.tile.x - .1 )
+      let y = o.model.hasOwnProperty( 'y' ) ? o.model.y : ( o.model.tile.y - .1 )
       x = ( x - this.game.W * 0.5 + .5 ) * 70 + Phaser.Math.FloatBetween(-1,1)
       y = ( y - this.game.H * 0.5 + .5 ) * 70 + Phaser.Math.FloatBetween(-1,1)
 
@@ -111,33 +111,14 @@ export class GameWorld
     let g = this.session.currentGame
 
     for ( let model of g.tiles )
-      this.view.addThing( this.scene.add.image( 0, 0, 'tile' )
-                    .setScale( .55 )
-                    .setRotation(Phaser.Math.FloatBetween(-.05,.05))
-                    .setTint( Phaser.Display.Color.HSLToColor(
-                                .1, Math.random()*.25, 
-                                Phaser.Math.FloatBetween(.85, 1) ).color )
-                    , model )
+      this.view.addTile( model )
 
     for ( let model of g.bots )
-      this.view.addThing( this.scene.add.image( 0, 0, 'bot' )
-                    .setScale( .6 )
-                    .setTint( Phaser.Display.Color.HSLToColor( 
-                                Phaser.Math.FloatBetween( 0, 1 ), 
-                                Math.random() * .25,
-                                Phaser.Math.FloatBetween( .85, 1 ) ).color )
-                    , model )
+      this.view.addBot( model )
 
-    let p = this.scene.add
-      .sprite(0, 0, "player")
-      .setScale(0.6)
-      // .setTint(0x00ffff)
-    p.anims.load( "player-idle" )
-    p.anims.play( "player-idle" )
-    this.view.addThing( p, g.player )
+    this.view.addPlayer( g.player )
 
     this.zone.setSize( this.game.W * 70, this.game.H * 70 )
-            
 
     let scale = window.innerWidth / ( this.game.W * 70 + 200 )
     this.view.setScale( scale )

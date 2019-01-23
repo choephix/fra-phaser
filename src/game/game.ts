@@ -192,22 +192,22 @@ export class Game
   }
 }
 
-class Tile
+export class Tile
 {
   busted:boolean = false
   constructor ( public x:number, public y:number ) {}
 }
 
-class Player {
+export class Player {
   dead:boolean = false
   constructor ( public tile:Tile ) {}
 }
-class Bot {
+export class Bot {
   stunned:boolean = false
   dead:boolean = false
   constructor ( public tile:Tile ) {}
 }
-class Decoy {
+export class Decoy {
   active:boolean
   constructor ( public tile:Tile ) {}
 }

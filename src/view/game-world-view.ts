@@ -1,4 +1,4 @@
-import { Game } from "../game/game";
+import { Game, Tile, Bot, Player } from "../game/game";
 
 export class GameWorldView extends Phaser.GameObjects.Container
 {
@@ -50,6 +50,9 @@ export class GameWorldView extends Phaser.GameObjects.Container
     this.things.length = 0
   }
 
+  addTile( model:Tile )   { this.addThing( new TileSprite( this.scene, ( model.x + model.y ) % 2 === 0 ), model ) }
+  addBot( model:Bot ) { this.addThing( new BotSprite( this.scene ), model ) }
+  addPlayer( model:Player ) { this.addThing( new PlayerSprite( this.scene ), model ) }
   addThing( view: Phaser.GameObjects.GameObject, model: any )
   {
     this.add( view )
@@ -85,5 +88,65 @@ export class GameWorldView extends Phaser.GameObjects.Container
     boom.anims.play( "xplode" )
     boom.on( 'animationcomplete', () => boom.destroy() );
     this.add( boom )
+  }
+}
+
+class TileSprite extends Phaser.GameObjects.Image
+{
+  constructor( scene: Phaser.Scene, odd:boolean )
+  {
+    super( scene, 0, 0, "tile" )
+    this.setScale( Phaser.Math.FloatBetween( .54, .56 ) )
+    this.setRotation( Phaser.Math.FloatBetween( -.05, .05 ) )
+
+    if ( odd )
+    {
+      let h = Phaser.Math.FloatBetween( .05, .07 )
+      let s = Phaser.Math.FloatBetween( .44, .55 )
+      let l = Phaser.Math.FloatBetween( .62, .70 )
+      this.setTint( Phaser.Display.Color.HSLToColor(h,s,l).color )
+    }
+    else
+    {
+      let h = Phaser.Math.FloatBetween( .09, .11 )
+      let s = Phaser.Math.FloatBetween( .77, .88 )
+      let l = Phaser.Math.FloatBetween( .79, .83 )
+      this.setTint( Phaser.Display.Color.HSLToColor(h,s,l).color )
+    }
+  }
+}
+
+class BotSprite extends Phaser.GameObjects.Image
+{
+  constructor( scene: Phaser.Scene )
+  {
+    super( scene, 0, 0, "bot" )
+    this.setScale( .6 )
+      .setTint( Phaser.Display.Color.HSLToColor(
+        Phaser.Math.FloatBetween( 0, 1 ),
+        Math.random() * .25,
+        Phaser.Math.FloatBetween( .85, 1 ) ).color )
+  }
+}
+
+class PlayerSprite extends Phaser.GameObjects.Sprite
+{
+  constructor( scene: Phaser.Scene )
+  {
+    super( scene, 0, 0, "player" )
+    this.setScale( 0.6 )
+    this.anims.load( "player-idle" )
+  }
+
+  public setState_IDLE()
+  {
+    this.anims.play( "player-idle" )
+    return this
+  }
+
+  setActive(value:boolean)
+  {
+    console.log("hi")
+    return super.setActive(value)
   }
 }
