@@ -90,14 +90,14 @@ export class GameSession
       case 4:  params.w=15; params.h=19; break;
       default: params.w=21; params.h=25; break;
     }
-    switch ( lvl )
-    {
-      case 1:  params.w=11; params.h=11; break;
-      case 2:  params.w=13; params.h=13; break;
-      case 3:  params.w=15; params.h=15; break;
-      case 4:  params.w=17; params.h=17; break;
-      default: params.w=21; params.h=21; break;
-    }
+    // switch ( lvl )
+    // {
+    //   case 1:  params.w=11; params.h=11; break;
+    //   case 2:  params.w=13; params.h=13; break;
+    //   case 3:  params.w=15; params.h=15; break;
+    //   case 4:  params.w=17; params.h=17; break;
+    //   default: params.w=21; params.h=21; break;
+    // }
     params.bots = params.w + lvl
     return params
   }

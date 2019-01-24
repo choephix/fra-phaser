@@ -1,6 +1,5 @@
 /// <reference path="phaser.d.ts" />
 
-import {TestGameScene} from "test.scene"
 import { GameWorld } from "./view/game-world";
 
 export class App 
@@ -22,10 +21,11 @@ const config: GameConfig = {
   backgroundColor: "#014",
   width: getDimensions().w,
   height: getDimensions().h,
-  resolution: 1,
+  resolution: 1.0,
   zoom: 1,
   scene: { init : console.log, preload: preload, create: create, update : update },
-  // scene: new TestGameScene({}),
+  fps: {},
+  
 }
 
 let sky:Phaser.GameObjects.Image
@@ -36,7 +36,7 @@ function preload()
 {
   this.load.image( 'logo', 'https://labs.phaser.io/assets/sprites/phaser3-logo.png' )
   this.load.image( "sky", "assets/sky-checkers.jpg" )
-  this.load.image( 'tile', 'assets/emoji/2b1c.png' )
+  this.load.image( 'tile', 'assets/tile.png' )
   this.load.image( "bot", "assets/emoji/1f989.png" )
   this.load.spritesheet( "player2", "assets/SaraFullSheet.png", { 
     frameWidth: 64, frameHeight: 64, margin:0, spacing:0, startFrame:26, endframe: 8 } )
@@ -73,7 +73,7 @@ function create()
   title.x = w * 0.5
   title.y = 160
 
-  world = new GameWorld(this, 0.5 * w, 0.55 * h)
+  world = new GameWorld( this, getDimensions().w, 0.5 * w, 0.55 * h )
 
   // this.input.on( "pointerdown", (e,o) => boom( e.x, e.y ) )
   // this.input.on( "pointermove", (e,o) => boom( e.x, e.y ) )

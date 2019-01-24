@@ -10,12 +10,12 @@ export class GameWorld
   session: GameSession
   ctrl: TouchController
   view: GameWorldView
-  
+
   get game(): Game { return this.session ? this.session.currentGame : null }
 
   private zone: Phaser.GameObjects.Image
 
-  constructor( public scene:Phaser.Scene, x:number, y:number )
+  constructor( public scene:Phaser.Scene, private stageWidth:number, x:number, y:number )
   {
     this.view = new GameWorldView( this.scene, x, y )
     this.view.addBackground()
@@ -120,7 +120,7 @@ export class GameWorld
 
     this.zone.setSize( this.game.W * 70, this.game.H * 70 )
 
-    let scale = window.innerWidth / ( this.game.W * 70 + 200 )
+    let scale = this.stageWidth / ( this.game.W * 70 + 200 )
     this.view.setScale( scale )
   }
 

@@ -52,7 +52,12 @@ export class GameWorldView extends Phaser.GameObjects.Container
 
   addTile( model:Tile )   { this.addThing( new TileSprite( this.scene, ( model.x + model.y ) % 2 === 0 ), model ) }
   addBot( model:Bot ) { this.addThing( new BotSprite( this.scene ), model ) }
-  addPlayer( model:Player ) { this.addThing( new PlayerSprite( this.scene ), model ) }
+  addPlayer( model:Player ) 
+  {
+    let player:PlayerSprite = new PlayerSprite( this.scene )
+    this.addThing( player, model )
+    player.setState_IDLE()
+  }
   addThing( view: Phaser.GameObjects.GameObject, model: any )
   {
     this.add( view )
@@ -101,16 +106,16 @@ class TileSprite extends Phaser.GameObjects.Image
 
     if ( odd )
     {
-      let h = Phaser.Math.FloatBetween( .05, .07 )
-      let s = Phaser.Math.FloatBetween( .44, .55 )
-      let l = Phaser.Math.FloatBetween( .62, .70 )
+      let h = Phaser.Math.FloatBetween( .05, .07 )+.5
+      let s = Phaser.Math.FloatBetween( .48, .66 )
+      let l = Phaser.Math.FloatBetween( .62, .72 )
       this.setTint( Phaser.Display.Color.HSLToColor(h,s,l).color )
     }
     else
     {
-      let h = Phaser.Math.FloatBetween( .09, .11 )
-      let s = Phaser.Math.FloatBetween( .77, .88 )
-      let l = Phaser.Math.FloatBetween( .79, .83 )
+      let h = Phaser.Math.FloatBetween( .09, .11 )+.4
+      let s = Phaser.Math.FloatBetween( .44, .72 )
+      let l = Phaser.Math.FloatBetween( .77, .82 )
       this.setTint( Phaser.Display.Color.HSLToColor(h,s,l).color )
     }
   }
@@ -118,6 +123,8 @@ class TileSprite extends Phaser.GameObjects.Image
 
 class BotSprite extends Phaser.GameObjects.Image
 {
+  dead: boolean
+  frozen: boolean
   constructor( scene: Phaser.Scene )
   {
     super( scene, 0, 0, "bot" )
@@ -131,6 +138,24 @@ class BotSprite extends Phaser.GameObjects.Image
 
 class PlayerSprite extends Phaser.GameObjects.Sprite
 {
+  dead: boolean
+  constructor( scene: Phaser.Scene )
+  {
+    super( scene, 0, 0, "player" )
+    this.setScale( 0.6 )
+  }
+  
+  public setState_IDLE()
+  {
+    this.anims.load( "player-idle" )
+    this.anims.play( "player-idle" )
+    return this
+  }
+}
+
+class DecoySprite extends Phaser.GameObjects.Sprite
+{
+  dead: boolean
   constructor( scene: Phaser.Scene )
   {
     super( scene, 0, 0, "player" )
@@ -144,9 +169,9 @@ class PlayerSprite extends Phaser.GameObjects.Sprite
     return this
   }
 
-  setActive(value:boolean)
+  setActive( value: boolean )
   {
-    console.log("hi")
-    return super.setActive(value)
+    console.log( "hi" )
+    return super.setActive( value )
   }
 }
