@@ -10,7 +10,7 @@ branches:
 
 script: 
   - npm install -g typescript
-  - tsc -p .
+  - tsc --build
 
 deploy:
   provider: firebase
