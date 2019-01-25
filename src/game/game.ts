@@ -156,13 +156,14 @@ export class Game
   public canMove( bot:Bot )
   { return this.frozenTurns < 1 && !bot.dead && !bot.stunned }
 
-  public killBot( bot:Bot, collision:boolean )
+  public killBot( bot:Bot, explode:boolean )
   {
     if ( bot.dead )
       return
     bot.dead = true
+    bot.exploded = explode
     if ( !this.player.dead )
-      this.events.raise( GameEvent.BOTDIE, bot, collision, this.auto )
+      this.events.raise( GameEvent.BOTDIE, bot, explode, this.auto )
   }
 
   public getRandomTile()
@@ -205,6 +206,7 @@ export class Player {
 export class Bot {
   stunned:boolean = false
   dead:boolean = false
+  exploded:boolean = false
   constructor ( public tile:Tile ) {}
 }
 export class Decoy {

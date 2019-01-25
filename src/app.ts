@@ -25,7 +25,6 @@ const config: GameConfig = {
   zoom: 1,
   scene: { init : console.log, preload: preload, create: create, update : update },
   fps: {},
-  
 }
 
 let sky:Phaser.GameObjects.Image
@@ -36,7 +35,7 @@ function preload()
 {
   this.load.image( 'logo', 'https://labs.phaser.io/assets/sprites/phaser3-logo.png' )
   this.load.image( "sky", "assets/sky-checkers.jpg" )
-  this.load.image( 'tile', 'assets/tile.png' )
+  this.load.image( 'tile', 'assets/tile3.png' )
   this.load.image( "bot", "assets/emoji/1f989.png" )
   this.load.spritesheet( "player2", "assets/SaraFullSheet.png", { 
     frameWidth: 64, frameHeight: 64, margin:0, spacing:0, startFrame:26, endframe: 8 } )
@@ -44,6 +43,9 @@ function preload()
   this.load.spritesheet( 'boom', 'assets/xplo/explosion (2).png', { frameWidth: 128, frameHeight: 128 } )
   this.load.image( "wave", "assets/wave.png" )
   this.load.image( 'circle', 'assets/circle-1.jpg' )
+  this.load.image( 'c1', 'assets/c (1).jpg' )
+  this.load.image( 'c2', 'assets/c (2).jpg' )
+  this.load.image( 'c3', 'assets/c (3).png' )
 }
 
 function create()
@@ -97,3 +99,11 @@ function getDimensions()
 { 
   return { h: window.innerHeight, w: Math.min(window.innerWidth, window.innerHeight * 0.75) }
 }
+
+// function* test() {
+//   let i = -10
+//   while(i<10)
+//     yield ++i;
+// }
+// for ( let ii of test() )
+//   console.log(ii)

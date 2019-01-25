@@ -1,22 +1,27 @@
-import { Game, Tile, Bot, Player } from "../game/game";
+import { Game, Tile, Bot, Player, Decoy } from "../game/game";
 
 export class GameWorldView extends Phaser.GameObjects.Container
 {
   TILESIZE: number = 70
 
   public game: Game
-  public things: any[] = []
+  
+  public tiles:TileSprite[] = []
+  public bots:BotSprite[] = []
+  public player:PlayerSprite
+  public decoy:DecoySprite
 
-  get viewW() { return this.TILESIZE * this.game.W }
-  get viewH() { return this.TILESIZE * this.game.H }
-
-  getTileX( v ) { return this.TILESIZE * ( v - this.game.W * 0.5 + .5 ) }
-  getTileY( v ) { return this.TILESIZE * ( v - this.game.H * 0.5 + .5 ) }
-  getActorX( v ) { return this.getTileX( v ) - 20 }
-  getActorY( v ) { return this.getTileY( v ) - 20 }
+  public get viewW() { return this.TILESIZE * this.game.W }
+  public get viewH() { return this.TILESIZE * this.game.H }
+ 
+  public getTileX( v ) { return this.TILESIZE * ( v - this.game.W * 0.5 + .5 ) }
+  public getTileY( v ) { return this.TILESIZE * ( v - this.game.H * 0.5 + .5 ) }
+  public getActorX( v ) { return this.getTileX( v ) }
+  public getActorY( v ) { return this.getTileY( v ) - 10 }
 
   addBackground()
   {
+    return
     let c
     c = this.scene.add.image( 0, 0, "circle" )
       .setBlendMode( Phaser.BlendModes.ADD )
@@ -45,23 +50,34 @@ export class GameWorldView extends Phaser.GameObjects.Container
 
   purgeAllThings()
   {
-    for ( let thing of this.things )
-      thing.view.destroy()
-    this.things.length = 0
+    this.removeAll( true )
+    this.tiles = []
+    this.bots = []
+    this.player = null
+    this.decoy = null
   }
 
-  addTile( model:Tile )   { this.addThing( new TileSprite( this.scene, ( model.x + model.y ) % 2 === 0 ), model ) }
-  addBot( model:Bot ) { this.addThing( new BotSprite( this.scene ), model ) }
+  addTile( model:Tile )   
+  { 
+    let o = new TileSprite( this.scene, model )
+           .setPosition( this.getTileX(model.x), this.getTileY(model.y) )
+    this.add( o )
+    this.tiles.push( o )
+  }
+  addBot( model:Bot ) 
+  {
+    let o = new BotSprite( this.scene, model )
+      .setPosition( this.getActorX( model.tile.x ), this.getActorY( model.tile.y ) )
+    this.add( o )
+    this.bots.push( o )
+  }
   addPlayer( model:Player ) 
   {
-    let player:PlayerSprite = new PlayerSprite( this.scene )
-    this.addThing( player, model )
-    player.setState_IDLE()
-  }
-  addThing( view: Phaser.GameObjects.GameObject, model: any )
-  {
-    this.add( view )
-    this.things.push( { view: view, model: model } )
+    let o = new PlayerSprite( this.scene, model )
+      .setPosition( this.getActorX( model.tile.x ), this.getActorY( model.tile.y ) )
+    this.add( o )
+    this.player = o
+    this.player.setState_IDLE()
   }
 
   // ANI
@@ -98,11 +114,14 @@ export class GameWorldView extends Phaser.GameObjects.Container
 
 class TileSprite extends Phaser.GameObjects.Image
 {
-  constructor( scene: Phaser.Scene, odd:boolean )
+  busted:boolean
+  constructor( scene: Phaser.Scene, public model:Tile )
   {
     super( scene, 0, 0, "tile" )
     this.setScale( Phaser.Math.FloatBetween( .54, .56 ) )
     this.setRotation( Phaser.Math.FloatBetween( -.05, .05 ) )
+
+    let odd = ( model.x + model.y ) % 2 === 0
 
     if ( odd )
     {
@@ -125,7 +144,10 @@ class BotSprite extends Phaser.GameObjects.Image
 {
   dead: boolean
   frozen: boolean
-  constructor( scene: Phaser.Scene )
+  exploded:boolean
+  // targetX:number = 0
+  // targetY:number = 0
+  constructor( scene: Phaser.Scene, public model:Bot )
   {
     super( scene, 0, 0, "bot" )
     this.setScale( .6 )
@@ -134,12 +156,17 @@ class BotSprite extends Phaser.GameObjects.Image
         Math.random() * .25,
         Phaser.Math.FloatBetween( .85, 1 ) ).color )
   }
+  // preUpdate()
+  // {
+  //   this.x += ( this.targetX - this.x ) * .3
+  //   this.y += ( this.targetY - this.y ) * .3
+  // }
 }
 
 class PlayerSprite extends Phaser.GameObjects.Sprite
 {
   dead: boolean
-  constructor( scene: Phaser.Scene )
+  constructor( scene: Phaser.Scene, public model:Player )
   {
     super( scene, 0, 0, "player" )
     this.setScale( 0.6 )
@@ -155,23 +182,9 @@ class PlayerSprite extends Phaser.GameObjects.Sprite
 
 class DecoySprite extends Phaser.GameObjects.Sprite
 {
-  dead: boolean
-  constructor( scene: Phaser.Scene )
+  active: boolean
+  constructor( scene: Phaser.Scene, public model:Decoy )
   {
     super( scene, 0, 0, "player" )
-    this.setScale( 0.6 )
-    this.anims.load( "player-idle" )
-  }
-
-  public setState_IDLE()
-  {
-    this.anims.play( "player-idle" )
-    return this
-  }
-
-  setActive( value: boolean )
-  {
-    console.log( "hi" )
-    return super.setActive( value )
   }
 }

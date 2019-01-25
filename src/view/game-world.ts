@@ -4,12 +4,15 @@ import { GameSession } from "../game/game-session"
 import { TouchController } from "./ctrl";
 import { GameEvent } from "src/game/events";
 import { GameWorldView } from "./game-world-view";
+import { ControllerSprite } from "./ctrl-view";
 
 export class GameWorld
 {
   session: GameSession
   ctrl: TouchController
+
   view: GameWorldView
+  ctrlSprite:ControllerSprite
 
   get game(): Game { return this.session ? this.session.currentGame : null }
 
@@ -25,8 +28,8 @@ export class GameWorld
 
     this.zone = this.scene.add.image( 0, 0, "tile" )
     this.zone
-      .setAlpha( .1 )
-      .setTintFill( 0x0 )
+      .setAlpha( .01 )
+      // .setTintFill( 0x0 )
       .setScale( 7, 7 )
       .setInteractive( { useHandCursor: true } )
       .on( "pointerdown", e => this.ctrl.start( e.x, e.y ) )
@@ -40,7 +43,8 @@ export class GameWorld
     this.session.events.on( GameEvent.CHANGE, () => this.onAnyChange() )
     this.session.events.on( GameEvent.BOTDIE, (bot,collision) => 
     {
-      this.scene.time.delayedCall(Math.random()*150, () => {
+      
+      this.scene.time.delayedCall(150+Math.random()*100, () => {
         if ( collision )
         {
           let x = bot.tile.x + Phaser.Math.FloatBetween( -.5, .5 )
@@ -70,26 +74,77 @@ export class GameWorld
             .on( 'pointerover', () => button.setStyle( { fill: "#FFF" } ) )
             .on( 'pointerout', () => button.setStyle( { fill: "#Ff0" } ) )
     }
+
+    this.ctrlSprite = new ControllerSprite( this.scene, this.ctrl )
   }
 
   onAnyChange()
   {
-    for ( let o of this.view.things )
+    let tweens = this.scene.tweens
+    let view = this.view
+    function tweenMove( thing, x, y, delay = 0 )
     {
-      let x = o.model.hasOwnProperty( 'x' ) ? o.model.x : ( o.model.tile.x - .1 )
-      let y = o.model.hasOwnProperty( 'y' ) ? o.model.y : ( o.model.tile.y - .1 )
-      x = ( x - this.game.W * 0.5 + .5 ) * 70 + Phaser.Math.FloatBetween(-1,1)
-      y = ( y - this.game.H * 0.5 + .5 ) * 70 + Phaser.Math.FloatBetween(-1,1)
-
-      let fall = o.model.dead || o.model.busted
-
-      this.scene.tweens.add({
-        targets: o.view,
-        x: x,
-        y: y + ( fall ? 30 : 0 ),
-        alpha: fall ? 0 : ( o.model.frozen ? .25 : 17 ),
+      return tweens.add( {
+        targets: thing,
+        x: view.getActorX( x ),
+        y: view.getActorY( y ),
+        delay: delay,
         duration: 100
-      })
+      } )
+    }
+    function tweenFadeOut( thing, delay = 0 )
+    {
+      return tweens.add( {
+        targets: thing,
+        alpha: 0,
+        delay: delay,
+        duration: 100
+      } )
+    }
+    function tweenFall( thing, delay=0 )
+    {
+      return tweens.add( {
+        targets: thing,
+        y: "+=100",
+        alpha: 0,
+        delay: delay,
+        duration: 200,
+      } )
+    }
+    function dist( a, b ):number
+    {
+      return Math.max( Math.abs(a.x-b.x), Math.abs(a.y-b.y) )
+    }
+
+    tweenMove( this.view.player, this.game.player.tile.x, this.game.player.tile.y )
+    if ( this.game.player.dead && !this.view.player.dead )
+      tweenFadeOut( this.view.player )
+
+    let pt = this.game.player.tile
+
+    for ( let bot of this.view.bots )
+    {
+      let bt = bot.model.tile
+      let delay = 100 + dist(pt,bt) * 50 + Math.random() * 50
+      this.scene.time.delayedCall( delay, () =>
+      {
+        tweenMove( bot, bot.model.tile.x, bot.model.tile.y )
+        if ( bot.model.dead && !bot.dead )
+        {
+          bot.dead = true
+          this.scene.time.delayedCall( 100, () => tweenFall( bot ), null, this )
+        }
+      }, null, this )
+    }
+
+    for ( let tile of this.view.tiles )
+    {
+      if ( tile.model.busted && !tile.busted )
+      {
+        tile.busted = true
+        let delay = 150 + dist( pt, tile.model ) * 50
+        tweenFall( tile, delay )
+      }
     }
   }
   
@@ -107,6 +162,21 @@ export class GameWorld
   {
     this.view.purgeAllThings()
     this.view.game = this.game
+
+
+    this.zone = this.scene.add.image( 0, 0, "tile" )
+    this.zone
+      .setAlpha( .01 )
+      // .setTintFill( 0x0 )
+      .setScale( 7, 7 )
+      .setInteractive( { useHandCursor: true } )
+      .on( "pointerdown", e => this.ctrl.start( e.x, e.y ) )
+      .on( "pointermove", e => this.ctrl.move( e.x, e.y ) )
+      .on( "pointerup", e => this.ctrl.end() )
+      .on( "pointerdown", e => { if ( this.game.over ) this.initNextStage() } )
+    this.view.add( this.zone )
+
+    this.view.addBackground()
 
     let g = this.session.currentGame
 
