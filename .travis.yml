@@ -17,5 +17,9 @@ script:
 
 notifications:
   email:
-    on_failure: change
-    on_success: change
+    on_failure: never
+    on_success: never
+  slack:
+    false
+  webhook:
+    false
