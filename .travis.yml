@@ -13,7 +13,7 @@ before_script:
 
 script:
   - tsc
-  - firebase deploy --message "automated deployment via travis"
+  - firebase deploy --message "automated deployment via travis \n(%{commit} -- %{message})"
 
 notifications:
   email:
