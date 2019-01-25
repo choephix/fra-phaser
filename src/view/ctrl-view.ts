@@ -39,6 +39,6 @@ export class ControllerSprite extends Phaser.GameObjects.Container
     this.c3.visible = this.ctrl.active && !this.ctrl.indelay
     this.c1.rotation -= .02
     this.c2.rotation += .01
-    this.c3.rotation -= .01
+    this.c3.rotation -= .0025
   }
 }

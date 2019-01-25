@@ -75,7 +75,7 @@ function create()
   title.x = w * 0.5
   title.y = 160
 
-  world = new GameWorld( this, getDimensions().w, 0.5 * w, 0.55 * h )
+  world = new GameWorld( this, getDimensions().w, getDimensions().h, 0.5 * w, 0.55 * h )
 
   // this.input.on( "pointerdown", (e,o) => boom( e.x, e.y ) )
   // this.input.on( "pointermove", (e,o) => boom( e.x, e.y ) )

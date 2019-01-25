@@ -18,61 +18,39 @@ export class GameWorld
 
   private zone: Phaser.GameObjects.Image
 
-  constructor( public scene:Phaser.Scene, private stageWidth:number, x:number, y:number )
+  constructor( public scene: Phaser.Scene, private stageWidth: number, private stageHeight: number, x:number, y:number )
   {
+    this.zone = this.scene.add.image( x, y, "c1" )
+    this.zone
+      .setAlpha( .01 )
+      .setScale( 1.2, .8 )
+      .setInteractive( { useHandCursor: true } )
+      .on( "pointerdown", e => this.ctrl.start( e.x, e.y ) )
+      .on( "pointermove", e => this.ctrl.move( e.x, e.y ) )
+      .on( "pointerup",   e => this.ctrl.end() )
+      .on( "pointerdown", e => { if ( this.game.over ) this.initNextStage() } )
+
     this.view = new GameWorldView( this.scene, x, y )
     this.view.addBackground()
     this.scene.add.existing( this.view )
 
     this.ctrl = new TouchController( ( x, y ) => this.moveMayBe( x, y ) )
 
-    this.zone = this.scene.add.image( 0, 0, "tile" )
-    this.zone
-      .setAlpha( .01 )
-      // .setTintFill( 0x0 )
-      .setScale( 7, 7 )
-      .setInteractive( { useHandCursor: true } )
-      .on( "pointerdown", e => this.ctrl.start( e.x, e.y ) )
-      .on( "pointermove", e => this.ctrl.move( e.x, e.y ) )
-      .on( "pointerup", e => this.ctrl.end() )
-      .on( "pointerdown", e => { if ( this.game.over ) this.initNextStage() } )
-    this.view.add( this.zone )
-
     this.session = new GameSession
     this.session.events.on( GameEvent.GAMESTART, () => this.buildWorld() )
     this.session.events.on( GameEvent.CHANGE, () => this.onAnyChange() )
-    this.session.events.on( GameEvent.BOTDIE, (bot,collision) => 
-    {
-      
-      this.scene.time.delayedCall(150+Math.random()*100, () => {
-        if ( collision )
-        {
-          let x = bot.tile.x + Phaser.Math.FloatBetween( -.5, .5 )
-          let y = bot.tile.y + Phaser.Math.FloatBetween( -.5, .5 )
-          this.view.shockwave( x, y, 2.0 )
-          this.view.boom( x,y )
-        }
-        else
-        {
-          let x = bot.tile.x
-          let y = bot.tile.y
-          this.view.shockwave( x, y, 0.5 )
-        }
-      }, [], this )
-    } )
     this.session.reset()
 
     let skills = SkillBook.makeSkillList()
     for ( let si in skills )
     {
-      let label = skills[ si ].icon + " " + skills[ si ].name
+      let label = skills[ si ].icon
       let button:Phaser.GameObjects.Text;
-      let x = 50, y = 100 + si * 25
-      button = this.scene.add.text( x, y, label, { fill: '#Ff0' } )
+      let x = ( stageWidth / ( skills.length+1) ) * ( 1 + parseInt(si) )
+      let y = stageHeight - 100
+      button = this.scene.add.text( x, y, label, { fill: '#Ff0', font: '10em Verdana' } ).setOrigin(0.5,0.5)
       button.setInteractive( { useHandCursor: true } )
       button.on( 'pointerdown', () => this.useSkill( this.session.skills[ si ] ) )
-            .on( 'pointerover', () => button.setStyle( { fill: "#FFF" } ) )
-            .on( 'pointerout', () => button.setStyle( { fill: "#Ff0" } ) )
     }
 
     this.ctrlSprite = new ControllerSprite( this.scene, this.ctrl )
@@ -124,6 +102,8 @@ export class GameWorld
 
     for ( let bot of this.view.bots )
     {
+      if ( bot.model.dead && bot.dead )
+        continue
       let bt = bot.model.tile
       let delay = 100 + dist(pt,bt) * 50 + Math.random() * 50
       this.scene.time.delayedCall( delay, () =>
@@ -132,7 +112,23 @@ export class GameWorld
         if ( bot.model.dead && !bot.dead )
         {
           bot.dead = true
-          this.scene.time.delayedCall( 100, () => tweenFall( bot ), null, this )
+          this.scene.time.delayedCall( 100, () => {
+            tweenFall( bot )
+            let x = bot.model.tile.x
+            let y = bot.model.tile.y
+            if ( bot.model.exploded )
+            {
+              x += Phaser.Math.FloatBetween( -.5, .5 )
+              y += Phaser.Math.FloatBetween( -.5, .5 )
+              this.view.shockwave( x, y, 2.0 )
+              this.view.boom( x,y )
+              this.view.quake = 4
+            }
+            else
+            {
+              this.view.shockwave( x, y, 0.5 )
+            }
+          }, null, this )
         }
       }, null, this )
     }
@@ -142,7 +138,7 @@ export class GameWorld
       if ( tile.model.busted && !tile.busted )
       {
         tile.busted = true
-        let delay = 150 + dist( pt, tile.model ) * 50
+        let delay = 200 + dist( pt, tile.model ) * 50
         tweenFall( tile, delay )
       }
     }
@@ -162,20 +158,6 @@ export class GameWorld
   {
     this.view.purgeAllThings()
     this.view.game = this.game
-
-
-    this.zone = this.scene.add.image( 0, 0, "tile" )
-    this.zone
-      .setAlpha( .01 )
-      // .setTintFill( 0x0 )
-      .setScale( 7, 7 )
-      .setInteractive( { useHandCursor: true } )
-      .on( "pointerdown", e => this.ctrl.start( e.x, e.y ) )
-      .on( "pointermove", e => this.ctrl.move( e.x, e.y ) )
-      .on( "pointerup", e => this.ctrl.end() )
-      .on( "pointerdown", e => { if ( this.game.over ) this.initNextStage() } )
-    this.view.add( this.zone )
-
     this.view.addBackground()
 
     let g = this.session.currentGame

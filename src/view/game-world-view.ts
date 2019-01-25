@@ -11,6 +11,8 @@ export class GameWorldView extends Phaser.GameObjects.Container
   public player:PlayerSprite
   public decoy:DecoySprite
 
+  public quake:number = 0
+
   public get viewW() { return this.TILESIZE * this.game.W }
   public get viewH() { return this.TILESIZE * this.game.H }
  
@@ -18,6 +20,26 @@ export class GameWorldView extends Phaser.GameObjects.Container
   public getTileY( v ) { return this.TILESIZE * ( v - this.game.H * 0.5 + .5 ) }
   public getActorX( v ) { return this.getTileX( v ) }
   public getActorY( v ) { return this.getTileY( v ) - 10 }
+
+  constructor ( scene, private originalX, private originalY )
+  {
+    super(scene,originalX,originalY)
+  }
+
+  preUpdate()
+  {
+    if ( this.quake > .01 )
+    {
+      this.x = this.originalX + Phaser.Math.FloatBetween( -this.quake, this.quake )
+      this.y = this.originalY + Phaser.Math.FloatBetween( -this.quake, this.quake )
+      this.quake *= .85
+    }
+    else
+    {
+      this.x = this.originalX
+      this.y = this.originalY
+    }
+  }
 
   addBackground()
   {
@@ -94,8 +116,8 @@ export class GameWorldView extends Phaser.GameObjects.Container
       scaleX: size,
       scaleY: size,
       alpha: 0,
-      ease: 'Circ.easeOut',
-      duration: 300
+      ease: 'Quad.easeOut',
+      duration: 500
     } )
     this.add( wave )
   }
