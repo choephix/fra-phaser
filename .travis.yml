@@ -12,6 +12,8 @@ script:
   - npm install -g typescript
   - tsc --build --verbose
   - ls
+  - cd bin
+  - ls
 
 deploy:
   provider: firebase
