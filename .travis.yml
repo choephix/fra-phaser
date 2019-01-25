@@ -11,7 +11,7 @@ branches:
 script: 
   - npm install -g typescript
   - tsc --build --verbose
-  - ls; cd bin; ls; cd ..
+  - ls -r
 
 deploy:
   provider: firebase
