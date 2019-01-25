@@ -1,8 +1,8 @@
 #.travis.yml
 
 language: node_js
-node_js:
-  - "11.7.0"
+node_js: "11.7.0"
+cache: npm
 
 branches:
   only:
@@ -17,7 +17,7 @@ deploy:
   token:
     secure: "1/1NoZPJPJZUWR7PMKNTtMYERaAAk6e6VC64SvwyvmjtWe6bClABoOFnnI7wTXhkEp"
   project: "staging"
-  message: $TRAVIS_COMMIT_MESSAGE –– (via $TRAVIS_APP_HOST)
+  message: $TRAVIS_COMMIT_MESSAGE –– via $TRAVIS_APP_HOST
 
 notifications:
   email:
