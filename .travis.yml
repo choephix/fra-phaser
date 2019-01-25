@@ -13,9 +13,7 @@ before_script:
 
 script:
   - tsc
-
-after_success:
-  - firebase deploy --token $FIREBASE_TOKEN --message "automated deployment via travis"
+  - firebase deploy --message "automated deployment via travis"
 
 notifications:
   email:
