@@ -77,6 +77,10 @@ function create_animations()
     key: "bot-freeze", repeat: 0, frameRate: 20,
     frames: this.anims.generateFrameNumbers( "sheet_b", { start: 31, end: 38 } ),
   } )
+  this.anims.create( {
+    key: "decoy", repeat: -1, frameRate: 10,
+    frames: this.anims.generateFrameNumbers( "sheet_b", { start: 12, end: 14 } ),
+  } )
 }
 
 function create()

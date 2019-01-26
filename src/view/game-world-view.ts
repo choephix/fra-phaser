@@ -39,10 +39,13 @@ export class GameWorldView extends Phaser.GameObjects.Container
       this.x = this.originalX
       this.y = this.originalY
     }
-
-    this.decoy.visible = this.game.decoy.active
-    this.decoy.x = this.getActorX(this.game.decoy.tile.x)
-    this.decoy.y = this.getActorX(this.game.decoy.tile.y)
+    
+    if ( this.decoy.visible != this.game.decoy.active )
+    {
+      this.decoy.visible = this.game.decoy.active
+      this.decoy.x = this.getActorX(this.game.decoy.tile.x)
+      this.decoy.y = this.getActorX(this.game.decoy.tile.y)
+    }
   }
 
   add( child: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[] ): Phaser.GameObjects.Container
@@ -239,7 +242,8 @@ class DecoySprite extends Phaser.GameObjects.Sprite
   {
     super( scene, 0, 0, "sheet_b" )
     this.setScale( 0.15 )
-    this.setOrigin( .4, .4 )
-    this.setFrame(30)
+    this.setOrigin( .4, .55 )
+    // this.setFrame( 30 )
+    this.anims.play( "decoy" )
   }
 }
