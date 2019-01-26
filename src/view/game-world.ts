@@ -62,21 +62,17 @@ export class GameWorld
     let view = this.view
     function tweenMove( thing, x, y, delay = 0 )
     {
+      // thing.anims.play()
       return tweens.add( {
         targets: thing,
         x: view.getActorX( x ),
         y: view.getActorY( y ),
         delay: delay,
-        duration: 100
-      } )
-    }
-    function tweenFadeOut( thing, delay = 0 )
-    {
-      return tweens.add( {
-        targets: thing,
-        alpha: 0,
-        delay: delay,
-        duration: 100
+        duration: 200,
+        // onComplete:()=>{
+        //   if ( thing.anims.currentAnim.key.includes('idle') )
+        //     thing.anims.stop()
+        // }
       } )
     }
     function tweenFall( thing, delay=0 )
@@ -99,15 +95,25 @@ export class GameWorld
       this.view.player.setState_FALL()
 
     let pt = this.game.player.tile
+    console.log(pt)
 
     for ( let bot of this.view.bots )
     {
       if ( bot.model.dead && bot.dead )
         continue
+
       let bt = bot.model.tile
       let delay = 100 + dist(pt,bt) * 50 + Math.random() * 50
       this.scene.time.delayedCall( delay, () =>
       {
+        if ( !bot.frozen )
+          if ( bot.model.stunned || this.game.frozenTurns > 0 )
+            bot.setState_FROZEN()
+
+        if ( bot.frozen )
+          if ( !bot.model.stunned && this.game.frozenTurns <= 0 )
+            bot.setState_IDLE()
+
         tweenMove( bot, bot.model.tile.x, bot.model.tile.y )
         if ( bot.model.dead && !bot.dead )
         {

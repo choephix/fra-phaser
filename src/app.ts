@@ -74,7 +74,7 @@ function create_animations()
     frames: this.anims.generateFrameNumbers( "sheet_b", { start: 20, end: 29 } ),
   } )
   this.anims.create( {
-    key: "bot-freeze", repeat: 0, frameRate: 10,
+    key: "bot-freeze", repeat: 0, frameRate: 20,
     frames: this.anims.generateFrameNumbers( "sheet_b", { start: 31, end: 38 } ),
   } )
 }

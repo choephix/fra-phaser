@@ -26,7 +26,7 @@ export class GameWorldView extends Phaser.GameObjects.Container
     super(scene,originalX,originalY)
   }
 
-  preUpdate()
+  preUpdate( time, delta )
   {
     if ( this.quake > .01 )
     {
@@ -39,6 +39,10 @@ export class GameWorldView extends Phaser.GameObjects.Container
       this.x = this.originalX
       this.y = this.originalY
     }
+
+    this.decoy.visible = this.game.decoy.active
+    this.decoy.x = this.getActorX(this.game.decoy.tile.x)
+    this.decoy.y = this.getActorX(this.game.decoy.tile.y)
   }
 
   add( child: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[] ): Phaser.GameObjects.Container
@@ -101,10 +105,13 @@ export class GameWorldView extends Phaser.GameObjects.Container
   }
   addPlayer( model:Player ) 
   {
-    let ppp = new PlayerSprite( this.scene, model )
-    ppp.setPosition( this.getActorX( model.tile.x ), this.getActorY( model.tile.y ) )
-    this.add( ppp )
-    this.player = ppp
+    this.player = new PlayerSprite( this.scene, model )
+    this.player.setPosition( this.getActorX( model.tile.x ), this.getActorY( model.tile.y ) )
+    this.add( this.player )
+
+    this.decoy = new DecoySprite( this.scene, this.game.decoy )
+    this.decoy.setPosition( this.getActorX( model.tile.x ), this.getActorY( model.tile.y ) )
+    this.add( this.decoy )
   }
 
   // ANI
@@ -179,18 +186,23 @@ class BotSprite extends Phaser.GameObjects.Sprite
     super( scene, 0, 0, "bot" )
     this.setScale( 0.175 )
     this.setOrigin( .4, .45 )
-    this.anims.load( "bot-idle" )
-    this.anims.load( "bot-die" )
     this.setState_IDLE()
   }
   public setState_IDLE()
   {
+    this.dead = false
+    this.frozen = false
     return this.anims.play( "bot-idle", true, Math.floor( Math.random() * 4 ) )
   }
   public setState_FALL()
   {
     this.dead = true
     return this.anims.play( "bot-fall" )
+  }
+  public setState_FROZEN()
+  {
+    this.frozen = true
+    return this.anims.play( "bot-freeze" )
   }
   // preUpdate()
   // {
@@ -207,8 +219,6 @@ class PlayerSprite extends Phaser.GameObjects.Sprite
     super( scene, 0, 0, "player" )
     this.setScale( 0.25 )
     this.setOrigin(.4,.5)
-    this.anims.load( "player-idle" )
-    this.anims.load( "player-die" )
     this.setState_IDLE()
   }
   public setState_IDLE()
@@ -227,6 +237,9 @@ class DecoySprite extends Phaser.GameObjects.Sprite
   active: boolean
   constructor( scene: Phaser.Scene, public model:Decoy )
   {
-    super( scene, 0, 0, "player" )
+    super( scene, 0, 0, "sheet_b" )
+    this.setScale( 0.15 )
+    this.setOrigin( .4, .4 )
+    this.setFrame(30)
   }
 }
