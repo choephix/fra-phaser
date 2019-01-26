@@ -33,20 +33,18 @@ let world: GameWorld
 
 function preload()
 {
-  this.load.image( 'logo', 'https://labs.phaser.io/assets/sprites/phaser3-logo.png' )
-  this.load.image( "sky", "assets/sky-checkers.jpg" )
-  this.load.image( 'tile', 'assets/tile3.png' )
-  this.load.image( "bot", "assets/emoji/1f989.png" )
-  this.load.spritesheet( "player2", "assets/SaraFullSheet.png", { 
-    frameWidth: 64, frameHeight: 64, margin:0, spacing:0, startFrame:26, endframe: 8 } )
-  this.load.spritesheet( "player", "assets/pikachu.png", { frameWidth: 154, frameHeight: 158, margin:0, spacing:0 } )
-  this.load.spritesheet( 'boom', 'assets/xplo/explosion (2).png', { frameWidth: 128, frameHeight: 128 } )
-  this.load.image( "wave", "assets/wave.png" )
-  this.load.image( 'circle', 'assets/circle-1.jpg' )
-  this.load.image( 'c1', 'assets/c (1).jpg' )
-  this.load.image( 'c2', 'assets/c (2).jpg' )
-  this.load.image( 'c3', 'assets/c (3).png' )
-  this.load.spritesheet( 'sheet_b', 'assets/fra.png', { frameWidth: 769, frameHeight: 500 } )
+  this.load.setBaseURL("assets/")
+  this.load.image( 'logo', 'logo.png' )
+  this.load.image( "sky", "sky-checkers.jpg" )
+  this.load.image( 'c1', 'c (1).jpg' )
+  this.load.image( 'c2', 'c (2).jpg' )
+  this.load.image( 'c3', 'c (3).png' )
+  
+  this.load.image( "wave", "wave.png" )
+  this.load.spritesheet( 'boom', 'xplo/explosion (2).png', { frameWidth: 128, frameHeight: 128 } )
+  
+  this.load.image( 'tile', 'tile3.png' )
+  this.load.spritesheet( 'sheet_b', 'fra.png', { frameWidth: 769, frameHeight: 500 } )
 }
 
 function create_animations()
@@ -101,10 +99,6 @@ function create()
   title.y = h * 0.1
 
   world = new GameWorld( this, getDimensions().w, getDimensions().h, 0.5 * w, 0.50 * h )
-
-  // let o = this.add.sprite( .5*w, .5*h, "sheet_b" )
-  // o.anims.load("player-idle")
-  // o.anims.play("player-idle")
 }
 
 function update()

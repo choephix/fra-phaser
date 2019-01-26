@@ -52,7 +52,7 @@ export class TouchController
   R_CANCEL: number = 1330
   get stay(): boolean { return this.drag.length <= this.R_STAY }
   get cancel(): boolean { return this.drag.length > this.R_CANCEL }
-  get indelay(): boolean { return Date.now() - this.drag.begintime < 100 }
+  get indelay(): boolean { return Date.now() - this.drag.begintime < 60 }
   get timedout(): boolean { return false && Date.now() - this.drag.begintime > 1000 }
   get active(): boolean { return this.drag && !this.cancel && !this.timedout }
   get tranformAttribute(): string

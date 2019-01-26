@@ -186,7 +186,7 @@ class BotSprite extends Phaser.GameObjects.Sprite
   // targetY:number = 0
   constructor( scene: Phaser.Scene, public model:Bot )
   {
-    super( scene, 0, 0, "bot" )
+    super( scene, 0, 0, "sheet_b" )
     this.setScale( 0.175 )
     this.setOrigin( .4, .45 )
     this.setState_IDLE()
@@ -219,7 +219,7 @@ class PlayerSprite extends Phaser.GameObjects.Sprite
   dead: boolean
   constructor( scene: Phaser.Scene, public model:Player )
   {
-    super( scene, 0, 0, "player" )
+    super( scene, 0, 0, "sheet_b" )
     this.setScale( 0.25 )
     this.setOrigin(.4,.5)
     this.setState_IDLE()
