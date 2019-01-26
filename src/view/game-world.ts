@@ -68,7 +68,7 @@ export class GameWorld
         x: view.getActorX( x ),
         y: view.getActorY( y ),
         delay: delay,
-        duration: 200,
+        duration: 100,
         // onComplete:()=>{
         //   if ( thing.anims.currentAnim.key.includes('idle') )
         //     thing.anims.stop()
