@@ -17,9 +17,21 @@ export class GameWorld
   get game(): Game { return this.session ? this.session.currentGame : null }
 
   private zone: Phaser.GameObjects.Image
+  private tScore: Phaser.GameObjects.Text
 
   constructor( public scene: Phaser.Scene, private stageWidth: number, private stageHeight: number, x:number, y:number )
   {
+    let ts_style = { 
+      fill: "white", 
+      font: "7.5em Verdana",
+      stroke: "#000B",
+      strokeThickness: "8",
+      textAnchor: "middle",
+      dominantBaseline: "middle",
+    }
+    this.tScore = this.scene.add.text( stageWidth * .5, stageHeight * .15, "-", ts_style )
+    this.tScore.setOrigin( .05, .05 )
+
     this.zone = this.scene.add.image( x, y, "c1" )
     this.zone
       .setAlpha( .01 )
@@ -95,7 +107,6 @@ export class GameWorld
       this.view.player.setState_FALL()
 
     let pt = this.game.player.tile
-    console.log(pt)
 
     for ( let bot of this.view.bots )
     {
@@ -132,7 +143,7 @@ export class GameWorld
             }
             else
             {
-              this.view.shockwave( x, y, 0.5 )
+              this.view.shockwave( x, y, 0.75, .075 )
             }
           }, null, this )
         }
@@ -148,6 +159,9 @@ export class GameWorld
         tweenFall( tile, delay )
       }
     }
+
+    this.tScore.text = this.session.score.toString()
+    // this.tScore.setOrigin( .05, .05 )
   }
   
   initNextStage()
@@ -178,7 +192,7 @@ export class GameWorld
 
     this.zone.setSize( this.game.W * 70, this.game.H * 70 )
 
-    let scale = this.stageWidth / ( this.game.W * 70 + 200 )
+    let scale = this.stageWidth / ( this.game.W * 70 + 105 )
     this.view.setScale( scale )
   }
 

@@ -39,7 +39,7 @@ export class GameWorldView extends Phaser.GameObjects.Container
       this.x = this.originalX
       this.y = this.originalY
     }
-    
+
     if ( this.decoy.visible != this.game.decoy.active )
     {
       this.decoy.visible = this.game.decoy.active
@@ -119,12 +119,12 @@ export class GameWorldView extends Phaser.GameObjects.Container
 
   // ANI
 
-  shockwave( x, y, size )
+  shockwave( x, y, size, alpha=.25 )
   {
     let wave = this.scene.add.sprite( this.getTileX( x ), this.getTileY( y ), "wave" )
       .setRotation( 2.0 * Math.PI * Math.random() )
       .setScale( .1 * size )
-      .setAlpha( .25 )
+      .setAlpha( alpha )
     this.scene.tweens.add( {
       targets: wave,
       onComplete: () => wave.destroy(),

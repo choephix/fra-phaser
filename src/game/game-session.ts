@@ -14,6 +14,11 @@ export class GameSession
   public usedSkills:Skill[]
 
   public events:EventBus = new EventBus
+
+  constructor()
+  {
+    this.addEventListeners()
+  }
   
   public reset():void
   {
@@ -41,19 +46,19 @@ export class GameSession
 
   private addEventListeners()
   {
-    this.events.on( GameEvent.GAMEOVER, () => onGameOver() )
+    this.events.on( GameEvent.GAMEOVER, () => this.onGameOver() )
     this.events.on( GameEvent.PLAYERMOVE, () => this.score += GameConsts.scoreRewards.move )
     // this.events.on( GameEvent.BOTDIE, () => this.score += GameConsts.scoreRewards.botDeath )
     // this.events.on( GameEvent.BOTDIE, () => this.score += GameConsts.scoreRewards.botDeathAuto )
+  }
 
-    function onGameOver()
-    {
-      this.score += GameConsts.scoreRewards.levelClear
-      for ( let skill of this.skills )
-        if ( !skill.infiniteUses )
-          if ( this.usedSkills.indexOf( skill ) < 0 )
-            this.score += GameConsts.scoreRewards.levelClearPerUnusedSkil
-    }
+  onGameOver()
+  {
+    this.score += GameConsts.scoreRewards.levelClear
+    for ( let skill of this.skills )
+      if ( !skill.infiniteUses )
+        if ( this.usedSkills.indexOf( skill ) < 0 )
+          this.score += GameConsts.scoreRewards.levelClearPerUnusedSkil
   }
 
   public useSkill( skill:Skill )

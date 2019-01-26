@@ -84,19 +84,20 @@ function create_animations()
 function create()
 {
   create_animations.apply(this, [])
-
-  sky = this.add.image(0, 0, "sky")
-  sky.setOrigin(0, 0)
-
-  title = this.add.image(0, 0, "logo")
-
+  
+  
   let dimensions = getDimensions()
   let w = dimensions.w,
-    h = dimensions.h
+  h = dimensions.h
   phaser.resize(w, h)
+  
+  sky = this.add.image(0, 0, "sky")
+  sky.setOrigin(0, 0)
   sky.setDisplaySize(w, h)
-  title.x = w * 0.5
-  title.y = h * 0.1
+
+  title = this.add.image(0, 0, "logo")
+  title.x = w * 0.50
+  title.y = h * 0.08
 
   world = new GameWorld( this, getDimensions().w, getDimensions().h, 0.5 * w, 0.50 * h )
 }
