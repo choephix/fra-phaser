@@ -24,6 +24,7 @@ export enum GameEvent
   GAMESTART,
   GAMEOVER,
   CHANGE,
+  TURNEND,
   BOTSPAWN,      // to
   BOTMOVE,       // from, to
   BOTDIE,        // collision/fall

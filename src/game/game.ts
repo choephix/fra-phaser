@@ -104,6 +104,8 @@ export class Game
         bot.stunned = false
       this.events.raise( GameEvent.PLAYERMOVE )
     }
+
+    this.events.raise( GameEvent.TURNEND )
   }
 
   public recheck()

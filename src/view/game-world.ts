@@ -68,17 +68,27 @@ export class GameWorld
     this.ctrlSprite = new ControllerSprite( this.scene, this.ctrl )
   }
 
+  onTurnEnd()
+  {
+
+  }
+
   onAnyChange()
   {
     let tweens = this.scene.tweens
     let view = this.view
     function tweenMove( thing, x, y, delay = 0 )
     {
+      let randX = Phaser.Math.FloatBetween( -6, 6 )
+      let randY = Phaser.Math.FloatBetween( -4, 8 )
+      x = view.getActorX( x )+randX
+      y = view.getActorY( y )+randY
+      if ( dist(thing,{x:x,y:y}) < 20 )
+        return
       // thing.anims.play()
       return tweens.add( {
         targets: thing,
-        x: view.getActorX( x ),
-        y: view.getActorY( y ),
+        x: x, y: y, 
         delay: delay,
         duration: 100,
         // onComplete:()=>{
@@ -117,12 +127,12 @@ export class GameWorld
       let delay = 100 + dist(pt,bt) * 50 + Math.random() * 50
       this.scene.time.delayedCall( delay, () =>
       {
-        if ( !bot.frozen )
-          if ( bot.model.stunned || this.game.frozenTurns > 0 )
-            bot.setState_FROZEN()
+        let freeze = bot.model.stunned || this.game.frozenTurns > 0
 
-        if ( bot.frozen )
-          if ( !bot.model.stunned && this.game.frozenTurns <= 0 )
+        if ( !bot.frozen && freeze )
+          bot.setState_FROZEN()
+
+        if ( bot.frozen && !freeze )
             bot.setState_IDLE()
 
         tweenMove( bot, bot.model.tile.x, bot.model.tile.y )
