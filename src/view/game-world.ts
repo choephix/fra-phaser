@@ -96,7 +96,7 @@ export class GameWorld
 
     tweenMove( this.view.player, this.game.player.tile.x, this.game.player.tile.y )
     if ( this.game.player.dead && !this.view.player.dead )
-      tweenFadeOut( this.view.player )
+      this.view.player.setState_FALL()
 
     let pt = this.game.player.tile
 
@@ -112,8 +112,8 @@ export class GameWorld
         if ( bot.model.dead && !bot.dead )
         {
           bot.dead = true
+          bot.setState_FALL()
           this.scene.time.delayedCall( 100, () => {
-            tweenFall( bot )
             let x = bot.model.tile.x
             let y = bot.model.tile.y
             if ( bot.model.exploded )

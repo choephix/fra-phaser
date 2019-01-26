@@ -46,21 +46,42 @@ function preload()
   this.load.image( 'c1', 'assets/c (1).jpg' )
   this.load.image( 'c2', 'assets/c (2).jpg' )
   this.load.image( 'c3', 'assets/c (3).png' )
+  this.load.spritesheet( 'sheet_b', 'assets/fra.png', { frameWidth: 769, frameHeight: 500 } )
 }
 
-function create()
+function create_animations()
 {
-  this.anims.create( {
-    key: "player-idle",
-    frames: this.anims.generateFrameNumbers( "player", {} ),
-    frameRate: 10,
-    repeat: -1
-  } )
   this.anims.create( {
     key: "xplode",
     frames: this.anims.generateFrameNumbers( "boom", {} ),
     frameRate: 30,
   } )
+
+  this.anims.create( {
+    key: "player-idle", repeat: -1, frameRate: 10,
+    frames: this.anims.generateFrameNumbers( "sheet_b", { start: 0, end: 3 } ),
+  } )
+  this.anims.create( {
+    key: "player-fall", repeat: 0, frameRate: 30,
+    frames: this.anims.generateFrameNumbers( "sheet_b", { start: 0, end: 11 } ),
+  } )
+  this.anims.create( {
+    key: "bot-idle", repeat: -1, frameRate: 10,
+    frames: this.anims.generateFrameNumbers( "sheet_b", { start: 16, end: 19 } ),
+  } )
+  this.anims.create( {
+    key: "bot-fall", repeat: 0, frameRate: 20,
+    frames: this.anims.generateFrameNumbers( "sheet_b", { start: 20, end: 29 } ),
+  } )
+  this.anims.create( {
+    key: "bot-freeze", repeat: 0, frameRate: 10,
+    frames: this.anims.generateFrameNumbers( "sheet_b", { start: 31, end: 38 } ),
+  } )
+}
+
+function create()
+{
+  create_animations.apply(this, [])
 
   sky = this.add.image(0, 0, "sky")
   sky.setOrigin(0, 0)
@@ -77,18 +98,9 @@ function create()
 
   world = new GameWorld( this, getDimensions().w, getDimensions().h, 0.5 * w, 0.50 * h )
 
-  // this.input.on( "pointerdown", (e,o) => boom( e.x, e.y ) )
-  // this.input.on( "pointermove", (e,o) => boom( e.x, e.y ) )
-  let scene = this
-  function boom( x: number, y: number )
-  {
-    let boom = scene.add.sprite(x, y, "boom")
-    boom.setRotation( 2.0 * Math.PI * Math.random() )
-    boom.anims.load( "xplode" )
-    boom.anims.play( "xplode" )
-    boom.setTint("#369")
-    boom.on( 'animationcomplete', () => boom.destroy() );
-  }
+  // let o = this.add.sprite( .5*w, .5*h, "sheet_b" )
+  // o.anims.load("player-idle")
+  // o.anims.play("player-idle")
 }
 
 function update()

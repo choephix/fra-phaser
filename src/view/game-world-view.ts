@@ -41,6 +41,12 @@ export class GameWorldView extends Phaser.GameObjects.Container
     }
   }
 
+  add( child: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[] ): Phaser.GameObjects.Container
+  {
+    this.scene.add.existing( <Phaser.GameObjects.GameObject>child )
+    return super.add(child)
+  }
+
   addBackground()
   {
     return
@@ -95,11 +101,10 @@ export class GameWorldView extends Phaser.GameObjects.Container
   }
   addPlayer( model:Player ) 
   {
-    let o = new PlayerSprite( this.scene, model )
-      .setPosition( this.getActorX( model.tile.x ), this.getActorY( model.tile.y ) )
-    this.add( o )
-    this.player = o
-    this.player.setState_IDLE()
+    let ppp = new PlayerSprite( this.scene, model )
+    ppp.setPosition( this.getActorX( model.tile.x ), this.getActorY( model.tile.y ) )
+    this.add( ppp )
+    this.player = ppp
   }
 
   // ANI
@@ -162,7 +167,7 @@ class TileSprite extends Phaser.GameObjects.Image
   }
 }
 
-class BotSprite extends Phaser.GameObjects.Image
+class BotSprite extends Phaser.GameObjects.Sprite
 {
   dead: boolean
   frozen: boolean
@@ -172,11 +177,20 @@ class BotSprite extends Phaser.GameObjects.Image
   constructor( scene: Phaser.Scene, public model:Bot )
   {
     super( scene, 0, 0, "bot" )
-    this.setScale( .6 )
-      .setTint( Phaser.Display.Color.HSLToColor(
-        Phaser.Math.FloatBetween( 0, 1 ),
-        Math.random() * .25,
-        Phaser.Math.FloatBetween( .85, 1 ) ).color )
+    this.setScale( 0.175 )
+    this.setOrigin( .4, .45 )
+    this.anims.load( "bot-idle" )
+    this.anims.load( "bot-die" )
+    this.setState_IDLE()
+  }
+  public setState_IDLE()
+  {
+    return this.anims.play( "bot-idle", true, Math.floor( Math.random() * 4 ) )
+  }
+  public setState_FALL()
+  {
+    this.dead = true
+    return this.anims.play( "bot-fall" )
   }
   // preUpdate()
   // {
@@ -191,14 +205,20 @@ class PlayerSprite extends Phaser.GameObjects.Sprite
   constructor( scene: Phaser.Scene, public model:Player )
   {
     super( scene, 0, 0, "player" )
-    this.setScale( 0.6 )
+    this.setScale( 0.25 )
+    this.setOrigin(.4,.5)
+    this.anims.load( "player-idle" )
+    this.anims.load( "player-die" )
+    this.setState_IDLE()
   }
-  
   public setState_IDLE()
   {
-    this.anims.load( "player-idle" )
-    this.anims.play( "player-idle" )
-    return this
+    return this.anims.play( "player-idle" )
+  }
+  public setState_FALL()
+  {
+    this.dead = true
+    return this.anims.play( "player-fall" )
   }
 }
 
