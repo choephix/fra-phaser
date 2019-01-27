@@ -1,11 +1,9 @@
-import { Skill, SkillBook } from "../game/skills"
-import { Game } from "../game/game"
-import { GameSession } from "../game/game-session"
-import { AbstractTouchController } from "./ctrl";
-import { GameEvent } from "src/game/events";
-import { GameWorldView } from "./game-world-view";
-import { ControllerSprite } from "./ctrl-view";
 import { App } from "src/app";
+import { DebugKeyboardController } from "src/debug/debug-ctrl";
+import { GameEvent } from "src/game/events";
+import { Game } from "../game/game";
+import { GameSession } from "../game/game-session";
+import { GameWorldView } from "./game-world-view";
 
 export class GameWorld
 {
@@ -178,6 +176,8 @@ export class GameWorld
 
     let scale = this.stageWidth / ( this.game.W * 70 + 105 )
     this.view.setScale( scale )
+
+    new DebugKeyboardController( this.game )
   }
 
   moveMayBe( dx: number, dy: number )

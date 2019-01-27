@@ -1,10 +1,12 @@
 import { UIScene } from "./scenes/ui";
 import { AbstractTouchController } from "./view/ctrl";
 import { GameWorld } from "./view/game-world";
+import { GameSession } from "./game/game-session";
 
 export class App 
 {
   static phaser_game: Phaser.Game
+  static gameplay:GameSession
   static ctrl: AbstractTouchController
 
   config: GameConfig = {
@@ -15,23 +17,29 @@ export class App
     backgroundColor: "#014",
     resolution: window.devicePixelRatio,
     // zoom: 1/window.devicePixelRatio,
-    fps: {},
   }
 
   start() 
   {
-    let game = App.phaser_game = new Phaser.Game( this.config )
-    game.scene.add( 'boot', BootScene, true );
-    // phaser.scene.start( 'boot', { b: 1234 } )
-
-    App.ctrl = new AbstractTouchController(
-      ( x, y ) => game.input.events.emit( "move", x, y ) )
-
-
     let dimensions = this.getDimensions()
     let w = dimensions.w
     let h = dimensions.h
-    game.resize( w, h )
+    App.phaser_game = new Phaser.Game( this.config )
+    App.phaser_game.resize( w, h )
+    App.phaser_game.events.once( 'assets-loaded', () => this.onAssetsLoaded() )
+    App.phaser_game.scene.add( 'boot', BootScene );
+    App.phaser_game.scene.start( 'boot', { } )
+  }
+
+  onAssetsLoaded()
+  {
+    App.gameplay = new GameSession
+    App.ctrl = new AbstractTouchController(
+      ( x, y ) => App.phaser_game.input.events.emit( "move", x, y ) )
+
+    App.phaser_game.scene.add( 'bg', BackgroundScene, true );
+    App.phaser_game.scene.add( 'world', GameWorldScene, true );
+    App.phaser_game.scene.add( 'ui', UIScene, true );
   }
 
   getDimensions()
@@ -78,9 +86,7 @@ class BootScene extends Phaser.Scene
 
   create()
   {
-    this.game.scene.add( 'bg', BackgroundScene, true );
-    this.game.scene.add( 'world', GameWorldScene, true );
-    this.game.scene.add( 'ui', UIScene, true );
+    App.phaser_game.events.emit('assets-loaded')
     this.game.scene.remove(this)
   }
 }

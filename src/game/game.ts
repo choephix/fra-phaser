@@ -160,6 +160,7 @@ export class Game
 
   public killBot( bot:Bot, explode:boolean )
   {
+    console.log("kill")
     if ( bot.dead )
       return
     bot.dead = true

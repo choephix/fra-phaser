@@ -29,7 +29,7 @@ export class ControllerSprite extends Phaser.GameObjects.Container
   {
     if ( this.ctrl.drag )
     {
-      this.x = this.ctrl.drag.x1
+      this.x = this.ctrl.drag.x1 
       this.y = this.ctrl.drag.y1
     }
 
