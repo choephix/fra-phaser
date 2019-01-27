@@ -128,7 +128,7 @@ export class GameWorld
               y += Phaser.Math.FloatBetween( -.5, .5 )
               this.view.shockwave( x, y, 2.0 )
               this.view.boom( x,y )
-              this.view.quake = 4
+              this.view.quake += 2
             }
             else
             {
