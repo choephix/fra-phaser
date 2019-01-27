@@ -39,8 +39,8 @@ export class GameWorld
       .setInteractive( { useHandCursor: true } )
       .on( "pointerdown", e => this.ctrl.start( e.x, e.y ) )
       .on( "pointermove", e => this.ctrl.move( e.x, e.y ) )
-      .on( "pointerup",   e => this.ctrl.end() )
-      .on( "pointerdown", e => { if ( this.game.over ) this.initNextStage() } )
+      .on( "pointerup", e => this.ctrl.end() )
+    this.zone.on( "pointerdown", e => { if ( this.game.over ) this.initNextStage() } )
 
     this.view = new GameWorldView( this.scene, x, y )
     this.view.addBackground()
@@ -116,7 +116,7 @@ export class GameWorld
     if ( this.game.player.dead && !this.view.player.dead )
       this.view.player.setState_FALL()
 
-    let pt = this.game.player.tile
+    let pt = this.game.decoy.active ? this.game.decoy.tile : this.game.player.tile
 
     for ( let bot of this.view.bots )
     {
