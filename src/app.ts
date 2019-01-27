@@ -4,7 +4,7 @@ import { GameWorld } from "./view/game-world";
 
 export class App 
 {
-  game: Phaser.Game
+  static phaser_game: Phaser.Game
 
   config: GameConfig = {
     title: "Furry Robots Attak",
@@ -12,8 +12,6 @@ export class App
     type: Phaser.AUTO,
     parent: "phaser",
     backgroundColor: "#014",
-    width: getDimensions().w,
-    height: getDimensions().h,
     resolution: 1.0,
     zoom: 1,
     fps: {},
@@ -21,15 +19,20 @@ export class App
 
   start() 
   {
-    this.game = new Phaser.Game( this.config )
-    this.game.scene.add( 'scene-boot', BootScene, true );
+    let game = App.phaser_game = new Phaser.Game( this.config )
+    game.scene.add( 'scene-boot', BootScene, true );
     // this.game.scene.add( 'scene-bg', BackgroundScene, true );
     // phaser.scene.start( 'boot', { b: 1234 } )
 
-    let dimensions = getDimensions()
+    let dimensions = this.getDimensions()
     let w = dimensions.w
     let h = dimensions.h
-    this.game.resize( w, h )
+    game.resize( w, h )
+  }
+
+  getDimensions()
+  {
+    return { h: window.innerHeight, w: Math.min( window.innerWidth, window.innerHeight * 0.75 ) }
   }
 }
 
@@ -81,12 +84,9 @@ class UIScene extends Phaser.Scene
 
   create()
   {
-    let dimensions = getDimensions()
-    let w = dimensions.w
-    let h = dimensions.h
     this.title = this.add.image(0, 0, "logo")
-    this.title.x = w * 0.50
-    this.title.y = h * 0.08
+    this.title.x = this.cameras.main.centerX
+    this.title.y = this.cameras.main.height * 0.08
   }
 }
 
@@ -132,11 +132,8 @@ class GameWorldScene extends Phaser.Scene
   {
     this.create_animations()
 
-    let dimensions = getDimensions()
-    let w = dimensions.w
-    let h = dimensions.h
-
-    this.world = new GameWorld( this, getDimensions().w, getDimensions().h, 0.5 * w, 0.50 * h )
+    let cam = this.cameras.main
+    this.world = new GameWorld( this, cam.width, cam.height, cam.centerX, cam.centerY )
 
     // this.time.timeScale =
     // this.tweens.timeScale =
@@ -150,18 +147,11 @@ class BackgroundScene extends Phaser.Scene
 
   create()
   {
-    let dimensions = getDimensions()
-    let w = dimensions.w
-    let h = dimensions.h
+    let cam = this.cameras.main
     this.sky = this.add.image( 0, 0, "sky" )
     this.sky.setOrigin( 0, 0 )
-    this.sky.setDisplaySize( w, h )
+    this.sky.setDisplaySize( cam.width, cam.height )
   }
-}
-
-function getDimensions()
-{ 
-  return { h: window.innerHeight, w: Math.min(window.innerWidth, window.innerHeight * 0.75) }
 }
 
 // function* test() {
