@@ -14,6 +14,8 @@ export class GameSession
   public usedSkills:Skill[]
 
   public events:EventBus = new EventBus
+  
+  public get ingame(): boolean { return this.currentGame && !this.currentGame.over }
 
   constructor()
   {

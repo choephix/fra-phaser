@@ -195,12 +195,13 @@ class BotSprite extends Phaser.GameObjects.Sprite
   {
     this.dead = false
     this.frozen = false
-    return this.anims.play( "bot-idle", true, Math.floor( Math.random() * 4 ) )
+    this.anims.play( "bot-idle", true, Math.floor( Math.random() * 4 ) )
   }
   public setState_FALL()
   {
     this.dead = true
-    return this.anims.play( "bot-fall" )
+    this.anims.play( "bot-fall" )
+    this.once( "animationcomplete", () => this.visible = false )
   }
   public setState_FROZEN()
   {
@@ -226,12 +227,13 @@ class PlayerSprite extends Phaser.GameObjects.Sprite
   }
   public setState_IDLE()
   {
-    return this.anims.play( "player-idle" )
+    this.anims.play( "player-idle" )
   }
   public setState_FALL()
   {
     this.dead = true
-    return this.anims.play( "player-fall" )
+    this.anims.play( "player-fall" )
+    this.once("animationcomplete",()=>this.visible=false)
   }
 }
 

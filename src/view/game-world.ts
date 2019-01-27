@@ -17,27 +17,15 @@ export class GameWorld
   get game(): Game { return this.session ? this.session.currentGame : null }
 
   private zone: Phaser.GameObjects.Image
-  private tScore: Phaser.GameObjects.Text
 
   constructor( public scene: Phaser.Scene, private stageWidth: number, private stageHeight: number, x:number, y:number )
   {
-    let ts_style = { 
-      fill: "white", 
-      font: "7.5em Verdana",
-      stroke: "#000B",
-      strokeThickness: "8",
-      textAnchor: "middle",
-      dominantBaseline: "middle",
-    }
-    this.tScore = this.scene.add.text( stageWidth * .5, stageHeight * .15, "-", ts_style )
-    this.tScore.setOrigin( .05, .05 )
-
     this.zone = this.scene.add.image( x, y, "c1" )
     this.zone
       .setAlpha( .01 )
       .setScale( 1.2, .8 )
       .setInteractive( { useHandCursor: true } )
-      .on( "pointerdown", e => this.ctrl.start( e.x, e.y ) )
+      .on( "pointerdown", e => { if ( this.session.ingame ) this.ctrl.start( e.x, e.y ) } )
       .on( "pointermove", e => this.ctrl.move( e.x, e.y ) )
       .on( "pointerup", e => this.ctrl.end() )
     this.zone.on( "pointerdown", e => { if ( this.game.over ) this.initNextStage() } )
@@ -53,19 +41,10 @@ export class GameWorld
     this.session.events.on( GameEvent.CHANGE, () => this.onAnyChange() )
     this.session.reset()
 
-    let skills = SkillBook.makeSkillList()
-    for ( let si in skills )
-    {
-      let label = skills[ si ].icon
-      let button:Phaser.GameObjects.Text;
-      let x = ( stageWidth / ( skills.length+1) ) * ( 1 + parseInt(si) )
-      let y = stageHeight - 100
-      button = this.scene.add.text( x, y, label, { fill: '#Ff0', font: '10em Verdana' } ).setOrigin(0.5,0.5)
-      button.setInteractive( { useHandCursor: true } )
-      button.on( 'pointerdown', () => this.useSkill( this.session.skills[ si ] ) )
-    }
-
     this.ctrlSprite = new ControllerSprite( this.scene, this.ctrl )
+    
+    this.scene.game.input.events.on( "skill", 
+      ( index: number ) => this.session.useSkill( this.session.skills[ index ] ) )
   }
 
   onTurnEnd()
@@ -170,8 +149,7 @@ export class GameWorld
       }
     }
 
-    this.tScore.text = this.session.score.toString()
-    // this.tScore.setOrigin( .05, .05 )
+    this.scene.game.events.emit("score_change",this.session.score)
   }
   
   initNextStage()
@@ -204,11 +182,6 @@ export class GameWorld
 
     let scale = this.stageWidth / ( this.game.W * 70 + 105 )
     this.view.setScale( scale )
-  }
-
-  useSkill( skill:Skill )
-  {
-    this.session.useSkill( skill )
   }
 
   moveMayBe( dx: number, dy: number )
