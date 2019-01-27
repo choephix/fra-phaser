@@ -1,12 +1,14 @@
 /// <reference path="phaser.d.ts" />
 
 import { GameWorld } from "./view/game-world";
-import Game from "./game/game";
 import { SkillBook } from "./game/skills";
+import { ControllerSprite } from "./view/ctrl-view";
+import { AbstractTouchController } from "./view/ctrl";
 
 export class App 
 {
   static phaser_game: Phaser.Game
+  static ctrl: AbstractTouchController
 
   config: GameConfig = {
     title: "Furry Robots Attak",
@@ -23,13 +25,15 @@ export class App
   {
     let game = App.phaser_game = new Phaser.Game( this.config )
     game.scene.add( 'scene-boot', BootScene, true );
-    // this.game.scene.add( 'scene-bg', BackgroundScene, true );
     // phaser.scene.start( 'boot', { b: 1234 } )
 
     let dimensions = this.getDimensions()
     let w = dimensions.w
     let h = dimensions.h
     game.resize( w, h )
+
+    App.ctrl = new AbstractTouchController( 
+      ( x, y ) => game.input.events.emit( "move", x, y ) )
   }
 
   getDimensions()
@@ -84,6 +88,7 @@ class UIScene extends Phaser.Scene
 {
   private title: Phaser.GameObjects.Image
   private tScore: Phaser.GameObjects.Text
+  private ctrlSprite: ControllerSprite
 
   create()
   {
@@ -117,6 +122,8 @@ class UIScene extends Phaser.Scene
       button.setInteractive( { useHandCursor: true } )
       button.on( 'pointerdown', () => this.game.input.events.emit( "skill", si ) )
     }
+
+    this.ctrlSprite = new ControllerSprite( this, App.ctrl )
   }
 }
 

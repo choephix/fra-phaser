@@ -1,4 +1,4 @@
-import { TouchController } from "./ctrl";
+import { AbstractTouchController } from "./ctrl";
 
 export class ControllerSprite extends Phaser.GameObjects.Container
 {
@@ -6,7 +6,7 @@ export class ControllerSprite extends Phaser.GameObjects.Container
   c2:Circle
   c3:Circle
 
-  constructor( scene, private ctrl:TouchController )
+  constructor( scene, private ctrl:AbstractTouchController )
   {
     super(scene)
 

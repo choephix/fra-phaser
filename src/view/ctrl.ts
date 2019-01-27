@@ -1,6 +1,6 @@
 import { GameWorld } from "./game-world";
 
-export class TouchController
+export class AbstractTouchController
 {
   drag: Drag
 

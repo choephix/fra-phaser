@@ -1,18 +1,17 @@
 import { Skill, SkillBook } from "../game/skills"
 import { Game } from "../game/game"
 import { GameSession } from "../game/game-session"
-import { TouchController } from "./ctrl";
+import { AbstractTouchController } from "./ctrl";
 import { GameEvent } from "src/game/events";
 import { GameWorldView } from "./game-world-view";
 import { ControllerSprite } from "./ctrl-view";
+import { App } from "src/app";
 
 export class GameWorld
 {
   session: GameSession
-  ctrl: TouchController
 
   view: GameWorldView
-  ctrlSprite:ControllerSprite
 
   get game(): Game { return this.session ? this.session.currentGame : null }
 
@@ -25,24 +24,21 @@ export class GameWorld
       .setAlpha( .01 )
       .setScale( 1.2, .8 )
       .setInteractive( { useHandCursor: true } )
-      .on( "pointerdown", e => { if ( this.session.ingame ) this.ctrl.start( e.x, e.y ) } )
-      .on( "pointermove", e => this.ctrl.move( e.x, e.y ) )
-      .on( "pointerup", e => this.ctrl.end() )
+      .on( "pointerdown", e => { if ( this.session.ingame ) App.ctrl.start( e.x, e.y ) } )
+      .on( "pointermove", e => App.ctrl.move( e.x, e.y ) )
+      .on( "pointerup", e => App.ctrl.end() )
     this.zone.on( "pointerdown", e => { if ( this.game.over ) this.initNextStage() } )
 
     this.view = new GameWorldView( this.scene, x, y )
     this.view.addBackground()
     this.scene.add.existing( this.view )
 
-    this.ctrl = new TouchController( ( x, y ) => this.moveMayBe( x, y ) )
-
     this.session = new GameSession
     this.session.events.on( GameEvent.GAMESTART, () => this.buildWorld() )
     this.session.events.on( GameEvent.CHANGE, () => this.onAnyChange() )
     this.session.reset()
-
-    this.ctrlSprite = new ControllerSprite( this.scene, this.ctrl )
     
+    this.scene.game.input.events.on( "move", ( x, y ) => this.moveMayBe( x, y ) )
     this.scene.game.input.events.on( "skill", 
       ( index: number ) => this.session.useSkill( this.session.skills[ index ] ) )
   }
@@ -197,6 +193,4 @@ export class GameWorld
       this.game.endTurn()
     }
   }
-
-  ///
 }
