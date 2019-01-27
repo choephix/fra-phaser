@@ -3,7 +3,7 @@ export class GameConsts
   public static scoreRewards:Rewards = {
     initial: 0,
     levelClear: 0,
-    levelClearPerUnusedSkil: 50,
+    levelClearPerUnusedSkill: 50,
     move: 0,
     botDeath: 0,
     botDeathAuto: 100
@@ -14,7 +14,7 @@ class Rewards
 {
   initial:number
   levelClear:number
-  levelClearPerUnusedSkil:number
+  levelClearPerUnusedSkill:number
   move:number
   botDeath:number
   botDeathAuto:number

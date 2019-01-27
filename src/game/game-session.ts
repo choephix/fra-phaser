@@ -46,19 +46,29 @@ export class GameSession
 
   private addEventListeners()
   {
-    this.events.on( GameEvent.GAMEOVER, () => this.onGameOver() )
-    this.events.on( GameEvent.PLAYERMOVE, () => this.score += GameConsts.scoreRewards.move )
-    // this.events.on( GameEvent.BOTDIE, () => this.score += GameConsts.scoreRewards.botDeath )
-    // this.events.on( GameEvent.BOTDIE, () => this.score += GameConsts.scoreRewards.botDeathAuto )
-  }
+    this.events.on( GameEvent.PLAYERMOVE, () => 
+      this.score += GameConsts.scoreRewards.move )
 
-  onGameOver()
-  {
-    this.score += GameConsts.scoreRewards.levelClear
-    for ( let skill of this.skills )
-      if ( !skill.infiniteUses )
-        if ( this.usedSkills.indexOf( skill ) < 0 )
-          this.score += GameConsts.scoreRewards.levelClearPerUnusedSkil
+    this.events.on( GameEvent.BOTDIE, () => {
+      if ( !this.currentGame.player.dead )
+      {
+        this.score += !this.currentGame.auto ? 
+                      GameConsts.scoreRewards.botDeath :
+                      GameConsts.scoreRewards.botDeathAuto 
+      }
+    } )
+
+    this.events.on( GameEvent.GAMEOVER, () =>
+    {
+      if ( this.currentGame.victory )
+      {
+        this.score += GameConsts.scoreRewards.levelClear
+        for ( let skill of this.skills )
+          if ( !skill.infiniteUses )
+            if ( this.usedSkills.indexOf( skill ) < 0 )
+              this.score += GameConsts.scoreRewards.levelClearPerUnusedSkill
+      }
+    } )
   }
 
   public useSkill( skill:Skill )
