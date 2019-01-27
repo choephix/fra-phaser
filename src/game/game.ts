@@ -62,7 +62,7 @@ export class Game
         clearInterval( interval )
         this.auto = false
       }
-    }, 200 )
+    }, 250 )
   }
 
   public moveTo( playerTile:Tile )

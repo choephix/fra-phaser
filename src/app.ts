@@ -1,9 +1,6 @@
-/// <reference path="phaser.d.ts" />
-
-import { GameWorld } from "./view/game-world";
-import { SkillBook } from "./game/skills";
-import { ControllerSprite } from "./view/ctrl-view";
+import { UIScene } from "./scenes/ui";
 import { AbstractTouchController } from "./view/ctrl";
+import { GameWorld } from "./view/game-world";
 
 export class App 
 {
@@ -16,29 +13,33 @@ export class App
     type: Phaser.AUTO,
     parent: "phaser",
     backgroundColor: "#014",
-    resolution: 1.0,
-    zoom: 1,
+    resolution: window.devicePixelRatio,
+    // zoom: 1/window.devicePixelRatio,
     fps: {},
   }
 
   start() 
   {
     let game = App.phaser_game = new Phaser.Game( this.config )
-    game.scene.add( 'scene-boot', BootScene, true );
+    game.scene.add( 'boot', BootScene, true );
     // phaser.scene.start( 'boot', { b: 1234 } )
+
+    App.ctrl = new AbstractTouchController(
+      ( x, y ) => game.input.events.emit( "move", x, y ) )
+
 
     let dimensions = this.getDimensions()
     let w = dimensions.w
     let h = dimensions.h
     game.resize( w, h )
-
-    App.ctrl = new AbstractTouchController( 
-      ( x, y ) => game.input.events.emit( "move", x, y ) )
   }
 
   getDimensions()
   {
-    return { h: window.innerHeight, w: Math.min( window.innerWidth, window.innerHeight * 0.75 ) }
+    return { 
+      h: window.innerHeight, 
+      w: Math.min( window.innerWidth, window.innerHeight * 0.75 ) 
+    }
   }
 }
 
@@ -47,8 +48,8 @@ class BootScene extends Phaser.Scene
   preload()
   {
     let style = {
-      fill: "white",
-      font: "4.5em Verdana",
+      fill: "white", 
+      fontSize: "3vw",
       stroke: "#000B",
       strokeThickness: "4",
       textAnchor: "middle",
@@ -77,53 +78,10 @@ class BootScene extends Phaser.Scene
 
   create()
   {
-    this.game.scene.add( 'scene-bg', BackgroundScene, true );
-    this.game.scene.add( 'scene-world', GameWorldScene, true );
-    this.game.scene.add( 'scene-ui', UIScene, true );
+    this.game.scene.add( 'bg', BackgroundScene, true );
+    this.game.scene.add( 'world', GameWorldScene, true );
+    this.game.scene.add( 'ui', UIScene, true );
     this.game.scene.remove(this)
-  }
-}
-
-class UIScene extends Phaser.Scene
-{
-  private title: Phaser.GameObjects.Image
-  private tScore: Phaser.GameObjects.Text
-  private ctrlSprite: ControllerSprite
-
-  create()
-  {
-    let cam = this.cameras.main
-
-    this.title = this.add.image(0, 0, "logo")
-    this.title.x = cam.centerX
-    this.title.y = cam.height * 0.08
-
-    let ts_style = {
-      fill: "white",
-      font: "7.5em Verdana",
-      stroke: "#000B",
-      strokeThickness: "8",
-      textAnchor: "middle",
-      dominantBaseline: "middle",
-    }
-    this.tScore = this.add.text( cam.centerX, cam.height * .15, "0-", ts_style )
-    this.tScore.setOrigin( .05, .05 )
-
-    this.game.events.on( "score_change", (score:number)=>this.tScore.text = ''+score.toString()+'' )
-
-    let skills = SkillBook.makeSkillList()
-    for ( let si in skills )
-    {
-      let label = skills[ si ].icon
-      let button: Phaser.GameObjects.Text;
-      let x = ( cam.width / ( skills.length + 1 ) ) * ( 1 + parseInt( si ) )
-      let y = cam.height - 100
-      button = this.add.text( x, y, label, { fill: '#Ff0', font: '10em Verdana' } ).setOrigin( 0.5, 0.5 )
-      button.setInteractive( { useHandCursor: true } )
-      button.on( 'pointerdown', () => this.game.input.events.emit( "skill", si ) )
-    }
-
-    this.ctrlSprite = new ControllerSprite( this, App.ctrl )
   }
 }
 
