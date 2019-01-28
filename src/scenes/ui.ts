@@ -4,19 +4,26 @@ import { ControllerSprite } from "src/view/ctrl-view";
 
 export class UIScene extends Phaser.Scene
 {
-  private title: Phaser.GameObjects.Image
+  private tLevel: Phaser.GameObjects.Text
   private tScore: ScoreText
 
   create()
   {
     let cam = this.cameras.main
 
-    this.title = this.add.image( 0, 0, "logo" )
-    this.title.x = cam.centerX
-    this.title.y = cam.height * 0.08
+    this.tLevel = this.add.text( cam.centerX, cam.height * .07, "L" )
+    this.tLevel.setOrigin(0.5)
+    this.tLevel.setFontSize(128)
+    this.tLevel.setFontFamily("IMPACT")
+    this.tLevel.setColor("white")
+    this.tLevel.setStroke("#000B", 8)
 
     this.tScore = new ScoreText( this )
-    this.tScore.setPosition( cam.centerX, cam.height * .15 )
+    this.tScore.setPosition( cam.centerX, cam.height * .17 )
+    this.tScore.setStroke( "#000B", 8 )
+    this.tScore.setFontSize( 48 )
+    this.tScore.setOrigin( 0.5 )
+    this.tScore.setFontStyle("bold")
     this.game.events.on( "score_change", ( score: number ) => this.tScore.setValue( score ) )
 
     let skills = SkillBook.makeSkillList()
@@ -44,20 +51,13 @@ class ScoreText extends Phaser.GameObjects.Text
   public set value( v: number )
   {
     this._value = v
-    this.text = Math.floor( v ).toString()
-    this.x = this.scene.cameras.main.centerX - this.width * .05
+    this.text = v > 0 ? Math.floor( v ).toString() : 'O'
+    // this.x = this.scene.cameras.main.centerX - this.width * .05
   }
   
   constructor( scene )
   {
-    super( scene, 0, 0, "", {
-      fill: "white",
-      font: "7.5em Verdana",
-      stroke: "#000B",
-      strokeThickness: "8",
-      textAnchor: "middle",
-      dominantBaseline: "middle",
-    } )
+    super( scene, 0, 0, "", { fill: "white" } )
     this.scene.add.existing( this )
     this.setValue( 0 )
   }

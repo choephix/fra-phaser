@@ -53,6 +53,7 @@ export class App
 
 class BootScene extends Phaser.Scene
 {
+  textf:Phaser.GameObjects.Text
   preload()
   {
     let style = {
@@ -63,31 +64,38 @@ class BootScene extends Phaser.Scene
       textAnchor: "middle",
       dominantBaseline: "middle",
     }
-    this.add.text( this.cameras.main.width * .125, 
-                   this.cameras.main.height * .90, 
-                   "loading...", style )
-                  //  .setOrigin( .05, .05 )
+    this.textf = this.add.text( 
+                 this.cameras.main.width * .125, 
+                 this.cameras.main.height * .90, 
+                 "loading...", style ).setAlpha(0)
+    this.tweens.add( { targets: this.textf, alpha: 1, duration: 50 } )
 
     this.load.setBaseURL( "assets/" )
 
-    this.load.image( "sky", "sky-checkers.jpg" )
-    this.load.image( 'logo', 'logo.png' )
+    this.load.image( "background", "background.jpg" )
 
-    this.load.image( 'c1', 'c (1).jpg' )
-    this.load.image( 'c2', 'c (2).jpg' )
-    this.load.image( 'c3', 'c (3).png' )
+    this.load.image( 'c1', 'circle/c (1).jpg' )
+    this.load.image( 'c2', 'circle/c (2).jpg' )
+    this.load.image( 'c3', 'circle/c (3).png' )
 
     this.load.image( "wave", "wave.png" )
-    this.load.spritesheet( 'boom', 'xplo/explosion (2).png', { frameWidth: 128, frameHeight: 128 } )
+    this.load.spritesheet( 'boom', 'explosion.png', { frameWidth: 128, frameHeight: 128 } )
 
-    this.load.image( 'tile', 'tile3.png' )
+    this.load.image( 'tile', 'tile.png' )
     this.load.spritesheet( 'sheet_b', 'fra.png', { frameWidth: 769, frameHeight: 500 } )
   }
 
   create()
   {
-    App.phaser_game.events.emit('assets-loaded')
-    this.game.scene.remove(this)
+    this.tweens.add( { 
+      targets: this.textf, 
+      alpha: 0, 
+      duration: 100,
+      onComplete: () => {
+        this.game.events.emit( 'assets-loaded' )
+        this.game.scene.remove(this)
+      }
+    } );
   }
 }
 
@@ -135,10 +143,6 @@ class GameWorldScene extends Phaser.Scene
 
     let cam = this.cameras.main
     this.world = new GameWorld( this, cam.width, cam.height, cam.centerX, cam.centerY )
-
-    // this.time.timeScale =
-    // this.tweens.timeScale =
-    // this.anims.globalTimeScale = .333
   }
 }
 
@@ -149,16 +153,10 @@ class BackgroundScene extends Phaser.Scene
   create()
   {
     let cam = this.cameras.main
-    this.sky = this.add.image( 0, 0, "sky" )
-    this.sky.setOrigin( 0, 0 )
+    this.sky = this.add.image( 0, 0, "background" )
     this.sky.setDisplaySize( cam.width, cam.height )
+    this.sky.setOrigin( 0, 0 )
+    this.sky.setAlpha( 0 )
+    this.tweens.add( { targets: this.sky, alpha: 1, duration: 200 } )
   }
 }
-
-// function* test() {
-//   let i = -10
-//   while(i<10)
-//     yield ++i;
-// }
-// for ( let ii of test() )
-//   console.log(ii)
