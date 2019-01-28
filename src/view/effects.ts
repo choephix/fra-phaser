@@ -31,4 +31,17 @@ export class GameWorldEffects
     if ( params.container )
       params.container.add( boom )
   }
+
+  public static poof( params: { x, y, scene, container?} )
+  {
+    let boom:Phaser.GameObjects.Sprite = params.scene.add.sprite( params.x, params.y, "poof" )
+    // boom.setRotation( 2.0 * Math.PI * Math.random() )
+    boom.setScale( 2.0 )
+    boom.setTintFill(0xFFFFFF)
+    boom.anims.load( "poof" )
+    boom.anims.play( "poof" )
+    boom.on( 'animationcomplete', () => boom.destroy() );
+    if ( params.container )
+      params.container.add( boom )
+  }
 }

@@ -118,9 +118,7 @@ export class Game
       if ( !tile.busted )
       {
         let bots:Bot[] = this.getBotsOn( tile )
-        let bust = bots.length > 1 
-                || ( bots.length > 0 && tile === p.tile )
-                || ( bots.length > 0 && tile === d.tile )
+        let bust = bots.length > 1 || ( bots.length > 0 && tile === p.tile )
         if ( bust )
         {
           for ( let bot of bots )
@@ -137,9 +135,13 @@ export class Game
       }
     }
 
-    if ( d.active && d.tile.busted )
+    if ( d.active )
     {
-      this.decoy.active = false
+      if ( d.tile.busted || this.getBotsOn( d.tile ).length > 0 )
+      {
+        this.decoy.active = false
+        this.events.raise(GameEvent.DECOYDIE,d)
+      }
     }
     if ( p.tile.busted )
     {

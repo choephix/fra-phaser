@@ -79,7 +79,9 @@ class BootScene extends Phaser.Scene
     this.load.image( 'c3', 'circle/c (3).png' )
 
     this.load.image( "wave", "wave.png" )
+    this.load.spritesheet( 'poof', 'poof.png', { frameWidth: 64, frameHeight: 64 } )
     this.load.spritesheet( 'boom', 'explosion.png', { frameWidth: 128, frameHeight: 128 } )
+    // this.load.spritesheet( 'boom', '1.png', { frameWidth: 512, frameHeight: 512 } )
 
     this.load.image( 'tile', 'tile.png' )
     this.load.spritesheet( 'sheet_b', 'fra.png', { frameWidth: 769, frameHeight: 500 } )
@@ -108,6 +110,12 @@ class GameWorldScene extends Phaser.Scene
     this.anims.create( {
       key: "boom",
       frames: this.anims.generateFrameNumbers( "boom", {} ),
+      frameRate: 60,
+    } )
+
+    this.anims.create( {
+      key: "poof",
+      frames: this.anims.generateFrameNumbers( "poof", {} ),
       frameRate: 30,
     } )
 

@@ -4,6 +4,7 @@ import { GameEvent } from "src/game/events";
 import { Game } from "../game/game";
 import { GameSession } from "../game/game-session";
 import { GameWorldView } from "./game-world-view";
+import { GameWorldEffects } from "./effects";
 
 export class GameWorld
 {
@@ -34,6 +35,15 @@ export class GameWorld
     this.session = new GameSession
     this.session.events.on( GameEvent.GAMESTART, () => this.buildWorld() )
     this.session.events.on( GameEvent.CHANGE, () => this.onAnyChange() )
+    this.session.events.on( GameEvent.DECOYDIE, d => GameWorldEffects.poof({
+      x: this.view.decoy.x,
+      y: this.view.decoy.y,
+      // scale: 1.0,
+      // alpha: .75,
+      // delay: 250,
+      scene: this.scene,
+      container: this.view
+    }) )
     this.session.reset()
     
     this.scene.game.input.events.on( "move", ( x, y ) => this.moveMayBe( x, y ) )

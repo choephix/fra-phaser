@@ -32,5 +32,6 @@ export enum GameEvent
   PLAYERMOVE,    // from, to
   PLAYERSPECIAL, // skill
   PLAYERDIE,     // collision/fall
+  DECOYDIE,     // collision/fall
   TILEBUST,      // tile
 }
