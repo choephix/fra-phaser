@@ -110,7 +110,7 @@ class GameWorldScene extends Phaser.Scene
     this.anims.create( {
       key: "boom",
       frames: this.anims.generateFrameNumbers( "boom", {} ),
-      frameRate: 60,
+      frameRate: 30,
     } )
 
     this.anims.create( {
