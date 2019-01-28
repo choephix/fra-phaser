@@ -108,25 +108,22 @@ export class GameWorld
         if ( bot.frozen && !freeze )
             bot.setState_IDLE()
 
-        tweenMove( bot, bot.model.tile.x, bot.model.tile.y )
+        let move_tween = tweenMove( bot, bot.model.tile.x, bot.model.tile.y )
         if ( bot.model.dead && !bot.dead )
         {
           bot.dead = true
-          bot.setState_FALL()
+          let x = bot.model.tile.x
+          let y = bot.model.tile.y
           this.scene.time.delayedCall( 100, () => {
-            let x = bot.model.tile.x
-            let y = bot.model.tile.y
             if ( bot.model.exploded )
             {
-              x += Phaser.Math.FloatBetween( -.5, .5 )
-              y += Phaser.Math.FloatBetween( -.5, .5 )
-              this.view.shockwave( x, y, 2.0 )
-              this.view.boom( x,y )
+              tweens.killTweensOf(bot)
+              bot.setState_BOOM()
               this.view.quake += 2
             }
             else
             {
-              this.view.shockwave( x, y, 0.75, .075 )
+              bot.setState_FALL()
             }
           }, null, this )
         }

@@ -1,4 +1,5 @@
 import { Game, Tile, Bot, Player, Decoy } from "../game/game";
+import { GameWorldEffects } from "./effects";
 
 export class GameWorldView extends Phaser.GameObjects.Container
 {
@@ -116,37 +117,6 @@ export class GameWorldView extends Phaser.GameObjects.Container
     this.decoy.setPosition( this.getActorX( model.tile.x ), this.getActorY( model.tile.y ) )
     this.add( this.decoy )
   }
-
-  // ANI
-
-  shockwave( x, y, size, alpha=.25 )
-  {
-    let wave = this.scene.add.sprite( this.getTileX( x ), this.getTileY( y ), "wave" )
-      .setRotation( 2.0 * Math.PI * Math.random() )
-      .setScale( .1 * size )
-      .setAlpha( alpha )
-    this.scene.tweens.add( {
-      targets: wave,
-      onComplete: () => wave.destroy(),
-      scaleX: size,
-      scaleY: size,
-      alpha: 0,
-      ease: 'Quad.easeOut',
-      duration: 500
-    } )
-    this.add( wave )
-  }
-
-  boom( x, y )
-  {
-    let boom = this.scene.add.sprite( this.getTileX( x ), this.getTileY( y ), "boom" )
-    boom.setRotation( 2.0 * Math.PI * Math.random() )
-    boom.setScale( 1.0 )
-    boom.anims.load( "xplode" )
-    boom.anims.play( "xplode" )
-    boom.on( 'animationcomplete', () => boom.destroy() );
-    this.add( boom )
-  }
 }
 
 class TileSprite extends Phaser.GameObjects.Image
@@ -202,6 +172,31 @@ class BotSprite extends Phaser.GameObjects.Sprite
     this.dead = true
     this.anims.play( "bot-fall" )
     this.once( "animationcomplete", () => this.visible = false )
+    GameWorldEffects.shockwave( {
+      x: this.x, y: this.y,
+      scale: 0.75,
+      alpha: 0.10,
+      delay: 150, 
+      scene: this.scene,
+      container: this.parentContainer
+    } )
+  }
+  public setState_BOOM()
+  {
+    this.dead = true
+    this.visible = false
+    GameWorldEffects.shockwave( {
+      x: this.x, y: this.y,
+      scale: 2.0,
+      alpha: 0.25, 
+      scene: this.scene,
+      container: this.parentContainer
+    } )
+    GameWorldEffects.boom( {
+      x: this.x, y: this.y,
+      scene: this.scene,
+      container: this.parentContainer
+    } )
   }
   public setState_FROZEN()
   {
