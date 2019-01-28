@@ -58,7 +58,7 @@ export class Game
       }
       else
       {
-        console.log("-- end-tick --") 
+        // console.log("-- end-tick --") 
         clearInterval( interval )
         this.auto = false
       }
@@ -160,7 +160,6 @@ export class Game
 
   public killBot( bot:Bot, explode:boolean )
   {
-    console.log("kill")
     if ( bot.dead )
       return
     bot.dead = true
