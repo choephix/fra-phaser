@@ -6,6 +6,7 @@
 /out-tsc
 /bin/**/*.js
 /bin/*.js
+/bin/assets/-*/**
 !/bin/lib/*.*
 
 # dependencies
