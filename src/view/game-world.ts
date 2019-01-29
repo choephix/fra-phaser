@@ -184,8 +184,6 @@ export class GameWorld
 
     let scale = this.stageWidth / ( this.game.W * 70 + 105 )
     this.view.setScale( scale )
-
-    new DebugKeyboardController( this.game )
   }
 
   moveMayBe( dx: number, dy: number )

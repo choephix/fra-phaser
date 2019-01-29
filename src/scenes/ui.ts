@@ -74,33 +74,51 @@ class ScoreText extends Phaser.GameObjects.Text
 
 export class ContinueSplashScene extends Phaser.Scene
 {
-  create(params)
+  private title:Phaser.GameObjects.Text
+  preload()
   {
+    console.log( "win" )
     let cam = this.cameras.main
-    let t = this.add.text( cam.centerX, cam.centerY, "NEXT", {} )
-    t.setOrigin( 0.5 )
-    t.setFontSize( 400 )
-    t.setFontFamily( "IMPACT" )
-    t.setColor( "white" )
-    t.setStroke( "#000B", 12 )
-    t.setAlpha( .0 )
-    this.tweens.add({ targets: t, alpha: 1, delay: params.delay, duration:250 })
+    this.title = this.add.text( cam.centerX, cam.centerY, "NEXT", {} )
+    this.title.setOrigin( 0.5 )
+    this.title.setFontSize( 400 )
+    this.title.setFontFamily( "IMPACT" )
+    this.title.setColor( "white" )
+    this.title.setStroke( "#000B", 12 )
+    this.title.setAlpha( .0 )
+
+    this.events.on( "wake", ()=>
+    { 
+      this.tweens.add( {
+        targets: this.title,
+        alpha: 1, scale: 1, delay: 1000, duration: 250
+      } )
+    } )
   }
 }
 
 export class GameOverSplashScene extends Phaser.Scene
 {
-  create( params )
+  private title: Phaser.GameObjects.Text
+  preload()
   {
+    console.log("sad")
     let cam = this.cameras.main
-    let t = this.add.text( cam.centerX, cam.centerY, "GAME\nOVER", {} )
-    t.setOrigin( 0.5 )
-    t.setFontSize( 400 )
-    t.setFontFamily( "IMPACT" )
-    t.setColor( "white" )
-    t.setStroke( "#000B", 16 )
-    t.setRotation(-.11)
-    t.setAlpha( .0 )
-    this.tweens.add( { targets: t, alpha: 1, delay: params.delay, duration: 250 } )
+    this.title = this.add.text( cam.centerX, cam.centerY, "GAME\nOVER", {} )
+    this.title.setOrigin( 0.5 )
+    this.title.setFontSize( 400 )
+    this.title.setFontFamily( "IMPACT" )
+    this.title.setColor( "white" )
+    this.title.setStroke( "#000B", 12 )
+    this.title.setRotation( -.13 )
+    this.title.setAlpha( .0 )
+
+    this.events.on( "wake", () =>
+    {
+      this.tweens.add( {
+        targets: this.title,
+        alpha: 1, scale: 1, delay: 1000, duration: 250
+      } )
+    } )
   }
 }

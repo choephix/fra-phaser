@@ -3,6 +3,7 @@ import { AbstractTouchController } from "./view/ctrl";
 import { GameWorld } from "./view/game-world";
 import { GameSession } from "./game/game-session";
 import { GameEvent } from "./game/events";
+import { DebugKeyboardController } from "./debug/debug-ctrl";
 
 export class App 
 {
@@ -41,16 +42,17 @@ export class App
     App.phaser_game.scene.add( 'bg', BackgroundScene, true );
     App.phaser_game.scene.add( 'world', GameWorldScene, true );
     App.phaser_game.scene.add( 'ui', UIScene, true );
-    App.phaser_game.scene.add( 'splash-continue', ContinueSplashScene, false );
-    App.phaser_game.scene.add( 'splash-gameover', GameOverSplashScene, false );
-
+    App.phaser_game.scene.add( 'splash-continue', ContinueSplashScene, true );
+    App.phaser_game.scene.add( 'splash-gameover', GameOverSplashScene, true );
     App.gameplay.events.on( GameEvent.GAMEOVER, victory =>
-      App.phaser_game.scene.start( victory ? 'splash-continue' : 'splash-gameover', {delay:990} ) )
+      App.phaser_game.scene.wake( victory ? 'splash-continue' : 'splash-gameover' ) )
     App.gameplay.events.on( GameEvent.GAMESTART, () =>
     {
-      App.phaser_game.scene.stop( 'splash-continue' )
-      App.phaser_game.scene.stop( 'splash-gameover' )
+      App.phaser_game.scene.sleep( 'splash-continue' )
+      App.phaser_game.scene.sleep( 'splash-gameover' )
     } )
+
+    new DebugKeyboardController()
   }
 
   getDimensions()
@@ -163,7 +165,7 @@ class GameWorldScene extends Phaser.Scene
     let cam = this.cameras.main
     this.world = new GameWorld( this, cam.width, cam.height, cam.centerX, cam.centerY )
     
-    App.gameplay.reset()
+    setTimeout( () => App.gameplay.reset(), 250 )
   }
 }
 
