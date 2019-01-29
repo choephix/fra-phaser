@@ -29,6 +29,9 @@ export class GameWorldView extends Phaser.GameObjects.Container
 
   preUpdate( time, delta )
   {
+    if ( !this.game )
+      return
+      
     if ( this.quake > .01 )
     {
       this.x = this.originalX + Phaser.Math.FloatBetween( -this.quake, this.quake )

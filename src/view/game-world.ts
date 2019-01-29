@@ -8,10 +8,11 @@ import { GameWorldEffects } from "./effects";
 
 export class GameWorld
 {
-  session: GameSession
+  // session: GameSession
 
   view: GameWorldView
 
+  get session(): GameSession { return App.gameplay }
   get game(): Game { return this.session ? this.session.currentGame : null }
 
   private zone: Phaser.GameObjects.Image
@@ -22,7 +23,7 @@ export class GameWorld
     this.zone
       .setAlpha( .01 )
       .setScale( 1.2, .8 )
-      .setInteractive( { useHandCursor: true } )
+      .setInteractive( { cursor: "move" } )
       .on( "pointerdown", e => { if ( this.session.ingame ) App.ctrl.start( e.x, e.y ) } )
       .on( "pointermove", e => App.ctrl.move( e.x, e.y ) )
       .on( "pointerup", e => App.ctrl.end() )
@@ -32,10 +33,10 @@ export class GameWorld
     this.view.addBackground()
     this.scene.add.existing( this.view )
 
-    this.session = new GameSession
-    this.session.events.on( GameEvent.GAMESTART, () => this.buildWorld() )
-    this.session.events.on( GameEvent.CHANGE, () => this.onAnyChange() )
-    this.session.events.on( GameEvent.DECOYDIE, d => GameWorldEffects.poof({
+    // this.session = new GameSession
+    App.gameplay.events.on( GameEvent.GAMESTART, () => this.buildWorld() )
+    App.gameplay.events.on( GameEvent.CHANGE, () => this.onAnyChange() )
+    App.gameplay.events.on( GameEvent.DECOYDIE, d => GameWorldEffects.poof({
       x: this.view.decoy.x,
       y: this.view.decoy.y,
       // scale: 1.0,
@@ -44,7 +45,7 @@ export class GameWorld
       scene: this.scene,
       container: this.view
     }) )
-    this.session.reset()
+    // this.session.reset()
     
     this.scene.game.input.events.on( "move", ( x, y ) => this.moveMayBe( x, y ) )
     this.scene.game.input.events.on( "skill", 
@@ -107,7 +108,7 @@ export class GameWorld
         continue
 
       let bt = bot.model.tile
-      let delay = 100 + dist(pt,bt) * 50 + Math.random() * 50
+      let delay = 100 + dist(pt,bt) * 60 + Math.random() * 40
       this.scene.time.delayedCall( delay, () =>
       {
         let freeze = bot.model.stunned || this.game.frozenTurns > 0
@@ -118,7 +119,7 @@ export class GameWorld
         if ( bot.frozen && !freeze )
             bot.setState_IDLE()
 
-        let move_tween = tweenMove( bot, bot.model.tile.x, bot.model.tile.y )
+        tweenMove( bot, bot.model.tile.x, bot.model.tile.y )
         if ( bot.model.dead && !bot.dead )
         {
           bot.dead = true

@@ -11,7 +11,7 @@ export class UIScene extends Phaser.Scene
   {
     let cam = this.cameras.main
 
-    this.tLevel = this.add.text( cam.centerX, cam.height * .07, "L" )
+    this.tLevel = this.add.text( cam.centerX, cam.height * .07, "$" )
     this.tLevel.setOrigin(0.5)
     this.tLevel.setFontSize(128)
     this.tLevel.setFontFamily("IMPACT")
@@ -74,16 +74,33 @@ class ScoreText extends Phaser.GameObjects.Text
 
 export class ContinueSplashScene extends Phaser.Scene
 {
-  create()
+  create(params)
   {
+    let cam = this.cameras.main
+    let t = this.add.text( cam.centerX, cam.centerY, "NEXT", {} )
+    t.setOrigin( 0.5 )
+    t.setFontSize( 400 )
+    t.setFontFamily( "IMPACT" )
+    t.setColor( "white" )
+    t.setStroke( "#000B", 12 )
+    t.setAlpha( .0 )
+    this.tweens.add({ targets: t, alpha: 1, delay: params.delay, duration:250 })
   }
 }
 
 export class GameOverSplashScene extends Phaser.Scene
 {
-  private tScore: Phaser.GameObjects.Text
-
-  create()
+  create( params )
   {
+    let cam = this.cameras.main
+    let t = this.add.text( cam.centerX, cam.centerY, "GAME\nOVER", {} )
+    t.setOrigin( 0.5 )
+    t.setFontSize( 400 )
+    t.setFontFamily( "IMPACT" )
+    t.setColor( "white" )
+    t.setStroke( "#000B", 16 )
+    t.setRotation(-.11)
+    t.setAlpha( .0 )
+    this.tweens.add( { targets: t, alpha: 1, delay: params.delay, duration: 250 } )
   }
 }

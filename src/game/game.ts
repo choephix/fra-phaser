@@ -151,7 +151,7 @@ export class Game
     if ( this.aliveBots.length < 1 )
     {
       this.over = true
-      this.events.raise( GameEvent.GAMEOVER )
+      this.events.raise( GameEvent.GAMEOVER, this.victory )
     }
 
     this.events.raise( GameEvent.CHANGE )
