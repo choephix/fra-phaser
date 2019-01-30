@@ -64,7 +64,7 @@ export class App
   }
 }
 
-class BootScene extends Phaser.Scene
+export class BootScene extends Phaser.Scene
 {
   textf:Phaser.GameObjects.Text
   preload()
@@ -97,6 +97,7 @@ class BootScene extends Phaser.Scene
     // this.load.spritesheet( 'boom', '1.png', { frameWidth: 512, frameHeight: 512 } )
 
     this.load.image( 'tile', 'tile.png' )
+    this.load.image( 'tile-focus', 'tile-focus.png' )
     this.load.spritesheet( 'sheet_b', 'fra.png', { frameWidth: 769, frameHeight: 500 } )
   }
 
@@ -114,7 +115,7 @@ class BootScene extends Phaser.Scene
   }
 }
 
-class GameWorldScene extends Phaser.Scene
+export class GameWorldScene extends Phaser.Scene
 {
   world: GameWorld
 
@@ -169,17 +170,17 @@ class GameWorldScene extends Phaser.Scene
   }
 }
 
-class BackgroundScene extends Phaser.Scene
+export class BackgroundScene extends Phaser.Scene
 {
-  sky: Phaser.GameObjects.Image
+  public img: Phaser.GameObjects.Image
 
   create()
   {
     let cam = this.cameras.main
-    this.sky = this.add.image( 0, 0, "background" )
-    this.sky.setDisplaySize( cam.width, cam.height )
-    this.sky.setOrigin( 0, 0 )
-    this.sky.setAlpha( 0 )
-    this.tweens.add( { targets: this.sky, alpha: 1, duration: 200 } )
+    this.img = this.add.image( 0, 0, "background" )
+    this.img.setDisplaySize( cam.width, cam.height )
+    this.img.setOrigin( 0, 0 )
+    this.img.setAlpha( 0 )
+    this.tweens.add( { targets: this.img, alpha: 1, duration: 200 } )
   }
 }

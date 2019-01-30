@@ -1,4 +1,4 @@
-import { App } from "src/app";
+import { App, BackgroundScene } from "src/app";
 import { DebugKeyboardController } from "src/debug/debug-ctrl";
 import { GameEvent } from "src/game/events";
 import { Game } from "../game/game";
@@ -15,19 +15,15 @@ export class GameWorld
   get session(): GameSession { return App.gameplay }
   get game(): Game { return this.session ? this.session.currentGame : null }
 
-  private zone: Phaser.GameObjects.Image
+  get touch_zome() { return ( <BackgroundScene>this.scene.scene.get( 'bg' ) ).img }
 
   constructor( public scene: Phaser.Scene, private stageWidth: number, private stageHeight: number, x:number, y:number )
   {
-    this.zone = this.scene.add.image( x, y, "c1" )
-    this.zone
-      .setAlpha( .01 )
-      .setScale( 1.2, .8 )
-      .setInteractive( { cursor: "move" } )
-      .on( "pointerdown", e => { if ( this.session.ingame ) App.ctrl.start( e.x, e.y ) } )
-      .on( "pointermove", e => App.ctrl.move( e.x, e.y ) )
-      .on( "pointerup", e => App.ctrl.end() )
-    this.zone.on( "pointerdown", e => { if ( this.game.over ) this.initNextStage() } )
+    this.touch_zome.setInteractive( { cursor: "move" } )
+        .on( "pointerdown", e => { if ( this.session.ingame ) App.ctrl.start( e.x, e.y ) } )
+        .on( "pointermove", e => App.ctrl.move( e.x, e.y ) )
+        .on( "pointerup", e => App.ctrl.end() )
+    this.touch_zome.on( "pointerdown", e => { if ( this.game.over ) this.initNextStage() } )
 
     this.view = new GameWorldView( this.scene, x, y )
     this.view.addBackground()
@@ -179,8 +175,6 @@ export class GameWorld
       this.view.addBot( model )
 
     this.view.addPlayer( g.player )
-
-    this.zone.setSize( this.game.W * 70, this.game.H * 70 )
 
     let scale = this.stageWidth / ( this.game.W * 70 + 105 )
     this.view.setScale( scale )
