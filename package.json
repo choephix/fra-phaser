@@ -8,7 +8,7 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "lite": "lite-server --host 0.0.0.0",
-    "start": "concurrently \"npm run tsc:w\" \"npm run lite\"",
+    "dev": "concurrently \"npm run tsc:w\" \"npm run lite\"",
     "build": "tsc --build"
   },
   "author": "Stefan Ginev",
