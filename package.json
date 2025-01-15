@@ -2,7 +2,7 @@
   "name": "fra-phaser",
   "version": "0.2.0",
   "description": "just some furry robots",
-  "main": "app.js",
+  "main": "src/app.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc",
@@ -10,7 +10,7 @@
     "lite": "lite-server --host 0.0.0.0",
     "start": "concurrently \"npm run tsc:w\" \"npm run lite\" "
   },
-  "author": "cx",
+  "author": "Stefan Ginev",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^9.1.2",
