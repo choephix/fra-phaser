@@ -21,5 +21,16 @@
   },
   "dependencies": {
     "phaser": "^3.87.0"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "arrowParens": "avoid",
+    "endOfLine": "lf"
   }
 }

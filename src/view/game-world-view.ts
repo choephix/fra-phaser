@@ -1,5 +1,5 @@
-import { Game, Tile, Bot, Player, Decoy } from "../game/game";
-import { GameWorldEffects } from "./effects";
+import { Game, Tile, Bot, Player, Decoy } from '../game/game';
+import { GameWorldEffects } from './effects';
 
 export class GameWorldView extends Phaser.GameObjects.Container {
   TILESIZE: number = 70;
@@ -36,7 +36,7 @@ export class GameWorldView extends Phaser.GameObjects.Container {
   constructor(
     scene,
     private originalX,
-    private originalY,
+    private originalY
   ) {
     super(scene, originalX, originalY);
   }
@@ -45,10 +45,8 @@ export class GameWorldView extends Phaser.GameObjects.Container {
     if (!this.game) return;
 
     if (this.quake > 0.01) {
-      this.x =
-        this.originalX + Phaser.Math.FloatBetween(-this.quake, this.quake);
-      this.y =
-        this.originalY + Phaser.Math.FloatBetween(-this.quake, this.quake);
+      this.x = this.originalX + Phaser.Math.FloatBetween(-this.quake, this.quake);
+      this.y = this.originalY + Phaser.Math.FloatBetween(-this.quake, this.quake);
       this.quake *= 0.85;
     } else {
       this.x = this.originalX;
@@ -63,7 +61,7 @@ export class GameWorldView extends Phaser.GameObjects.Container {
   }
 
   add(
-    child: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[],
+    child: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[]
   ): Phaser.GameObjects.Container {
     this.scene.add.existing(<Phaser.GameObjects.GameObject>child);
     return super.add(child);
@@ -72,10 +70,7 @@ export class GameWorldView extends Phaser.GameObjects.Container {
   addBackground() {
     return;
     let c;
-    c = this.scene.add
-      .image(0, 0, "circle")
-      .setBlendMode(Phaser.BlendModes.ADD)
-      .setScale(0.5);
+    c = this.scene.add.image(0, 0, 'circle').setBlendMode(Phaser.BlendModes.ADD).setScale(0.5);
     this.add(c);
     this.scene.tweens.add({
       targets: c,
@@ -84,7 +79,7 @@ export class GameWorldView extends Phaser.GameObjects.Container {
       repeat: -1,
     });
     c = this.scene.add
-      .image(0, 0, "circle")
+      .image(0, 0, 'circle')
       .setBlendMode(Phaser.BlendModes.ADD)
       .setScale(1.5)
       .setAlpha(0.05);
@@ -110,7 +105,7 @@ export class GameWorldView extends Phaser.GameObjects.Container {
   addTile(model: Tile) {
     let o = new TileSprite(this.scene, model).setPosition(
       this.getTileX(model.x),
-      this.getTileY(model.y),
+      this.getTileY(model.y)
     );
     this.add(o);
     this.tiles.push(o);
@@ -118,24 +113,18 @@ export class GameWorldView extends Phaser.GameObjects.Container {
   addBot(model: Bot) {
     let o = new BotSprite(this.scene, model).setPosition(
       this.getActorX(model.tile.x),
-      this.getActorY(model.tile.y),
+      this.getActorY(model.tile.y)
     );
     this.add(o);
     this.bots.push(o);
   }
   addPlayer(model: Player) {
     this.player = new PlayerSprite(this.scene, model);
-    this.player.setPosition(
-      this.getActorX(model.tile.x),
-      this.getActorY(model.tile.y),
-    );
+    this.player.setPosition(this.getActorX(model.tile.x), this.getActorY(model.tile.y));
     this.add(this.player);
 
     this.decoy = new DecoySprite(this.scene, this.game.decoy);
-    this.decoy.setPosition(
-      this.getActorX(model.tile.x),
-      this.getActorY(model.tile.y),
-    );
+    this.decoy.setPosition(this.getActorX(model.tile.x), this.getActorY(model.tile.y));
     this.add(this.decoy);
   }
 }
@@ -144,9 +133,9 @@ class TileSprite extends Phaser.GameObjects.Image {
   busted: boolean;
   constructor(
     scene: Phaser.Scene,
-    public model: Tile,
+    public model: Tile
   ) {
-    super(scene, 0, 0, "tile");
+    super(scene, 0, 0, 'tile');
     this.setScale(Phaser.Math.FloatBetween(0.54, 0.56));
     this.setRotation(Phaser.Math.FloatBetween(-0.05, 0.05));
 
@@ -174,9 +163,9 @@ class BotSprite extends Phaser.GameObjects.Sprite {
   // targetY:number = 0
   constructor(
     scene: Phaser.Scene,
-    public model: Bot,
+    public model: Bot
   ) {
-    super(scene, 0, 0, "sheet_b");
+    super(scene, 0, 0, 'sheet_b');
     this.setScale(0.175);
     this.setOrigin(0.4, 0.45);
     this.setState_IDLE();
@@ -184,12 +173,12 @@ class BotSprite extends Phaser.GameObjects.Sprite {
   public setState_IDLE() {
     this.dead = false;
     this.frozen = false;
-    this.anims.play("bot-idle", true, Math.floor(Math.random() * 4));
+    this.anims.play('bot-idle', true, Math.floor(Math.random() * 4));
   }
   public setState_FALL() {
     this.dead = true;
-    this.anims.play("bot-fall");
-    this.once("animationcomplete", () => (this.visible = false));
+    this.anims.play('bot-fall');
+    this.once('animationcomplete', () => (this.visible = false));
     GameWorldEffects.shockwave({
       x: this.x,
       y: this.y,
@@ -220,7 +209,7 @@ class BotSprite extends Phaser.GameObjects.Sprite {
   }
   public setState_FROZEN() {
     this.frozen = true;
-    return this.anims.play("bot-freeze");
+    return this.anims.play('bot-freeze');
   }
   // preUpdate()
   // {
@@ -233,20 +222,20 @@ class PlayerSprite extends Phaser.GameObjects.Sprite {
   dead: boolean;
   constructor(
     scene: Phaser.Scene,
-    public model: Player,
+    public model: Player
   ) {
-    super(scene, 0, 0, "sheet_b");
+    super(scene, 0, 0, 'sheet_b');
     this.setScale(0.25);
     this.setOrigin(0.4, 0.5);
     this.setState_IDLE();
   }
   public setState_IDLE() {
-    this.anims.play("player-idle");
+    this.anims.play('player-idle');
   }
   public setState_FALL() {
     this.dead = true;
-    this.anims.play("player-fall");
-    this.once("animationcomplete", () => (this.visible = false));
+    this.anims.play('player-fall');
+    this.once('animationcomplete', () => (this.visible = false));
   }
 }
 
@@ -254,12 +243,12 @@ class DecoySprite extends Phaser.GameObjects.Sprite {
   active: boolean;
   constructor(
     scene: Phaser.Scene,
-    public model: Decoy,
+    public model: Decoy
   ) {
-    super(scene, 0, 0, "sheet_b");
+    super(scene, 0, 0, 'sheet_b');
     this.setScale(0.15);
     this.setOrigin(0.4, 0.55);
     // this.setFrame( 30 )
-    this.anims.play("decoy");
+    this.anims.play('decoy');
   }
 }

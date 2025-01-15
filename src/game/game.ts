@@ -1,4 +1,4 @@
-import { IEventDispatcher, GameEvent } from "./events";
+import { IEventDispatcher, GameEvent } from './events';
 
 export class Game {
   public tiles: Tile[] = [];
@@ -14,27 +14,24 @@ export class Game {
     return !this.player.dead;
   }
   public get aliveBots(): Bot[] {
-    return this.bots.filter((bot) => !bot.dead);
+    return this.bots.filter(bot => !bot.dead);
   }
 
   constructor(
     public W: number,
     public H: number,
     public BOTS: number,
-    public events: IEventDispatcher,
+    public events: IEventDispatcher
   ) {
-    for (let ix = 0; ix < W; ix++)
-      for (let iy = 0; iy < H; iy++) this.tiles.push(new Tile(ix, iy));
+    for (let ix = 0; ix < W; ix++) for (let iy = 0; iy < H; iy++) this.tiles.push(new Tile(ix, iy));
 
     let pti = H * Math.floor(0.5 * W) + Math.floor(0.5 * H);
     let pt = this.tiles[pti];
     this.player = new Player(pt);
 
     this.bots = [];
-    let tiles = this.tiles.filter((t) => {
-      return (
-        (t.x > pt.x + 1 || t.x < pt.x - 1) && (t.y > pt.y + 1 || t.y < pt.y - 1)
-      );
+    let tiles = this.tiles.filter(t => {
+      return (t.x > pt.x + 1 || t.x < pt.x - 1) && (t.y > pt.y + 1 || t.y < pt.y - 1);
     });
     for (let ib = 0; ib < BOTS; ib++) {
       if (tiles.length < 1) break;
@@ -114,8 +111,7 @@ export class Game {
         }
       }
       if (tile.busted) {
-        for (let bot of this.bots)
-          if (!bot.dead && bot.tile === tile) this.killBot(bot, false);
+        for (let bot of this.bots) if (!bot.dead && bot.tile === tile) this.killBot(bot, false);
       }
     }
 
@@ -145,8 +141,7 @@ export class Game {
     if (bot.dead) return;
     bot.dead = true;
     bot.exploded = explode;
-    if (!this.player.dead)
-      this.events.raise(GameEvent.BOTDIE, bot, explode, this.auto);
+    if (!this.player.dead) this.events.raise(GameEvent.BOTDIE, bot, explode, this.auto);
   }
 
   public getRandomTile() {
@@ -164,8 +159,7 @@ export class Game {
 
   public getBotsOn(tile: Tile): Bot[] {
     let bots: Bot[] = [];
-    for (let bot of this.bots)
-      if (!bot.dead && bot.tile === tile) bots.push(bot);
+    for (let bot of this.bots) if (!bot.dead && bot.tile === tile) bots.push(bot);
     return bots;
   }
 }
@@ -174,7 +168,7 @@ export class Tile {
   busted: boolean = false;
   constructor(
     public x: number,
-    public y: number,
+    public y: number
   ) {}
 }
 

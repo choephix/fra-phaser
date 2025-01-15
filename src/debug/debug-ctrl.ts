@@ -1,11 +1,11 @@
-import { App } from "src/app";
+import { App } from 'src/app';
 
 export class DebugKeyboardController {
   constructor() {
-    document.addEventListener("keydown", (e) => onKeyDown(e));
+    document.addEventListener('keydown', e => onKeyDown(e));
 
     function onKeyDown(e: KeyboardEvent) {
-      if (e.code === "KeyK") {
+      if (e.code === 'KeyK') {
         let game = App.gameplay.currentGame;
 
         for (let i in game.bots) {
@@ -14,7 +14,7 @@ export class DebugKeyboardController {
         }
         game.recheck();
       }
-      if (e.code === "KeyF") document.documentElement.requestFullscreen();
+      if (e.code === 'KeyF') document.documentElement.requestFullscreen();
     }
   }
 }

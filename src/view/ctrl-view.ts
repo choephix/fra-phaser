@@ -1,4 +1,4 @@
-import { AbstractTouchController } from "./ctrl";
+import { AbstractTouchController } from './ctrl';
 
 export class ControllerSprite extends Phaser.GameObjects.Container {
   c1: Circle;
@@ -7,15 +7,15 @@ export class ControllerSprite extends Phaser.GameObjects.Container {
 
   constructor(
     scene,
-    private ctrl: AbstractTouchController,
+    private ctrl: AbstractTouchController
   ) {
     super(scene);
 
     scene.add.existing(this);
 
-    this.c1 = this.addCircle("c2");
-    this.c2 = this.addCircle("c1");
-    this.c3 = this.addCircle("c3").setScale(0.36);
+    this.c1 = this.addCircle('c2');
+    this.c2 = this.addCircle('c1');
+    this.c3 = this.addCircle('c3').setScale(0.36);
     this.c3.max_alpha = 0.33;
   }
 
@@ -47,7 +47,7 @@ class Circle extends Phaser.GameObjects.Image {
   constructor(
     scene,
     tex: string,
-    private speed: number,
+    private speed: number
   ) {
     super(scene, 0, 0, tex);
     scene.add.existing(this);
@@ -57,8 +57,7 @@ class Circle extends Phaser.GameObjects.Image {
   }
 
   preUpdate() {
-    if (this.shown && this.alpha < this.max_alpha)
-      this.alpha += 0.2 * this.max_alpha;
+    if (this.shown && this.alpha < this.max_alpha) this.alpha += 0.2 * this.max_alpha;
     if (!this.shown && this.alpha > 0.0) this.alpha -= 0.1 * this.max_alpha;
   }
 }

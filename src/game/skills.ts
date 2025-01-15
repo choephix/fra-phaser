@@ -1,4 +1,4 @@
-import { Game } from "./game";
+import { Game } from './game';
 
 export class Skill {
   id: string;
@@ -14,9 +14,9 @@ export class SkillBook {
     return [
       {
         id: 'fast-forward',
-        icon: "😎",
-        name: "Fast Forward",
-        hint: "Automatically skip every turn until you win or you die.\n(yields better rewards per kill)",
+        icon: '😎',
+        name: 'Fast Forward',
+        hint: 'Automatically skip every turn until you win or you die.\n(yields better rewards per kill)',
         infiniteUses: true,
         func: (game: Game) => game.runAuto(),
       },
@@ -35,8 +35,7 @@ export class SkillBook {
         func: (game: Game) => {
           for (let bot of game.bots)
             if (Math.abs(bot.tile.x - game.player.tile.x) <= 1.0)
-              if (Math.abs(bot.tile.y - game.player.tile.y) <= 1.0)
-                bot.stunned = true;
+              if (Math.abs(bot.tile.y - game.player.tile.y) <= 1.0) bot.stunned = true;
         },
       },
       {

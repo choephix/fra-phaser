@@ -680,11 +680,7 @@ declare type GameConfig = {
   plugins?: PluginObject | PluginObjectItem[];
 };
 
-declare type TimeStepCallback = (
-  time: number,
-  average: number,
-  interpolation: number,
-) => void;
+declare type TimeStepCallback = (time: number, average: number, interpolation: number) => void;
 
 declare type JSONCameraBounds = {
   /**
@@ -808,47 +804,44 @@ declare type InputJSONCameraObject = {
   /**
    * The top-left extent of the Camera bounds.
    */
-  "bounds.x"?: number;
+  'bounds.x'?: number;
   /**
    * The top-left extent of the Camera bounds.
    */
-  "bounds.y"?: number;
+  'bounds.y'?: number;
   /**
    * The width of the Camera bounds.
    */
-  "bounds.width"?: number;
+  'bounds.width'?: number;
   /**
    * The height of the Camera bounds.
    */
-  "bounds.height"?: number;
+  'bounds.height'?: number;
 };
 
-declare type CameraFadeCallback = (
-  camera: Phaser.Cameras.Scene2D.Camera,
-  progress: number,
-) => void;
+declare type CameraFadeCallback = (camera: Phaser.Cameras.Scene2D.Camera, progress: number) => void;
 
 declare type CameraFlashCallback = (
   camera: Phaser.Cameras.Scene2D.Camera,
-  progress: number,
+  progress: number
 ) => void;
 
 declare type CameraPanCallback = (
   camera: Phaser.Cameras.Scene2D.Camera,
   progress: number,
   x: number,
-  y: number,
+  y: number
 ) => void;
 
 declare type CameraShakeCallback = (
   camera: Phaser.Cameras.Scene2D.Camera,
-  progress: number,
+  progress: number
 ) => void;
 
 declare type CameraZoomCallback = (
   camera: Phaser.Cameras.Scene2D.Camera,
   progress: number,
-  zoom: number,
+  zoom: number
 ) => void;
 
 declare type FixedKeyControlConfig = {
@@ -935,7 +928,7 @@ declare type SmoothedKeyControlConfig = {
 
 declare type GenerateTextureRendererCallback = (
   canvas: HTMLCanvasElement,
-  context: CanvasRenderingContext2D,
+  context: CanvasRenderingContext2D
 ) => void;
 
 declare type GenerateTextureConfig = {
@@ -981,43 +974,43 @@ declare type Palette = {
   /**
    * Color value 1.
    */
-  "0": string;
+  '0': string;
   /**
    * Color value 2.
    */
-  "1": string;
+  '1': string;
   /**
    * Color value 3.
    */
-  "2": string;
+  '2': string;
   /**
    * Color value 4.
    */
-  "3": string;
+  '3': string;
   /**
    * Color value 5.
    */
-  "4": string;
+  '4': string;
   /**
    * Color value 6.
    */
-  "5": string;
+  '5': string;
   /**
    * Color value 7.
    */
-  "6": string;
+  '6': string;
   /**
    * Color value 8.
    */
-  "7": string;
+  '7': string;
   /**
    * Color value 9.
    */
-  "8": string;
+  '8': string;
   /**
    * Color value 10.
    */
-  "9": string;
+  '9': string;
   /**
    * Color value 11.
    */
@@ -1152,12 +1145,7 @@ declare type JSONPath = {
   curves: JSONCurve[];
 };
 
-declare type DataEachCallback = (
-  parent: any,
-  key: string,
-  value: any,
-  ...args: any[]
-) => void;
+declare type DataEachCallback = (parent: any, key: string, value: any, ...args: any[]) => void;
 
 /**
  * Checks for support of the Full Screen API.
@@ -1209,7 +1197,7 @@ declare namespace Phaser.Display.Color {
       g2: number,
       b2: number,
       length?: number,
-      index?: number,
+      index?: number
     ): ColorObject;
 
     /**
@@ -1223,7 +1211,7 @@ declare namespace Phaser.Display.Color {
       color1: Phaser.Display.Color,
       color2: Phaser.Display.Color,
       length?: number,
-      index?: number,
+      index?: number
     ): ColorObject;
 
     /**
@@ -1241,7 +1229,7 @@ declare namespace Phaser.Display.Color {
       g: number,
       b: number,
       length?: number,
-      index?: number,
+      index?: number
     ): ColorObject;
   }
 }
@@ -1468,10 +1456,7 @@ declare type JSONBitmapText = JSONGameObject & {
 };
 
 declare namespace Phaser.GameObjects.Blitter {
-  type CreateCallback = (
-    bob: Phaser.GameObjects.Blitter.Bob,
-    index: integer,
-  ) => void;
+  type CreateCallback = (bob: Phaser.GameObjects.Blitter.Bob, index: integer) => void;
 
   /**
    * A Bob Game Object.
@@ -1502,7 +1487,7 @@ declare namespace Phaser.GameObjects.Blitter {
       x: number,
       y: number,
       frame: string | integer,
-      visible: boolean,
+      visible: boolean
     );
 
     /**
@@ -1551,9 +1536,7 @@ declare namespace Phaser.GameObjects.Blitter {
      * If no value is given it will use the default frame of the Blitter parent.
      * @param frame The frame to be used during rendering.
      */
-    setFrame(
-      frame?: string | integer | Phaser.Textures.Frame,
-    ): Phaser.GameObjects.Blitter.Bob;
+    setFrame(frame?: string | integer | Phaser.Textures.Frame): Phaser.GameObjects.Blitter.Bob;
 
     /**
      * Resets the horizontal and vertical flipped state of this Bob back to their default un-flipped state.
@@ -1573,7 +1556,7 @@ declare namespace Phaser.GameObjects.Blitter {
     reset(
       x: number,
       y: number,
-      frame?: string | integer | Phaser.Textures.Frame,
+      frame?: string | integer | Phaser.Textures.Frame
     ): Phaser.GameObjects.Blitter.Bob;
 
     /**
@@ -1721,11 +1704,11 @@ declare type JSONGameObject = {
   /**
    * The horizontal scale of this Game Object.
    */
-  "scale.x": number;
+  'scale.x': number;
   /**
    * The vertical scale of this Game Object.
    */
-  "scale.y": number;
+  'scale.y': number;
   /**
    * The origin of this Game Object.
    */
@@ -1733,11 +1716,11 @@ declare type JSONGameObject = {
   /**
    * The horizontal origin of this Game Object.
    */
-  "origin.x": number;
+  'origin.x': number;
   /**
    * The vertical origin of this Game Object.
    */
-  "origin.y": number;
+  'origin.y': number;
   /**
    * The horizontally flipped state of the Game Object.
    */
@@ -1848,9 +1831,7 @@ declare type GraphicsOptions = GraphicsStyles & {
 
 declare type GroupCallback = (item: Phaser.GameObjects.GameObject) => void;
 
-declare type GroupMultipleCreateCallback = (
-  items: Phaser.GameObjects.GameObject[],
-) => void;
+declare type GroupMultipleCreateCallback = (items: Phaser.GameObjects.GameObject[]) => void;
 
 declare type GroupConfig = {
   /**
@@ -1951,54 +1932,54 @@ declare type GroupCreateConfig = {
   /**
    * The horizontal position of each new Game Object.
    */
-  "setXY.x"?: number;
+  'setXY.x'?: number;
   /**
    * The vertical position of each new Game Object.
    */
-  "setXY.y"?: number;
+  'setXY.y'?: number;
   /**
    * Increment each Game Object's horizontal position from the previous by this amount, starting from `setXY.x`.
    */
-  "setXY.stepX"?: number;
+  'setXY.stepX'?: number;
   /**
    * Increment each Game Object's vertical position from the previous by this amount, starting from `setXY.y`.
    */
-  "setXY.stepY"?: number;
+  'setXY.stepY'?: number;
   setRotation?: object;
   /**
    * Rotation of each new Game Object.
    */
-  "setRotation.value"?: number;
+  'setRotation.value'?: number;
   /**
    * Increment each Game Object's rotation from the previous by this amount, starting at `setRotation.value`.
    */
-  "setRotation.step"?: number;
+  'setRotation.step'?: number;
   setScale?: object;
   /**
    * The horizontal scale of each new Game Object.
    */
-  "setScale.x"?: number;
+  'setScale.x'?: number;
   /**
    * The vertical scale of each new Game Object.
    */
-  "setScale.y"?: number;
+  'setScale.y'?: number;
   /**
    * Increment each Game Object's horizontal scale from the previous by this amount, starting from `setScale.x`.
    */
-  "setScale.stepX"?: number;
+  'setScale.stepX'?: number;
   /**
    * Increment each Game object's vertical scale from the previous by this amount, starting from `setScale.y`.
    */
-  "setScale.stepY"?: number;
+  'setScale.stepY'?: number;
   setAlpha?: object;
   /**
    * The alpha value of each new Game Object.
    */
-  "setAlpha.value"?: number;
+  'setAlpha.value'?: number;
   /**
    * Increment each Game Object's alpha from the previous by this amount, starting from `setAlpha.value`.
    */
-  "setAlpha.step"?: number;
+  'setAlpha.step'?: number;
   /**
    * A geometric shape that defines the hit area for the Game Object.
    */
@@ -2021,7 +2002,7 @@ declare type LightForEach = (light: Phaser.GameObjects.Light) => void;
 declare type EmitterOpOnEmitCallback = (
   particle: Phaser.GameObjects.Particles.Particle,
   key: string,
-  value: number,
+  value: number
 ) => void;
 
 /**
@@ -2031,7 +2012,7 @@ declare type EmitterOpOnUpdateCallback = (
   particle: Phaser.GameObjects.Particles.Particle,
   key: string,
   t: number,
-  value: number,
+  value: number
 ) => void;
 
 /**
@@ -2155,12 +2136,10 @@ declare type GravityWellConfig = {
 
 declare type ParticleEmitterCallback = (
   particle: Phaser.GameObjects.Particles.Particle,
-  emitter: Phaser.GameObjects.Particles.ParticleEmitter,
+  emitter: Phaser.GameObjects.Particles.ParticleEmitter
 ) => void;
 
-declare type ParticleDeathCallback = (
-  particle: Phaser.GameObjects.Particles.Particle,
-) => void;
+declare type ParticleDeathCallback = (particle: Phaser.GameObjects.Particles.Particle) => void;
 
 declare type ParticleEmitterBounds = {
   /**
@@ -2449,11 +2428,11 @@ declare type ParticleEmitterConfig = {
   /**
    * x-coordinate of the offset.
    */
-  "followOffset.x"?: number;
+  'followOffset.x'?: number;
   /**
    * y-coordinate of the offset.
    */
-  "followOffset.y"?: number;
+  'followOffset.y'?: number;
   /**
    * Sets {@link Phaser.GameObjects.Particles.ParticleEmitter#frames}.
    */
@@ -2471,13 +2450,7 @@ declare type ParticleEmitterFrameConfig = {
   /**
    * One or more texture frames.
    */
-  frames?:
-    | number
-    | number[]
-    | string
-    | string[]
-    | Phaser.Textures.Frame
-    | Phaser.Textures.Frame[];
+  frames?: number | number[] | string | string[] | Phaser.Textures.Frame | Phaser.Textures.Frame[];
   /**
    * Whether texture frames will be assigned consecutively (true) or at random (false).
    */
@@ -2494,10 +2467,7 @@ declare type DeathZoneSource = {
   contains: DeathZoneSourceCallback;
 };
 
-declare type EdgeZoneSourceCallback = (
-  quantity: integer,
-  stepRate?: number,
-) => void;
+declare type EdgeZoneSourceCallback = (quantity: integer, stepRate?: number) => void;
 
 declare type EdgeZoneSource = {
   /**
@@ -2584,7 +2554,7 @@ declare type SpriteConfig = GameObjectConfig & {
  */
 declare type TextStyleWordWrapCallback = (
   text: string,
-  textObject: Phaser.GameObjects.Text,
+  textObject: Phaser.GameObjects.Text
 ) => void;
 
 /**
@@ -2743,31 +2713,21 @@ declare namespace Phaser.GameObjects.Text {
      * @param updateText Whether to update the text immediately. Default true.
      * @param setDefaults Use the default values is not set, or the local values. Default false.
      */
-    setStyle(
-      style: object,
-      updateText?: boolean,
-      setDefaults?: boolean,
-    ): Phaser.GameObjects.Text;
+    setStyle(style: object, updateText?: boolean, setDefaults?: boolean): Phaser.GameObjects.Text;
 
     /**
      * Synchronize the font settings to the given Canvas Rendering Context.
      * @param canvas The Canvas Element.
      * @param context The Canvas Rendering Context.
      */
-    syncFont(
-      canvas: HTMLCanvasElement,
-      context: CanvasRenderingContext2D,
-    ): void;
+    syncFont(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D): void;
 
     /**
      * Synchronize the text style settings to the given Canvas Rendering Context.
      * @param canvas The Canvas Element.
      * @param context The Canvas Rendering Context.
      */
-    syncStyle(
-      canvas: HTMLCanvasElement,
-      context: CanvasRenderingContext2D,
-    ): void;
+    syncStyle(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D): void;
 
     /**
      * Synchronize the shadow settings to the given Canvas Rendering Context.
@@ -2881,7 +2841,7 @@ declare namespace Phaser.GameObjects.Text {
       color?: string,
       blur?: number,
       shadowStroke?: boolean,
-      shadowFill?: boolean,
+      shadowFill?: boolean
     ): Phaser.GameObjects.Text;
 
     /**
@@ -2924,10 +2884,7 @@ declare namespace Phaser.GameObjects.Text {
      * algorithm. If true, spaces are collapsed and whitespace is trimmed from lines. If false,
      * spaces and whitespace are left as is. Default false.
      */
-    setWordWrapWidth(
-      width: number,
-      useAdvancedWrap?: boolean,
-    ): Phaser.GameObjects.Text;
+    setWordWrapWidth(width: number, useAdvancedWrap?: boolean): Phaser.GameObjects.Text;
 
     /**
      * Set a custom callback for wrapping lines.
@@ -2941,7 +2898,7 @@ declare namespace Phaser.GameObjects.Text {
      */
     setWordWrapCallback(
       callback: TextStyleWordWrapCallback,
-      scope?: object,
+      scope?: object
     ): Phaser.GameObjects.Text;
 
     /**
@@ -3008,7 +2965,7 @@ declare type HitAreaCallback = (
   hitArea: any,
   x: number,
   y: number,
-  gameObject: Phaser.GameObjects.GameObject,
+  gameObject: Phaser.GameObjects.GameObject
 ) => void;
 
 declare type Pad = {
@@ -3054,7 +3011,7 @@ declare namespace Phaser.Input.InputPluginCache {
     plugin: Function,
     mapping: string,
     settingsKey: string,
-    configKey: string,
+    configKey: string
   ): void;
 
   /**
@@ -3246,7 +3203,7 @@ declare namespace Phaser {
       value: number,
       step?: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3258,7 +3215,7 @@ declare namespace Phaser {
     function Call<G extends Phaser.GameObjects.GameObject[]>(
       items: G,
       callback: CallCallback,
-      context: any,
+      context: any
     ): G;
 
     /**
@@ -3274,7 +3231,7 @@ declare namespace Phaser {
     function GetFirst<G extends Phaser.GameObjects.GameObject[]>(
       items: G,
       compare: object,
-      index?: integer,
+      index?: integer
     ): object | Phaser.GameObjects.GameObject;
 
     /**
@@ -3290,7 +3247,7 @@ declare namespace Phaser {
     function GetLast<G extends Phaser.GameObjects.GameObject[]>(
       items: G,
       compare: object,
-      index?: integer,
+      index?: integer
     ): object | Phaser.GameObjects.GameObject;
 
     /**
@@ -3301,7 +3258,7 @@ declare namespace Phaser {
      */
     function GridAlign<G extends Phaser.GameObjects.GameObject[]>(
       items: G,
-      options: GridAlignConfig,
+      options: GridAlignConfig
     ): G;
 
     /**
@@ -3322,7 +3279,7 @@ declare namespace Phaser {
       value: number,
       step?: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3343,7 +3300,7 @@ declare namespace Phaser {
       value: number,
       step?: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3368,7 +3325,7 @@ declare namespace Phaser {
       stepX?: number,
       stepY?: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3389,7 +3346,7 @@ declare namespace Phaser {
       value: number,
       step?: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3405,7 +3362,7 @@ declare namespace Phaser {
       items: G,
       circle: Phaser.Geom.Circle,
       startAngle?: number,
-      endAngle?: number,
+      endAngle?: number
     ): G;
 
     /**
@@ -3421,7 +3378,7 @@ declare namespace Phaser {
       items: G,
       ellipse: Phaser.Geom.Ellipse,
       startAngle?: number,
-      endAngle?: number,
+      endAngle?: number
     ): G;
 
     /**
@@ -3431,7 +3388,7 @@ declare namespace Phaser {
      */
     function PlaceOnLine<G extends Phaser.GameObjects.GameObject[]>(
       items: G,
-      line: Phaser.Geom.Line,
+      line: Phaser.Geom.Line
     ): G;
 
     /**
@@ -3446,7 +3403,7 @@ declare namespace Phaser {
     function PlaceOnRectangle<G extends Phaser.GameObjects.GameObject[]>(
       items: G,
       rect: Phaser.Geom.Rectangle,
-      shift?: integer,
+      shift?: integer
     ): G;
 
     /**
@@ -3460,7 +3417,7 @@ declare namespace Phaser {
     function PlaceOnTriangle<G extends Phaser.GameObjects.GameObject[]>(
       items: G,
       triangle: Phaser.Geom.Triangle,
-      stepRate?: number,
+      stepRate?: number
     ): G;
 
     /**
@@ -3472,7 +3429,7 @@ declare namespace Phaser {
     function PlayAnimation<G extends Phaser.GameObjects.GameObject[]>(
       items: G,
       key: string,
-      startFrame?: string | integer,
+      startFrame?: string | integer
     ): G;
 
     /**
@@ -3495,7 +3452,7 @@ declare namespace Phaser {
       value: number,
       step?: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3518,7 +3475,7 @@ declare namespace Phaser {
       value: number,
       step?: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3530,7 +3487,7 @@ declare namespace Phaser {
      */
     function RandomCircle<G extends Phaser.GameObjects.GameObject[]>(
       items: G,
-      circle: Phaser.Geom.Circle,
+      circle: Phaser.Geom.Circle
     ): G;
 
     /**
@@ -3542,7 +3499,7 @@ declare namespace Phaser {
      */
     function RandomEllipse<G extends Phaser.GameObjects.GameObject[]>(
       items: G,
-      ellipse: Phaser.Geom.Ellipse,
+      ellipse: Phaser.Geom.Ellipse
     ): G;
 
     /**
@@ -3554,7 +3511,7 @@ declare namespace Phaser {
      */
     function RandomLine<G extends Phaser.GameObjects.GameObject[]>(
       items: G,
-      line: Phaser.Geom.Line,
+      line: Phaser.Geom.Line
     ): G;
 
     /**
@@ -3564,7 +3521,7 @@ declare namespace Phaser {
      */
     function RandomRectangle<G extends Phaser.GameObjects.GameObject[]>(
       items: G,
-      rect: Phaser.Geom.Rectangle,
+      rect: Phaser.Geom.Rectangle
     ): G;
 
     /**
@@ -3576,7 +3533,7 @@ declare namespace Phaser {
      */
     function RandomTriangle<G extends Phaser.GameObjects.GameObject[]>(
       items: G,
-      triangle: Phaser.Geom.Triangle,
+      triangle: Phaser.Geom.Triangle
     ): G;
 
     /**
@@ -3597,7 +3554,7 @@ declare namespace Phaser {
       value: number,
       step?: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3609,7 +3566,7 @@ declare namespace Phaser {
     function RotateAround<G extends Phaser.GameObjects.GameObject[]>(
       items: G,
       point: object,
-      angle: number,
+      angle: number
     ): G;
 
     /**
@@ -3623,7 +3580,7 @@ declare namespace Phaser {
       items: G,
       point: object,
       angle: number,
-      distance: number,
+      distance: number
     ): G;
 
     /**
@@ -3644,7 +3601,7 @@ declare namespace Phaser {
       value: number,
       step?: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3669,7 +3626,7 @@ declare namespace Phaser {
       stepX?: number,
       stepY?: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3690,7 +3647,7 @@ declare namespace Phaser {
       value: number,
       step?: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3711,7 +3668,7 @@ declare namespace Phaser {
       value: number,
       step?: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3730,7 +3687,7 @@ declare namespace Phaser {
       items: G,
       value: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3751,7 +3708,7 @@ declare namespace Phaser {
       value: number,
       step?: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3763,7 +3720,7 @@ declare namespace Phaser {
     function SetHitArea<G extends Phaser.GameObjects.GameObject[]>(
       items: G,
       hitArea: any,
-      hitAreaCallback: HitAreaCallback,
+      hitAreaCallback: HitAreaCallback
     ): G;
 
     /**
@@ -3788,7 +3745,7 @@ declare namespace Phaser {
       stepX?: number,
       stepY?: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3809,7 +3766,7 @@ declare namespace Phaser {
       value: number,
       step?: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3834,7 +3791,7 @@ declare namespace Phaser {
       stepX?: number,
       stepY?: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3855,7 +3812,7 @@ declare namespace Phaser {
       value: number,
       step?: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3876,7 +3833,7 @@ declare namespace Phaser {
       value: number,
       step?: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3892,7 +3849,7 @@ declare namespace Phaser {
       topLeft: number,
       topRight?: number,
       bottomLeft?: number,
-      bottomRight?: number,
+      bottomRight?: number
     ): G;
 
     /**
@@ -3909,7 +3866,7 @@ declare namespace Phaser {
       items: G,
       value: boolean,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3930,7 +3887,7 @@ declare namespace Phaser {
       value: number,
       step?: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3955,7 +3912,7 @@ declare namespace Phaser {
       stepX?: number,
       stepY?: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -3976,7 +3933,7 @@ declare namespace Phaser {
       value: number,
       step?: number,
       index?: integer,
-      direction?: integer,
+      direction?: integer
     ): G;
 
     /**
@@ -4018,7 +3975,7 @@ declare namespace Phaser {
       property: string,
       min: number,
       max: number,
-      inc?: boolean,
+      inc?: boolean
     ): G;
 
     /**
@@ -4036,7 +3993,7 @@ declare namespace Phaser {
       property: string,
       min: number,
       max: number,
-      inc?: boolean,
+      inc?: boolean
     ): G;
 
     /**
@@ -4061,7 +4018,7 @@ declare namespace Phaser {
       property: string,
       min: number,
       max: number,
-      inc?: boolean,
+      inc?: boolean
     ): G;
 
     /**
@@ -4069,9 +4026,7 @@ declare namespace Phaser {
      * Those previously `visible = false` will become `visible = true`, and vice versa.
      * @param items An array of Game Objects. The contents of this array are updated by this Action.
      */
-    function ToggleVisible<G extends Phaser.GameObjects.GameObject[]>(
-      items: G,
-    ): G;
+    function ToggleVisible<G extends Phaser.GameObjects.GameObject[]>(items: G): G;
 
     /**
      * Wrap each item's coordinates within a rectangle's area.
@@ -4082,7 +4037,7 @@ declare namespace Phaser {
     function WrapInRectangle<G extends Phaser.GameObjects.GameObject[]>(
       items: G,
       rect: Phaser.Geom.Rectangle,
-      padding?: number,
+      padding?: number
     ): G;
   }
 
@@ -4106,7 +4061,7 @@ declare namespace Phaser {
       constructor(
         manager: Phaser.Animations.AnimationManager,
         key: string,
-        config: AnimationConfig,
+        config: AnimationConfig
       );
 
       /**
@@ -4190,9 +4145,7 @@ declare namespace Phaser {
        * Add frames to the end of the animation.
        * @param config [description]
        */
-      addFrame(
-        config: string | AnimationFrameConfig[],
-      ): Phaser.Animations.Animation;
+      addFrame(config: string | AnimationFrameConfig[]): Phaser.Animations.Animation;
 
       /**
        * Add frame/s into the animation.
@@ -4201,7 +4154,7 @@ declare namespace Phaser {
        */
       addFrameAt(
         index: integer,
-        config: string | AnimationFrameConfig[],
+        config: string | AnimationFrameConfig[]
       ): Phaser.Animations.Animation;
 
       /**
@@ -4214,9 +4167,7 @@ declare namespace Phaser {
        * [description]
        * @param component [description]
        */
-      protected completeAnimation(
-        component: Phaser.GameObjects.Components.Animation,
-      ): void;
+      protected completeAnimation(component: Phaser.GameObjects.Components.Animation): void;
 
       /**
        * [description]
@@ -4225,7 +4176,7 @@ declare namespace Phaser {
        */
       protected getFirstTick(
         component: Phaser.GameObjects.Components.Animation,
-        includeDelay?: boolean,
+        includeDelay?: boolean
       ): void;
 
       /**
@@ -4243,7 +4194,7 @@ declare namespace Phaser {
       getFrames(
         textureManager: Phaser.Textures.TextureManager,
         frames: string | AnimationFrameConfig[],
-        defaultTextureKey?: string,
+        defaultTextureKey?: string
       ): Phaser.Animations.AnimationFrame[];
 
       /**
@@ -4279,9 +4230,7 @@ declare namespace Phaser {
        * [description]
        * @param frame [description]
        */
-      removeFrame(
-        frame: Phaser.Animations.AnimationFrame,
-      ): Phaser.Animations.Animation;
+      removeFrame(frame: Phaser.Animations.AnimationFrame): Phaser.Animations.Animation;
 
       /**
        * Removes a frame from the AnimationFrame array at the provided index
@@ -4349,7 +4298,7 @@ declare namespace Phaser {
         textureKey: string,
         textureFrame: string | integer,
         index: integer,
-        frame: Phaser.Textures.Frame,
+        frame: Phaser.Textures.Frame
       );
 
       /**
@@ -4471,10 +4420,7 @@ declare namespace Phaser {
        * @param key [description]
        * @param animation [description]
        */
-      add(
-        key: string,
-        animation: Phaser.Animations.Animation,
-      ): Phaser.Animations.AnimationManager;
+      add(key: string, animation: Phaser.Animations.Animation): Phaser.Animations.AnimationManager;
 
       /**
        * [description]
@@ -4489,7 +4435,7 @@ declare namespace Phaser {
        */
       fromJSON(
         data: string | JSONAnimationManager | JSONAnimation,
-        clearCurrentAnimations?: boolean,
+        clearCurrentAnimations?: boolean
       ): Phaser.Animations.Animation[];
 
       /**
@@ -4499,10 +4445,7 @@ declare namespace Phaser {
        * @param key The key for the texture containing the animation frames.
        * @param config The configuration object for the animation frame names.
        */
-      generateFrameNames(
-        key: string,
-        config?: GenerateFrameNamesConfig,
-      ): AnimationFrameConfig[];
+      generateFrameNames(key: string, config?: GenerateFrameNamesConfig): AnimationFrameConfig[];
 
       /**
        * Generate an array of {@link AnimationFrameConfig} objects from a texture key and configuration object.
@@ -4511,10 +4454,7 @@ declare namespace Phaser {
        * @param key The key for the texture containing the animation frames.
        * @param config The configuration object for the animation frames.
        */
-      generateFrameNumbers(
-        key: string,
-        config: GenerateFrameNumbersConfig,
-      ): AnimationFrameConfig[];
+      generateFrameNumbers(key: string, config: GenerateFrameNumbersConfig): AnimationFrameConfig[];
 
       /**
        * Get an Animation.
@@ -4531,7 +4471,7 @@ declare namespace Phaser {
       load(
         child: Phaser.GameObjects.GameObject,
         key: string,
-        startFrame?: string | integer,
+        startFrame?: string | integer
       ): Phaser.GameObjects.GameObject;
 
       /**
@@ -4546,7 +4486,7 @@ declare namespace Phaser {
        */
       play(
         key: string,
-        child: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[],
+        child: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[]
       ): Phaser.Animations.AnimationManager;
 
       /**
@@ -4570,10 +4510,8 @@ declare namespace Phaser {
        */
       staggerPlay<G extends Phaser.GameObjects.GameObject[]>(
         key: string,
-        children:
-          | Phaser.GameObjects.GameObject
-          | Phaser.GameObjects.GameObject[],
-        stagger?: number,
+        children: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[],
+        stagger?: number
       ): G;
 
       /**
@@ -4615,9 +4553,7 @@ declare namespace Phaser {
     /**
      * A reference to either the Canvas or WebGL Renderer that this Game is using.
      */
-    renderer:
-      | Phaser.Renderer.Canvas.CanvasRenderer
-      | Phaser.Renderer.WebGL.WebGLRenderer;
+    renderer: Phaser.Renderer.Canvas.CanvasRenderer | Phaser.Renderer.WebGL.WebGLRenderer;
 
     /**
      * A reference to an HTML Div Element used as a DOM Element Container.
@@ -5624,9 +5560,7 @@ declare namespace Phaser {
        */
       class BaseCamera
         extends Phaser.Events.EventEmitter
-        implements
-          Phaser.GameObjects.Components.Alpha,
-          Phaser.GameObjects.Components.Visible
+        implements Phaser.GameObjects.Components.Alpha, Phaser.GameObjects.Components.Visible
       {
         /**
          *
@@ -5791,11 +5725,7 @@ declare namespace Phaser {
          * @param y The vertical coordinate to center on.
          * @param out A Vec2 to store the values in. If not given a new Vec2 is created.
          */
-        getScroll(
-          x: number,
-          y: number,
-          out?: Phaser.Math.Vector2,
-        ): Phaser.Math.Vector2;
+        getScroll(x: number, y: number, out?: Phaser.Math.Vector2): Phaser.Math.Vector2;
 
         /**
          * Moves the Camera so that it is centered on the given coordinates, bounds allowing.
@@ -5819,9 +5749,7 @@ declare namespace Phaser {
          * visible by this camera.
          * @param renderableObjects An array of Game Objects to cull.
          */
-        cull<G extends Phaser.GameObjects.GameObject[]>(
-          renderableObjects: G,
-        ): G;
+        cull<G extends Phaser.GameObjects.GameObject[]>(renderableObjects: G): G;
 
         /**
          * Converts the given `x` and `y` coordinates into World space, based on this Cameras transform.
@@ -5830,11 +5758,7 @@ declare namespace Phaser {
          * @param y The y position to convert to world space.
          * @param output An optional object to store the results in. If not provided a new Vector2 will be created.
          */
-        getWorldPoint<O extends Phaser.Math.Vector2>(
-          x: number,
-          y: number,
-          output?: O,
-        ): O;
+        getWorldPoint<O extends Phaser.Math.Vector2>(x: number, y: number, output?: O): O;
 
         /**
          * Given a Game Object, or an array of Game Objects, it will update all of their camera filter settings
@@ -5845,7 +5769,7 @@ declare namespace Phaser {
           entries:
             | Phaser.GameObjects.GameObject
             | Phaser.GameObjects.GameObject[]
-            | Phaser.GameObjects.Group,
+            | Phaser.GameObjects.Group
         ): Phaser.Cameras.Scene2D.BaseCamera;
 
         /**
@@ -5892,7 +5816,7 @@ declare namespace Phaser {
          * @param color The color value. In CSS, hex or numeric color notation. Default 'rgba(0,0,0,0)'.
          */
         setBackgroundColor(
-          color?: string | number | InputColorObject,
+          color?: string | number | InputColorObject
         ): Phaser.Cameras.Scene2D.BaseCamera;
 
         /**
@@ -5924,7 +5848,7 @@ declare namespace Phaser {
           y: integer,
           width: integer,
           height: integer,
-          centerOn?: boolean,
+          centerOn?: boolean
         ): Phaser.Cameras.Scene2D.BaseCamera;
 
         /**
@@ -5987,10 +5911,7 @@ declare namespace Phaser {
          * @param width The width of the Camera viewport.
          * @param height The height of the Camera viewport. Default width.
          */
-        setSize(
-          width: integer,
-          height?: integer,
-        ): Phaser.Cameras.Scene2D.BaseCamera;
+        setSize(width: integer, height?: integer): Phaser.Cameras.Scene2D.BaseCamera;
 
         /**
          * This method sets the position and size of the Camera viewport in a single call.
@@ -6011,7 +5932,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           width: integer,
-          height?: integer,
+          height?: integer
         ): Phaser.Cameras.Scene2D.BaseCamera;
 
         /**
@@ -6213,9 +6134,7 @@ declare namespace Phaser {
        */
       class Camera
         extends Phaser.Cameras.Scene2D.BaseCamera
-        implements
-          Phaser.GameObjects.Components.Flip,
-          Phaser.GameObjects.Components.Tint
+        implements Phaser.GameObjects.Components.Flip, Phaser.GameObjects.Components.Tint
       {
         /**
          *
@@ -6387,7 +6306,7 @@ declare namespace Phaser {
          * @param pipeline An optional WebGL Pipeline to render with, can be either a string which is the name of the pipeline, or a pipeline reference.
          */
         setRenderToTexture(
-          pipeline?: string | Phaser.Renderer.WebGL.WebGLPipeline,
+          pipeline?: string | Phaser.Renderer.WebGL.WebGLPipeline
         ): Phaser.Cameras.Scene2D.Camera;
 
         /**
@@ -6399,7 +6318,7 @@ declare namespace Phaser {
          * @param pipeline The WebGL Pipeline to render with, can be either a string which is the name of the pipeline, or a pipeline reference. Or if left empty it will clear the pipeline.
          */
         setPipeline(
-          pipeline?: string | Phaser.Renderer.WebGL.WebGLPipeline,
+          pipeline?: string | Phaser.Renderer.WebGL.WebGLPipeline
         ): Phaser.Cameras.Scene2D.Camera;
 
         /**
@@ -6429,10 +6348,7 @@ declare namespace Phaser {
          * @param width The width of the deadzone rectangle in pixels. If not specified the deadzone is removed.
          * @param height The height of the deadzone rectangle in pixels.
          */
-        setDeadzone(
-          width?: number,
-          height?: number,
-        ): Phaser.Cameras.Scene2D.Camera;
+        setDeadzone(width?: number, height?: number): Phaser.Cameras.Scene2D.Camera;
 
         /**
          * Fades the Camera in from the given color over the duration specified.
@@ -6450,7 +6366,7 @@ declare namespace Phaser {
           green?: integer,
           blue?: integer,
           callback?: Function,
-          context?: any,
+          context?: any
         ): Phaser.Cameras.Scene2D.Camera;
 
         /**
@@ -6470,7 +6386,7 @@ declare namespace Phaser {
           green?: integer,
           blue?: integer,
           callback?: Function,
-          context?: any,
+          context?: any
         ): Phaser.Cameras.Scene2D.Camera;
 
         /**
@@ -6491,7 +6407,7 @@ declare namespace Phaser {
           blue?: integer,
           force?: boolean,
           callback?: Function,
-          context?: any,
+          context?: any
         ): Phaser.Cameras.Scene2D.Camera;
 
         /**
@@ -6512,7 +6428,7 @@ declare namespace Phaser {
           blue?: integer,
           force?: boolean,
           callback?: Function,
-          context?: any,
+          context?: any
         ): Phaser.Cameras.Scene2D.Camera;
 
         /**
@@ -6533,7 +6449,7 @@ declare namespace Phaser {
           blue?: integer,
           force?: boolean,
           callback?: Function,
-          context?: any,
+          context?: any
         ): Phaser.Cameras.Scene2D.Camera;
 
         /**
@@ -6550,7 +6466,7 @@ declare namespace Phaser {
           intensity?: number,
           force?: boolean,
           callback?: Function,
-          context?: any,
+          context?: any
         ): Phaser.Cameras.Scene2D.Camera;
 
         /**
@@ -6573,7 +6489,7 @@ declare namespace Phaser {
           ease?: string | Function,
           force?: boolean,
           callback?: CameraPanCallback,
-          context?: any,
+          context?: any
         ): Phaser.Cameras.Scene2D.Camera;
 
         /**
@@ -6593,7 +6509,7 @@ declare namespace Phaser {
           ease?: string | Function,
           force?: boolean,
           callback?: CameraPanCallback,
-          context?: any,
+          context?: any
         ): Phaser.Cameras.Scene2D.Camera;
 
         /**
@@ -6651,7 +6567,7 @@ declare namespace Phaser {
           lerpX?: number,
           lerpY?: number,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): this;
 
         /**
@@ -6796,7 +6712,7 @@ declare namespace Phaser {
           topLeft?: integer,
           topRight?: integer,
           bottomLeft?: integer,
-          bottomRight?: integer,
+          bottomRight?: integer
         ): this;
 
         /**
@@ -6824,7 +6740,7 @@ declare namespace Phaser {
           topLeft?: integer,
           topRight?: integer,
           bottomLeft?: integer,
-          bottomRight?: integer,
+          bottomRight?: integer
         ): this;
 
         /**
@@ -6972,7 +6888,7 @@ declare namespace Phaser {
           width?: integer,
           height?: integer,
           makeMain?: boolean,
-          name?: string,
+          name?: string
         ): Phaser.Cameras.Scene2D.Camera;
 
         /**
@@ -6992,7 +6908,7 @@ declare namespace Phaser {
          */
         addExisting(
           camera: Phaser.Cameras.Scene2D.Camera,
-          makeMain?: boolean,
+          makeMain?: boolean
         ): Phaser.Cameras.Scene2D.Camera;
 
         /**
@@ -7010,7 +6926,7 @@ declare namespace Phaser {
          * @param config A Camera configuration object, or an array of them, to be added to this Camera Manager.
          */
         fromJSON(
-          config: InputJSONCameraObject | InputJSONCameraObject[],
+          config: InputJSONCameraObject | InputJSONCameraObject[]
         ): Phaser.Cameras.Scene2D.CameraManager;
 
         /**
@@ -7028,9 +6944,7 @@ declare namespace Phaser {
          * The first camera in the array is the top-most camera in the camera list.
          * @param pointer The Pointer to check against.
          */
-        getCamerasBelowPointer(
-          pointer: Phaser.Input.Pointer,
-        ): Phaser.Cameras.Scene2D.Camera[];
+        getCamerasBelowPointer(pointer: Phaser.Input.Pointer): Phaser.Cameras.Scene2D.Camera[];
 
         /**
          * Removes the given Camera, or an array of Cameras, from this Camera Manager.
@@ -7045,10 +6959,8 @@ declare namespace Phaser {
          * @param runDestroy Automatically call `Camera.destroy` on each Camera removed from this Camera Manager. Default true.
          */
         remove(
-          camera:
-            | Phaser.Cameras.Scene2D.Camera
-            | Phaser.Cameras.Scene2D.Camera[],
-          runDestroy?: boolean,
+          camera: Phaser.Cameras.Scene2D.Camera | Phaser.Cameras.Scene2D.Camera[],
+          runDestroy?: boolean
         ): integer;
 
         /**
@@ -7061,11 +6973,9 @@ declare namespace Phaser {
          * @param interpolation Interpolation value. Reserved for future use.
          */
         protected render(
-          renderer:
-            | Phaser.Renderer.Canvas.CanvasRenderer
-            | Phaser.Renderer.WebGL.WebGLRenderer,
+          renderer: Phaser.Renderer.Canvas.CanvasRenderer | Phaser.Renderer.WebGL.WebGLRenderer,
           children: Phaser.GameObjects.GameObject[],
-          interpolation: number,
+          interpolation: number
         ): void;
 
         /**
@@ -7164,7 +7074,7 @@ declare namespace Phaser {
             blue?: integer,
             force?: boolean,
             callback?: CameraFadeCallback,
-            context?: any,
+            context?: any
           ): Phaser.Cameras.Scene2D.Camera;
 
           /**
@@ -7187,7 +7097,7 @@ declare namespace Phaser {
            */
           postRenderWebGL(
             pipeline: Phaser.Renderer.WebGL.Pipelines.TextureTintPipeline,
-            getTintFunction: Function,
+            getTintFunction: Function
           ): boolean;
 
           /**
@@ -7263,7 +7173,7 @@ declare namespace Phaser {
             blue?: integer,
             force?: boolean,
             callback?: CameraFlashCallback,
-            context?: any,
+            context?: any
           ): Phaser.Cameras.Scene2D.Camera;
 
           /**
@@ -7286,7 +7196,7 @@ declare namespace Phaser {
            */
           postRenderWebGL(
             pipeline: Phaser.Renderer.WebGL.Pipelines.TextureTintPipeline,
-            getTintFunction: Function,
+            getTintFunction: Function
           ): boolean;
 
           /**
@@ -7385,7 +7295,7 @@ declare namespace Phaser {
             ease?: string | Function,
             force?: boolean,
             callback?: CameraPanCallback,
-            context?: any,
+            context?: any
           ): Phaser.Cameras.Scene2D.Camera;
 
           /**
@@ -7471,7 +7381,7 @@ declare namespace Phaser {
             intensity?: number,
             force?: boolean,
             callback?: CameraShakeCallback,
-            context?: any,
+            context?: any
           ): Phaser.Cameras.Scene2D.Camera;
 
           /**
@@ -7570,7 +7480,7 @@ declare namespace Phaser {
             ease?: string | Function,
             force?: boolean,
             callback?: CameraZoomCallback,
-            context?: any,
+            context?: any
           ): Phaser.Cameras.Scene2D.Camera;
 
           /**
@@ -7679,9 +7589,7 @@ declare namespace Phaser {
          * Binds this Key Control to a camera.
          * @param camera The camera to bind this Key Control to.
          */
-        setCamera(
-          camera: Phaser.Cameras.Scene2D.Camera,
-        ): Phaser.Cameras.Controls.FixedKeyControl;
+        setCamera(camera: Phaser.Cameras.Scene2D.Camera): Phaser.Cameras.Controls.FixedKeyControl;
 
         /**
          * [description]
@@ -7795,7 +7703,7 @@ declare namespace Phaser {
          * @param camera The camera to bind this Key Control to.
          */
         setCamera(
-          camera: Phaser.Cameras.Scene2D.Camera,
+          camera: Phaser.Cameras.Scene2D.Camera
         ): Phaser.Cameras.Controls.SmoothedKeyControl;
 
         /**
@@ -7919,7 +7827,7 @@ declare namespace Phaser {
         p0: Phaser.Math.Vector2 | Phaser.Math.Vector2[],
         p1: Phaser.Math.Vector2,
         p2: Phaser.Math.Vector2,
-        p3: Phaser.Math.Vector2,
+        p3: Phaser.Math.Vector2
       );
 
       /**
@@ -7966,10 +7874,7 @@ declare namespace Phaser {
        * @param graphics The graphics object this curve should be drawn to.
        * @param pointsTotal The number of intermediary points that make up this curve. A higher number of points will result in a smoother curve. Default 32.
        */
-      draw<G extends Phaser.GameObjects.Graphics>(
-        graphics: G,
-        pointsTotal?: integer,
-      ): G;
+      draw<G extends Phaser.GameObjects.Graphics>(graphics: G, pointsTotal?: integer): G;
 
       /**
        * Returns a JSON object that describes this curve.
@@ -8033,10 +7938,7 @@ declare namespace Phaser {
        * @param graphics The Graphics instance onto which this curve will be drawn.
        * @param pointsTotal The resolution of the curve. The higher the value the smoother it will render, at the cost of rendering performance. Default 32.
        */
-      draw<G extends Phaser.GameObjects.Graphics>(
-        graphics: G,
-        pointsTotal?: integer,
-      ): G;
+      draw<G extends Phaser.GameObjects.Graphics>(graphics: G, pointsTotal?: integer): G;
 
       /**
        * Returns a Rectangle where the position and dimensions match the bounds of this Curve.
@@ -8046,10 +7948,7 @@ declare namespace Phaser {
        * @param out The Rectangle to store the bounds in. If falsey a new object will be created.
        * @param accuracy The accuracy of the bounds calculations. Default 16.
        */
-      getBounds(
-        out?: Phaser.Geom.Rectangle,
-        accuracy?: integer,
-      ): Phaser.Geom.Rectangle;
+      getBounds(out?: Phaser.Geom.Rectangle, accuracy?: integer): Phaser.Geom.Rectangle;
 
       /**
        * Returns an array of points, spaced out X distance pixels apart.
@@ -8166,7 +8065,7 @@ declare namespace Phaser {
         startAngle?: integer,
         endAngle?: integer,
         clockwise?: boolean,
-        rotation?: integer,
+        rotation?: integer
       );
 
       /**
@@ -8476,11 +8375,7 @@ declare namespace Phaser {
        * @param clockwise [description] Default false.
        * @param rotation [description] Default 0.
        */
-      circleTo(
-        radius: number,
-        clockwise?: boolean,
-        rotation?: number,
-      ): Phaser.Curves.Path;
+      circleTo(radius: number, clockwise?: boolean, rotation?: number): Phaser.Curves.Path;
 
       /**
        * [description]
@@ -8502,7 +8397,7 @@ declare namespace Phaser {
         control1X: number | Phaser.Math.Vector2,
         control1Y?: number,
         control2X?: number,
-        control2Y?: number,
+        control2Y?: number
       ): Phaser.Curves.Path;
 
       /**
@@ -8516,7 +8411,7 @@ declare namespace Phaser {
         x: number | Phaser.Math.Vector2[],
         y?: number,
         controlX?: number,
-        controlY?: number,
+        controlY?: number
       ): Phaser.Curves.Path;
 
       /**
@@ -8526,7 +8421,7 @@ declare namespace Phaser {
        */
       draw<G extends Phaser.GameObjects.Graphics>(
         graphics: Phaser.GameObjects.Graphics,
-        pointsTotal?: integer,
+        pointsTotal?: integer
       ): G;
 
       /**
@@ -8544,7 +8439,7 @@ declare namespace Phaser {
         startAngle: number,
         endAngle: number,
         clockwise: boolean,
-        rotation: number,
+        rotation: number
       ): Phaser.Curves.Path;
 
       /**
@@ -8656,7 +8551,7 @@ declare namespace Phaser {
       constructor(
         p0: Phaser.Math.Vector2 | number[],
         p1: Phaser.Math.Vector2,
-        p2: Phaser.Math.Vector2,
+        p2: Phaser.Math.Vector2
       );
 
       /**
@@ -8698,10 +8593,7 @@ declare namespace Phaser {
        * @param graphics `Graphics` object to draw onto.
        * @param pointsTotal Number of points to be used for drawing the curve. Higher numbers result in smoother curve but require more processing. Default 32.
        */
-      draw<G extends Phaser.GameObjects.Graphics>(
-        graphics: G,
-        pointsTotal?: integer,
-      ): G;
+      draw<G extends Phaser.GameObjects.Graphics>(graphics: G, pointsTotal?: integer): G;
 
       /**
        * Converts the curve into a JSON compatible object.
@@ -8734,9 +8626,7 @@ declare namespace Phaser {
        * [description]
        * @param points [description]
        */
-      addPoints(
-        points: Phaser.Math.Vector2[] | number[] | number[][],
-      ): Phaser.Curves.Spline;
+      addPoints(points: Phaser.Math.Vector2[] | number[] | number[][]): Phaser.Curves.Spline;
 
       /**
        * [description]
@@ -8909,11 +8799,7 @@ declare namespace Phaser {
        * @param context Value to use as `this` when executing callback.
        * @param args Additional arguments that will be passed to the callback, after the game object, key, and data.
        */
-      each(
-        callback: DataEachCallback,
-        context?: any,
-        ...args: any[]
-      ): Phaser.Data.DataManager;
+      each(callback: DataEachCallback, context?: any, ...args: any[]): Phaser.Data.DataManager;
 
       /**
        * Merge the given object of key value pairs into this DataManager.
@@ -8923,10 +8809,7 @@ declare namespace Phaser {
        * @param data The data to merge.
        * @param overwrite Whether to overwrite existing data. Defaults to true. Default true.
        */
-      merge(
-        data: { [key: string]: any },
-        overwrite?: boolean,
-      ): Phaser.Data.DataManager;
+      merge(data: { [key: string]: any }, overwrite?: boolean): Phaser.Data.DataManager;
 
       /**
        * Remove the value for the given key.
@@ -9497,7 +9380,7 @@ declare namespace Phaser {
           gameObject: G,
           alignIn: Phaser.GameObjects.GameObject,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
 
         /**
@@ -9511,7 +9394,7 @@ declare namespace Phaser {
           gameObject: G,
           alignIn: Phaser.GameObjects.GameObject,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
 
         /**
@@ -9525,7 +9408,7 @@ declare namespace Phaser {
           gameObject: G,
           alignIn: Phaser.GameObjects.GameObject,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
 
         /**
@@ -9539,7 +9422,7 @@ declare namespace Phaser {
           gameObject: G,
           alignIn: Phaser.GameObjects.GameObject,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
 
         /**
@@ -9553,7 +9436,7 @@ declare namespace Phaser {
           gameObject: G,
           alignIn: Phaser.GameObjects.GameObject,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
 
         /**
@@ -9570,7 +9453,7 @@ declare namespace Phaser {
           alignIn: Phaser.GameObjects.GameObject,
           position: integer,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
 
         /**
@@ -9584,7 +9467,7 @@ declare namespace Phaser {
           gameObject: G,
           alignIn: Phaser.GameObjects.GameObject,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
 
         /**
@@ -9598,7 +9481,7 @@ declare namespace Phaser {
           gameObject: G,
           alignIn: Phaser.GameObjects.GameObject,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
 
         /**
@@ -9612,7 +9495,7 @@ declare namespace Phaser {
           gameObject: G,
           alignIn: Phaser.GameObjects.GameObject,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
 
         /**
@@ -9626,7 +9509,7 @@ declare namespace Phaser {
           gameObject: G,
           alignIn: Phaser.GameObjects.GameObject,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
       }
 
@@ -9642,7 +9525,7 @@ declare namespace Phaser {
           gameObject: G,
           alignTo: Phaser.GameObjects.GameObject,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
 
         /**
@@ -9656,7 +9539,7 @@ declare namespace Phaser {
           gameObject: G,
           alignTo: Phaser.GameObjects.GameObject,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
 
         /**
@@ -9670,7 +9553,7 @@ declare namespace Phaser {
           gameObject: G,
           alignTo: Phaser.GameObjects.GameObject,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
 
         /**
@@ -9684,7 +9567,7 @@ declare namespace Phaser {
           gameObject: G,
           alignTo: Phaser.GameObjects.GameObject,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
 
         /**
@@ -9698,7 +9581,7 @@ declare namespace Phaser {
           gameObject: G,
           alignTo: Phaser.GameObjects.GameObject,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
 
         /**
@@ -9712,7 +9595,7 @@ declare namespace Phaser {
           gameObject: G,
           alignTo: Phaser.GameObjects.GameObject,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
 
         /**
@@ -9726,7 +9609,7 @@ declare namespace Phaser {
           gameObject: G,
           alignTo: Phaser.GameObjects.GameObject,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
 
         /**
@@ -9740,7 +9623,7 @@ declare namespace Phaser {
           gameObject: G,
           alignTo: Phaser.GameObjects.GameObject,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
 
         /**
@@ -9754,7 +9637,7 @@ declare namespace Phaser {
           gameObject: G,
           alignTo: Phaser.GameObjects.GameObject,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
 
         /**
@@ -9768,7 +9651,7 @@ declare namespace Phaser {
           gameObject: G,
           alignTo: Phaser.GameObjects.GameObject,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
 
         /**
@@ -9782,7 +9665,7 @@ declare namespace Phaser {
           gameObject: G,
           alignTo: Phaser.GameObjects.GameObject,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
 
         /**
@@ -9796,7 +9679,7 @@ declare namespace Phaser {
           gameObject: G,
           alignTo: Phaser.GameObjects.GameObject,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): G;
       }
     }
@@ -9811,7 +9694,7 @@ declare namespace Phaser {
       function CenterOn<G extends Phaser.GameObjects.GameObject>(
         gameObject: G,
         x: number,
-        y: number,
+        y: number
       ): G;
 
       /**
@@ -9871,60 +9754,42 @@ declare namespace Phaser {
        * @param gameObject The Game Object that will be re-positioned.
        * @param value The coordinate to position the Game Object bounds on.
        */
-      function SetBottom<G extends Phaser.GameObjects.GameObject>(
-        gameObject: G,
-        value: number,
-      ): G;
+      function SetBottom<G extends Phaser.GameObjects.GameObject>(gameObject: G, value: number): G;
 
       /**
        * Positions the Game Object so that the center top of its bounds aligns with the given coordinate.
        * @param gameObject The Game Object that will be re-positioned.
        * @param x The coordinate to position the Game Object bounds on.
        */
-      function SetCenterX<G extends Phaser.GameObjects.GameObject>(
-        gameObject: G,
-        x: number,
-      ): G;
+      function SetCenterX<G extends Phaser.GameObjects.GameObject>(gameObject: G, x: number): G;
 
       /**
        * Positions the Game Object so that the center top of its bounds aligns with the given coordinate.
        * @param gameObject The Game Object that will be re-positioned.
        * @param y The coordinate to position the Game Object bounds on.
        */
-      function SetCenterY<G extends Phaser.GameObjects.GameObject>(
-        gameObject: G,
-        y: number,
-      ): G;
+      function SetCenterY<G extends Phaser.GameObjects.GameObject>(gameObject: G, y: number): G;
 
       /**
        * Positions the Game Object so that the left of its bounds aligns with the given coordinate.
        * @param gameObject The Game Object that will be re-positioned.
        * @param value The coordinate to position the Game Object bounds on.
        */
-      function SetLeft<G extends Phaser.GameObjects.GameObject>(
-        gameObject: G,
-        value: number,
-      ): G;
+      function SetLeft<G extends Phaser.GameObjects.GameObject>(gameObject: G, value: number): G;
 
       /**
        * Positions the Game Object so that the left of its bounds aligns with the given coordinate.
        * @param gameObject The Game Object that will be re-positioned.
        * @param value The coordinate to position the Game Object bounds on.
        */
-      function SetRight<G extends Phaser.GameObjects.GameObject>(
-        gameObject: G,
-        value: number,
-      ): G;
+      function SetRight<G extends Phaser.GameObjects.GameObject>(gameObject: G, value: number): G;
 
       /**
        * Positions the Game Object so that the top of its bounds aligns with the given coordinate.
        * @param gameObject The Game Object that will be re-positioned.
        * @param value The coordinate to position the Game Object bounds on.
        */
-      function SetTop<G extends Phaser.GameObjects.GameObject>(
-        gameObject: G,
-        value: number,
-      ): G;
+      function SetTop<G extends Phaser.GameObjects.GameObject>(gameObject: G, value: number): G;
     }
 
     namespace Canvas {
@@ -9964,7 +9829,7 @@ declare namespace Phaser {
           width?: integer,
           height?: integer,
           canvasType?: integer,
-          selfParent?: boolean,
+          selfParent?: boolean
         ): HTMLCanvasElement;
 
         /**
@@ -9973,11 +9838,7 @@ declare namespace Phaser {
          * @param width The width of the Canvas. Default 1.
          * @param height The height of the Canvas. Default 1.
          */
-        function create2D(
-          parent: any,
-          width?: integer,
-          height?: integer,
-        ): HTMLCanvasElement;
+        function create2D(parent: any, width?: integer, height?: integer): HTMLCanvasElement;
 
         /**
          * Creates a new Canvas DOM element, or pulls one from the pool if free.
@@ -9985,11 +9846,7 @@ declare namespace Phaser {
          * @param width The width of the Canvas. Default 1.
          * @param height The height of the Canvas. Default 1.
          */
-        function createWebGL(
-          parent: any,
-          width?: integer,
-          height?: integer,
-        ): HTMLCanvasElement;
+        function createWebGL(parent: any, width?: integer, height?: integer): HTMLCanvasElement;
 
         /**
          * Gets the first free canvas index from the pool.
@@ -10030,9 +9887,7 @@ declare namespace Phaser {
          * Gets the Smoothing Enabled vendor prefix being used on the given context, or null if not set.
          * @param context [description]
          */
-        function getPrefix(
-          context: CanvasRenderingContext2D | WebGLRenderingContext,
-        ): string;
+        function getPrefix(context: CanvasRenderingContext2D | WebGLRenderingContext): string;
 
         /**
          * Sets the Image Smoothing property on the given context. Set to false to disable image smoothing.
@@ -10043,7 +9898,7 @@ declare namespace Phaser {
          * @param context [description]
          */
         function enable(
-          context: CanvasRenderingContext2D | WebGLRenderingContext,
+          context: CanvasRenderingContext2D | WebGLRenderingContext
         ): CanvasRenderingContext2D | WebGLRenderingContext;
 
         /**
@@ -10055,7 +9910,7 @@ declare namespace Phaser {
          * @param context [description]
          */
         function disable(
-          context: CanvasRenderingContext2D | WebGLRenderingContext,
+          context: CanvasRenderingContext2D | WebGLRenderingContext
         ): CanvasRenderingContext2D | WebGLRenderingContext;
 
         /**
@@ -10063,9 +9918,7 @@ declare namespace Phaser {
          * Returns null if no smoothing prefix is available.
          * @param context [description]
          */
-        function isEnabled(
-          context: CanvasRenderingContext2D | WebGLRenderingContext,
-        ): boolean;
+        function isEnabled(context: CanvasRenderingContext2D | WebGLRenderingContext): boolean;
       }
 
       /**
@@ -10073,20 +9926,14 @@ declare namespace Phaser {
        * @param canvas The canvas element to have the style applied to.
        * @param value The touch action value to set on the canvas. Set to `none` to disable touch actions. Default 'none'.
        */
-      function TouchAction(
-        canvas: HTMLCanvasElement,
-        value?: string,
-      ): HTMLCanvasElement;
+      function TouchAction(canvas: HTMLCanvasElement, value?: string): HTMLCanvasElement;
 
       /**
        * Sets the user-select property on the canvas style. Can be used to disable default browser selection actions.
        * @param canvas The canvas element to have the style applied to.
        * @param value The touch callout value to set on the canvas. Set to `none` to disable touch callouts. Default 'none'.
        */
-      function UserSelect(
-        canvas: HTMLCanvasElement,
-        value?: string,
-      ): HTMLCanvasElement;
+      function UserSelect(canvas: HTMLCanvasElement, value?: string): HTMLCanvasElement;
     }
 
     /**
@@ -10100,12 +9947,7 @@ declare namespace Phaser {
        * @param blue The blue color value. A number between 0 and 255. Default 0.
        * @param alpha The alpha value. A number between 0 and 255. Default 255.
        */
-      constructor(
-        red?: integer,
-        green?: integer,
-        blue?: integer,
-        alpha?: integer,
-      );
+      constructor(red?: integer, green?: integer, blue?: integer, alpha?: integer);
 
       /**
        * An array containing the calculated color values for WebGL use.
@@ -10130,7 +9972,7 @@ declare namespace Phaser {
         green: integer,
         blue: integer,
         alpha?: integer,
-        updateHSV?: boolean,
+        updateHSV?: boolean
       ): Phaser.Display.Color;
 
       /**
@@ -10140,12 +9982,7 @@ declare namespace Phaser {
        * @param blue The blue color value. A number between 0 and 1.
        * @param alpha The alpha value. A number between 0 and 1. Default 1.
        */
-      setGLTo(
-        red: number,
-        green: number,
-        blue: number,
-        alpha?: number,
-      ): Phaser.Display.Color;
+      setGLTo(red: number, green: number, blue: number, alpha?: number): Phaser.Display.Color;
 
       /**
        * Sets the color based on the color object given.
@@ -10318,12 +10155,7 @@ declare namespace Phaser {
        * @param blue The blue color value. A number between 0 and 255.
        * @param alpha The alpha color value. A number between 0 and 255.
        */
-      static GetColor32(
-        red: integer,
-        green: integer,
-        blue: integer,
-        alpha: integer,
-      ): number;
+      static GetColor32(red: integer, green: integer, blue: integer, alpha: integer): number;
 
       /**
        * Converts a hex string into a Phaser Color object.
@@ -10364,7 +10196,7 @@ declare namespace Phaser {
         h: number,
         s: number,
         v: number,
-        out?: ColorObject | Phaser.Display.Color,
+        out?: ColorObject | Phaser.Display.Color
       ): ColorObject | Phaser.Display.Color;
 
       /**
@@ -10423,7 +10255,7 @@ declare namespace Phaser {
         r: integer,
         g: integer,
         b: integer,
-        out?: HSVColorObject | Phaser.Display.Color,
+        out?: HSVColorObject | Phaser.Display.Color
       ): HSVColorObject | Phaser.Display.Color;
 
       /**
@@ -10434,22 +10266,14 @@ declare namespace Phaser {
        * @param a The alpha value. A number between 0 and 255. Default 255.
        * @param prefix The prefix of the string. Either `#` or `0x`. Default #.
        */
-      static RGBToString(
-        r: integer,
-        g: integer,
-        b: integer,
-        a?: integer,
-        prefix?: string,
-      ): string;
+      static RGBToString(r: integer, g: integer, b: integer, a?: integer, prefix?: string): string;
 
       /**
        * Converts the given source color value into an instance of a Color class.
        * The value can be either a string, prefixed with `rgb` or a hex string, a number or an Object.
        * @param input The source color value to convert.
        */
-      static ValueToColor(
-        input: string | number | InputColorObject,
-      ): Phaser.Display.Color;
+      static ValueToColor(input: string | number | InputColorObject): Phaser.Display.Color;
     }
 
     namespace Masks {
@@ -10462,17 +10286,12 @@ declare namespace Phaser {
          * @param scene [description]
          * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
          */
-        constructor(
-          scene: Phaser.Scene,
-          renderable: Phaser.GameObjects.GameObject,
-        );
+        constructor(scene: Phaser.Scene, renderable: Phaser.GameObjects.GameObject);
 
         /**
          * A reference to either the Canvas or WebGL Renderer that this Mask is using.
          */
-        renderer:
-          | Phaser.Renderer.Canvas.CanvasRenderer
-          | Phaser.Renderer.WebGL.WebGLRenderer;
+        renderer: Phaser.Renderer.Canvas.CanvasRenderer | Phaser.Renderer.WebGL.WebGLRenderer;
 
         /**
          * A renderable Game Object that uses a texture, such as a Sprite.
@@ -10522,11 +10341,9 @@ declare namespace Phaser {
          * @param camera The Camera to render to.
          */
         preRenderWebGL(
-          renderer:
-            | Phaser.Renderer.Canvas.CanvasRenderer
-            | Phaser.Renderer.WebGL.WebGLRenderer,
+          renderer: Phaser.Renderer.Canvas.CanvasRenderer | Phaser.Renderer.WebGL.WebGLRenderer,
           maskedObject: Phaser.GameObjects.GameObject,
-          camera: Phaser.Cameras.Scene2D.Camera,
+          camera: Phaser.Cameras.Scene2D.Camera
         ): void;
 
         /**
@@ -10534,9 +10351,7 @@ declare namespace Phaser {
          * @param renderer [description]
          */
         postRenderWebGL(
-          renderer:
-            | Phaser.Renderer.Canvas.CanvasRenderer
-            | Phaser.Renderer.WebGL.WebGLRenderer,
+          renderer: Phaser.Renderer.Canvas.CanvasRenderer | Phaser.Renderer.WebGL.WebGLRenderer
         ): void;
 
         /**
@@ -10546,11 +10361,9 @@ declare namespace Phaser {
          * @param camera The Camera to render to.
          */
         preRenderCanvas(
-          renderer:
-            | Phaser.Renderer.Canvas.CanvasRenderer
-            | Phaser.Renderer.WebGL.WebGLRenderer,
+          renderer: Phaser.Renderer.Canvas.CanvasRenderer | Phaser.Renderer.WebGL.WebGLRenderer,
           mask: Phaser.GameObjects.GameObject,
-          camera: Phaser.Cameras.Scene2D.Camera,
+          camera: Phaser.Cameras.Scene2D.Camera
         ): void;
 
         /**
@@ -10558,9 +10371,7 @@ declare namespace Phaser {
          * @param renderer [description]
          */
         postRenderCanvas(
-          renderer:
-            | Phaser.Renderer.Canvas.CanvasRenderer
-            | Phaser.Renderer.WebGL.WebGLRenderer,
+          renderer: Phaser.Renderer.Canvas.CanvasRenderer | Phaser.Renderer.WebGL.WebGLRenderer
         ): void;
 
         /**
@@ -10585,10 +10396,7 @@ declare namespace Phaser {
          * @param scene This parameter is not used.
          * @param graphicsGeometry The Graphics Game Object to use for the Geometry Mask. Doesn't have to be in the Display List.
          */
-        constructor(
-          scene: Phaser.Scene,
-          graphicsGeometry: Phaser.GameObjects.Graphics,
-        );
+        constructor(scene: Phaser.Scene, graphicsGeometry: Phaser.GameObjects.Graphics);
 
         /**
          * The Graphics object which describes the Geometry Mask.
@@ -10610,7 +10418,7 @@ declare namespace Phaser {
         preRenderWebGL(
           renderer: Phaser.Renderer.WebGL.WebGLRenderer,
           mask: Phaser.GameObjects.GameObject,
-          camera: Phaser.Cameras.Scene2D.Camera,
+          camera: Phaser.Cameras.Scene2D.Camera
         ): void;
 
         /**
@@ -10628,7 +10436,7 @@ declare namespace Phaser {
         preRenderCanvas(
           renderer: Phaser.Renderer.Canvas.CanvasRenderer,
           mask: Phaser.GameObjects.GameObject,
-          camera: Phaser.Cameras.Scene2D.Camera,
+          camera: Phaser.Cameras.Scene2D.Camera
         ): void;
 
         /**
@@ -10659,7 +10467,7 @@ declare namespace Phaser {
     function AddToDOM(
       element: HTMLElement,
       parent?: string | HTMLElement,
-      overflowHidden?: boolean,
+      overflowHidden?: boolean
     ): HTMLElement;
 
     /**
@@ -10795,11 +10603,7 @@ declare namespace Phaser {
        * @param fn The listener function.
        * @param context The context to invoke the listener with. Default this.
        */
-      on(
-        event: string | symbol,
-        fn: Function,
-        context?: any,
-      ): Phaser.Events.EventEmitter;
+      on(event: string | symbol, fn: Function, context?: any): Phaser.Events.EventEmitter;
 
       /**
        * Add a listener for a given event.
@@ -10807,11 +10611,7 @@ declare namespace Phaser {
        * @param fn The listener function.
        * @param context The context to invoke the listener with. Default this.
        */
-      addListener(
-        event: string | symbol,
-        fn: Function,
-        context?: any,
-      ): Phaser.Events.EventEmitter;
+      addListener(event: string | symbol, fn: Function, context?: any): Phaser.Events.EventEmitter;
 
       /**
        * Add a one-time listener for a given event.
@@ -10819,11 +10619,7 @@ declare namespace Phaser {
        * @param fn The listener function.
        * @param context The context to invoke the listener with. Default this.
        */
-      once(
-        event: string | symbol,
-        fn: Function,
-        context?: any,
-      ): Phaser.Events.EventEmitter;
+      once(event: string | symbol, fn: Function, context?: any): Phaser.Events.EventEmitter;
 
       /**
        * Remove the listeners of a given event.
@@ -10836,7 +10632,7 @@ declare namespace Phaser {
         event: string | symbol,
         fn: Function,
         context: any,
-        once: boolean,
+        once: boolean
       ): Phaser.Events.EventEmitter;
 
       /**
@@ -10850,7 +10646,7 @@ declare namespace Phaser {
         event: string | symbol,
         fn: Function,
         context: any,
-        once: boolean,
+        once: boolean
       ): Phaser.Events.EventEmitter;
 
       /**
@@ -10912,7 +10708,7 @@ declare namespace Phaser {
         font: string,
         text?: string | string[],
         size?: number,
-        align?: integer,
+        align?: integer
       );
 
       /**
@@ -10955,10 +10751,7 @@ declare namespace Phaser {
        * @param width The width of the crop.
        * @param height The height of the crop.
        */
-      setSize(
-        width: number,
-        height: number,
-      ): Phaser.GameObjects.DynamicBitmapText;
+      setSize(width: number, height: number): Phaser.GameObjects.DynamicBitmapText;
 
       /**
        * Set a callback that alters how each character of the Bitmap Text is rendered.
@@ -10970,9 +10763,7 @@ declare namespace Phaser {
        * usual values when rendering.
        * @param callback The display callback to set.
        */
-      setDisplayCallback(
-        callback: DisplayCallback,
-      ): Phaser.GameObjects.DynamicBitmapText;
+      setDisplayCallback(callback: DisplayCallback): Phaser.GameObjects.DynamicBitmapText;
 
       /**
        * Set the horizontal scroll position of this Bitmap Text.
@@ -11008,7 +10799,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -11134,11 +10925,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -11159,9 +10946,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -11175,9 +10960,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -11374,11 +11157,7 @@ declare namespace Phaser {
        * @param updateSize Should this call adjust the size of the Game Object? Default true.
        * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
        */
-      setFrame(
-        frame: string | integer,
-        updateSize?: boolean,
-        updateOrigin?: boolean,
-      ): this;
+      setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
 
       /**
        * Fill or additive?
@@ -11417,7 +11196,7 @@ declare namespace Phaser {
         topLeft?: integer,
         topRight?: integer,
         bottomLeft?: integer,
-        bottomRight?: integer,
+        bottomRight?: integer
       ): this;
 
       /**
@@ -11445,7 +11224,7 @@ declare namespace Phaser {
         topLeft?: integer,
         topRight?: integer,
         bottomLeft?: integer,
-        bottomRight?: integer,
+        bottomRight?: integer
       ): this;
 
       /**
@@ -11551,12 +11330,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -11606,7 +11380,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -11616,7 +11390,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -11697,10 +11471,7 @@ declare namespace Phaser {
        * @param scene A reference to the Phaser Scene.
        * @param config The font configuration object.
        */
-      function Parse(
-        scene: Phaser.Scene,
-        config: Phaser.GameObjects.RetroFont.Config,
-      ): object;
+      function Parse(scene: Phaser.Scene, config: Phaser.GameObjects.RetroFont.Config): object;
 
       type Config = {
         /**
@@ -11710,11 +11481,11 @@ declare namespace Phaser {
         /**
          * If the font set doesn't start at the top left of the given image, specify the X coordinate offset here.
          */
-        "offset.x": number;
+        'offset.x': number;
         /**
          * If the font set doesn't start at the top left of the given image, specify the Y coordinate offset here.
          */
-        "offset.y": number;
+        'offset.y': number;
         /**
          * The width of each character in the font set.
          */
@@ -11734,11 +11505,11 @@ declare namespace Phaser {
         /**
          * If the characters in the font set have horizontal spacing between them set the required amount here.
          */
-        "spacing.x": number;
+        'spacing.x': number;
         /**
          * If the characters in the font set have vertical spacing between them set the required amount here.
          */
-        "spacing.y": number;
+        'spacing.y': number;
         /**
          * The amount of vertical space to add to the line height of the font.
          */
@@ -11800,7 +11571,7 @@ declare namespace Phaser {
         font: string,
         text?: string | string[],
         size?: number,
-        align?: integer,
+        align?: integer
       );
 
       /**
@@ -11971,7 +11742,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -12097,11 +11868,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -12122,9 +11889,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -12138,9 +11903,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -12337,11 +12100,7 @@ declare namespace Phaser {
        * @param updateSize Should this call adjust the size of the Game Object? Default true.
        * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
        */
-      setFrame(
-        frame: string | integer,
-        updateSize?: boolean,
-        updateOrigin?: boolean,
-      ): this;
+      setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
 
       /**
        * Fill or additive?
@@ -12380,7 +12139,7 @@ declare namespace Phaser {
         topLeft?: integer,
         topRight?: integer,
         bottomLeft?: integer,
-        bottomRight?: integer,
+        bottomRight?: integer
       ): this;
 
       /**
@@ -12408,7 +12167,7 @@ declare namespace Phaser {
         topLeft?: integer,
         topRight?: integer,
         bottomLeft?: integer,
-        bottomRight?: integer,
+        bottomRight?: integer
       ): this;
 
       /**
@@ -12514,12 +12273,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -12569,7 +12323,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -12579,7 +12333,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -12641,7 +12395,7 @@ declare namespace Phaser {
         x?: number,
         y?: number,
         texture?: string,
-        frame?: string | integer,
+        frame?: string | integer
       );
 
       /**
@@ -12672,7 +12426,7 @@ declare namespace Phaser {
         y: number,
         frame?: string | integer | Phaser.Textures.Frame,
         visible?: boolean,
-        index?: integer,
+        index?: integer
       ): Phaser.GameObjects.Blitter.Bob;
 
       /**
@@ -12692,7 +12446,7 @@ declare namespace Phaser {
           | string[]
           | integer[]
           | Phaser.Textures.Frame[],
-        visible?: boolean,
+        visible?: boolean
       ): Phaser.GameObjects.Blitter.Bob[];
 
       /**
@@ -12715,7 +12469,7 @@ declare namespace Phaser {
           | string[]
           | integer[]
           | Phaser.Textures.Frame[],
-        visible?: boolean,
+        visible?: boolean
       ): Phaser.GameObjects.Blitter.Bob[];
 
       /**
@@ -12762,7 +12516,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -12888,11 +12642,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -12913,9 +12663,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -12929,9 +12677,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The initial WebGL pipeline of this Game Object.
@@ -13144,11 +12890,7 @@ declare namespace Phaser {
        * @param updateSize Should this call adjust the size of the Game Object? Default true.
        * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
        */
-      setFrame(
-        frame: string | integer,
-        updateSize?: boolean,
-        updateOrigin?: boolean,
-      ): this;
+      setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
 
       /**
        * The x position of this Game Object.
@@ -13219,12 +12961,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -13274,7 +13011,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -13284,7 +13021,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -13312,7 +13049,7 @@ declare namespace Phaser {
     function BuildGameObject(
       scene: Phaser.Scene,
       gameObject: Phaser.GameObjects.GameObject,
-      config: GameObjectConfig,
+      config: GameObjectConfig
     ): Phaser.GameObjects.GameObject;
 
     /**
@@ -13322,7 +13059,7 @@ declare namespace Phaser {
      */
     function BuildGameObjectAnimation(
       sprite: Phaser.GameObjects.Sprite,
-      config: object,
+      config: object
     ): Phaser.GameObjects.Sprite;
 
     namespace Components {
@@ -13352,7 +13089,7 @@ declare namespace Phaser {
           topLeft?: number,
           topRight?: number,
           bottomLeft?: number,
-          bottomRight?: number,
+          bottomRight?: number
         ): this;
         /**
          * The alpha value of the Game Object.
@@ -13460,7 +13197,7 @@ declare namespace Phaser {
         delayedPlay(
           delay: integer,
           key: string,
-          startFrame?: integer,
+          startFrame?: integer
         ): Phaser.GameObjects.GameObject;
         /**
          * Returns the key of the animation currently loaded into this component.
@@ -13477,17 +13214,13 @@ declare namespace Phaser {
          * You can optionally pause it at a specific frame.
          * @param atFrame An optional frame to set after pausing the animation.
          */
-        pause(
-          atFrame?: Phaser.Animations.AnimationFrame,
-        ): Phaser.GameObjects.GameObject;
+        pause(atFrame?: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
         /**
          * Resumes playback of a paused animation and sets the `isPlaying` property to `true`.
          * You can optionally tell it to start playback from a specific frame.
          * @param fromFrame An optional frame to set before restarting playback.
          */
-        resume(
-          fromFrame?: Phaser.Animations.AnimationFrame,
-        ): Phaser.GameObjects.GameObject;
+        resume(fromFrame?: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
         /**
          * `true` if the current animation is paused, otherwise `false`.
          */
@@ -13501,7 +13234,7 @@ declare namespace Phaser {
         play(
           key: string,
           ignoreIfPlaying?: boolean,
-          startFrame?: integer,
+          startFrame?: integer
         ): Phaser.GameObjects.GameObject;
         /**
          * Plays an Animation (in reverse mode) on the Game Object that owns this Animation Component.
@@ -13512,7 +13245,7 @@ declare namespace Phaser {
         playReverse(
           key: string,
           ignoreIfPlaying?: boolean,
-          startFrame?: integer,
+          startFrame?: integer
         ): Phaser.GameObjects.GameObject;
         /**
          * Load an Animation and fires 'onStartEvent' event,
@@ -13520,10 +13253,7 @@ declare namespace Phaser {
          * @param key The string-based key of the animation to play, as defined previously in the Animation Manager.
          * @param startFrame Optionally start the animation playing from this frame index. Default 0.
          */
-        _startAnimation(
-          key: string,
-          startFrame?: integer,
-        ): Phaser.GameObjects.GameObject;
+        _startAnimation(key: string, startFrame?: integer): Phaser.GameObjects.GameObject;
         /**
          * Reverse an Animation that is already playing on the Game Object.
          * @param key The string-based key of the animation to play, as defined previously in the Animation Manager.
@@ -13597,9 +13327,7 @@ declare namespace Phaser {
          * If this frame doesn't exist within the animation it will not stop it from playing.
          * @param delay The frame to check before stopping this animation.
          */
-        stopOnFrame(
-          delay: Phaser.Animations.AnimationFrame,
-        ): Phaser.GameObjects.GameObject;
+        stopOnFrame(delay: Phaser.Animations.AnimationFrame): Phaser.GameObjects.GameObject;
         /**
          * Sets the Time Scale factor, allowing you to make the animation go go faster or slower than default.
          * Where 1 = normal speed (the default), 0.5 = half speed, 2 = double speed, etc.
@@ -13626,7 +13354,7 @@ declare namespace Phaser {
          * @param animationFrame The Animation Frame to set as being current.
          */
         setCurrentFrame(
-          animationFrame: Phaser.Animations.AnimationFrame,
+          animationFrame: Phaser.Animations.AnimationFrame
         ): Phaser.GameObjects.GameObject;
         /**
          * Sets if the current Animation will yoyo when it reaches the end.
@@ -13807,7 +13535,7 @@ declare namespace Phaser {
           x?: number | Phaser.Geom.Rectangle,
           y?: number,
           width?: number,
-          height?: number,
+          height?: number
         ): this;
       }
 
@@ -13907,40 +13635,28 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getTopLeft<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
         /**
          * Gets the top-right corner coordinate of this Game Object, regardless of origin.
          * The returned point is calculated in local space and does not factor in any parent containers
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getTopRight<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
         /**
          * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
          * The returned point is calculated in local space and does not factor in any parent containers
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getBottomLeft<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
         /**
          * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
          * The returned point is calculated in local space and does not factor in any parent containers
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getBottomRight<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
         /**
          * Gets the bounds of this Game Object, regardless of origin.
          * The values are stored and returned in a Rectangle, or Rectangle-like, object.
@@ -13956,9 +13672,7 @@ declare namespace Phaser {
         /**
          * The Mask this Game Object is using during render.
          */
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask;
+        mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask;
         /**
          * Sets the mask that this Game Object will use to render with.
          *
@@ -13974,11 +13688,7 @@ declare namespace Phaser {
          * that allows you to limit what is visible during the render pass.
          * @param mask The mask this Game Object will use when rendering.
          */
-        setMask(
-          mask:
-            | Phaser.Display.Masks.BitmapMask
-            | Phaser.Display.Masks.GeometryMask,
-        ): this;
+        setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
         /**
          * Clears the mask that this Game Object was using.
          * @param destroyMask Destroy the mask before clearing it? Default false.
@@ -13998,7 +13708,7 @@ declare namespace Phaser {
          * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
          */
         createBitmapMask(
-          renderable?: Phaser.GameObjects.GameObject,
+          renderable?: Phaser.GameObjects.GameObject
         ): Phaser.Display.Masks.BitmapMask;
         /**
          * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -14013,7 +13723,7 @@ declare namespace Phaser {
          * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
          */
         createGeometryMask(
-          graphics?: Phaser.GameObjects.Graphics,
+          graphics?: Phaser.GameObjects.Graphics
         ): Phaser.Display.Masks.GeometryMask;
       }
 
@@ -14294,11 +14004,7 @@ declare namespace Phaser {
          * @param updateSize Should this call adjust the size of the Game Object? Default true.
          * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
          */
-        setFrame(
-          frame: string | integer,
-          updateSize?: boolean,
-          updateOrigin?: boolean,
-        ): this;
+        setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
       }
 
       /**
@@ -14350,7 +14056,7 @@ declare namespace Phaser {
           x?: number | Phaser.Geom.Rectangle,
           y?: number,
           width?: number,
-          height?: number,
+          height?: number
         ): this;
         /**
          * Sets the texture and frame this Game Object will use to render with.
@@ -14373,11 +14079,7 @@ declare namespace Phaser {
          * @param updateSize Should this call adjust the size of the Game Object? Default true.
          * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
          */
-        setFrame(
-          frame: string | integer,
-          updateSize?: boolean,
-          updateOrigin?: boolean,
-        ): this;
+        setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
       }
 
       /**
@@ -14420,7 +14122,7 @@ declare namespace Phaser {
           topLeft?: integer,
           topRight?: integer,
           bottomLeft?: integer,
-          bottomRight?: integer,
+          bottomRight?: integer
         ): this;
         /**
          * Sets a fill-based tint on this Game Object.
@@ -14447,7 +14149,7 @@ declare namespace Phaser {
           topLeft?: integer,
           topRight?: integer,
           bottomLeft?: integer,
-          bottomRight?: integer,
+          bottomRight?: integer
         ): this;
         /**
          * The tint value being applied to the top-left of the Game Object.
@@ -14550,12 +14252,7 @@ declare namespace Phaser {
          * @param width The width of the random area.
          * @param height The height of the random area.
          */
-        setRandomPosition(
-          x?: number,
-          y?: number,
-          width?: number,
-          height?: number,
-        ): this;
+        setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
         /**
          * Sets the rotation of this Game Object.
          * @param radians The rotation of this Game Object, in radians. Default 0.
@@ -14597,7 +14294,7 @@ declare namespace Phaser {
          * @param tempMatrix The matrix to populate with the values from this Game Object.
          */
         getLocalTransformMatrix(
-          tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+          tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
         ): Phaser.GameObjects.Components.TransformMatrix;
         /**
          * Gets the world transform matrix for this Game Object, factoring in any parent Containers.
@@ -14606,7 +14303,7 @@ declare namespace Phaser {
          */
         getWorldTransformMatrix(
           tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-          parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+          parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
         ): Phaser.GameObjects.Components.TransformMatrix;
       }
 
@@ -14631,14 +14328,7 @@ declare namespace Phaser {
          * @param tx The Translate X value. Default 0.
          * @param ty The Translate Y value. Default 0.
          */
-        constructor(
-          a?: number,
-          b?: number,
-          c?: number,
-          d?: number,
-          tx?: number,
-          ty?: number,
-        );
+        constructor(a?: number, b?: number, c?: number, d?: number, tx?: number, ty?: number);
 
         /**
          * The matrix values.
@@ -14741,7 +14431,7 @@ declare namespace Phaser {
          */
         multiply(
           rhs: Phaser.GameObjects.Components.TransformMatrix,
-          out?: Phaser.GameObjects.Components.TransformMatrix,
+          out?: Phaser.GameObjects.Components.TransformMatrix
         ): Phaser.GameObjects.Components.TransformMatrix;
 
         /**
@@ -14756,7 +14446,7 @@ declare namespace Phaser {
         multiplyWithOffset(
           src: Phaser.GameObjects.Components.TransformMatrix,
           offsetX: number,
-          offsetY: number,
+          offsetY: number
         ): this;
 
         /**
@@ -14768,14 +14458,7 @@ declare namespace Phaser {
          * @param tx The Translate X value.
          * @param ty The Translate Y value.
          */
-        transform(
-          a: number,
-          b: number,
-          c: number,
-          d: number,
-          tx: number,
-          ty: number,
-        ): this;
+        transform(a: number, b: number, c: number, d: number, tx: number, ty: number): this;
 
         /**
          * Transform a point using this Matrix.
@@ -14786,7 +14469,7 @@ declare namespace Phaser {
         transformPoint(
           x: number,
           y: number,
-          point: Phaser.Geom.Point | Phaser.Math.Vector2 | object,
+          point: Phaser.Geom.Point | Phaser.Math.Vector2 | object
         ): Phaser.Geom.Point | Phaser.Math.Vector2 | object;
 
         /**
@@ -14838,14 +14521,7 @@ declare namespace Phaser {
          * @param tx The Translate X value.
          * @param ty The Translate Y value.
          */
-        setTransform(
-          a: number,
-          b: number,
-          c: number,
-          d: number,
-          tx: number,
-          ty: number,
-        ): this;
+        setTransform(a: number, b: number, c: number, d: number, tx: number, ty: number): this;
 
         /**
          * Decompose this Matrix into its translation, scale and rotation values.
@@ -14860,13 +14536,7 @@ declare namespace Phaser {
          * @param scaleX The horizontal scale.
          * @param scaleY The vertical scale.
          */
-        applyITRS(
-          x: number,
-          y: number,
-          rotation: number,
-          scaleX: number,
-          scaleY: number,
-        ): this;
+        applyITRS(x: number, y: number, rotation: number, scaleX: number, scaleY: number): this;
 
         /**
          * Takes the `x` and `y` values and returns a new position in the `output` vector that is the inverse of
@@ -14877,11 +14547,7 @@ declare namespace Phaser {
          * @param y The y position to translate.
          * @param output A Vector2, or point-like object, to store the results in.
          */
-        applyInverse(
-          x: number,
-          y: number,
-          output?: Phaser.Math.Vector2,
-        ): Phaser.Math.Vector2;
+        applyInverse(x: number, y: number, output?: Phaser.Math.Vector2): Phaser.Math.Vector2;
 
         /**
          * Returns the X component of this matrix multiplied by the given values.
@@ -14989,7 +14655,7 @@ declare namespace Phaser {
         scene: Phaser.Scene,
         x?: number,
         y?: number,
-        children?: Phaser.GameObjects.GameObject[],
+        children?: Phaser.GameObjects.GameObject[]
       );
 
       /**
@@ -15093,7 +14759,7 @@ declare namespace Phaser {
        */
       pointToContainer(
         source: object | Phaser.Geom.Point | Phaser.Math.Vector2,
-        output?: object | Phaser.Geom.Point | Phaser.Math.Vector2,
+        output?: object | Phaser.Geom.Point | Phaser.Math.Vector2
       ): object | Phaser.Geom.Point | Phaser.Math.Vector2;
 
       /**
@@ -15110,7 +14776,7 @@ declare namespace Phaser {
        * @param child The Game Object, or array of Game Objects, to add to the Container.
        */
       add(
-        child: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[],
+        child: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[]
       ): Phaser.GameObjects.Container;
 
       /**
@@ -15124,7 +14790,7 @@ declare namespace Phaser {
        */
       addAt(
         child: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[],
-        index?: integer,
+        index?: integer
       ): Phaser.GameObjects.Container;
 
       /**
@@ -15158,10 +14824,7 @@ declare namespace Phaser {
        * @param startIndex An optional start index. Default 0.
        * @param length An optional length, the total number of elements (from the startIndex) to choose from.
        */
-      getRandom(
-        startIndex?: integer,
-        length?: integer,
-      ): Phaser.GameObjects.GameObject;
+      getRandom(startIndex?: integer, length?: integer): Phaser.GameObjects.GameObject;
 
       /**
        * Gets the first Game Object in this Container.
@@ -15181,7 +14844,7 @@ declare namespace Phaser {
         property?: string,
         value?: any,
         startIndex?: integer,
-        endIndex?: integer,
+        endIndex?: integer
       ): Phaser.GameObjects.GameObject;
 
       /**
@@ -15207,7 +14870,7 @@ declare namespace Phaser {
         property?: string,
         value?: any,
         startIndex?: integer,
-        endIndex?: integer,
+        endIndex?: integer
       ): Phaser.GameObjects.GameObject[];
 
       /**
@@ -15222,12 +14885,7 @@ declare namespace Phaser {
        * @param startIndex An optional start index to search from. Default 0.
        * @param endIndex An optional end index to search up to (but not included) Default Container.length.
        */
-      count(
-        property: string,
-        value: any,
-        startIndex?: integer,
-        endIndex?: integer,
-      ): integer;
+      count(property: string, value: any, startIndex?: integer, endIndex?: integer): integer;
 
       /**
        * Swaps the position of two Game Objects in this Container.
@@ -15237,7 +14895,7 @@ declare namespace Phaser {
        */
       swap(
         child1: Phaser.GameObjects.GameObject,
-        child2: Phaser.GameObjects.GameObject,
+        child2: Phaser.GameObjects.GameObject
       ): Phaser.GameObjects.Container;
 
       /**
@@ -15250,10 +14908,7 @@ declare namespace Phaser {
        * @param child The Game Object to move.
        * @param index The new position of the Game Object in this Container.
        */
-      moveTo(
-        child: Phaser.GameObjects.GameObject,
-        index: integer,
-      ): Phaser.GameObjects.Container;
+      moveTo(child: Phaser.GameObjects.GameObject, index: integer): Phaser.GameObjects.Container;
 
       /**
        * Removes the given Game Object, or array of Game Objects, from this Container.
@@ -15266,7 +14921,7 @@ declare namespace Phaser {
        */
       remove(
         child: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[],
-        destroyChild?: boolean,
+        destroyChild?: boolean
       ): Phaser.GameObjects.Container;
 
       /**
@@ -15276,10 +14931,7 @@ declare namespace Phaser {
        * @param index The index of the Game Object to be removed.
        * @param destroyChild Optionally call `destroy` on the Game Object if successfully removed from this Container. Default false.
        */
-      removeAt(
-        index: integer,
-        destroyChild?: boolean,
-      ): Phaser.GameObjects.Container;
+      removeAt(index: integer, destroyChild?: boolean): Phaser.GameObjects.Container;
 
       /**
        * Removes the Game Objects between the given positions in this Container.
@@ -15292,7 +14944,7 @@ declare namespace Phaser {
       removeBetween(
         startIndex?: integer,
         endIndex?: integer,
-        destroyChild?: boolean,
+        destroyChild?: boolean
       ): Phaser.GameObjects.Container;
 
       /**
@@ -15308,34 +14960,26 @@ declare namespace Phaser {
        * This will cause it to render on-top of any other objects in the Container.
        * @param child The Game Object to bring to the top of the Container.
        */
-      bringToTop(
-        child: Phaser.GameObjects.GameObject,
-      ): Phaser.GameObjects.Container;
+      bringToTop(child: Phaser.GameObjects.GameObject): Phaser.GameObjects.Container;
 
       /**
        * Sends the given Game Object to the bottom of this Container.
        * This will cause it to render below any other objects in the Container.
        * @param child The Game Object to send to the bottom of the Container.
        */
-      sendToBack(
-        child: Phaser.GameObjects.GameObject,
-      ): Phaser.GameObjects.Container;
+      sendToBack(child: Phaser.GameObjects.GameObject): Phaser.GameObjects.Container;
 
       /**
        * Moves the given Game Object up one place in this Container, unless it's already at the top.
        * @param child The Game Object to be moved in the Container.
        */
-      moveUp(
-        child: Phaser.GameObjects.GameObject,
-      ): Phaser.GameObjects.Container;
+      moveUp(child: Phaser.GameObjects.GameObject): Phaser.GameObjects.Container;
 
       /**
        * Moves the given Game Object down one place in this Container, unless it's already at the bottom.
        * @param child The Game Object to be moved in the Container.
        */
-      moveDown(
-        child: Phaser.GameObjects.GameObject,
-      ): Phaser.GameObjects.Container;
+      moveDown(child: Phaser.GameObjects.GameObject): Phaser.GameObjects.Container;
 
       /**
        * Reverses the order of all Game Objects in this Container.
@@ -15357,7 +15001,7 @@ declare namespace Phaser {
       replace(
         oldChild: Phaser.GameObjects.GameObject,
         newChild: Phaser.GameObjects.GameObject,
-        destroyChild?: boolean,
+        destroyChild?: boolean
       ): Phaser.GameObjects.Container;
 
       /**
@@ -15383,7 +15027,7 @@ declare namespace Phaser {
         property: string,
         value: any,
         startIndex?: integer,
-        endIndex?: integer,
+        endIndex?: integer
       ): Phaser.GameObjects.Container;
 
       /**
@@ -15398,11 +15042,7 @@ declare namespace Phaser {
        * @param context Value to use as `this` when executing callback.
        * @param args Additional arguments that will be passed to the callback, after the child.
        */
-      each(
-        callback: Function,
-        context?: object,
-        ...args: any[]
-      ): Phaser.GameObjects.Container;
+      each(callback: Function, context?: object, ...args: any[]): Phaser.GameObjects.Container;
 
       /**
        * Passes all Game Objects in this Container to the given callback.
@@ -15413,11 +15053,7 @@ declare namespace Phaser {
        * @param context Value to use as `this` when executing callback.
        * @param args Additional arguments that will be passed to the callback, after the child.
        */
-      iterate(
-        callback: Function,
-        context?: object,
-        ...args: any[]
-      ): Phaser.GameObjects.Container;
+      iterate(callback: Function, context?: object, ...args: any[]): Phaser.GameObjects.Container;
 
       /**
        * The number of Game Objects inside this Container.
@@ -15479,7 +15115,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -15665,11 +15301,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -15690,9 +15322,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -15706,9 +15336,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal scroll factor of this Game Object.
@@ -15838,12 +15466,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -15893,7 +15516,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -15903,7 +15526,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -15929,8 +15552,7 @@ declare namespace Phaser {
      *
      * Some of these Game Objects may also be part of the Scene's [Update List]{@link Phaser.GameObjects.UpdateList}, for updating.
      */
-    class DisplayList extends Phaser.Structs
-      .List<Phaser.GameObjects.GameObject> {
+    class DisplayList extends Phaser.Structs.List<Phaser.GameObjects.GameObject> {
       /**
        *
        * @param scene The Scene that this Display List belongs to.
@@ -15969,7 +15591,7 @@ declare namespace Phaser {
        */
       sortByDepth(
         childA: Phaser.GameObjects.GameObject,
-        childB: Phaser.GameObjects.GameObject,
+        childB: Phaser.GameObjects.GameObject
       ): integer;
 
       /**
@@ -15985,9 +15607,7 @@ declare namespace Phaser {
        * Note that the given array is sorted in place, even though it isn't returned directly it will still be updated.
        * @param gameObjects The array of Game Objects.
        */
-      getTopGameObject(
-        gameObjects: Phaser.GameObjects.GameObject[],
-      ): Phaser.GameObjects.GameObject;
+      getTopGameObject(gameObjects: Phaser.GameObjects.GameObject[]): Phaser.GameObjects.GameObject;
 
       /**
        * All members of the group.
@@ -16017,12 +15637,7 @@ declare namespace Phaser {
        * @param y The vertical position of this Game Object in the world.
        * @param element The DOM Element to use.
        */
-      constructor(
-        scene: Phaser.Scene,
-        x: number,
-        y: number,
-        element?: string | HTMLElement,
-      );
+      constructor(scene: Phaser.Scene, x: number, y: number, element?: string | HTMLElement);
 
       /**
        * Compares the renderMask with the renderFlags to see if this Game Object will render or not.
@@ -16053,7 +15668,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -16405,12 +16020,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -16460,7 +16070,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -16470,7 +16080,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -16685,7 +16295,7 @@ declare namespace Phaser {
       setInteractive(
         shape?: Phaser.Input.InputConfiguration | any,
         callback?: HitAreaCallback,
-        dropZone?: boolean,
+        dropZone?: boolean
       ): this;
 
       /**
@@ -16795,7 +16405,7 @@ declare namespace Phaser {
        */
       dynamicBitmapText(
         config: BitmapTextConfig,
-        addToScene?: boolean,
+        addToScene?: boolean
       ): Phaser.GameObjects.DynamicBitmapText;
 
       /**
@@ -16805,10 +16415,7 @@ declare namespace Phaser {
        * @param config The configuration object this Game Object will use to create itself.
        * @param addToScene Add this Game Object to the Scene after creating it? If set this argument overrides the `add` property in the config object.
        */
-      bitmapText(
-        config: BitmapTextConfig,
-        addToScene?: boolean,
-      ): Phaser.GameObjects.BitmapText;
+      bitmapText(config: BitmapTextConfig, addToScene?: boolean): Phaser.GameObjects.BitmapText;
 
       /**
        * Creates a new Blitter Game Object and returns it.
@@ -16826,10 +16433,7 @@ declare namespace Phaser {
        * @param config The configuration object this Game Object will use to create itself.
        * @param addToScene Add this Game Object to the Scene after creating it? If set this argument overrides the `add` property in the config object.
        */
-      container(
-        config: object,
-        addToScene?: boolean,
-      ): Phaser.GameObjects.Container;
+      container(config: object, addToScene?: boolean): Phaser.GameObjects.Container;
 
       /**
        * The Scene to which this Game Object Creator belongs.
@@ -16849,7 +16453,7 @@ declare namespace Phaser {
       /**
        * A reference to the Scene Update List.
        */
-      protected "updateList;": Phaser.GameObjects.UpdateList;
+      protected 'updateList;': Phaser.GameObjects.UpdateList;
 
       /**
        * Creates a new Graphics Game Object and returns it.
@@ -16858,10 +16462,7 @@ declare namespace Phaser {
        * @param config The configuration object this Game Object will use to create itself.
        * @param addToScene Add this Game Object to the Scene after creating it? If set this argument overrides the `add` property in the config object.
        */
-      graphics(
-        config: object,
-        addToScene?: boolean,
-      ): Phaser.GameObjects.Graphics;
+      graphics(config: object, addToScene?: boolean): Phaser.GameObjects.Graphics;
 
       /**
        * Creates a new Group Game Object and returns it.
@@ -16898,7 +16499,7 @@ declare namespace Phaser {
        */
       particles(
         config: object,
-        addToScene?: boolean,
+        addToScene?: boolean
       ): Phaser.GameObjects.Particles.ParticleEmitterManager;
 
       /**
@@ -16919,7 +16520,7 @@ declare namespace Phaser {
        */
       renderTexture(
         config: RenderTextureConfig,
-        addToScene?: boolean,
+        addToScene?: boolean
       ): Phaser.GameObjects.RenderTexture;
 
       /**
@@ -16929,10 +16530,7 @@ declare namespace Phaser {
        * @param config The configuration object this Game Object will use to create itself.
        * @param addToScene Add this Game Object to the Scene after creating it? If set this argument overrides the `add` property in the config object.
        */
-      sprite(
-        config: SpriteConfig,
-        addToScene?: boolean,
-      ): Phaser.GameObjects.Sprite;
+      sprite(config: SpriteConfig, addToScene?: boolean): Phaser.GameObjects.Sprite;
 
       /**
        * Creates a new Text Game Object and returns it.
@@ -16950,10 +16548,7 @@ declare namespace Phaser {
        * @param config The configuration object this Game Object will use to create itself.
        * @param addToScene Add this Game Object to the Scene after creating it? If set this argument overrides the `add` property in the config object.
        */
-      tileSprite(
-        config: TileSprite,
-        addToScene?: boolean,
-      ): Phaser.GameObjects.TileSprite;
+      tileSprite(config: TileSprite, addToScene?: boolean): Phaser.GameObjects.TileSprite;
 
       /**
        * Creates a new Zone Game Object and returns it.
@@ -17043,7 +16638,7 @@ declare namespace Phaser {
         y: number,
         font: string,
         text?: string | string[],
-        size?: number,
+        size?: number
       ): Phaser.GameObjects.DynamicBitmapText;
 
       /**
@@ -17083,7 +16678,7 @@ declare namespace Phaser {
         font: string,
         text?: string | string[],
         size?: number,
-        align?: integer,
+        align?: integer
       ): Phaser.GameObjects.BitmapText;
 
       /**
@@ -17099,7 +16694,7 @@ declare namespace Phaser {
         x: number,
         y: number,
         key: string,
-        frame?: string | integer,
+        frame?: string | integer
       ): Phaser.GameObjects.Blitter;
 
       /**
@@ -17113,9 +16708,7 @@ declare namespace Phaser {
       container(
         x: number,
         y: number,
-        children?:
-          | Phaser.GameObjects.GameObject
-          | Phaser.GameObjects.GameObject[],
+        children?: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[]
       ): Phaser.GameObjects.Container;
 
       /**
@@ -17146,7 +16739,7 @@ declare namespace Phaser {
       /**
        * A reference to the Scene Update List.
        */
-      protected "updateList;": Phaser.GameObjects.UpdateList;
+      protected 'updateList;': Phaser.GameObjects.UpdateList;
 
       /**
        * Adds an existing Game Object to this Scene.
@@ -17155,9 +16748,7 @@ declare namespace Phaser {
        * If it has a `preUpdate` method, it will be added to the Update List.
        * @param child The child to be added to this Scene.
        */
-      existing(
-        child: Phaser.GameObjects.GameObject,
-      ): Phaser.GameObjects.GameObject;
+      existing(child: Phaser.GameObjects.GameObject): Phaser.GameObjects.GameObject;
 
       /**
        * Creates a new Graphics Game Object and adds it to the Scene.
@@ -17175,11 +16766,8 @@ declare namespace Phaser {
        * @param config A Group Configuration object.
        */
       group(
-        children?:
-          | Phaser.GameObjects.GameObject[]
-          | GroupConfig
-          | GroupConfig[],
-        config?: GroupConfig,
+        children?: Phaser.GameObjects.GameObject[] | GroupConfig | GroupConfig[],
+        config?: GroupConfig
       ): Phaser.GameObjects.Group;
 
       /**
@@ -17195,7 +16783,7 @@ declare namespace Phaser {
         x: number,
         y: number,
         texture: string,
-        frame?: string | integer,
+        frame?: string | integer
       ): Phaser.GameObjects.Image;
 
       /**
@@ -17219,7 +16807,7 @@ declare namespace Phaser {
         colors: number[],
         alphas: number[],
         texture: string,
-        frame?: string | integer,
+        frame?: string | integer
       ): Phaser.GameObjects.Mesh;
 
       /**
@@ -17233,7 +16821,7 @@ declare namespace Phaser {
       particles(
         texture: string,
         frame?: string | integer | object,
-        emitters?: ParticleEmitterConfig | ParticleEmitterConfig[],
+        emitters?: ParticleEmitterConfig | ParticleEmitterConfig[]
       ): Phaser.GameObjects.Particles.ParticleEmitterManager;
 
       /**
@@ -17251,7 +16839,7 @@ declare namespace Phaser {
         x: number,
         y: number,
         texture: string,
-        frame?: string | integer,
+        frame?: string | integer
       ): Phaser.GameObjects.PathFollower;
 
       /**
@@ -17267,7 +16855,7 @@ declare namespace Phaser {
         x: number,
         y: number,
         texture: string,
-        frame?: string | integer,
+        frame?: string | integer
       ): Phaser.GameObjects.Quad;
 
       /**
@@ -17287,7 +16875,7 @@ declare namespace Phaser {
         x: number,
         y: number,
         width?: integer,
-        height?: integer,
+        height?: integer
       ): Phaser.GameObjects.RenderTexture;
 
       /**
@@ -17323,7 +16911,7 @@ declare namespace Phaser {
         endAngle?: integer,
         anticlockwise?: boolean,
         fillColor?: number,
-        fillAlpha?: number,
+        fillAlpha?: number
       ): Phaser.GameObjects.Arc;
 
       /**
@@ -17343,7 +16931,7 @@ declare namespace Phaser {
         y?: number,
         radius?: number,
         fillColor?: number,
-        fillAlpha?: number,
+        fillAlpha?: number
       ): Phaser.GameObjects.Arc;
 
       /**
@@ -17376,7 +16964,7 @@ declare namespace Phaser {
         y?: number,
         curve?: Phaser.Curves.Curve,
         fillColor?: number,
-        fillAlpha?: number,
+        fillAlpha?: number
       ): Phaser.GameObjects.Curve;
 
       /**
@@ -17412,7 +17000,7 @@ declare namespace Phaser {
         width?: number,
         height?: number,
         fillColor?: number,
-        fillAlpha?: number,
+        fillAlpha?: number
       ): Phaser.GameObjects.Ellipse;
 
       /**
@@ -17455,7 +17043,7 @@ declare namespace Phaser {
         fillColor?: number,
         fillAlpha?: number,
         outlineFillColor?: number,
-        outlineFillAlpha?: number,
+        outlineFillAlpha?: number
       ): Phaser.GameObjects.Grid;
 
       /**
@@ -17491,7 +17079,7 @@ declare namespace Phaser {
         height?: number,
         fillTop?: number,
         fillLeft?: number,
-        fillRight?: number,
+        fillRight?: number
       ): Phaser.GameObjects.IsoBox;
 
       /**
@@ -17530,7 +17118,7 @@ declare namespace Phaser {
         reversed?: boolean,
         fillTop?: number,
         fillLeft?: number,
-        fillRight?: number,
+        fillRight?: number
       ): Phaser.GameObjects.IsoTriangle;
 
       /**
@@ -17567,7 +17155,7 @@ declare namespace Phaser {
         x2?: number,
         y2?: number,
         strokeColor?: number,
-        strokeAlpha?: number,
+        strokeAlpha?: number
       ): Phaser.GameObjects.Line;
 
       /**
@@ -17603,7 +17191,7 @@ declare namespace Phaser {
         y?: number,
         points?: any,
         fillColor?: number,
-        fillAlpha?: number,
+        fillAlpha?: number
       ): Phaser.GameObjects.Polygon;
 
       /**
@@ -17632,7 +17220,7 @@ declare namespace Phaser {
         width?: number,
         height?: number,
         fillColor?: number,
-        fillAlpha?: number,
+        fillAlpha?: number
       ): Phaser.GameObjects.Rectangle;
 
       /**
@@ -17669,7 +17257,7 @@ declare namespace Phaser {
         innerRadius?: number,
         outerRadius?: number,
         fillColor?: number,
-        fillAlpha?: number,
+        fillAlpha?: number
       ): Phaser.GameObjects.Star;
 
       /**
@@ -17708,7 +17296,7 @@ declare namespace Phaser {
         x3?: number,
         y3?: number,
         fillColor?: number,
-        fillAlpha?: number,
+        fillAlpha?: number
       ): Phaser.GameObjects.Triangle;
 
       /**
@@ -17724,7 +17312,7 @@ declare namespace Phaser {
         x: number,
         y: number,
         texture: string,
-        frame?: string | integer,
+        frame?: string | integer
       ): Phaser.GameObjects.Sprite;
 
       /**
@@ -17759,12 +17347,7 @@ declare namespace Phaser {
        * @param text The text this Text object will display.
        * @param style The Text style configuration object.
        */
-      text(
-        x: number,
-        y: number,
-        text: string | string[],
-        style?: object,
-      ): Phaser.GameObjects.Text;
+      text(x: number, y: number, text: string | string[], style?: object): Phaser.GameObjects.Text;
 
       /**
        * Creates a new TileSprite Game Object and adds it to the Scene.
@@ -17783,7 +17366,7 @@ declare namespace Phaser {
         width: integer,
         height: integer,
         texture: string,
-        frame?: string | integer,
+        frame?: string | integer
       ): Phaser.GameObjects.TileSprite;
 
       /**
@@ -17795,12 +17378,7 @@ declare namespace Phaser {
        * @param width The width of the Game Object.
        * @param height The height of the Game Object.
        */
-      zone(
-        x: number,
-        y: number,
-        width: number,
-        height: number,
-      ): Phaser.GameObjects.Zone;
+      zone(x: number, y: number, width: number, height: number): Phaser.GameObjects.Zone;
 
       /**
        * Creates a Tilemap from the given key or data, or creates a blank Tilemap if no key/data provided.
@@ -17832,7 +17410,7 @@ declare namespace Phaser {
         width?: integer,
         height?: integer,
         data?: integer[][],
-        insertNull?: boolean,
+        insertNull?: boolean
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -17955,11 +17533,7 @@ declare namespace Phaser {
        * @param color The stroke color.
        * @param alpha The stroke alpha. Default 1.
        */
-      lineStyle(
-        lineWidth: number,
-        color: number,
-        alpha?: number,
-      ): Phaser.GameObjects.Graphics;
+      lineStyle(lineWidth: number, color: number, alpha?: number): Phaser.GameObjects.Graphics;
 
       /**
        * Set the current fill style.
@@ -17993,7 +17567,7 @@ declare namespace Phaser {
         topRight: integer,
         bottomLeft: integer,
         bottomRight: integer,
-        alpha?: number,
+        alpha?: number
       ): Phaser.GameObjects.Graphics;
 
       /**
@@ -18021,7 +17595,7 @@ declare namespace Phaser {
         topRight: integer,
         bottomLeft: integer,
         bottomRight: integer,
-        alpha?: number,
+        alpha?: number
       ): Phaser.GameObjects.Graphics;
 
       /**
@@ -18073,9 +17647,7 @@ declare namespace Phaser {
        * Stroke the given circle.
        * @param circle The circle to stroke.
        */
-      strokeCircleShape(
-        circle: Phaser.Geom.Circle,
-      ): Phaser.GameObjects.Graphics;
+      strokeCircleShape(circle: Phaser.Geom.Circle): Phaser.GameObjects.Graphics;
 
       /**
        * Fill a circle with the given position and radius.
@@ -18083,11 +17655,7 @@ declare namespace Phaser {
        * @param y The y coordinate of the center of the circle.
        * @param radius The radius of the circle.
        */
-      fillCircle(
-        x: number,
-        y: number,
-        radius: number,
-      ): Phaser.GameObjects.Graphics;
+      fillCircle(x: number, y: number, radius: number): Phaser.GameObjects.Graphics;
 
       /**
        * Stroke a circle with the given position and radius.
@@ -18095,11 +17663,7 @@ declare namespace Phaser {
        * @param y The y coordinate of the center of the circle.
        * @param radius The radius of the circle.
        */
-      strokeCircle(
-        x: number,
-        y: number,
-        radius: number,
-      ): Phaser.GameObjects.Graphics;
+      strokeCircle(x: number, y: number, radius: number): Phaser.GameObjects.Graphics;
 
       /**
        * Fill the given rectangle.
@@ -18120,12 +17684,7 @@ declare namespace Phaser {
        * @param width The width of the rectangle.
        * @param height The height of the rectangle.
        */
-      fillRect(
-        x: number,
-        y: number,
-        width: number,
-        height: number,
-      ): Phaser.GameObjects.Graphics;
+      fillRect(x: number, y: number, width: number, height: number): Phaser.GameObjects.Graphics;
 
       /**
        * Stroke a rectangle with the given position and size.
@@ -18134,12 +17693,7 @@ declare namespace Phaser {
        * @param width The width of the rectangle.
        * @param height The height of the rectangle.
        */
-      strokeRect(
-        x: number,
-        y: number,
-        width: number,
-        height: number,
-      ): Phaser.GameObjects.Graphics;
+      strokeRect(x: number, y: number, width: number, height: number): Phaser.GameObjects.Graphics;
 
       /**
        * Fill a rounded rectangle with the given position, size and radius.
@@ -18158,7 +17712,7 @@ declare namespace Phaser {
         y: number,
         width: number,
         height: number,
-        radius?: number,
+        radius?: number
       ): Phaser.GameObjects.Graphics;
 
       /**
@@ -18178,7 +17732,7 @@ declare namespace Phaser {
         y: number,
         width: number,
         height: number,
-        radius?: number,
+        radius?: number
       ): Phaser.GameObjects.Graphics;
 
       /**
@@ -18190,7 +17744,7 @@ declare namespace Phaser {
        */
       fillPointShape(
         point: Phaser.Geom.Point | Phaser.Math.Vector2 | object,
-        size?: number,
+        size?: number
       ): Phaser.GameObjects.Graphics;
 
       /**
@@ -18201,27 +17755,19 @@ declare namespace Phaser {
        * @param y The y coordinate of the point.
        * @param size The size of the square to draw. Default 1.
        */
-      fillPoint(
-        x: number,
-        y: number,
-        size?: number,
-      ): Phaser.GameObjects.Graphics;
+      fillPoint(x: number, y: number, size?: number): Phaser.GameObjects.Graphics;
 
       /**
        * Fill the given triangle.
        * @param triangle The triangle to fill.
        */
-      fillTriangleShape(
-        triangle: Phaser.Geom.Triangle,
-      ): Phaser.GameObjects.Graphics;
+      fillTriangleShape(triangle: Phaser.Geom.Triangle): Phaser.GameObjects.Graphics;
 
       /**
        * Stroke the given triangle.
        * @param triangle The triangle to stroke.
        */
-      strokeTriangleShape(
-        triangle: Phaser.Geom.Triangle,
-      ): Phaser.GameObjects.Graphics;
+      strokeTriangleShape(triangle: Phaser.Geom.Triangle): Phaser.GameObjects.Graphics;
 
       /**
        * Fill a triangle with the given points.
@@ -18238,7 +17784,7 @@ declare namespace Phaser {
         x1: number,
         y1: number,
         x2: number,
-        y2: number,
+        y2: number
       ): Phaser.GameObjects.Graphics;
 
       /**
@@ -18256,7 +17802,7 @@ declare namespace Phaser {
         x1: number,
         y1: number,
         x2: number,
-        y2: number,
+        y2: number
       ): Phaser.GameObjects.Graphics;
 
       /**
@@ -18272,12 +17818,7 @@ declare namespace Phaser {
        * @param x2 The x coordinate of the end point of the line.
        * @param y2 The y coordinate of the end point of the line.
        */
-      lineBetween(
-        x1: number,
-        y1: number,
-        x2: number,
-        y2: number,
-      ): Phaser.GameObjects.Graphics;
+      lineBetween(x1: number, y1: number, x2: number, y2: number): Phaser.GameObjects.Graphics;
 
       /**
        * Draw a line from the current drawing position to the given position.
@@ -18302,12 +17843,7 @@ declare namespace Phaser {
        * @param width [description]
        * @param rgb [description]
        */
-      lineFxTo(
-        x: number,
-        y: number,
-        width: number,
-        rgb: number,
-      ): Phaser.GameObjects.Graphics;
+      lineFxTo(x: number, y: number, width: number, rgb: number): Phaser.GameObjects.Graphics;
 
       /**
        * [description]
@@ -18316,12 +17852,7 @@ declare namespace Phaser {
        * @param width [description]
        * @param rgb [description]
        */
-      moveFxTo(
-        x: number,
-        y: number,
-        width: number,
-        rgb: number,
-      ): Phaser.GameObjects.Graphics;
+      moveFxTo(x: number, y: number, width: number, rgb: number): Phaser.GameObjects.Graphics;
 
       /**
        * Stroke the shape represented by the given array of points.
@@ -18334,7 +17865,7 @@ declare namespace Phaser {
       strokePoints(
         points: any[] | Phaser.Geom.Point[],
         autoClose?: boolean,
-        endIndex?: integer,
+        endIndex?: integer
       ): Phaser.GameObjects.Graphics;
 
       /**
@@ -18348,7 +17879,7 @@ declare namespace Phaser {
       fillPoints(
         points: any[] | Phaser.Geom.Point[],
         autoClose?: boolean,
-        endIndex?: integer,
+        endIndex?: integer
       ): Phaser.GameObjects.Graphics;
 
       /**
@@ -18358,7 +17889,7 @@ declare namespace Phaser {
        */
       strokeEllipseShape(
         ellipse: Phaser.Geom.Ellipse,
-        smoothness?: integer,
+        smoothness?: integer
       ): Phaser.GameObjects.Graphics;
 
       /**
@@ -18374,7 +17905,7 @@ declare namespace Phaser {
         y: number,
         width: number,
         height: number,
-        smoothness?: integer,
+        smoothness?: integer
       ): Phaser.GameObjects.Graphics;
 
       /**
@@ -18384,7 +17915,7 @@ declare namespace Phaser {
        */
       fillEllipseShape(
         ellipse: Phaser.Geom.Ellipse,
-        smoothness?: integer,
+        smoothness?: integer
       ): Phaser.GameObjects.Graphics;
 
       /**
@@ -18400,7 +17931,7 @@ declare namespace Phaser {
         y: number,
         width: number,
         height: number,
-        smoothness?: integer,
+        smoothness?: integer
       ): Phaser.GameObjects.Graphics;
 
       /**
@@ -18432,7 +17963,7 @@ declare namespace Phaser {
         startAngle: number,
         endAngle: number,
         anticlockwise?: boolean,
-        overshoot?: number,
+        overshoot?: number
       ): Phaser.GameObjects.Graphics;
 
       /**
@@ -18459,7 +17990,7 @@ declare namespace Phaser {
         startAngle: number,
         endAngle: number,
         anticlockwise?: boolean,
-        overshoot?: number,
+        overshoot?: number
       ): Phaser.GameObjects.Graphics;
 
       /**
@@ -18518,7 +18049,7 @@ declare namespace Phaser {
       generateTexture(
         key: string | HTMLCanvasElement,
         width?: integer,
-        height?: integer,
+        height?: integer
       ): Phaser.GameObjects.Graphics;
 
       /**
@@ -18553,7 +18084,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -18679,11 +18210,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -18704,9 +18231,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -18720,9 +18245,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The initial WebGL pipeline of this Game Object.
@@ -18826,12 +18349,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -18881,7 +18399,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -18891,7 +18409,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -18985,11 +18503,8 @@ declare namespace Phaser {
        */
       constructor(
         scene: Phaser.Scene,
-        children?:
-          | Phaser.GameObjects.GameObject[]
-          | GroupConfig
-          | GroupCreateConfig,
-        config?: GroupConfig | GroupCreateConfig,
+        children?: Phaser.GameObjects.GameObject[] | GroupConfig | GroupCreateConfig,
+        config?: GroupConfig | GroupCreateConfig
       );
 
       /**
@@ -19073,7 +18588,7 @@ declare namespace Phaser {
         key?: string,
         frame?: string | integer,
         visible?: boolean,
-        active?: boolean,
+        active?: boolean
       ): any;
 
       /**
@@ -19106,10 +18621,7 @@ declare namespace Phaser {
        * @param child The Game Object to add.
        * @param addToScene Also add the Game Object to the scene. Default false.
        */
-      add(
-        child: Phaser.GameObjects.GameObject,
-        addToScene?: boolean,
-      ): Phaser.GameObjects.Group;
+      add(child: Phaser.GameObjects.GameObject, addToScene?: boolean): Phaser.GameObjects.Group;
 
       /**
        * Adds several Game Objects to this group.
@@ -19120,7 +18632,7 @@ declare namespace Phaser {
        */
       addMultiple(
         children: Phaser.GameObjects.GameObject[],
-        addToScene?: boolean,
+        addToScene?: boolean
       ): Phaser.GameObjects.Group;
 
       /**
@@ -19134,7 +18646,7 @@ declare namespace Phaser {
       remove(
         child: Phaser.GameObjects.GameObject,
         removeFromScene?: boolean,
-        destroyChild?: boolean,
+        destroyChild?: boolean
       ): Phaser.GameObjects.Group;
 
       /**
@@ -19144,10 +18656,7 @@ declare namespace Phaser {
        * @param removeFromScene Optionally remove each Group member from the Scene. Default false.
        * @param destroyChild Optionally call destroy on the removed Group members. Default false.
        */
-      clear(
-        removeFromScene?: boolean,
-        destroyChild?: boolean,
-      ): Phaser.GameObjects.Group;
+      clear(removeFromScene?: boolean, destroyChild?: boolean): Phaser.GameObjects.Group;
 
       /**
        * Tests if a Game Object is a member of this group.
@@ -19186,7 +18695,7 @@ declare namespace Phaser {
         y?: number,
         key?: string,
         frame?: string | integer,
-        visible?: boolean,
+        visible?: boolean
       ): any;
 
       /**
@@ -19212,7 +18721,7 @@ declare namespace Phaser {
         y?: number,
         key?: string,
         frame?: string | integer,
-        visible?: boolean,
+        visible?: boolean
       ): any;
 
       /**
@@ -19236,7 +18745,7 @@ declare namespace Phaser {
         y?: number,
         key?: string,
         frame?: string | integer,
-        visible?: boolean,
+        visible?: boolean
       ): any;
 
       /**
@@ -19262,7 +18771,7 @@ declare namespace Phaser {
         y?: number,
         key?: string,
         frame?: string | integer,
-        visible?: boolean,
+        visible?: boolean
       ): any;
 
       /**
@@ -19278,13 +18787,7 @@ declare namespace Phaser {
        * @param frame A texture frame assigned to a new Game Object (if one is created). Default defaultFrame.
        * @param visible The {@link Phaser.GameObjects.Components.Visible#visible} state of a new Game Object (if one is created). Default true.
        */
-      get(
-        x?: number,
-        y?: number,
-        key?: string,
-        frame?: string | integer,
-        visible?: boolean,
-      ): any;
+      get(x?: number, y?: number, key?: string, frame?: string | integer, visible?: boolean): any;
 
       /**
        * Scans the group for the first member that has an {@link Phaser.GameObjects.GameObject#active} state set to `true`,
@@ -19305,7 +18808,7 @@ declare namespace Phaser {
         y?: number,
         key?: string,
         frame?: string | integer,
-        visible?: boolean,
+        visible?: boolean
       ): any;
 
       /**
@@ -19328,7 +18831,7 @@ declare namespace Phaser {
         y?: number,
         key?: string,
         frame?: string | integer,
-        visible?: boolean,
+        visible?: boolean
       ): any;
 
       /**
@@ -19434,7 +18937,7 @@ declare namespace Phaser {
         x: number,
         y: number,
         texture: string,
-        frame?: string | integer,
+        frame?: string | integer
       );
 
       /**
@@ -19459,7 +18962,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -19626,10 +19129,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -19637,10 +19137,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -19648,10 +19145,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -19659,10 +19153,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -19691,11 +19182,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -19716,9 +19203,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -19732,9 +19217,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -20021,7 +19504,7 @@ declare namespace Phaser {
         x?: number | Phaser.Geom.Rectangle,
         y?: number,
         width?: number,
-        height?: number,
+        height?: number
       ): this;
 
       /**
@@ -20046,11 +19529,7 @@ declare namespace Phaser {
        * @param updateSize Should this call adjust the size of the Game Object? Default true.
        * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
        */
-      setFrame(
-        frame: string | integer,
-        updateSize?: boolean,
-        updateOrigin?: boolean,
-      ): this;
+      setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
 
       /**
        * Fill or additive?
@@ -20089,7 +19568,7 @@ declare namespace Phaser {
         topLeft?: integer,
         topRight?: integer,
         bottomLeft?: integer,
-        bottomRight?: integer,
+        bottomRight?: integer
       ): this;
 
       /**
@@ -20117,7 +19596,7 @@ declare namespace Phaser {
         topLeft?: integer,
         topRight?: integer,
         bottomLeft?: integer,
-        bottomRight?: integer,
+        bottomRight?: integer
       ): this;
 
       /**
@@ -20223,12 +19702,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -20278,7 +19752,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -20288,7 +19762,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -20334,7 +19808,7 @@ declare namespace Phaser {
         r: number,
         g: number,
         b: number,
-        intensity: number,
+        intensity: number
       );
 
       /**
@@ -20402,7 +19876,7 @@ declare namespace Phaser {
         r: number,
         g: number,
         b: number,
-        intensity: number,
+        intensity: number
       ): Phaser.GameObjects.Light;
 
       /**
@@ -20532,16 +20006,14 @@ declare namespace Phaser {
         y?: number,
         radius?: number,
         rgb?: number,
-        intensity?: number,
+        intensity?: number
       ): Phaser.GameObjects.Light;
 
       /**
        * Remove a Light.
        * @param light The Light to remove.
        */
-      removeLight(
-        light: Phaser.GameObjects.Light,
-      ): Phaser.GameObjects.LightsManager;
+      removeLight(light: Phaser.GameObjects.Light): Phaser.GameObjects.LightsManager;
 
       /**
        * Shut down the Lights Manager.
@@ -20652,7 +20124,7 @@ declare namespace Phaser {
         colors: number[],
         alphas: number[],
         texture: string,
-        frame?: string | integer,
+        frame?: string | integer
       );
 
       /**
@@ -20702,7 +20174,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -20869,10 +20341,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -20880,10 +20349,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -20891,10 +20357,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -20902,10 +20365,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -20934,11 +20394,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -20959,9 +20415,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -20975,9 +20429,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -21189,11 +20641,7 @@ declare namespace Phaser {
        * @param updateSize Should this call adjust the size of the Game Object? Default true.
        * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
        */
-      setFrame(
-        frame: string | integer,
-        updateSize?: boolean,
-        updateOrigin?: boolean,
-      ): this;
+      setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
 
       /**
        * The x position of this Game Object.
@@ -21264,12 +20712,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -21319,7 +20762,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -21329,7 +20772,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -21425,7 +20868,7 @@ declare namespace Phaser {
           config: ParticleEmitterConfig,
           key: string,
           defaultValue: number,
-          emitOnly?: boolean,
+          emitOnly?: boolean
         );
 
         /**
@@ -21549,7 +20992,7 @@ declare namespace Phaser {
         defaultEmit(
           particle: Phaser.GameObjects.Particles.Particle,
           key: string,
-          value?: number,
+          value?: number
         ): number;
 
         /**
@@ -21563,7 +21006,7 @@ declare namespace Phaser {
           particle: Phaser.GameObjects.Particles.Particle,
           key: string,
           t: number,
-          value: number,
+          value: number
         ): number;
 
         /**
@@ -21587,10 +21030,7 @@ declare namespace Phaser {
          * @param particle The particle.
          * @param key The key of the property.
          */
-        randomRangedValueEmit(
-          particle: Phaser.GameObjects.Particles.Particle,
-          key: string,
-        ): number;
+        randomRangedValueEmit(particle: Phaser.GameObjects.Particles.Particle, key: string): number;
 
         /**
          * An `onEmit` callback that returns a stepped value between the
@@ -21606,10 +21046,7 @@ declare namespace Phaser {
          * @param particle The particle.
          * @param key The name of the property.
          */
-        easedValueEmit(
-          particle: Phaser.GameObjects.Particles.Particle,
-          key: string,
-        ): number;
+        easedValueEmit(particle: Phaser.GameObjects.Particles.Particle, key: string): number;
 
         /**
          * An `onUpdate` callback that returns an eased value between the
@@ -21622,7 +21059,7 @@ declare namespace Phaser {
         easeValueUpdate(
           particle: Phaser.GameObjects.Particles.Particle,
           key: string,
-          t: number,
+          t: number
         ): number;
       }
 
@@ -21643,7 +21080,7 @@ declare namespace Phaser {
           y?: number,
           power?: number,
           epsilon?: number,
-          gravity?: number,
+          gravity?: number
         );
 
         /**
@@ -21677,11 +21114,7 @@ declare namespace Phaser {
          * @param delta The delta time in ms.
          * @param step The delta value divided by 1000.
          */
-        update(
-          particle: Phaser.GameObjects.Particles.Particle,
-          delta: number,
-          step: number,
-        ): void;
+        update(particle: Phaser.GameObjects.Particles.Particle, delta: number, step: number): void;
       }
 
       /**
@@ -21835,7 +21268,7 @@ declare namespace Phaser {
           emitter: Phaser.GameObjects.Particles.ParticleEmitter,
           delta: number,
           step: number,
-          processors: any[],
+          processors: any[]
         ): void;
 
         /**
@@ -21844,9 +21277,7 @@ declare namespace Phaser {
          * If not, and depending on the Emitter collision flags, the Particle may either stop or rebound.
          * @param emitter The Emitter to check the bounds against.
          */
-        checkBounds(
-          emitter: Phaser.GameObjects.Particles.ParticleEmitter,
-        ): void;
+        checkBounds(emitter: Phaser.GameObjects.Particles.ParticleEmitter): void;
 
         /**
          * The main update method for this Particle.
@@ -21877,7 +21308,7 @@ declare namespace Phaser {
          */
         constructor(
           manager: Phaser.GameObjects.Particles.ParticleEmitterManager,
-          config: ParticleEmitterConfig,
+          config: ParticleEmitterConfig
         );
 
         /**
@@ -22192,9 +21623,7 @@ declare namespace Phaser {
          * Merges configuration settings into the emitter's current settings.
          * @param config Settings for this emitter.
          */
-        fromJSON(
-          config: ParticleEmitterConfig,
-        ): Phaser.GameObjects.Particles.ParticleEmitter;
+        fromJSON(config: ParticleEmitterConfig): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
          * Creates a description of this emitter suitable for JSON serialization.
@@ -22213,7 +21642,7 @@ declare namespace Phaser {
           target: Phaser.GameObjects.GameObject,
           offsetX?: number,
           offsetY?: number,
-          trackVisible?: boolean,
+          trackVisible?: boolean
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
@@ -22235,16 +21664,14 @@ declare namespace Phaser {
         setFrame(
           frames: any[] | string | integer | ParticleEmitterFrameConfig,
           pickRandom?: boolean,
-          quantity?: integer,
+          quantity?: integer
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
          * Turns {@link Phaser.GameObjects.Particles.ParticleEmitter#radial} particle movement on or off.
          * @param value Radial mode (true) or point mode (true). Default true.
          */
-        setRadial(
-          value?: boolean,
-        ): Phaser.GameObjects.Particles.ParticleEmitter;
+        setRadial(value?: boolean): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
          * Sets the position of the emitter's particle origin.
@@ -22254,7 +21681,7 @@ declare namespace Phaser {
          */
         setPosition(
           x: number | number[] | EmitterOpOnEmitCallback | object,
-          y: number | number[] | EmitterOpOnEmitCallback | object,
+          y: number | number[] | EmitterOpOnEmitCallback | object
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
@@ -22270,7 +21697,7 @@ declare namespace Phaser {
           x: number | ParticleEmitterBounds | ParticleEmitterBoundsAlt,
           y: number,
           width: number,
-          height: number,
+          height: number
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
@@ -22279,7 +21706,7 @@ declare namespace Phaser {
          * @param value The speed, in pixels per second.
          */
         setSpeedX(
-          value: number | number[] | EmitterOpOnEmitCallback | object,
+          value: number | number[] | EmitterOpOnEmitCallback | object
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
@@ -22288,7 +21715,7 @@ declare namespace Phaser {
          * @param value The speed, in pixels per second.
          */
         setSpeedY(
-          value: number | number[] | EmitterOpOnEmitCallback | object,
+          value: number | number[] | EmitterOpOnEmitCallback | object
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
@@ -22297,7 +21724,7 @@ declare namespace Phaser {
          * @param value The speed, in pixels per second.
          */
         setSpeed(
-          value: number | number[] | EmitterOpOnEmitCallback | object,
+          value: number | number[] | EmitterOpOnEmitCallback | object
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
@@ -22305,7 +21732,7 @@ declare namespace Phaser {
          * @param value The scale, relative to 1.
          */
         setScaleX(
-          value: number | number[] | EmitterOpOnUpdateCallback | object,
+          value: number | number[] | EmitterOpOnUpdateCallback | object
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
@@ -22313,7 +21740,7 @@ declare namespace Phaser {
          * @param value The scale, relative to 1.
          */
         setScaleY(
-          value: number | number[] | EmitterOpOnUpdateCallback | object,
+          value: number | number[] | EmitterOpOnUpdateCallback | object
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
@@ -22321,41 +21748,34 @@ declare namespace Phaser {
          * @param value The scale, relative to 1.
          */
         setScale(
-          value: number | number[] | EmitterOpOnUpdateCallback | object,
+          value: number | number[] | EmitterOpOnUpdateCallback | object
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
          * Sets the horizontal gravity applied to emitted particles.
          * @param value Acceleration due to gravity, in pixels per second squared.
          */
-        setGravityX(
-          value: number,
-        ): Phaser.GameObjects.Particles.ParticleEmitter;
+        setGravityX(value: number): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
          * Sets the vertical gravity applied to emitted particles.
          * @param value Acceleration due to gravity, in pixels per second squared.
          */
-        setGravityY(
-          value: number,
-        ): Phaser.GameObjects.Particles.ParticleEmitter;
+        setGravityY(value: number): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
          * Sets the gravity applied to emitted particles.
          * @param x Horizontal acceleration due to gravity, in pixels per second squared.
          * @param y Vertical acceleration due to gravity, in pixels per second squared.
          */
-        setGravity(
-          x: number,
-          y: number,
-        ): Phaser.GameObjects.Particles.ParticleEmitter;
+        setGravity(x: number, y: number): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
          * Sets the opacity of emitted particles.
          * @param value A value between 0 (transparent) and 1 (opaque).
          */
         setAlpha(
-          value: number | number[] | EmitterOpOnUpdateCallback | object,
+          value: number | number[] | EmitterOpOnUpdateCallback | object
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
@@ -22363,7 +21783,7 @@ declare namespace Phaser {
          * @param value The angle of the initial velocity of emitted particles.
          */
         setEmitterAngle(
-          value: number | number[] | EmitterOpOnEmitCallback | object,
+          value: number | number[] | EmitterOpOnEmitCallback | object
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
@@ -22371,7 +21791,7 @@ declare namespace Phaser {
          * @param value The angle of the initial velocity of emitted particles.
          */
         setAngle(
-          value: number | number[] | EmitterOpOnEmitCallback | object,
+          value: number | number[] | EmitterOpOnEmitCallback | object
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
@@ -22379,7 +21799,7 @@ declare namespace Phaser {
          * @param value The particle lifespan, in ms.
          */
         setLifespan(
-          value: number | number[] | EmitterOpOnEmitCallback | object,
+          value: number | number[] | EmitterOpOnEmitCallback | object
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
@@ -22387,7 +21807,7 @@ declare namespace Phaser {
          * @param quantity The number of particles to release at each flow cycle or explosion.
          */
         setQuantity(
-          quantity: number | number[] | EmitterOpOnEmitCallback | object,
+          quantity: number | number[] | EmitterOpOnEmitCallback | object
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
@@ -22398,7 +21818,7 @@ declare namespace Phaser {
          */
         setFrequency(
           frequency: number,
-          quantity?: number | number[] | EmitterOpOnEmitCallback | object,
+          quantity?: number | number[] | EmitterOpOnEmitCallback | object
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
@@ -22410,9 +21830,7 @@ declare namespace Phaser {
          * @param zoneConfig An object describing the zone, or `undefined` to remove any current emit zone.
          */
         setEmitZone(
-          zoneConfig?:
-            | ParticleEmitterEdgeZoneConfig
-            | ParticleEmitterRandomZoneConfig,
+          zoneConfig?: ParticleEmitterEdgeZoneConfig | ParticleEmitterRandomZoneConfig
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
@@ -22420,16 +21838,14 @@ declare namespace Phaser {
          * @param zoneConfig An object describing the zone, or `undefined` to remove any current death zone.
          */
         setDeathZone(
-          zoneConfig?: ParticleEmitterDeathZoneConfig,
+          zoneConfig?: ParticleEmitterDeathZoneConfig
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
          * Creates inactive particles and adds them to this emitter's pool.
          * @param particleCount The number of particles to create.
          */
-        reserve(
-          particleCount: integer,
-        ): Phaser.GameObjects.Particles.ParticleEmitter;
+        reserve(particleCount: integer): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
          * Gets the number of active (in-use) particles in this emitter.
@@ -22458,7 +21874,7 @@ declare namespace Phaser {
          */
         onParticleEmit(
           callback: ParticleEmitterCallback,
-          context?: any,
+          context?: any
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
@@ -22468,7 +21884,7 @@ declare namespace Phaser {
          */
         onParticleDeath(
           callback: ParticleDeathCallback,
-          context?: any,
+          context?: any
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
@@ -22483,7 +21899,7 @@ declare namespace Phaser {
          */
         forEachAlive(
           callback: ParticleEmitterCallback,
-          context: any,
+          context: any
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
@@ -22493,7 +21909,7 @@ declare namespace Phaser {
          */
         forEachDead(
           callback: ParticleEmitterCallback,
-          context: any,
+          context: any
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
@@ -22535,7 +21951,7 @@ declare namespace Phaser {
          */
         flow(
           frequency: number,
-          count?: number | number[] | EmitterOpOnEmitCallback | object,
+          count?: number | number[] | EmitterOpOnEmitCallback | object
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
@@ -22544,11 +21960,7 @@ declare namespace Phaser {
          * @param x The x coordinate to emit the Particles from.
          * @param y The y coordinate to emit the Particles from.
          */
-        explode(
-          count: integer,
-          x: number,
-          y: number,
-        ): Phaser.GameObjects.Particles.Particle;
+        explode(count: integer, x: number, y: number): Phaser.GameObjects.Particles.Particle;
 
         /**
          * Emits particles at a given position (or the emitter's current position).
@@ -22559,7 +21971,7 @@ declare namespace Phaser {
         emitParticleAt(
           x?: number,
           y?: number,
-          count?: integer,
+          count?: integer
         ): Phaser.GameObjects.Particles.Particle;
 
         /**
@@ -22571,7 +21983,7 @@ declare namespace Phaser {
         emitParticle(
           count?: integer,
           x?: number,
-          y?: number,
+          y?: number
         ): Phaser.GameObjects.Particles.Particle;
 
         /**
@@ -22621,9 +22033,7 @@ declare namespace Phaser {
         /**
          * The Mask this Game Object is using during render.
          */
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask;
+        mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask;
 
         /**
          * Sets the mask that this Game Object will use to render with.
@@ -22640,11 +22050,7 @@ declare namespace Phaser {
          * that allows you to limit what is visible during the render pass.
          * @param mask The mask this Game Object will use when rendering.
          */
-        setMask(
-          mask:
-            | Phaser.Display.Masks.BitmapMask
-            | Phaser.Display.Masks.GeometryMask,
-        ): this;
+        setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
         /**
          * Clears the mask that this Game Object was using.
@@ -22666,7 +22072,7 @@ declare namespace Phaser {
          * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
          */
         createBitmapMask(
-          renderable?: Phaser.GameObjects.GameObject,
+          renderable?: Phaser.GameObjects.GameObject
         ): Phaser.Display.Masks.BitmapMask;
 
         /**
@@ -22682,7 +22088,7 @@ declare namespace Phaser {
          * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
          */
         createGeometryMask(
-          graphics?: Phaser.GameObjects.Graphics,
+          graphics?: Phaser.GameObjects.Graphics
         ): Phaser.Display.Masks.GeometryMask;
 
         /**
@@ -22775,7 +22181,7 @@ declare namespace Phaser {
           scene: Phaser.Scene,
           texture: string,
           frame?: string | integer,
-          emitters?: ParticleEmitterConfig | ParticleEmitterConfig[],
+          emitters?: ParticleEmitterConfig | ParticleEmitterConfig[]
         );
 
         /**
@@ -22819,7 +22225,7 @@ declare namespace Phaser {
          */
         setTexture(
           key: string,
-          frame?: string | integer,
+          frame?: string | integer
         ): Phaser.GameObjects.Particles.ParticleEmitterManager;
 
         /**
@@ -22830,9 +22236,7 @@ declare namespace Phaser {
          * It can be either a string or an index.
          * @param frame The name or index of the frame within the Texture.
          */
-        setFrame(
-          frame?: string | integer,
-        ): Phaser.GameObjects.Particles.ParticleEmitterManager;
+        setFrame(frame?: string | integer): Phaser.GameObjects.Particles.ParticleEmitterManager;
 
         /**
          * Assigns texture frames to an emitter.
@@ -22841,7 +22245,7 @@ declare namespace Phaser {
          */
         setEmitterFrames(
           frames: Phaser.Textures.Frame | Phaser.Textures.Frame[],
-          emitter: Phaser.GameObjects.Particles.ParticleEmitter,
+          emitter: Phaser.GameObjects.Particles.ParticleEmitter
         ): Phaser.GameObjects.Particles.ParticleEmitterManager;
 
         /**
@@ -22849,32 +22253,28 @@ declare namespace Phaser {
          * @param emitter The Particle Emitter to add to this Emitter Manager.
          */
         addEmitter(
-          emitter: Phaser.GameObjects.Particles.ParticleEmitter,
+          emitter: Phaser.GameObjects.Particles.ParticleEmitter
         ): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
          * Creates a new Particle Emitter object, adds it to this Emitter Manager and returns a reference to it.
          * @param config Configuration settings for the Particle Emitter to create.
          */
-        createEmitter(
-          config: ParticleEmitterConfig,
-        ): Phaser.GameObjects.Particles.ParticleEmitter;
+        createEmitter(config: ParticleEmitterConfig): Phaser.GameObjects.Particles.ParticleEmitter;
 
         /**
          * Adds an existing Gravity Well object to this Emitter Manager.
          * @param well The Gravity Well to add to this Emitter Manager.
          */
         addGravityWell(
-          well: Phaser.GameObjects.Particles.GravityWell,
+          well: Phaser.GameObjects.Particles.GravityWell
         ): Phaser.GameObjects.Particles.GravityWell;
 
         /**
          * Creates a new Gravity Well, adds it to this Emitter Manager and returns a reference to it.
          * @param config Configuration settings for the Gravity Well to create.
          */
-        createGravityWell(
-          config: GravityWellConfig,
-        ): Phaser.GameObjects.Particles.GravityWell;
+        createGravityWell(config: GravityWellConfig): Phaser.GameObjects.Particles.GravityWell;
 
         /**
          * Emits particles from each active emitter.
@@ -22885,7 +22285,7 @@ declare namespace Phaser {
         emitParticle(
           count?: integer,
           x?: number,
-          y?: number,
+          y?: number
         ): Phaser.GameObjects.Particles.ParticleEmitterManager;
 
         /**
@@ -22897,7 +22297,7 @@ declare namespace Phaser {
         emitParticleAt(
           x?: number,
           y?: number,
-          count?: integer,
+          count?: integer
         ): Phaser.GameObjects.Particles.ParticleEmitterManager;
 
         /**
@@ -23055,12 +22455,7 @@ declare namespace Phaser {
          * @param width The width of the random area.
          * @param height The height of the random area.
          */
-        setRandomPosition(
-          x?: number,
-          y?: number,
-          width?: number,
-          height?: number,
-        ): this;
+        setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
         /**
          * Sets the rotation of this Game Object.
@@ -23110,7 +22505,7 @@ declare namespace Phaser {
          * @param tempMatrix The matrix to populate with the values from this Game Object.
          */
         getLocalTransformMatrix(
-          tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+          tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
         ): Phaser.GameObjects.Components.TransformMatrix;
 
         /**
@@ -23120,7 +22515,7 @@ declare namespace Phaser {
          */
         getWorldTransformMatrix(
           tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-          parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+          parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
         ): Phaser.GameObjects.Components.TransformMatrix;
 
         /**
@@ -23192,7 +22587,7 @@ declare namespace Phaser {
             quantity: integer,
             stepRate: number,
             yoyo?: boolean,
-            seamless?: boolean,
+            seamless?: boolean
           );
 
           /**
@@ -23242,9 +22637,7 @@ declare namespace Phaser {
            * Change the EdgeZone's source.
            * @param source An object instance with a `getPoints(quantity, stepRate)` method returning an array of points.
            */
-          changeSource(
-            source: EdgeZoneSource,
-          ): Phaser.GameObjects.Particles.Zones.EdgeZone;
+          changeSource(source: EdgeZoneSource): Phaser.GameObjects.Particles.Zones.EdgeZone;
 
           /**
            * Get the next point in the Zone and set its coordinates on the given Particle.
@@ -23305,7 +22698,7 @@ declare namespace Phaser {
         x: number,
         y: number,
         texture: string,
-        frame?: string | integer,
+        frame?: string | integer
       );
 
       /**
@@ -23358,10 +22751,7 @@ declare namespace Phaser {
        * @param path The Path this PathFollower is following. It can only follow one Path at a time.
        * @param config Settings for the PathFollower.
        */
-      setPath(
-        path: Phaser.Curves.Path,
-        config?: PathConfig,
-      ): Phaser.GameObjects.PathFollower;
+      setPath(path: Phaser.Curves.Path, config?: PathConfig): Phaser.GameObjects.PathFollower;
 
       /**
        * Set whether the PathFollower should automatically rotate to point in the direction of the Path.
@@ -23372,7 +22762,7 @@ declare namespace Phaser {
       setRotateToPath(
         value: boolean,
         offset?: number,
-        verticalAdjust?: boolean,
+        verticalAdjust?: boolean
       ): Phaser.GameObjects.PathFollower;
 
       /**
@@ -23387,10 +22777,7 @@ declare namespace Phaser {
        * @param config The duration of the follow, or a PathFollower config object. Default {}.
        * @param startAt Optional start position of the follow, between 0 and 1. Default 0.
        */
-      startFollow(
-        config?: number | PathConfig,
-        startAt?: number,
-      ): Phaser.GameObjects.PathFollower;
+      startFollow(config?: number | PathConfig, startAt?: number): Phaser.GameObjects.PathFollower;
 
       /**
        * Pauses this PathFollower. It will still continue to render, but it will remain motionless at the
@@ -23443,7 +22830,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -23610,10 +22997,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -23621,10 +23005,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -23632,10 +23013,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -23643,10 +23021,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -23675,11 +23050,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -23700,9 +23071,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -23716,9 +23085,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -24005,7 +23372,7 @@ declare namespace Phaser {
         x?: number | Phaser.Geom.Rectangle,
         y?: number,
         width?: number,
-        height?: number,
+        height?: number
       ): this;
 
       /**
@@ -24030,11 +23397,7 @@ declare namespace Phaser {
        * @param updateSize Should this call adjust the size of the Game Object? Default true.
        * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
        */
-      setFrame(
-        frame: string | integer,
-        updateSize?: boolean,
-        updateOrigin?: boolean,
-      ): this;
+      setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
 
       /**
        * Fill or additive?
@@ -24073,7 +23436,7 @@ declare namespace Phaser {
         topLeft?: integer,
         topRight?: integer,
         bottomLeft?: integer,
-        bottomRight?: integer,
+        bottomRight?: integer
       ): this;
 
       /**
@@ -24101,7 +23464,7 @@ declare namespace Phaser {
         topLeft?: integer,
         topRight?: integer,
         bottomLeft?: integer,
-        bottomRight?: integer,
+        bottomRight?: integer
       ): this;
 
       /**
@@ -24207,12 +23570,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -24262,7 +23620,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -24272,7 +23630,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -24314,7 +23672,7 @@ declare namespace Phaser {
         x: number,
         y: number,
         texture: string,
-        frame?: string | integer,
+        frame?: string | integer
       );
 
       /**
@@ -24480,7 +23838,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -24647,10 +24005,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -24658,10 +24013,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -24669,10 +24021,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -24680,10 +24029,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -24712,11 +24058,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -24737,9 +24079,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -24753,9 +24093,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -25023,12 +24361,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -25078,7 +24411,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -25088,7 +24421,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -25199,20 +24532,12 @@ declare namespace Phaser {
        * @param width The width of the Render Texture. Default 32.
        * @param height The height of the Render Texture. Default 32.
        */
-      constructor(
-        scene: Phaser.Scene,
-        x?: number,
-        y?: number,
-        width?: integer,
-        height?: integer,
-      );
+      constructor(scene: Phaser.Scene, x?: number, y?: number, width?: integer, height?: integer);
 
       /**
        * A reference to either the Canvas or WebGL Renderer that the Game instance is using.
        */
-      renderer:
-        | Phaser.Renderer.Canvas.CanvasRenderer
-        | Phaser.Renderer.WebGL.WebGLRenderer;
+      renderer: Phaser.Renderer.Canvas.CanvasRenderer | Phaser.Renderer.WebGL.WebGLRenderer;
 
       /**
        * A reference to the Texture Manager.
@@ -25383,13 +24708,7 @@ declare namespace Phaser {
        * @param alpha The alpha value. Only used for Texture Frames and if not specified defaults to the `globalAlpha` property. Game Objects use their own current alpha value.
        * @param tint WebGL only. The tint color value. Only used for Texture Frames and if not specified defaults to the `globalTint` property. Game Objects use their own current tint value.
        */
-      draw(
-        entries: any,
-        x?: number,
-        y?: number,
-        alpha?: number,
-        tint?: number,
-      ): this;
+      draw(entries: any, x?: number, y?: number, alpha?: number, tint?: number): this;
 
       /**
        * Draws the Texture Frame to the Render Texture at the given position.
@@ -25421,7 +24740,7 @@ declare namespace Phaser {
         x?: number,
         y?: number,
         alpha?: number,
-        tint?: number,
+        tint?: number
       ): this;
 
       /**
@@ -25451,7 +24770,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -25678,10 +24997,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -25689,10 +25005,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -25700,10 +25013,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -25711,10 +25021,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -25743,11 +25050,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -25768,9 +25071,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -25784,9 +25085,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -25988,7 +25287,7 @@ declare namespace Phaser {
         topLeft?: integer,
         topRight?: integer,
         bottomLeft?: integer,
-        bottomRight?: integer,
+        bottomRight?: integer
       ): this;
 
       /**
@@ -26016,7 +25315,7 @@ declare namespace Phaser {
         topLeft?: integer,
         topRight?: integer,
         bottomLeft?: integer,
-        bottomRight?: integer,
+        bottomRight?: integer
       ): this;
 
       /**
@@ -26122,12 +25421,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -26177,7 +25471,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -26187,7 +25481,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -26245,7 +25539,7 @@ declare namespace Phaser {
         endAngle?: integer,
         anticlockwise?: boolean,
         fillColor?: number,
-        fillAlpha?: number,
+        fillAlpha?: number
       );
 
       /**
@@ -26327,7 +25621,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -26506,10 +25800,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -26517,10 +25808,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -26528,10 +25816,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -26539,10 +25824,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -26571,11 +25853,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -26596,9 +25874,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -26612,9 +25888,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -26848,12 +26122,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -26903,7 +26172,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -26913,7 +26182,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -26964,7 +26233,7 @@ declare namespace Phaser {
         y?: number,
         curve?: Phaser.Curves.Curve,
         fillColor?: number,
-        fillAlpha?: number,
+        fillAlpha?: number
       );
 
       /**
@@ -27003,7 +26272,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -27182,10 +26451,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -27193,10 +26459,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -27204,10 +26467,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -27215,10 +26475,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -27247,11 +26504,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -27272,9 +26525,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -27288,9 +26539,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -27524,12 +26773,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -27579,7 +26823,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -27589,7 +26833,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -27643,7 +26887,7 @@ declare namespace Phaser {
         width?: number,
         height?: number,
         fillColor?: number,
-        fillAlpha?: number,
+        fillAlpha?: number
       );
 
       /**
@@ -27690,7 +26934,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -27854,10 +27098,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -27865,10 +27106,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -27876,10 +27114,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -27887,10 +27122,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -27919,11 +27151,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -27944,9 +27172,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -27960,9 +27186,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -28196,12 +27420,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -28251,7 +27470,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -28261,7 +27480,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -28322,7 +27541,7 @@ declare namespace Phaser {
         fillColor?: number,
         fillAlpha?: number,
         outlineFillColor?: number,
-        outlineFillAlpha?: number,
+        outlineFillAlpha?: number
       );
 
       /**
@@ -28436,7 +27655,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -28615,10 +27834,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -28626,10 +27842,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -28637,10 +27850,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -28648,10 +27858,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -28680,11 +27887,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -28705,9 +27908,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -28721,9 +27922,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -28957,12 +28156,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -29012,7 +28206,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -29022,7 +28216,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -29076,7 +28270,7 @@ declare namespace Phaser {
         height?: number,
         fillTop?: number,
         fillLeft?: number,
-        fillRight?: number,
+        fillRight?: number
       );
 
       /**
@@ -29128,11 +28322,7 @@ declare namespace Phaser {
        * @param showLeft Show the left-face of the iso box. Default true.
        * @param showRight Show the right-face of the iso box. Default true.
        */
-      setFaces(
-        showTop?: boolean,
-        showLeft?: boolean,
-        showRight?: boolean,
-      ): this;
+      setFaces(showTop?: boolean, showLeft?: boolean, showRight?: boolean): this;
 
       /**
        * Sets the fill colors for each face of the iso box.
@@ -29141,11 +28331,7 @@ declare namespace Phaser {
        * @param fillLeft The color used to fill in the left-facing side of the iso box.
        * @param fillRight The color used to fill in the right-facing side of the iso box.
        */
-      setFillStyle(
-        fillTop?: number,
-        fillLeft?: number,
-        fillRight?: number,
-      ): this;
+      setFillStyle(fillTop?: number, fillLeft?: number, fillRight?: number): this;
 
       /**
        * Clears all alpha values associated with this Game Object.
@@ -29169,7 +28355,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -29348,10 +28534,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -29359,10 +28542,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -29370,10 +28550,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -29381,10 +28558,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -29413,11 +28587,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -29438,9 +28608,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -29454,9 +28622,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -29690,12 +28856,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -29745,7 +28906,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -29755,7 +28916,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -29812,7 +28973,7 @@ declare namespace Phaser {
         reversed?: boolean,
         fillTop?: number,
         fillLeft?: number,
-        fillRight?: number,
+        fillRight?: number
       );
 
       /**
@@ -29876,11 +29037,7 @@ declare namespace Phaser {
        * @param showLeft Show the left-face of the iso triangle. Default true.
        * @param showRight Show the right-face of the iso triangle. Default true.
        */
-      setFaces(
-        showTop?: boolean,
-        showLeft?: boolean,
-        showRight?: boolean,
-      ): this;
+      setFaces(showTop?: boolean, showLeft?: boolean, showRight?: boolean): this;
 
       /**
        * Sets the fill colors for each face of the iso triangle.
@@ -29889,11 +29046,7 @@ declare namespace Phaser {
        * @param fillLeft The color used to fill in the left-facing side of the iso triangle.
        * @param fillRight The color used to fill in the right-facing side of the iso triangle.
        */
-      setFillStyle(
-        fillTop?: number,
-        fillLeft?: number,
-        fillRight?: number,
-      ): this;
+      setFillStyle(fillTop?: number, fillLeft?: number, fillRight?: number): this;
 
       /**
        * Clears all alpha values associated with this Game Object.
@@ -29917,7 +29070,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -30096,10 +29249,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -30107,10 +29257,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -30118,10 +29265,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -30129,10 +29273,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -30161,11 +29302,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -30186,9 +29323,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -30202,9 +29337,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -30438,12 +29571,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -30493,7 +29621,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -30503,7 +29631,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -30558,7 +29686,7 @@ declare namespace Phaser {
         x2?: number,
         y2?: number,
         strokeColor?: number,
-        strokeAlpha?: number,
+        strokeAlpha?: number
       );
 
       /**
@@ -30610,7 +29738,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -30789,10 +29917,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -30800,10 +29925,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -30811,10 +29933,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -30822,10 +29941,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -30854,11 +29970,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -30879,9 +29991,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -30895,9 +30005,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -31131,12 +30239,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -31186,7 +30289,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -31196,7 +30299,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -31251,7 +30354,7 @@ declare namespace Phaser {
         y?: number,
         points?: any,
         fillColor?: number,
-        fillAlpha?: number,
+        fillAlpha?: number
       );
 
       /**
@@ -31284,7 +30387,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -31463,10 +30566,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -31474,10 +30574,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -31485,10 +30582,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -31496,10 +30590,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -31528,11 +30619,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -31553,9 +30640,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -31569,9 +30654,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -31805,12 +30888,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -31860,7 +30938,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -31870,7 +30948,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -31917,7 +30995,7 @@ declare namespace Phaser {
         width?: number,
         height?: number,
         fillColor?: number,
-        fillAlpha?: number,
+        fillAlpha?: number
       );
 
       /**
@@ -31942,7 +31020,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -32121,10 +31199,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -32132,10 +31207,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -32143,10 +31215,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -32154,10 +31223,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -32186,11 +31252,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -32211,9 +31273,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -32227,9 +31287,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -32463,12 +31521,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -32518,7 +31571,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -32528,7 +31581,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -32696,7 +31749,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -32875,10 +31928,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -32886,10 +31936,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -32897,10 +31944,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -32908,10 +31952,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -32940,11 +31981,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -32965,9 +32002,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -32981,9 +32016,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -33217,12 +32250,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -33272,7 +32300,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -33282,7 +32310,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -33337,7 +32365,7 @@ declare namespace Phaser {
         innerRadius?: number,
         outerRadius?: number,
         fillColor?: number,
-        fillAlpha?: number,
+        fillAlpha?: number
       );
 
       /**
@@ -33398,7 +32426,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -33577,10 +32605,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -33588,10 +32613,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -33599,10 +32621,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -33610,10 +32629,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -33642,11 +32658,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -33667,9 +32679,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -33683,9 +32693,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -33919,12 +32927,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -33974,7 +32977,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -33984,7 +32987,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -34041,7 +33044,7 @@ declare namespace Phaser {
         x3?: number,
         y3?: number,
         fillColor?: number,
-        fillAlpha?: number,
+        fillAlpha?: number
       );
 
       /**
@@ -34053,14 +33056,7 @@ declare namespace Phaser {
        * @param x3 The horizontal position of the third point in the triangle. Default 0.
        * @param y3 The vertical position of the third point in the triangle. Default 0.
        */
-      setTo(
-        x1?: number,
-        y1?: number,
-        x2?: number,
-        y2?: number,
-        x3?: number,
-        y3?: number,
-      ): this;
+      setTo(x1?: number, y1?: number, x2?: number, y2?: number, x3?: number, y3?: number): this;
 
       /**
        * Clears all alpha values associated with this Game Object.
@@ -34084,7 +33080,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -34263,10 +33259,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -34274,10 +33267,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -34285,10 +33275,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -34296,10 +33283,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -34328,11 +33312,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -34353,9 +33333,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -34369,9 +33347,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -34605,12 +33581,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -34660,7 +33631,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -34670,7 +33641,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -34732,7 +33703,7 @@ declare namespace Phaser {
         x: number,
         y: number,
         texture: string,
-        frame?: string | integer,
+        frame?: string | integer
       );
 
       /**
@@ -34753,11 +33724,7 @@ declare namespace Phaser {
        * @param ignoreIfPlaying If an animation is already playing then ignore this call. Default false.
        * @param startFrame Optionally start the animation playing from this frame index. Default 0.
        */
-      play(
-        key: string,
-        ignoreIfPlaying?: boolean,
-        startFrame?: integer,
-      ): Phaser.GameObjects.Sprite;
+      play(key: string, ignoreIfPlaying?: boolean, startFrame?: integer): Phaser.GameObjects.Sprite;
 
       /**
        * Build a JSON representation of this Sprite.
@@ -34786,7 +33753,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -34953,10 +33920,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -34964,10 +33928,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -34975,10 +33936,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -34986,10 +33944,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -35018,11 +33973,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -35043,9 +33994,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -35059,9 +34008,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -35348,7 +34295,7 @@ declare namespace Phaser {
         x?: number | Phaser.Geom.Rectangle,
         y?: number,
         width?: number,
-        height?: number,
+        height?: number
       ): this;
 
       /**
@@ -35373,11 +34320,7 @@ declare namespace Phaser {
        * @param updateSize Should this call adjust the size of the Game Object? Default true.
        * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
        */
-      setFrame(
-        frame: string | integer,
-        updateSize?: boolean,
-        updateOrigin?: boolean,
-      ): this;
+      setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
 
       /**
        * Fill or additive?
@@ -35416,7 +34359,7 @@ declare namespace Phaser {
         topLeft?: integer,
         topRight?: integer,
         bottomLeft?: integer,
-        bottomRight?: integer,
+        bottomRight?: integer
       ): this;
 
       /**
@@ -35444,7 +34387,7 @@ declare namespace Phaser {
         topLeft?: integer,
         topRight?: integer,
         bottomLeft?: integer,
-        bottomRight?: integer,
+        bottomRight?: integer
       ): this;
 
       /**
@@ -35550,12 +34493,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -35605,7 +34543,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -35615,7 +34553,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -35690,7 +34628,7 @@ declare namespace Phaser {
         x: number,
         y: number,
         text: string | string[],
-        style: object,
+        style: object
       );
 
       /**
@@ -35702,7 +34640,7 @@ declare namespace Phaser {
       static GetTextSize(
         text: Phaser.GameObjects.Text,
         size: BitmapTextMetrics,
-        lines: any[],
+        lines: any[]
       ): object;
 
       /**
@@ -35714,9 +34652,7 @@ declare namespace Phaser {
       /**
        * The renderer in use by this Text object.
        */
-      renderer:
-        | Phaser.Renderer.Canvas.CanvasRenderer
-        | Phaser.Renderer.WebGL.WebGLRenderer;
+      renderer: Phaser.Renderer.Canvas.CanvasRenderer | Phaser.Renderer.WebGL.WebGLRenderer;
 
       /**
        * The canvas element that the text is rendered to.
@@ -35802,7 +34738,7 @@ declare namespace Phaser {
       advancedWordWrap(
         text: string,
         context: CanvasRenderingContext2D,
-        wordWrapWidth: number,
+        wordWrapWidth: number
       ): string;
 
       /**
@@ -35812,11 +34748,7 @@ declare namespace Phaser {
        * @param context The Canvas Rendering Context.
        * @param wordWrapWidth The word wrap width.
        */
-      basicWordWrap(
-        text: string,
-        context: CanvasRenderingContext2D,
-        wordWrapWidth: number,
-      ): string;
+      basicWordWrap(text: string, context: CanvasRenderingContext2D, wordWrapWidth: number): string;
 
       /**
        * Runs the given text through this Text objects word wrapping and returns the results as an
@@ -35917,7 +34849,7 @@ declare namespace Phaser {
         color?: string,
         blur?: number,
         shadowStroke?: boolean,
-        shadowFill?: boolean,
+        shadowFill?: boolean
       ): Phaser.GameObjects.Text;
 
       /**
@@ -35958,10 +34890,7 @@ declare namespace Phaser {
        * algorithm. If true, spaces are collapsed and whitespace is trimmed from lines. If false,
        * spaces and whitespace are left as is. Default false.
        */
-      setWordWrapWidth(
-        width: number,
-        useAdvancedWrap?: boolean,
-      ): Phaser.GameObjects.Text;
+      setWordWrapWidth(width: number, useAdvancedWrap?: boolean): Phaser.GameObjects.Text;
 
       /**
        * Set a custom callback for wrapping lines. Pass in null to remove wrapping by callback.
@@ -35973,7 +34902,7 @@ declare namespace Phaser {
        */
       setWordWrapCallback(
         callback: TextStyleWordWrapCallback,
-        scope?: object,
+        scope?: object
       ): Phaser.GameObjects.Text;
 
       /**
@@ -36022,7 +34951,7 @@ declare namespace Phaser {
         left: number | object,
         top: number,
         right: number,
-        bottom: number,
+        bottom: number
       ): Phaser.GameObjects.Text;
 
       /**
@@ -36078,7 +35007,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -36247,7 +35176,7 @@ declare namespace Phaser {
         x?: number | Phaser.Geom.Rectangle,
         y?: number,
         width?: number,
-        height?: number,
+        height?: number
       ): this;
 
       /**
@@ -36338,10 +35267,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -36349,10 +35275,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -36360,10 +35283,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -36371,10 +35291,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -36403,11 +35320,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -36428,9 +35341,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -36444,9 +35355,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -36648,7 +35557,7 @@ declare namespace Phaser {
         topLeft?: integer,
         topRight?: integer,
         bottomLeft?: integer,
-        bottomRight?: integer,
+        bottomRight?: integer
       ): this;
 
       /**
@@ -36676,7 +35585,7 @@ declare namespace Phaser {
         topLeft?: integer,
         topRight?: integer,
         bottomLeft?: integer,
-        bottomRight?: integer,
+        bottomRight?: integer
       ): this;
 
       /**
@@ -36782,12 +35691,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -36837,7 +35741,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -36847,7 +35751,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -36924,7 +35828,7 @@ declare namespace Phaser {
         width: integer,
         height: integer,
         textureKey: string,
-        frameKey?: string | integer,
+        frameKey?: string | integer
       );
 
       /**
@@ -36937,9 +35841,7 @@ declare namespace Phaser {
       /**
        * The renderer in use by this Tile Sprite.
        */
-      renderer:
-        | Phaser.Renderer.Canvas.CanvasRenderer
-        | Phaser.Renderer.WebGL.WebGLRenderer;
+      renderer: Phaser.Renderer.Canvas.CanvasRenderer | Phaser.Renderer.WebGL.WebGLRenderer;
 
       /**
        * The Canvas element that the TileSprite renders its fill pattern in to.
@@ -37070,7 +35972,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -37247,7 +36149,7 @@ declare namespace Phaser {
         x?: number | Phaser.Geom.Rectangle,
         y?: number,
         width?: number,
-        height?: number,
+        height?: number
       ): this;
 
       /**
@@ -37338,10 +36240,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -37349,10 +36248,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -37360,10 +36256,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -37371,10 +36264,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -37403,11 +36293,7 @@ declare namespace Phaser {
        * that allows you to limit what is visible during the render pass.
        * @param mask The mask this Game Object will use when rendering.
        */
-      setMask(
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask,
-      ): this;
+      setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
       /**
        * Clears the mask that this Game Object was using.
@@ -37428,9 +36314,7 @@ declare namespace Phaser {
        * a Bitmap Mask from any renderable Game Object.
        * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
        */
-      createBitmapMask(
-        renderable?: Phaser.GameObjects.GameObject,
-      ): Phaser.Display.Masks.BitmapMask;
+      createBitmapMask(renderable?: Phaser.GameObjects.GameObject): Phaser.Display.Masks.BitmapMask;
 
       /**
        * Creates and returns a Geometry Mask. This mask can be used by any Game Object,
@@ -37444,9 +36328,7 @@ declare namespace Phaser {
        * This means you can call this method to create a Geometry Mask from any Graphics Game Object.
        * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
        */
-      createGeometryMask(
-        graphics?: Phaser.GameObjects.Graphics,
-      ): Phaser.Display.Masks.GeometryMask;
+      createGeometryMask(graphics?: Phaser.GameObjects.Graphics): Phaser.Display.Masks.GeometryMask;
 
       /**
        * The horizontal origin of this Game Object.
@@ -37648,7 +36530,7 @@ declare namespace Phaser {
         topLeft?: integer,
         topRight?: integer,
         bottomLeft?: integer,
-        bottomRight?: integer,
+        bottomRight?: integer
       ): this;
 
       /**
@@ -37676,7 +36558,7 @@ declare namespace Phaser {
         topLeft?: integer,
         topRight?: integer,
         bottomLeft?: integer,
-        bottomRight?: integer,
+        bottomRight?: integer
       ): this;
 
       /**
@@ -37782,12 +36664,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -37837,7 +36714,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -37847,7 +36724,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -37916,9 +36793,7 @@ declare namespace Phaser {
        * Remove a Game Object from the list.
        * @param child The Game Object to remove from the list.
        */
-      remove(
-        child: Phaser.GameObjects.GameObject,
-      ): Phaser.GameObjects.GameObject;
+      remove(child: Phaser.GameObjects.GameObject): Phaser.GameObjects.GameObject;
 
       /**
        * Remove all Game Objects from the list.
@@ -37974,13 +36849,7 @@ declare namespace Phaser {
        * @param width The width of the Game Object. Default 1.
        * @param height The height of the Game Object. Default 1.
        */
-      constructor(
-        scene: Phaser.Scene,
-        x: number,
-        y: number,
-        width?: number,
-        height?: number,
-      );
+      constructor(scene: Phaser.Scene, x: number, y: number, width?: number, height?: number);
 
       /**
        * The native (un-scaled) width of this Game Object.
@@ -38017,11 +36886,7 @@ declare namespace Phaser {
        * @param height The height of this Game Object.
        * @param resizeInput If this Zone has a Rectangle for a hit area this argument will resize the hit area as well. Default true.
        */
-      setSize(
-        width: number,
-        height: number,
-        resizeInput?: boolean,
-      ): Phaser.GameObjects.Zone;
+      setSize(width: number, height: number, resizeInput?: boolean): Phaser.GameObjects.Zone;
 
       /**
        * Sets the display size of this Game Object.
@@ -38044,20 +36909,14 @@ declare namespace Phaser {
        * @param width The width of the rectangle drop zone.
        * @param height The height of the rectangle drop zone.
        */
-      setRectangleDropZone(
-        width: number,
-        height: number,
-      ): Phaser.GameObjects.Zone;
+      setRectangleDropZone(width: number, height: number): Phaser.GameObjects.Zone;
 
       /**
        * Allows you to define your own Geometry shape to be used as a Drop Zone.
        * @param shape A Geometry shape instance, such as Phaser.Geom.Ellipse, or your own custom shape.
        * @param callback A function that will return `true` if the given x/y coords it is sent are within the shape.
        */
-      setDropZone(
-        shape: object,
-        callback: HitAreaCallback,
-      ): Phaser.GameObjects.Zone;
+      setDropZone(shape: object, callback: HitAreaCallback): Phaser.GameObjects.Zone;
 
       /**
        * The depth of this Game Object within the Scene.
@@ -38099,10 +36958,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -38110,10 +36966,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -38121,10 +36974,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -38132,10 +36982,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -38284,12 +37131,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -38339,7 +37181,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -38349,7 +37191,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -38484,11 +37326,7 @@ declare namespace Phaser {
        * @param stepRate Sets the quantity by getting the circumference of the circle and dividing it by the stepRate.
        * @param output An array to insert the points in to. If not provided a new array will be created.
        */
-      getPoints<O extends Phaser.Geom.Point[]>(
-        quantity: integer,
-        stepRate?: number,
-        output?: O,
-      ): O;
+      getPoints<O extends Phaser.Geom.Point[]>(quantity: integer, stepRate?: number, output?: O): O;
 
       /**
        * Returns a uniformly distributed random point from anywhere within the Circle.
@@ -38567,7 +37405,7 @@ declare namespace Phaser {
       static CircumferencePoint<O extends Phaser.Geom.Point>(
         circle: Phaser.Geom.Circle,
         angle: number,
-        out?: O,
+        out?: O
       ): O;
 
       /**
@@ -38582,21 +37420,14 @@ declare namespace Phaser {
        * @param x The x coordinate to check within the circle.
        * @param y The y coordinate to check within the circle.
        */
-      static Contains(
-        circle: Phaser.Geom.Circle,
-        x: number,
-        y: number,
-      ): boolean;
+      static Contains(circle: Phaser.Geom.Circle, x: number, y: number): boolean;
 
       /**
        * Check to see if the Circle contains the given Point object.
        * @param circle The Circle to check.
        * @param point The Point object to check if it's within the Circle or not.
        */
-      static ContainsPoint(
-        circle: Phaser.Geom.Circle,
-        point: Phaser.Geom.Point | object,
-      ): boolean;
+      static ContainsPoint(circle: Phaser.Geom.Circle, point: Phaser.Geom.Point | object): boolean;
 
       /**
        * Check to see if the Circle contains all four points of the given Rectangle object.
@@ -38605,7 +37436,7 @@ declare namespace Phaser {
        */
       static ContainsRect(
         circle: Phaser.Geom.Circle,
-        rect: Phaser.Geom.Rectangle | object,
+        rect: Phaser.Geom.Rectangle | object
       ): boolean;
 
       /**
@@ -38614,10 +37445,7 @@ declare namespace Phaser {
        * @param source The source Circle to copy the values from.
        * @param dest The destination Circle to copy the values to.
        */
-      static CopyFrom<O extends Phaser.Geom.Circle>(
-        source: Phaser.Geom.Circle,
-        dest: O,
-      ): O;
+      static CopyFrom<O extends Phaser.Geom.Circle>(source: Phaser.Geom.Circle, dest: O): O;
 
       /**
        * Compares the `x`, `y` and `radius` properties of the two given Circles.
@@ -38625,20 +37453,14 @@ declare namespace Phaser {
        * @param circle The first Circle to compare.
        * @param toCompare The second Circle to compare.
        */
-      static Equals(
-        circle: Phaser.Geom.Circle,
-        toCompare: Phaser.Geom.Circle,
-      ): boolean;
+      static Equals(circle: Phaser.Geom.Circle, toCompare: Phaser.Geom.Circle): boolean;
 
       /**
        * Returns the bounds of the Circle object.
        * @param circle The Circle to get the bounds from.
        * @param out A Rectangle, or rectangle-like object, to store the circle bounds in. If not given a new Rectangle will be created.
        */
-      static GetBounds<O extends Phaser.Geom.Rectangle>(
-        circle: Phaser.Geom.Circle,
-        out?: O,
-      ): O;
+      static GetBounds<O extends Phaser.Geom.Rectangle>(circle: Phaser.Geom.Circle, out?: O): O;
 
       /**
        * Returns a Point object containing the coordinates of a point on the circumference of the Circle
@@ -38651,7 +37473,7 @@ declare namespace Phaser {
       static GetPoint<O extends Phaser.Geom.Point>(
         circle: Phaser.Geom.Circle,
         position: number,
-        out?: O,
+        out?: O
       ): O;
 
       /**
@@ -38666,7 +37488,7 @@ declare namespace Phaser {
         circle: Phaser.Geom.Circle,
         quantity: integer,
         stepRate?: number,
-        output?: any[],
+        output?: any[]
       ): Phaser.Geom.Point[];
 
       /**
@@ -38675,11 +37497,7 @@ declare namespace Phaser {
        * @param x The amount to horizontally offset the Circle by.
        * @param y The amount to vertically offset the Circle by.
        */
-      static Offset<O extends Phaser.Geom.Circle>(
-        circle: O,
-        x: number,
-        y: number,
-      ): O;
+      static Offset<O extends Phaser.Geom.Circle>(circle: O, x: number, y: number): O;
 
       /**
        * Offsets the Circle by the values given in the `x` and `y` properties of the Point object.
@@ -38688,7 +37506,7 @@ declare namespace Phaser {
        */
       static OffsetPoint<O extends Phaser.Geom.Circle>(
         circle: O,
-        point: Phaser.Geom.Point | object,
+        point: Phaser.Geom.Point | object
       ): O;
 
       /**
@@ -38696,10 +37514,7 @@ declare namespace Phaser {
        * @param circle The Circle to get a random point from.
        * @param out A Point or point-like object to set the random `x` and `y` values in.
        */
-      static Random<O extends Phaser.Geom.Point>(
-        circle: Phaser.Geom.Circle,
-        out?: O,
-      ): O;
+      static Random<O extends Phaser.Geom.Point>(circle: Phaser.Geom.Circle, out?: O): O;
     }
 
     /**
@@ -38740,7 +37555,7 @@ declare namespace Phaser {
       static CircumferencePoint<O extends Phaser.Geom.Point>(
         ellipse: Phaser.Geom.Ellipse,
         angle: number,
-        out?: O,
+        out?: O
       ): O;
 
       /**
@@ -38755,11 +37570,7 @@ declare namespace Phaser {
        * @param x The x coordinate to check within the ellipse.
        * @param y The y coordinate to check within the ellipse.
        */
-      static Contains(
-        ellipse: Phaser.Geom.Ellipse,
-        x: number,
-        y: number,
-      ): boolean;
+      static Contains(ellipse: Phaser.Geom.Ellipse, x: number, y: number): boolean;
 
       /**
        * Check to see if the Ellipse contains the given Point object.
@@ -38768,7 +37579,7 @@ declare namespace Phaser {
        */
       static ContainsPoint(
         ellipse: Phaser.Geom.Ellipse,
-        point: Phaser.Geom.Point | object,
+        point: Phaser.Geom.Point | object
       ): boolean;
 
       /**
@@ -38778,7 +37589,7 @@ declare namespace Phaser {
        */
       static ContainsRect(
         ellipse: Phaser.Geom.Ellipse,
-        rect: Phaser.Geom.Rectangle | object,
+        rect: Phaser.Geom.Rectangle | object
       ): boolean;
 
       /**
@@ -38787,10 +37598,7 @@ declare namespace Phaser {
        * @param source The source Ellipse to copy the values from.
        * @param dest The destination Ellipse to copy the values to.
        */
-      static CopyFrom<O extends Phaser.Geom.Ellipse>(
-        source: Phaser.Geom.Ellipse,
-        dest: O,
-      ): O;
+      static CopyFrom<O extends Phaser.Geom.Ellipse>(source: Phaser.Geom.Ellipse, dest: O): O;
 
       /**
        * The x position of the center of the ellipse.
@@ -38835,11 +37643,7 @@ declare namespace Phaser {
        * @param stepRate Sets the quantity by getting the circumference of the ellipse and dividing it by the stepRate.
        * @param output An array to insert the points in to. If not provided a new array will be created.
        */
-      getPoints(
-        quantity: integer,
-        stepRate?: number,
-        output?: any[],
-      ): Phaser.Geom.Point[];
+      getPoints(quantity: integer, stepRate?: number, output?: any[]): Phaser.Geom.Point[];
 
       /**
        * Returns a uniformly distributed random point from anywhere within the given Ellipse.
@@ -38854,12 +37658,7 @@ declare namespace Phaser {
        * @param width The width of the ellipse.
        * @param height The height of the ellipse.
        */
-      setTo(
-        x: number,
-        y: number,
-        width: number,
-        height: number,
-      ): Phaser.Geom.Ellipse;
+      setTo(x: number, y: number, width: number, height: number): Phaser.Geom.Ellipse;
 
       /**
        * Sets this Ellipse to be empty with a width and height of zero.
@@ -38923,20 +37722,14 @@ declare namespace Phaser {
        * @param ellipse The first Ellipse to compare.
        * @param toCompare The second Ellipse to compare.
        */
-      static Equals(
-        ellipse: Phaser.Geom.Ellipse,
-        toCompare: Phaser.Geom.Ellipse,
-      ): boolean;
+      static Equals(ellipse: Phaser.Geom.Ellipse, toCompare: Phaser.Geom.Ellipse): boolean;
 
       /**
        * Returns the bounds of the Ellipse object.
        * @param ellipse The Ellipse to get the bounds from.
        * @param out A Rectangle, or rectangle-like object, to store the ellipse bounds in. If not given a new Rectangle will be created.
        */
-      static GetBounds<O extends Phaser.Geom.Rectangle>(
-        ellipse: Phaser.Geom.Ellipse,
-        out?: O,
-      ): O;
+      static GetBounds<O extends Phaser.Geom.Rectangle>(ellipse: Phaser.Geom.Ellipse, out?: O): O;
 
       /**
        * Returns a Point object containing the coordinates of a point on the circumference of the Ellipse
@@ -38949,7 +37742,7 @@ declare namespace Phaser {
       static GetPoint<O extends Phaser.Geom.Point>(
         ellipse: Phaser.Geom.Ellipse,
         position: number,
-        out?: O,
+        out?: O
       ): O;
 
       /**
@@ -38964,7 +37757,7 @@ declare namespace Phaser {
         ellipse: Phaser.Geom.Ellipse,
         quantity: integer,
         stepRate?: number,
-        out?: O,
+        out?: O
       ): O;
 
       /**
@@ -38973,11 +37766,7 @@ declare namespace Phaser {
        * @param x The amount to horizontally offset the Ellipse by.
        * @param y The amount to vertically offset the Ellipse by.
        */
-      static Offset<O extends Phaser.Geom.Ellipse>(
-        ellipse: O,
-        x: number,
-        y: number,
-      ): O;
+      static Offset<O extends Phaser.Geom.Ellipse>(ellipse: O, x: number, y: number): O;
 
       /**
        * Offsets the Ellipse by the values given in the `x` and `y` properties of the Point object.
@@ -38986,7 +37775,7 @@ declare namespace Phaser {
        */
       static OffsetPoint<O extends Phaser.Geom.Ellipse>(
         ellipse: O,
-        point: Phaser.Geom.Point | object,
+        point: Phaser.Geom.Point | object
       ): O;
 
       /**
@@ -38994,10 +37783,7 @@ declare namespace Phaser {
        * @param ellipse The Ellipse to get a random point from.
        * @param out A Point or point-like object to set the random `x` and `y` values in.
        */
-      static Random<O extends Phaser.Geom.Point>(
-        ellipse: Phaser.Geom.Ellipse,
-        out?: O,
-      ): O;
+      static Random<O extends Phaser.Geom.Point>(ellipse: Phaser.Geom.Ellipse, out?: O): O;
     }
 
     namespace Intersects {
@@ -39006,20 +37792,14 @@ declare namespace Phaser {
        * @param circleA The first Circle to check for intersection.
        * @param circleB The second Circle to check for intersection.
        */
-      function CircleToCircle(
-        circleA: Phaser.Geom.Circle,
-        circleB: Phaser.Geom.Circle,
-      ): boolean;
+      function CircleToCircle(circleA: Phaser.Geom.Circle, circleB: Phaser.Geom.Circle): boolean;
 
       /**
        * [description]
        * @param circle [description]
        * @param rect [description]
        */
-      function CircleToRectangle(
-        circle: Phaser.Geom.Circle,
-        rect: Phaser.Geom.Rectangle,
-      ): boolean;
+      function CircleToRectangle(circle: Phaser.Geom.Circle, rect: Phaser.Geom.Rectangle): boolean;
 
       /**
        * Checks if two Rectangle shapes intersect and returns the area of this intersection as Rectangle object.
@@ -39034,7 +37814,7 @@ declare namespace Phaser {
       function GetRectangleIntersection<O extends Phaser.Geom.Rectangle>(
         rectA: Phaser.Geom.Rectangle,
         rectB: Phaser.Geom.Rectangle,
-        output?: O,
+        output?: O
       ): O;
 
       /**
@@ -39046,7 +37826,7 @@ declare namespace Phaser {
       function LineToCircle(
         line: Phaser.Geom.Line,
         circle: Phaser.Geom.Circle,
-        nearest?: Phaser.Geom.Point,
+        nearest?: Phaser.Geom.Point
       ): boolean;
 
       /**
@@ -39058,7 +37838,7 @@ declare namespace Phaser {
       function LineToLine(
         line1: Phaser.Geom.Line,
         line2: Phaser.Geom.Line,
-        out?: Phaser.Geom.Point,
+        out?: Phaser.Geom.Point
       ): boolean;
 
       /**
@@ -39076,7 +37856,7 @@ declare namespace Phaser {
        */
       function LineToRectangle(
         line: Phaser.Geom.Line,
-        rect: Phaser.Geom.Rectangle | object,
+        rect: Phaser.Geom.Rectangle | object
       ): boolean;
 
       /**
@@ -39084,20 +37864,14 @@ declare namespace Phaser {
        * @param point [description]
        * @param line [description]
        */
-      function PointToLine(
-        point: Phaser.Geom.Point,
-        line: Phaser.Geom.Line,
-      ): boolean;
+      function PointToLine(point: Phaser.Geom.Point, line: Phaser.Geom.Line): boolean;
 
       /**
        * [description]
        * @param point [description]
        * @param line [description]
        */
-      function PointToLineSegment(
-        point: Phaser.Geom.Point,
-        line: Phaser.Geom.Line,
-      ): boolean;
+      function PointToLineSegment(point: Phaser.Geom.Point, line: Phaser.Geom.Line): boolean;
 
       /**
        * [description]
@@ -39106,7 +37880,7 @@ declare namespace Phaser {
        */
       function RectangleToRectangle(
         rectA: Phaser.Geom.Rectangle,
-        rectB: Phaser.Geom.Rectangle,
+        rectB: Phaser.Geom.Rectangle
       ): boolean;
 
       /**
@@ -39116,7 +37890,7 @@ declare namespace Phaser {
        */
       function RectangleToTriangle(
         rect: Phaser.Geom.Rectangle,
-        triangle: Phaser.Geom.Triangle,
+        triangle: Phaser.Geom.Triangle
       ): boolean;
 
       /**
@@ -39134,7 +37908,7 @@ declare namespace Phaser {
         right: number,
         top: number,
         bottom: number,
-        tolerance?: number,
+        tolerance?: number
       ): boolean;
 
       /**
@@ -39144,7 +37918,7 @@ declare namespace Phaser {
        */
       function TriangleToCircle(
         triangle: Phaser.Geom.Triangle,
-        circle: Phaser.Geom.Circle,
+        circle: Phaser.Geom.Circle
       ): boolean;
 
       /**
@@ -39154,10 +37928,7 @@ declare namespace Phaser {
        * @param triangle The Triangle to check with.
        * @param line The Line to check with.
        */
-      function TriangleToLine(
-        triangle: Phaser.Geom.Triangle,
-        line: Phaser.Geom.Line,
-      ): boolean;
+      function TriangleToLine(triangle: Phaser.Geom.Triangle, line: Phaser.Geom.Line): boolean;
 
       /**
        * [description]
@@ -39166,7 +37937,7 @@ declare namespace Phaser {
        */
       function TriangleToTriangle(
         triangleA: Phaser.Geom.Triangle,
-        triangleB: Phaser.Geom.Triangle,
+        triangleB: Phaser.Geom.Triangle
       ): boolean;
     }
 
@@ -39197,11 +37968,7 @@ declare namespace Phaser {
        * @param stepRate The optional step rate for the points on the line. Default 1.
        * @param results An optional array to push the resulting coordinates into.
        */
-      static BresenhamPoints(
-        line: Phaser.Geom.Line,
-        stepRate?: integer,
-        results?: any[],
-      ): object[];
+      static BresenhamPoints(line: Phaser.Geom.Line, stepRate?: integer, results?: any[]): object[];
 
       /**
        * Center a line on the given coordinates.
@@ -39209,11 +37976,7 @@ declare namespace Phaser {
        * @param x The horizontal coordinate to center the line on.
        * @param y The vertical coordinate to center the line on.
        */
-      static CenterOn(
-        line: Phaser.Geom.Line,
-        x: number,
-        y: number,
-      ): Phaser.Geom.Line;
+      static CenterOn(line: Phaser.Geom.Line, x: number, y: number): Phaser.Geom.Line;
 
       /**
        * Clone the given line.
@@ -39226,30 +37989,21 @@ declare namespace Phaser {
        * @param source The source line to copy the values from.
        * @param dest The destination line to copy the values to.
        */
-      static CopyFrom<O extends Phaser.Geom.Line>(
-        source: Phaser.Geom.Line,
-        dest: O,
-      ): O;
+      static CopyFrom<O extends Phaser.Geom.Line>(source: Phaser.Geom.Line, dest: O): O;
 
       /**
        * Compare two lines for strict equality.
        * @param line The first line to compare.
        * @param toCompare The second line to compare.
        */
-      static Equals(
-        line: Phaser.Geom.Line,
-        toCompare: Phaser.Geom.Line,
-      ): boolean;
+      static Equals(line: Phaser.Geom.Line, toCompare: Phaser.Geom.Line): boolean;
 
       /**
        * Get the midpoint of the given line.
        * @param line The line to get the midpoint of.
        * @param out An optional point object to store the midpoint in.
        */
-      static GetMidPoint<O extends Phaser.Geom.Point>(
-        line: Phaser.Geom.Line,
-        out?: O,
-      ): O;
+      static GetMidPoint<O extends Phaser.Geom.Point>(line: Phaser.Geom.Line, out?: O): O;
 
       /**
        * Calculate the normal of the given line.
@@ -39258,10 +38012,7 @@ declare namespace Phaser {
        * @param line The line to calculate the normal of.
        * @param out An optional point object to store the normal in.
        */
-      static GetNormal<O extends Phaser.Geom.Point>(
-        line: Phaser.Geom.Line,
-        out?: O,
-      ): O;
+      static GetNormal<O extends Phaser.Geom.Point>(line: Phaser.Geom.Line, out?: O): O;
 
       /**
        * Get a point on a line that's a given percentage along its length.
@@ -39272,7 +38023,7 @@ declare namespace Phaser {
       static GetPoint<O extends Phaser.Geom.Point>(
         line: Phaser.Geom.Line,
         position: number,
-        out?: O,
+        out?: O
       ): O;
 
       /**
@@ -39291,7 +38042,7 @@ declare namespace Phaser {
         line: Phaser.Geom.Line,
         quantity: integer,
         stepRate?: number,
-        out?: O,
+        out?: O
       ): O;
 
       /**
@@ -39344,11 +38095,7 @@ declare namespace Phaser {
        * @param stepRate The distance between each point on the line. When set, `quantity` is implied and should be set to `0`.
        * @param output An optional array of Points, or point-like objects, to store the coordinates of the points on the line.
        */
-      getPoints<O extends Phaser.Geom.Point>(
-        quantity: integer,
-        stepRate?: integer,
-        output?: O,
-      ): O;
+      getPoints<O extends Phaser.Geom.Point>(quantity: integer, stepRate?: integer, output?: O): O;
 
       /**
        * Get a random Point on the Line.
@@ -39363,12 +38110,7 @@ declare namespace Phaser {
        * @param x2 The x coordinate of the lines ending point. Default 0.
        * @param y2 The y coordinate of the lines ending point. Default 0.
        */
-      setTo(
-        x1?: number,
-        y1?: number,
-        x2?: number,
-        y2?: number,
-      ): Phaser.Geom.Line;
+      setTo(x1?: number, y1?: number, x2?: number, y2?: number): Phaser.Geom.Line;
 
       /**
        * Returns a Vector2 object that corresponds to the start of this Line.
@@ -39426,11 +38168,7 @@ declare namespace Phaser {
        * @param x The horizontal offset to add to the line.
        * @param y The vertical offset to add to the line.
        */
-      static Offset<O extends Phaser.Geom.Line>(
-        line: O,
-        x: number,
-        y: number,
-      ): O;
+      static Offset<O extends Phaser.Geom.Line>(line: O, x: number, y: number): O;
 
       /**
        * Calculate the perpendicular slope of the given line.
@@ -39443,10 +38181,7 @@ declare namespace Phaser {
        * @param line The Line to calculate the random Point on.
        * @param out An instance of a Point to be modified.
        */
-      static Random<O extends Phaser.Geom.Point>(
-        line: Phaser.Geom.Line,
-        out?: O,
-      ): O;
+      static Random<O extends Phaser.Geom.Point>(line: Phaser.Geom.Line, out?: O): O;
 
       /**
        * Calculate the reflected angle between two lines.
@@ -39455,10 +38190,7 @@ declare namespace Phaser {
        * @param lineA The first line.
        * @param lineB The second line.
        */
-      static ReflectAngle(
-        lineA: Phaser.Geom.Line,
-        lineB: Phaser.Geom.Line,
-      ): number;
+      static ReflectAngle(lineA: Phaser.Geom.Line, lineB: Phaser.Geom.Line): number;
 
       /**
        * Rotate a line around its midpoint by the given angle in radians.
@@ -39476,7 +38208,7 @@ declare namespace Phaser {
       static RotateAroundPoint<O extends Phaser.Geom.Line>(
         line: O,
         point: Phaser.Geom.Point | object,
-        angle: number,
+        angle: number
       ): O;
 
       /**
@@ -39490,7 +38222,7 @@ declare namespace Phaser {
         line: O,
         x: number,
         y: number,
-        angle: number,
+        angle: number
       ): O;
 
       /**
@@ -39506,7 +38238,7 @@ declare namespace Phaser {
         x: number,
         y: number,
         angle: number,
-        length: number,
+        length: number
       ): O;
 
       /**
@@ -39550,20 +38282,14 @@ declare namespace Phaser {
        * @param source The source Point to copy the values from.
        * @param dest The destination Point to copy the values to.
        */
-      static CopyFrom<O extends Phaser.Geom.Point>(
-        source: Phaser.Geom.Point,
-        dest: O,
-      ): O;
+      static CopyFrom<O extends Phaser.Geom.Point>(source: Phaser.Geom.Point, dest: O): O;
 
       /**
        * A comparison of two `Point` objects to see if they are equal.
        * @param point The original `Point` to compare against.
        * @param toCompare The second `Point` to compare.
        */
-      static Equals(
-        point: Phaser.Geom.Point,
-        toCompare: Phaser.Geom.Point,
-      ): boolean;
+      static Equals(point: Phaser.Geom.Point, toCompare: Phaser.Geom.Point): boolean;
 
       /**
        * Apply `Math.ceil()` to each coordinate of the given Point.
@@ -39576,10 +38302,7 @@ declare namespace Phaser {
        * @param points [description]
        * @param out [description]
        */
-      static GetCentroid<O extends Phaser.Geom.Point>(
-        points: Phaser.Geom.Point[],
-        out?: O,
-      ): O;
+      static GetCentroid<O extends Phaser.Geom.Point>(points: Phaser.Geom.Point[], out?: O): O;
 
       /**
        * [description]
@@ -39600,7 +38323,7 @@ declare namespace Phaser {
        */
       static GetRectangleFromPoints<O extends Phaser.Geom.Rectangle>(
         points: Phaser.Geom.Point[],
-        out?: O,
+        out?: O
       ): O;
 
       /**
@@ -39614,7 +38337,7 @@ declare namespace Phaser {
         pointA: Phaser.Geom.Point,
         pointB: Phaser.Geom.Point,
         t?: number,
-        out?: O,
+        out?: O
       ): O;
 
       /**
@@ -39628,10 +38351,7 @@ declare namespace Phaser {
        * @param point [description]
        * @param out [description]
        */
-      static Negative<O extends Phaser.Geom.Point>(
-        point: Phaser.Geom.Point,
-        out?: O,
-      ): O;
+      static Negative<O extends Phaser.Geom.Point>(point: Phaser.Geom.Point, out?: O): O;
 
       /**
        * The x coordinate of this Point.
@@ -39659,7 +38379,7 @@ declare namespace Phaser {
       static Project<O extends Phaser.Geom.Point>(
         pointA: Phaser.Geom.Point,
         pointB: Phaser.Geom.Point,
-        out?: O,
+        out?: O
       ): O;
 
       /**
@@ -39671,7 +38391,7 @@ declare namespace Phaser {
       static ProjectUnit<O extends Phaser.Geom.Point>(
         pointA: Phaser.Geom.Point,
         pointB: Phaser.Geom.Point,
-        out?: O,
+        out?: O
       ): O;
 
       /**
@@ -39679,10 +38399,7 @@ declare namespace Phaser {
        * @param point [description]
        * @param magnitude [description]
        */
-      static SetMagnitude<O extends Phaser.Geom.Point>(
-        point: O,
-        magnitude: number,
-      ): O;
+      static SetMagnitude<O extends Phaser.Geom.Point>(point: O, magnitude: number): O;
     }
 
     /**
@@ -39707,31 +38424,21 @@ declare namespace Phaser {
        * @param x The X coordinate of the point to check.
        * @param y The Y coordinate of the point to check.
        */
-      static Contains(
-        polygon: Phaser.Geom.Polygon,
-        x: number,
-        y: number,
-      ): boolean;
+      static Contains(polygon: Phaser.Geom.Polygon, x: number, y: number): boolean;
 
       /**
        * [description]
        * @param polygon [description]
        * @param point [description]
        */
-      static ContainsPoint(
-        polygon: Phaser.Geom.Polygon,
-        point: Phaser.Geom.Point,
-      ): boolean;
+      static ContainsPoint(polygon: Phaser.Geom.Polygon, point: Phaser.Geom.Point): boolean;
 
       /**
        * [description]
        * @param polygon [description]
        * @param out [description]
        */
-      static GetAABB<O extends Phaser.Geom.Rectangle>(
-        polygon: Phaser.Geom.Polygon,
-        out?: O,
-      ): O;
+      static GetAABB<O extends Phaser.Geom.Rectangle>(polygon: Phaser.Geom.Polygon, out?: O): O;
 
       /**
        * Stores all of the points of a Polygon into a flat array of numbers following the sequence [ x,y, x,y, x,y ],
@@ -39740,10 +38447,7 @@ declare namespace Phaser {
        * @param polygon The Polygon whose points to export.
        * @param output An array to which the points' coordinates should be appended.
        */
-      static GetNumberArray<O extends number[]>(
-        polygon: Phaser.Geom.Polygon,
-        output?: O,
-      ): O;
+      static GetNumberArray<O extends number[]>(polygon: Phaser.Geom.Polygon, output?: O): O;
 
       /**
        * Returns an array of Point objects containing the coordinates of the points around the perimeter of the Polygon,
@@ -39757,7 +38461,7 @@ declare namespace Phaser {
         polygon: Phaser.Geom.Polygon,
         quantity: integer,
         stepRate?: number,
-        output?: any[],
+        output?: any[]
       ): Phaser.Geom.Point[];
 
       /**
@@ -39811,11 +38515,7 @@ declare namespace Phaser {
        * @param stepRate Sets the quantity by getting the perimeter of the Polygon and dividing it by the stepRate.
        * @param output An array to insert the points in to. If not provided a new array will be created.
        */
-      getPoints(
-        quantity: integer,
-        stepRate?: number,
-        output?: any[],
-      ): Phaser.Geom.Point[];
+      getPoints(quantity: integer, stepRate?: number, output?: any[]): Phaser.Geom.Point[];
 
       /**
        * [description]
@@ -39867,11 +38567,7 @@ declare namespace Phaser {
        * @param x The X coordinate of the Rectangle's center.
        * @param y The Y coordinate of the Rectangle's center.
        */
-      static CenterOn<O extends Phaser.Geom.Rectangle>(
-        rect: O,
-        x: number,
-        y: number,
-      ): O;
+      static CenterOn<O extends Phaser.Geom.Rectangle>(rect: O, x: number, y: number): O;
 
       /**
        * Creates a new Rectangle which is identical to the given one.
@@ -39885,41 +38581,28 @@ declare namespace Phaser {
        * @param x [description]
        * @param y [description]
        */
-      static Contains(
-        rect: Phaser.Geom.Rectangle,
-        x: number,
-        y: number,
-      ): boolean;
+      static Contains(rect: Phaser.Geom.Rectangle, x: number, y: number): boolean;
 
       /**
        * Determines whether the specified point is contained within the rectangular region defined by this Rectangle object.
        * @param rect The Rectangle object.
        * @param point The point object to be checked. Can be a Phaser Point object or any object with x and y values.
        */
-      static ContainsPoint(
-        rect: Phaser.Geom.Rectangle,
-        point: Phaser.Geom.Point,
-      ): boolean;
+      static ContainsPoint(rect: Phaser.Geom.Rectangle, point: Phaser.Geom.Point): boolean;
 
       /**
        * [description]
        * @param rectA [description]
        * @param rectB [description]
        */
-      static ContainsRect(
-        rectA: Phaser.Geom.Rectangle,
-        rectB: Phaser.Geom.Rectangle,
-      ): boolean;
+      static ContainsRect(rectA: Phaser.Geom.Rectangle, rectB: Phaser.Geom.Rectangle): boolean;
 
       /**
        * Copy the values of one Rectangle to a destination Rectangle.
        * @param source The source Rectangle to copy the values from.
        * @param dest The destination Rectangle to copy the values to.
        */
-      static CopyFrom<O extends Phaser.Geom.Rectangle>(
-        source: Phaser.Geom.Rectangle,
-        dest: O,
-      ): O;
+      static CopyFrom<O extends Phaser.Geom.Rectangle>(source: Phaser.Geom.Rectangle, dest: O): O;
 
       /**
        * Create an array of points for each corner of a Rectangle
@@ -39934,10 +38617,7 @@ declare namespace Phaser {
        * @param rect [description]
        * @param toCompare [description]
        */
-      static Equals(
-        rect: Phaser.Geom.Rectangle,
-        toCompare: Phaser.Geom.Rectangle,
-      ): boolean;
+      static Equals(rect: Phaser.Geom.Rectangle, toCompare: Phaser.Geom.Rectangle): boolean;
 
       /**
        * [description]
@@ -39946,7 +38626,7 @@ declare namespace Phaser {
        */
       static FitInside<O extends Phaser.Geom.Rectangle>(
         target: O,
-        source: Phaser.Geom.Rectangle,
+        source: Phaser.Geom.Rectangle
       ): O;
 
       /**
@@ -39956,7 +38636,7 @@ declare namespace Phaser {
        */
       static FitOutside<O extends Phaser.Geom.Rectangle>(
         target: O,
-        source: Phaser.Geom.Rectangle,
+        source: Phaser.Geom.Rectangle
       ): O;
 
       /**
@@ -39976,10 +38656,7 @@ declare namespace Phaser {
        * @param points An array of points (either arrays with two elements corresponding to the X and Y coordinate or an object with public `x` and `y` properties) which should be surrounded by the Rectangle.
        * @param out Optional Rectangle to adjust.
        */
-      static FromPoints<O extends Phaser.Geom.Rectangle>(
-        points: any[],
-        out?: O,
-      ): O;
+      static FromPoints<O extends Phaser.Geom.Rectangle>(points: any[], out?: O): O;
 
       /**
        * [description]
@@ -39992,10 +38669,7 @@ declare namespace Phaser {
        * @param rect The Rectangle to get the center of.
        * @param out Optional point-like object to update with the center coordinates.
        */
-      static GetCenter<O extends Phaser.Geom.Point>(
-        rect: Phaser.Geom.Rectangle,
-        out?: O,
-      ): O;
+      static GetCenter<O extends Phaser.Geom.Point>(rect: Phaser.Geom.Rectangle, out?: O): O;
 
       /**
        * Position is a value between 0 and 1 where 0 = the top-left of the rectangle and 0.5 = the bottom right.
@@ -40006,7 +38680,7 @@ declare namespace Phaser {
       static GetPoint<O extends Phaser.Geom.Point>(
         rectangle: Phaser.Geom.Rectangle,
         position: number,
-        out?: O,
+        out?: O
       ): O;
 
       /**
@@ -40020,7 +38694,7 @@ declare namespace Phaser {
         rectangle: Phaser.Geom.Rectangle,
         step: number,
         quantity: integer,
-        out?: O,
+        out?: O
       ): O;
 
       /**
@@ -40028,10 +38702,7 @@ declare namespace Phaser {
        * @param rect [description]
        * @param out [description]
        */
-      static GetSize<O extends Phaser.Geom.Point>(
-        rect: Phaser.Geom.Rectangle,
-        out?: O,
-      ): O;
+      static GetSize<O extends Phaser.Geom.Point>(rect: Phaser.Geom.Rectangle, out?: O): O;
 
       /**
        * [description]
@@ -40039,11 +38710,7 @@ declare namespace Phaser {
        * @param x [description]
        * @param y [description]
        */
-      static Inflate<O extends Phaser.Geom.Rectangle>(
-        rect: O,
-        x: number,
-        y: number,
-      ): O;
+      static Inflate<O extends Phaser.Geom.Rectangle>(rect: O, x: number, y: number): O;
 
       /**
        * Takes two Rectangles and first checks to see if they intersect.
@@ -40056,7 +38723,7 @@ declare namespace Phaser {
       static Intersection<O extends Phaser.Geom.Rectangle>(
         rectA: Phaser.Geom.Rectangle,
         rectB: Phaser.Geom.Rectangle,
-        out?: Phaser.Geom.Rectangle,
+        out?: Phaser.Geom.Rectangle
       ): O;
 
       /**
@@ -40070,7 +38737,7 @@ declare namespace Phaser {
         rect: Phaser.Geom.Rectangle,
         step: number,
         quantity: integer,
-        out?: O,
+        out?: O
       ): O;
 
       /**
@@ -40080,7 +38747,7 @@ declare namespace Phaser {
        */
       static MergePoints<O extends Phaser.Geom.Rectangle>(
         target: O,
-        points: Phaser.Geom.Point[],
+        points: Phaser.Geom.Point[]
       ): O;
 
       /**
@@ -40091,7 +38758,7 @@ declare namespace Phaser {
        */
       static MergeRect<O extends Phaser.Geom.Rectangle>(
         target: O,
-        source: Phaser.Geom.Rectangle,
+        source: Phaser.Geom.Rectangle
       ): O;
 
       /**
@@ -40100,11 +38767,7 @@ declare namespace Phaser {
        * @param x The X coordinate of the point which should be merged.
        * @param y The Y coordinate of the point which should be merged.
        */
-      static MergeXY<O extends Phaser.Geom.Rectangle>(
-        target: O,
-        x: number,
-        y: number,
-      ): O;
+      static MergeXY<O extends Phaser.Geom.Rectangle>(target: O, x: number, y: number): O;
 
       /**
        * Nudges (translates) the top left corner of a Rectangle by a given offset.
@@ -40112,11 +38775,7 @@ declare namespace Phaser {
        * @param x The distance to move the Rectangle horizontally.
        * @param y The distance to move the Rectangle vertically.
        */
-      static Offset<O extends Phaser.Geom.Rectangle>(
-        rect: O,
-        x: number,
-        y: number,
-      ): O;
+      static Offset<O extends Phaser.Geom.Rectangle>(rect: O, x: number, y: number): O;
 
       /**
        * Nudges (translates) the top-left corner of a Rectangle by the coordinates of a point (translation vector).
@@ -40125,7 +38784,7 @@ declare namespace Phaser {
        */
       static OffsetPoint<O extends Phaser.Geom.Rectangle>(
         rect: O,
-        point: Phaser.Geom.Point | Phaser.Math.Vector2,
+        point: Phaser.Geom.Point | Phaser.Math.Vector2
       ): O;
 
       /**
@@ -40133,10 +38792,7 @@ declare namespace Phaser {
        * @param rectA [description]
        * @param rectB [description]
        */
-      static Overlaps(
-        rectA: Phaser.Geom.Rectangle,
-        rectB: Phaser.Geom.Rectangle,
-      ): boolean;
+      static Overlaps(rectA: Phaser.Geom.Rectangle, rectB: Phaser.Geom.Rectangle): boolean;
 
       /**
        * [description]
@@ -40153,7 +38809,7 @@ declare namespace Phaser {
       static PerimeterPoint<O extends Phaser.Geom.Point>(
         rectangle: Phaser.Geom.Rectangle,
         angle: integer,
-        out?: O,
+        out?: O
       ): O;
 
       /**
@@ -40161,10 +38817,7 @@ declare namespace Phaser {
        * @param rect The Rectangle to return a point from.
        * @param out The object to update with the point's coordinates.
        */
-      static Random<O extends Phaser.Geom.Point>(
-        rect: Phaser.Geom.Rectangle,
-        out: O,
-      ): O;
+      static Random<O extends Phaser.Geom.Point>(rect: Phaser.Geom.Rectangle, out: O): O;
 
       /**
        * Calculates a random point that lies within the `outer` Rectangle, but outside of the `inner` Rectangle.
@@ -40176,7 +38829,7 @@ declare namespace Phaser {
       static RandomOutside<O extends Phaser.Geom.Point>(
         outer: Phaser.Geom.Rectangle,
         inner: Phaser.Geom.Rectangle,
-        out?: O,
+        out?: O
       ): O;
 
       /**
@@ -40223,11 +38876,7 @@ declare namespace Phaser {
        * @param stepRate If `quantity` is 0, determines the normalized distance between each returned point.
        * @param output An array to which to append the points.
        */
-      getPoints<O extends Phaser.Geom.Point[]>(
-        quantity: integer,
-        stepRate?: number,
-        output?: O,
-      ): O;
+      getPoints<O extends Phaser.Geom.Point[]>(quantity: integer, stepRate?: number, output?: O): O;
 
       /**
        * Returns a random point within the Rectangle's bounds.
@@ -40242,12 +38891,7 @@ declare namespace Phaser {
        * @param width The width of the Rectangle.
        * @param height The height of the Rectangle.
        */
-      setTo(
-        x: number,
-        y: number,
-        width: number,
-        height: number,
-      ): Phaser.Geom.Rectangle;
+      setTo(x: number, y: number, width: number, height: number): Phaser.Geom.Rectangle;
 
       /**
        * Resets the position, width, and height of the Rectangle to 0.
@@ -40336,10 +38980,7 @@ declare namespace Phaser {
        * @param rect The first Rectangle object.
        * @param toCompare The second Rectangle object.
        */
-      static SameDimensions(
-        rect: Phaser.Geom.Rectangle,
-        toCompare: Phaser.Geom.Rectangle,
-      ): boolean;
+      static SameDimensions(rect: Phaser.Geom.Rectangle, toCompare: Phaser.Geom.Rectangle): boolean;
 
       /**
        * [description]
@@ -40347,11 +38988,7 @@ declare namespace Phaser {
        * @param x [description]
        * @param y [description]
        */
-      static Scale<O extends Phaser.Geom.Rectangle>(
-        rect: O,
-        x: number,
-        y: number,
-      ): O;
+      static Scale<O extends Phaser.Geom.Rectangle>(rect: O, x: number, y: number): O;
 
       /**
        * Creates a new Rectangle or repositions and/or resizes an existing Rectangle so that it encompasses the two given Rectangles, i.e. calculates their union.
@@ -40362,7 +38999,7 @@ declare namespace Phaser {
       static Union<O extends Phaser.Geom.Rectangle>(
         rectA: Phaser.Geom.Rectangle,
         rectB: Phaser.Geom.Rectangle,
-        out?: O,
+        out?: O
       ): O;
     }
 
@@ -40381,14 +39018,7 @@ declare namespace Phaser {
        * @param x3 `x` coordinate of the third point. Default 0.
        * @param y3 `y` coordinate of the third point. Default 0.
        */
-      constructor(
-        x1?: number,
-        y1?: number,
-        x2?: number,
-        y2?: number,
-        x3?: number,
-        y3?: number,
-      );
+      constructor(x1?: number, y1?: number, x2?: number, y2?: number, x3?: number, y3?: number);
 
       /**
        * [description]
@@ -40403,11 +39033,7 @@ declare namespace Phaser {
        * @param y y coordinate of the top point of the triangle.
        * @param length Length of each side of the triangle.
        */
-      static BuildEquilateral(
-        x: number,
-        y: number,
-        length: number,
-      ): Phaser.Geom.Triangle;
+      static BuildEquilateral(x: number, y: number, length: number): Phaser.Geom.Triangle;
 
       /**
        * [description]
@@ -40422,7 +39048,7 @@ declare namespace Phaser {
         holes?: any[],
         scaleX?: number,
         scaleY?: number,
-        out?: O,
+        out?: O
       ): O;
 
       /**
@@ -40432,12 +39058,7 @@ declare namespace Phaser {
        * @param width The length of the side which is to the left or to the right of the right angle.
        * @param height The length of the side which is above or below the right angle.
        */
-      static BuildRight(
-        x: number,
-        y: number,
-        width: number,
-        height: number,
-      ): Phaser.Geom.Triangle;
+      static BuildRight(x: number, y: number, width: number, height: number): Phaser.Geom.Triangle;
 
       /**
        * Positions the Triangle so that it is centered on the given coordinates.
@@ -40450,7 +39071,7 @@ declare namespace Phaser {
         triangle: O,
         x: number,
         y: number,
-        centerFunc?: CenterFunction,
+        centerFunc?: CenterFunction
       ): O;
 
       /**
@@ -40458,10 +39079,7 @@ declare namespace Phaser {
        * @param triangle [description]
        * @param out [description]
        */
-      static Centroid<O extends Phaser.Geom.Point>(
-        triangle: Phaser.Geom.Triangle,
-        out?: O,
-      ): O;
+      static Centroid<O extends Phaser.Geom.Point>(triangle: Phaser.Geom.Triangle, out?: O): O;
 
       /**
        * Computes the circumcentre of a triangle. The circumcentre is the centre of
@@ -40474,7 +39092,7 @@ declare namespace Phaser {
        */
       static CircumCenter<O extends Phaser.Math.Vector2>(
         triangle: Phaser.Geom.Triangle,
-        out?: O,
+        out?: O
       ): O;
 
       /**
@@ -40482,10 +39100,7 @@ declare namespace Phaser {
        * @param triangle [description]
        * @param out [description]
        */
-      static CircumCircle<O extends Phaser.Geom.Circle>(
-        triangle: Phaser.Geom.Triangle,
-        out?: O,
-      ): O;
+      static CircumCircle<O extends Phaser.Geom.Circle>(triangle: Phaser.Geom.Triangle, out?: O): O;
 
       /**
        * [description]
@@ -40499,11 +39114,7 @@ declare namespace Phaser {
        * @param x [description]
        * @param y [description]
        */
-      static Contains(
-        triangle: Phaser.Geom.Triangle,
-        x: number,
-        y: number,
-      ): boolean;
+      static Contains(triangle: Phaser.Geom.Triangle, x: number, y: number): boolean;
 
       /**
        * Filters an array of point-like objects to only those contained within a triangle.
@@ -40517,7 +39128,7 @@ declare namespace Phaser {
         triangle: Phaser.Geom.Triangle,
         points: Phaser.Geom.Point[],
         returnFirst?: boolean,
-        out?: any[],
+        out?: any[]
       ): Phaser.Geom.Point[];
 
       /**
@@ -40525,20 +39136,14 @@ declare namespace Phaser {
        * @param triangle [description]
        * @param point [description]
        */
-      static ContainsPoint(
-        triangle: Phaser.Geom.Triangle,
-        point: Phaser.Geom.Point,
-      ): boolean;
+      static ContainsPoint(triangle: Phaser.Geom.Triangle, point: Phaser.Geom.Point): boolean;
 
       /**
        * Copy the values of one Triangle to a destination Triangle.
        * @param source The source Triangle to copy the values from.
        * @param dest The destination Triangle to copy the values to.
        */
-      static CopyFrom<O extends Phaser.Geom.Triangle>(
-        source: Phaser.Geom.Triangle,
-        dest: O,
-      ): O;
+      static CopyFrom<O extends Phaser.Geom.Triangle>(source: Phaser.Geom.Triangle, dest: O): O;
 
       /**
        * [description]
@@ -40552,10 +39157,7 @@ declare namespace Phaser {
        * @param triangle The first triangle to check.
        * @param toCompare The second triangle to check.
        */
-      static Equals(
-        triangle: Phaser.Geom.Triangle,
-        toCompare: Phaser.Geom.Triangle,
-      ): boolean;
+      static Equals(triangle: Phaser.Geom.Triangle, toCompare: Phaser.Geom.Triangle): boolean;
 
       /**
        * [description]
@@ -40566,7 +39168,7 @@ declare namespace Phaser {
       static GetPoint<O extends Phaser.Geom.Point>(
         triangle: Phaser.Geom.Triangle,
         position: number,
-        out?: O,
+        out?: O
       ): O;
 
       /**
@@ -40580,7 +39182,7 @@ declare namespace Phaser {
         triangle: Phaser.Geom.Triangle,
         quantity: integer,
         stepRate: number,
-        out?: O,
+        out?: O
       ): O;
 
       /**
@@ -40588,10 +39190,7 @@ declare namespace Phaser {
        * @param triangle [description]
        * @param out [description]
        */
-      static InCenter<O extends Phaser.Geom.Point>(
-        triangle: Phaser.Geom.Triangle,
-        out?: O,
-      ): O;
+      static InCenter<O extends Phaser.Geom.Point>(triangle: Phaser.Geom.Triangle, out?: O): O;
 
       /**
        * [description]
@@ -40599,11 +39198,7 @@ declare namespace Phaser {
        * @param x [description]
        * @param y [description]
        */
-      static Offset<O extends Phaser.Geom.Triangle>(
-        triangle: O,
-        x: number,
-        y: number,
-      ): O;
+      static Offset<O extends Phaser.Geom.Triangle>(triangle: O, x: number, y: number): O;
 
       /**
        * Gets the length of the perimeter of the given triangle.
@@ -40616,20 +39211,14 @@ declare namespace Phaser {
        * @param triangle [description]
        * @param out [description]
        */
-      static Random<O extends Phaser.Geom.Point>(
-        triangle: Phaser.Geom.Triangle,
-        out?: O,
-      ): O;
+      static Random<O extends Phaser.Geom.Point>(triangle: Phaser.Geom.Triangle, out?: O): O;
 
       /**
        * [description]
        * @param triangle [description]
        * @param angle [description]
        */
-      static Rotate<O extends Phaser.Geom.Triangle>(
-        triangle: O,
-        angle: number,
-      ): O;
+      static Rotate<O extends Phaser.Geom.Triangle>(triangle: O, angle: number): O;
 
       /**
        * [description]
@@ -40640,7 +39229,7 @@ declare namespace Phaser {
       static RotateAroundPoint<O extends Phaser.Geom.Triangle>(
         triangle: O,
         point: Phaser.Geom.Point,
-        angle: number,
+        angle: number
       ): O;
 
       /**
@@ -40654,7 +39243,7 @@ declare namespace Phaser {
         triangle: O,
         x: number,
         y: number,
-        angle: number,
+        angle: number
       ): O;
 
       /**
@@ -40707,11 +39296,7 @@ declare namespace Phaser {
        * @param stepRate Distance between two points. Will only be used when `quantity` is falsey.
        * @param output Optional Array for writing the calculated points into. Otherwise a new array will be created.
        */
-      getPoints<O extends Phaser.Geom.Point[]>(
-        quantity: integer,
-        stepRate?: number,
-        output?: O,
-      ): O;
+      getPoints<O extends Phaser.Geom.Point[]>(quantity: integer, stepRate?: number, output?: O): O;
 
       /**
        * Returns a random point along the triangle.
@@ -40734,7 +39319,7 @@ declare namespace Phaser {
         x2?: number,
         y2?: number,
         x3?: number,
-        y3?: number,
+        y3?: number
       ): Phaser.Geom.Triangle;
 
       /**
@@ -40898,7 +39483,7 @@ declare namespace Phaser {
     function CreateInteractiveObject(
       gameObject: Phaser.GameObjects.GameObject,
       hitArea: any,
-      hitAreaCallback: HitAreaCallback,
+      hitAreaCallback: HitAreaCallback
     ): Phaser.Input.InteractiveObject;
 
     /**
@@ -40910,7 +39495,7 @@ declare namespace Phaser {
      */
     function CreatePixelPerfectHandler(
       textureManager: Phaser.Textures.TextureManager,
-      alphaTolerance: integer,
+      alphaTolerance: integer
     ): Function;
 
     namespace Gamepad {
@@ -41680,7 +40265,7 @@ declare namespace Phaser {
         pointer: Phaser.Input.Pointer,
         gameObjects: any[],
         camera: Phaser.Cameras.Scene2D.Camera,
-        output?: any[],
+        output?: any[]
       ): any[];
 
       /**
@@ -41693,11 +40278,7 @@ declare namespace Phaser {
        * @param x The translated x coordinate for the hit test.
        * @param y The translated y coordinate for the hit test.
        */
-      pointWithinHitArea(
-        gameObject: Phaser.GameObjects.GameObject,
-        x: number,
-        y: number,
-      ): boolean;
+      pointWithinHitArea(gameObject: Phaser.GameObjects.GameObject, x: number, y: number): boolean;
 
       /**
        * Checks if the given x and y coordinate are within the hit area of the Interactive Object.
@@ -41712,7 +40293,7 @@ declare namespace Phaser {
       pointWithinInteractiveObject(
         object: Phaser.Input.InteractiveObject,
         x: number,
-        y: number,
+        y: number
       ): boolean;
 
       /**
@@ -41721,11 +40302,7 @@ declare namespace Phaser {
        * @param pageX The Page X value.
        * @param pageY The Page Y value.
        */
-      transformPointer(
-        pointer: Phaser.Input.Pointer,
-        pageX: number,
-        pageY: number,
-      ): void;
+      transformPointer(pointer: Phaser.Input.Pointer, pageX: number, pageY: number): void;
 
       /**
        * Transforms the pageX value into the scaled coordinate space of the Input Manager.
@@ -41893,9 +40470,7 @@ declare namespace Phaser {
        * The Game Object is then queued for removal from the Input Plugin on the next update.
        * @param gameObject The Game Object that will have its Interactive Object removed.
        */
-      clear(
-        gameObject: Phaser.GameObjects.GameObject,
-      ): Phaser.GameObjects.GameObject;
+      clear(gameObject: Phaser.GameObjects.GameObject): Phaser.GameObjects.GameObject;
 
       /**
        * Disables Input on a single Game Object.
@@ -41931,7 +40506,7 @@ declare namespace Phaser {
         gameObject: Phaser.GameObjects.GameObject,
         shape?: Phaser.Input.InputConfiguration | any,
         callback?: HitAreaCallback,
-        dropZone?: boolean,
+        dropZone?: boolean
       ): Phaser.Input.InputPlugin;
 
       /**
@@ -41942,9 +40517,7 @@ declare namespace Phaser {
        * cameras, it starts checking the camera at the top of the camera list, and if nothing is found, iterates down the list.
        * @param pointer The Pointer to check against the Game Objects.
        */
-      hitTestPointer(
-        pointer: Phaser.Input.Pointer,
-      ): Phaser.GameObjects.GameObject[];
+      hitTestPointer(pointer: Phaser.Input.Pointer): Phaser.GameObjects.GameObject[];
 
       /**
        * Sets the draggable state of the given array of Game Objects.
@@ -41956,10 +40529,8 @@ declare namespace Phaser {
        * @param value Set to `true` if the Game Objects should be made draggable, `false` if they should be unset. Default true.
        */
       setDraggable(
-        gameObjects:
-          | Phaser.GameObjects.GameObject
-          | Phaser.GameObjects.GameObject[],
-        value?: boolean,
+        gameObjects: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[],
+        value?: boolean
       ): Phaser.Input.InputPlugin;
 
       /**
@@ -42008,11 +40579,9 @@ declare namespace Phaser {
        * @param callback The 'contains' function to invoke to check if the pointer is within the hit area.
        */
       setHitArea(
-        gameObjects:
-          | Phaser.GameObjects.GameObject
-          | Phaser.GameObjects.GameObject[],
+        gameObjects: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[],
         shape?: Phaser.Input.InputConfiguration | any,
-        callback?: HitAreaCallback,
+        callback?: HitAreaCallback
       ): Phaser.Input.InputPlugin;
 
       /**
@@ -42025,13 +40594,11 @@ declare namespace Phaser {
        * @param callback The hit area callback. If undefined it uses Circle.Contains.
        */
       setHitAreaCircle(
-        gameObjects:
-          | Phaser.GameObjects.GameObject
-          | Phaser.GameObjects.GameObject[],
+        gameObjects: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[],
         x: number,
         y: number,
         radius: number,
-        callback?: HitAreaCallback,
+        callback?: HitAreaCallback
       ): Phaser.Input.InputPlugin;
 
       /**
@@ -42045,14 +40612,12 @@ declare namespace Phaser {
        * @param callback The hit area callback. If undefined it uses Ellipse.Contains.
        */
       setHitAreaEllipse(
-        gameObjects:
-          | Phaser.GameObjects.GameObject
-          | Phaser.GameObjects.GameObject[],
+        gameObjects: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[],
         x: number,
         y: number,
         width: number,
         height: number,
-        callback?: HitAreaCallback,
+        callback?: HitAreaCallback
       ): Phaser.Input.InputPlugin;
 
       /**
@@ -42062,10 +40627,8 @@ declare namespace Phaser {
        * @param callback The hit area callback. If undefined it uses Rectangle.Contains.
        */
       setHitAreaFromTexture(
-        gameObjects:
-          | Phaser.GameObjects.GameObject
-          | Phaser.GameObjects.GameObject[],
-        callback?: HitAreaCallback,
+        gameObjects: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[],
+        callback?: HitAreaCallback
       ): Phaser.Input.InputPlugin;
 
       /**
@@ -42079,14 +40642,12 @@ declare namespace Phaser {
        * @param callback The hit area callback. If undefined it uses Rectangle.Contains.
        */
       setHitAreaRectangle(
-        gameObjects:
-          | Phaser.GameObjects.GameObject
-          | Phaser.GameObjects.GameObject[],
+        gameObjects: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[],
         x: number,
         y: number,
         width: number,
         height: number,
-        callback?: HitAreaCallback,
+        callback?: HitAreaCallback
       ): Phaser.Input.InputPlugin;
 
       /**
@@ -42102,16 +40663,14 @@ declare namespace Phaser {
        * @param callback The hit area callback. If undefined it uses Triangle.Contains.
        */
       setHitAreaTriangle(
-        gameObjects:
-          | Phaser.GameObjects.GameObject
-          | Phaser.GameObjects.GameObject[],
+        gameObjects: Phaser.GameObjects.GameObject | Phaser.GameObjects.GameObject[],
         x1: number,
         y1: number,
         x2: number,
         y2: number,
         x3: number,
         y3: number,
-        callback?: HitAreaCallback,
+        callback?: HitAreaCallback
       ): Phaser.Input.InputPlugin;
 
       /**
@@ -42165,7 +40724,7 @@ declare namespace Phaser {
        * @param gameObjects An array of Game Objects to be sorted.
        */
       sortGameObjects(
-        gameObjects: Phaser.GameObjects.GameObject[],
+        gameObjects: Phaser.GameObjects.GameObject[]
       ): Phaser.GameObjects.GameObject[];
 
       /**
@@ -42452,7 +41011,7 @@ declare namespace Phaser {
         constructor(
           keyboardPlugin: Phaser.Input.Keyboard.KeyboardPlugin,
           keys: string | integer[] | object[],
-          config?: KeyComboConfig,
+          config?: KeyComboConfig
         );
 
         /**
@@ -42649,9 +41208,7 @@ declare namespace Phaser {
          * If a Key object is given, and one already exists matching the same key code, the existing one is replaced with the new one.
          * @param key Either a Key object, a string, such as `A` or `SPACE`, or a key code value.
          */
-        addKey(
-          key: Phaser.Input.Keyboard.Key | string | integer,
-        ): Phaser.Input.Keyboard.Key;
+        addKey(key: Phaser.Input.Keyboard.Key | string | integer): Phaser.Input.Keyboard.Key;
 
         /**
          * Removes a Key object from this Keyboard Plugin.
@@ -42694,7 +41251,7 @@ declare namespace Phaser {
          */
         createCombo(
           keys: string | integer[] | object[],
-          config?: KeyComboConfig,
+          config?: KeyComboConfig
         ): Phaser.Input.Keyboard.KeyCombo;
 
         /**
@@ -42755,10 +41312,7 @@ declare namespace Phaser {
        * @param key The Key object to test.
        * @param duration The duration, in ms, within which the key must have been pressed down. Default 50.
        */
-      function DownDuration(
-        key: Phaser.Input.Keyboard.Key,
-        duration?: integer,
-      ): boolean;
+      function DownDuration(key: Phaser.Input.Keyboard.Key, duration?: integer): boolean;
 
       /**
        * The justDown value allows you to test if this Key has just been pressed down or not.
@@ -42971,10 +41525,7 @@ declare namespace Phaser {
        * @param key The Key object to test.
        * @param duration The duration, in ms, within which the key must have been released. Default 50.
        */
-      function UpDuration(
-        key: Phaser.Input.Keyboard.Key,
-        duration?: integer,
-      ): boolean;
+      function UpDuration(key: Phaser.Input.Keyboard.Key, duration?: integer): boolean;
     }
 
     namespace Mouse {
@@ -43292,7 +41843,7 @@ declare namespace Phaser {
        */
       positionToCamera(
         camera: Phaser.Cameras.Scene2D.Camera,
-        output?: Phaser.Math.Vector2 | object,
+        output?: Phaser.Math.Vector2 | object
       ): Phaser.Math.Vector2 | object;
 
       /**
@@ -43729,11 +42280,7 @@ declare namespace Phaser {
        * @param blob A Blob object to create an object URL for.
        * @param defaultType Default mime type used if blob type is not available.
        */
-      static createObjectURL(
-        image: HTMLImageElement,
-        blob: Blob,
-        defaultType: string,
-      ): void;
+      static createObjectURL(image: HTMLImageElement, blob: Blob, defaultType: string): void;
 
       /**
        * Static method for releasing an existing object URL which was previously created
@@ -43765,7 +42312,7 @@ declare namespace Phaser {
           key: string | Phaser.Loader.FileTypes.JSONFileConfig,
           url?: string,
           xhrSettings?: XHRSettingsObject,
-          dataKey?: string,
+          dataKey?: string
         );
 
         /**
@@ -43840,7 +42387,7 @@ declare namespace Phaser {
           textureURL?: string | string[],
           atlasURL?: string,
           textureXhrSettings?: XHRSettingsObject,
-          atlasXhrSettings?: XHRSettingsObject,
+          atlasXhrSettings?: XHRSettingsObject
         );
 
         /**
@@ -43907,7 +42454,7 @@ declare namespace Phaser {
           textureURL?: string | string[],
           atlasURL?: string,
           textureXhrSettings?: XHRSettingsObject,
-          atlasXhrSettings?: XHRSettingsObject,
+          atlasXhrSettings?: XHRSettingsObject
         );
 
         /**
@@ -43956,7 +42503,7 @@ declare namespace Phaser {
           key: string | Phaser.Loader.FileTypes.AudioFileConfig,
           urlConfig?: any,
           xhrSettings?: XHRSettingsObject,
-          audioContext?: AudioContext,
+          audioContext?: AudioContext
         );
 
         /**
@@ -44018,7 +42565,7 @@ declare namespace Phaser {
           audioURL?: Object,
           audioConfig?: any,
           audioXhrSettings?: XHRSettingsObject,
-          jsonXhrSettings?: XHRSettingsObject,
+          jsonXhrSettings?: XHRSettingsObject
         );
       }
 
@@ -44066,7 +42613,7 @@ declare namespace Phaser {
           key: string | Phaser.Loader.FileTypes.BinaryFileConfig,
           url?: string,
           xhrSettings?: XHRSettingsObject,
-          dataType?: any,
+          dataType?: any
         );
 
         /**
@@ -44134,7 +42681,7 @@ declare namespace Phaser {
           textureURL?: string | string[],
           fontDataURL?: string,
           textureXhrSettings?: XHRSettingsObject,
-          fontDataXhrSettings?: XHRSettingsObject,
+          fontDataXhrSettings?: XHRSettingsObject
         );
 
         /**
@@ -44181,7 +42728,7 @@ declare namespace Phaser {
           loader: Phaser.Loader.LoaderPlugin,
           key: string | Phaser.Loader.FileTypes.TextFileConfig,
           url?: string,
-          xhrSettings?: XHRSettingsObject,
+          xhrSettings?: XHRSettingsObject
         );
 
         /**
@@ -44210,7 +42757,7 @@ declare namespace Phaser {
           loader: Phaser.Loader.LoaderPlugin,
           key: string | Phaser.Loader.FileTypes.AudioFileConfig,
           urlConfig?: string,
-          xhrSettings?: XHRSettingsObject,
+          xhrSettings?: XHRSettingsObject
         );
 
         /**
@@ -44274,7 +42821,7 @@ declare namespace Phaser {
           loader: Phaser.Loader.LoaderPlugin,
           key: string | Phaser.Loader.FileTypes.HTMLFileConfig,
           url?: string,
-          xhrSettings?: XHRSettingsObject,
+          xhrSettings?: XHRSettingsObject
         );
 
         /**
@@ -44334,7 +42881,7 @@ declare namespace Phaser {
           url?: string,
           width?: integer,
           height?: integer,
-          xhrSettings?: XHRSettingsObject,
+          xhrSettings?: XHRSettingsObject
         );
 
         /**
@@ -44424,7 +42971,7 @@ declare namespace Phaser {
           key: string | Phaser.Loader.FileTypes.ImageFileConfig,
           url?: string | string[],
           xhrSettings?: XHRSettingsObject,
-          frameConfig?: Phaser.Loader.FileTypes.ImageFrameConfig,
+          frameConfig?: Phaser.Loader.FileTypes.ImageFrameConfig
         );
 
         /**
@@ -44483,7 +43030,7 @@ declare namespace Phaser {
           key: string | Phaser.Loader.FileTypes.JSONFileConfig,
           url?: string,
           xhrSettings?: XHRSettingsObject,
-          dataKey?: string,
+          dataKey?: string
         );
 
         /**
@@ -44549,7 +43096,7 @@ declare namespace Phaser {
           path?: string,
           baseURL?: string,
           atlasXhrSettings?: XHRSettingsObject,
-          textureXhrSettings?: XHRSettingsObject,
+          textureXhrSettings?: XHRSettingsObject
         );
       }
 
@@ -44597,7 +43144,7 @@ declare namespace Phaser {
           key: string | Phaser.Loader.FileTypes.JSONFileConfig,
           url?: string,
           xhrSettings?: XHRSettingsObject,
-          dataKey?: string,
+          dataKey?: string
         );
 
         /**
@@ -44657,7 +43204,7 @@ declare namespace Phaser {
           url?: string,
           start?: boolean,
           mapping?: string,
-          xhrSettings?: XHRSettingsObject,
+          xhrSettings?: XHRSettingsObject
         );
 
         /**
@@ -44717,7 +43264,7 @@ declare namespace Phaser {
           url?: string,
           systemKey?: string,
           sceneKey?: string,
-          xhrSettings?: XHRSettingsObject,
+          xhrSettings?: XHRSettingsObject
         );
 
         /**
@@ -44765,7 +43312,7 @@ declare namespace Phaser {
           loader: Phaser.Loader.LoaderPlugin,
           key: string | Phaser.Loader.FileTypes.ScriptFileConfig,
           url?: string,
-          xhrSettings?: XHRSettingsObject,
+          xhrSettings?: XHRSettingsObject
         );
 
         /**
@@ -44823,7 +43370,7 @@ declare namespace Phaser {
           key: string | Phaser.Loader.FileTypes.SpriteSheetFileConfig,
           url?: string | string[],
           frameConfig?: Phaser.Loader.FileTypes.ImageFrameConfig,
-          xhrSettings?: XHRSettingsObject,
+          xhrSettings?: XHRSettingsObject
         );
 
         /**
@@ -44891,7 +43438,7 @@ declare namespace Phaser {
           key: string | Phaser.Loader.FileTypes.SVGFileConfig,
           url?: string,
           svgConfig?: Phaser.Loader.FileTypes.SVGSizeConfig,
-          xhrSettings?: XHRSettingsObject,
+          xhrSettings?: XHRSettingsObject
         );
 
         /**
@@ -44944,7 +43491,7 @@ declare namespace Phaser {
           loader: Phaser.Loader.LoaderPlugin,
           key: string | Phaser.Loader.FileTypes.TextFileConfig,
           url?: string,
-          xhrSettings?: XHRSettingsObject,
+          xhrSettings?: XHRSettingsObject
         );
 
         /**
@@ -44992,7 +43539,7 @@ declare namespace Phaser {
           loader: Phaser.Loader.LoaderPlugin,
           key: string | Phaser.Loader.FileTypes.TilemapCSVFileConfig,
           url?: string,
-          xhrSettings?: XHRSettingsObject,
+          xhrSettings?: XHRSettingsObject
         );
 
         /**
@@ -45045,7 +43592,7 @@ declare namespace Phaser {
           loader: Phaser.Loader.LoaderPlugin,
           key: string | Phaser.Loader.FileTypes.TilemapImpactFileConfig,
           url?: string,
-          xhrSettings?: XHRSettingsObject,
+          xhrSettings?: XHRSettingsObject
         );
 
         /**
@@ -45092,7 +43639,7 @@ declare namespace Phaser {
           loader: Phaser.Loader.LoaderPlugin,
           key: string | Phaser.Loader.FileTypes.TilemapJSONFileConfig,
           url?: string,
-          xhrSettings?: XHRSettingsObject,
+          xhrSettings?: XHRSettingsObject
         );
 
         /**
@@ -45159,7 +43706,7 @@ declare namespace Phaser {
           textureURL?: string | string[],
           atlasURL?: string,
           textureXhrSettings?: XHRSettingsObject,
-          atlasXhrSettings?: XHRSettingsObject,
+          atlasXhrSettings?: XHRSettingsObject
         );
 
         /**
@@ -45206,7 +43753,7 @@ declare namespace Phaser {
           loader: Phaser.Loader.LoaderPlugin,
           key: string | Phaser.Loader.FileTypes.XMLFileConfig,
           url?: string,
-          xhrSettings?: XHRSettingsObject,
+          xhrSettings?: XHRSettingsObject
         );
 
         /**
@@ -45353,7 +43900,7 @@ declare namespace Phaser {
           | Phaser.Loader.FileTypes.JSONFileConfig[],
         url?: string,
         dataKey?: string,
-        xhrSettings?: XHRSettingsObject,
+        xhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -45462,7 +44009,7 @@ declare namespace Phaser {
         textureURL?: string | string[],
         atlasURL?: string,
         textureXhrSettings?: XHRSettingsObject,
-        atlasXhrSettings?: XHRSettingsObject,
+        atlasXhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -45567,7 +44114,7 @@ declare namespace Phaser {
         textureURL?: string | string[],
         atlasURL?: string,
         textureXhrSettings?: XHRSettingsObject,
-        atlasXhrSettings?: XHRSettingsObject,
+        atlasXhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -45628,7 +44175,7 @@ declare namespace Phaser {
           | Phaser.Loader.FileTypes.AudioFileConfig[],
         urls?: string | string[],
         config?: any,
-        xhrSettings?: XHRSettingsObject,
+        xhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -45733,7 +44280,7 @@ declare namespace Phaser {
         audioURL?: string | string[],
         audioConfig?: any,
         audioXhrSettings?: XHRSettingsObject,
-        jsonXhrSettings?: XHRSettingsObject,
+        jsonXhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -45805,7 +44352,7 @@ declare namespace Phaser {
           | Phaser.Loader.FileTypes.BinaryFileConfig[],
         url?: string,
         dataType?: any,
-        xhrSettings?: XHRSettingsObject,
+        xhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -45908,7 +44455,7 @@ declare namespace Phaser {
         textureURL?: string | string[],
         fontDataURL?: string,
         textureXhrSettings?: XHRSettingsObject,
-        fontDataXhrSettings?: XHRSettingsObject,
+        fontDataXhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -45978,7 +44525,7 @@ declare namespace Phaser {
           | Phaser.Loader.FileTypes.GLSLFileConfig
           | Phaser.Loader.FileTypes.GLSLFileConfig[],
         url?: string,
-        xhrSettings?: XHRSettingsObject,
+        xhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -46047,7 +44594,7 @@ declare namespace Phaser {
           | Phaser.Loader.FileTypes.HTMLFileConfig
           | Phaser.Loader.FileTypes.HTMLFileConfig[],
         url?: string,
-        xhrSettings?: XHRSettingsObject,
+        xhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -46132,7 +44679,7 @@ declare namespace Phaser {
         url?: string,
         width?: integer,
         height?: integer,
-        xhrSettings?: XHRSettingsObject,
+        xhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -46225,7 +44772,7 @@ declare namespace Phaser {
           | Phaser.Loader.FileTypes.ImageFileConfig
           | Phaser.Loader.FileTypes.ImageFileConfig[],
         url?: string | string[],
-        xhrSettings?: XHRSettingsObject,
+        xhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -46314,7 +44861,7 @@ declare namespace Phaser {
           | Phaser.Loader.FileTypes.JSONFileConfig[],
         url?: string,
         dataKey?: string,
-        xhrSettings?: XHRSettingsObject,
+        xhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -46401,7 +44948,7 @@ declare namespace Phaser {
         atlasURL?: string,
         path?: string,
         baseURL?: string,
-        atlasXhrSettings?: XHRSettingsObject,
+        atlasXhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -46523,7 +45070,7 @@ declare namespace Phaser {
           | Phaser.Loader.FileTypes.PackFileConfig[],
         url?: string,
         dataKey?: string,
-        xhrSettings?: XHRSettingsObject,
+        xhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -46586,7 +45133,7 @@ declare namespace Phaser {
         url?: string | Function,
         start?: boolean,
         mapping?: string,
-        xhrSettings?: XHRSettingsObject,
+        xhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -46649,7 +45196,7 @@ declare namespace Phaser {
         url?: string | Function,
         systemKey?: string,
         sceneKey?: string,
-        xhrSettings?: XHRSettingsObject,
+        xhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -46708,7 +45255,7 @@ declare namespace Phaser {
           | Phaser.Loader.FileTypes.ScriptFileConfig
           | Phaser.Loader.FileTypes.ScriptFileConfig[],
         url?: string,
-        xhrSettings?: XHRSettingsObject,
+        xhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -46819,7 +45366,7 @@ declare namespace Phaser {
           | Phaser.Loader.FileTypes.SpriteSheetFileConfig[],
         url?: string,
         frameConfig?: Phaser.Loader.FileTypes.ImageFrameConfig,
-        xhrSettings?: XHRSettingsObject,
+        xhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -46939,7 +45486,7 @@ declare namespace Phaser {
           | Phaser.Loader.FileTypes.SVGFileConfig[],
         url?: string,
         svgConfig?: Phaser.Loader.FileTypes.SVGSizeConfig,
-        xhrSettings?: XHRSettingsObject,
+        xhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -47008,7 +45555,7 @@ declare namespace Phaser {
           | Phaser.Loader.FileTypes.TextFileConfig
           | Phaser.Loader.FileTypes.TextFileConfig[],
         url?: string,
-        xhrSettings?: XHRSettingsObject,
+        xhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -47079,7 +45626,7 @@ declare namespace Phaser {
           | Phaser.Loader.FileTypes.TilemapCSVFileConfig
           | Phaser.Loader.FileTypes.TilemapCSVFileConfig[],
         url?: string,
-        xhrSettings?: XHRSettingsObject,
+        xhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -47150,7 +45697,7 @@ declare namespace Phaser {
           | Phaser.Loader.FileTypes.TilemapImpactFileConfig
           | Phaser.Loader.FileTypes.TilemapImpactFileConfig[],
         url?: string,
-        xhrSettings?: XHRSettingsObject,
+        xhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -47221,7 +45768,7 @@ declare namespace Phaser {
           | Phaser.Loader.FileTypes.TilemapJSONFileConfig
           | Phaser.Loader.FileTypes.TilemapJSONFileConfig[],
         url?: string,
-        xhrSettings?: XHRSettingsObject,
+        xhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -47325,7 +45872,7 @@ declare namespace Phaser {
         textureURL?: string | string[],
         atlasURL?: string,
         textureXhrSettings?: XHRSettingsObject,
-        atlasXhrSettings?: XHRSettingsObject,
+        atlasXhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -47394,7 +45941,7 @@ declare namespace Phaser {
           | Phaser.Loader.FileTypes.XMLFileConfig
           | Phaser.Loader.FileTypes.XMLFileConfig[],
         url?: string,
-        xhrSettings?: XHRSettingsObject,
+        xhrSettings?: XHRSettingsObject
       ): Phaser.Loader.LoaderPlugin;
 
       /**
@@ -47710,11 +46257,7 @@ declare namespace Phaser {
        * @param filename The filename to save the file as. Default file.json.
        * @param filetype The file type to use when saving the file. Defaults to JSON. Default application/json.
        */
-      save(
-        data: any,
-        filename?: string,
-        filetype?: string,
-      ): Phaser.Loader.LoaderPlugin;
+      save(data: any, filename?: string, filetype?: string): Phaser.Loader.LoaderPlugin;
 
       /**
        * Resets the Loader.
@@ -47736,7 +46279,7 @@ declare namespace Phaser {
      */
     function MergeXHRSettings(
       global: XHRSettingsObject,
-      local: XHRSettingsObject,
+      local: XHRSettingsObject
     ): XHRSettingsObject;
 
     /**
@@ -47757,7 +46300,7 @@ declare namespace Phaser {
         loader: Phaser.Loader.LoaderPlugin,
         type: string,
         key: string,
-        files: Phaser.Loader.File[],
+        files: Phaser.Loader.File[]
       );
 
       /**
@@ -47838,7 +46381,7 @@ declare namespace Phaser {
      */
     function XHRLoader(
       file: Phaser.Loader.File,
-      globalXHRSettings: XHRSettingsObject,
+      globalXHRSettings: XHRSettingsObject
     ): XMLHttpRequest;
 
     /**
@@ -47854,7 +46397,7 @@ declare namespace Phaser {
       async?: boolean,
       user?: string,
       password?: string,
-      timeout?: integer,
+      timeout?: integer
     ): XHRSettingsObject;
   }
 
@@ -47878,7 +46421,7 @@ declare namespace Phaser {
        */
       function BetweenPoints(
         point1: Phaser.Geom.Point | object,
-        point2: Phaser.Geom.Point | object,
+        point2: Phaser.Geom.Point | object
       ): number;
 
       /**
@@ -47891,7 +46434,7 @@ declare namespace Phaser {
        */
       function BetweenPointsY(
         point1: Phaser.Geom.Point | object,
-        point2: Phaser.Geom.Point | object,
+        point2: Phaser.Geom.Point | object
       ): number;
 
       /**
@@ -47924,11 +46467,7 @@ declare namespace Phaser {
        * @param targetAngle The target angle to rotate to, in radians.
        * @param lerp The lerp value to add to the current angle. Default 0.05.
        */
-      function RotateTo(
-        currentAngle: number,
-        targetAngle: number,
-        lerp?: number,
-      ): number;
+      function RotateTo(currentAngle: number, targetAngle: number, lerp?: number): number;
 
       /**
        * Gets the shortest angle between `angle1` and `angle2`.
@@ -47992,13 +46531,7 @@ declare namespace Phaser {
      * @param p2 [description]
      * @param p3 [description]
      */
-    function CatmullRom(
-      t: number,
-      p0: number,
-      p1: number,
-      p2: number,
-      p3: number,
-    ): number;
+    function CatmullRom(t: number, p0: number, p1: number, p2: number, p3: number): number;
 
     /**
      * Ceils to some place comparative to a `base`, default is 10 for decimal place.
@@ -48079,13 +46612,7 @@ declare namespace Phaser {
        * @param y2 The y coordinate of the second point.
        * @param pow The exponent.
        */
-      function Power(
-        x1: number,
-        y1: number,
-        x2: number,
-        y2: number,
-        pow: number,
-      ): number;
+      function Power(x1: number, y1: number, x2: number, y2: number, pow: number): number;
 
       /**
        * Calculate the distance between two sets of coordinates (points), squared.
@@ -48432,13 +46959,7 @@ declare namespace Phaser {
        * @param p2 The second control point.
        * @param p3 The end point.
        */
-      function CubicBezier(
-        t: number,
-        p0: number,
-        p1: number,
-        p2: number,
-        p3: number,
-      ): number;
+      function CubicBezier(t: number, p0: number, p1: number, p2: number, p3: number): number;
 
       /**
        * A linear interpolation method.
@@ -48454,12 +46975,7 @@ declare namespace Phaser {
        * @param p1 The control point.
        * @param p2 The end point.
        */
-      function QuadraticBezier(
-        t: number,
-        p0: number,
-        p1: number,
-        p2: number,
-      ): number;
+      function QuadraticBezier(t: number, p0: number, p1: number, p2: number): number;
 
       /**
        * A Smoother Step interpolation method.
@@ -48580,7 +47096,7 @@ declare namespace Phaser {
        * @param v The Vector to translate this Matrix with.
        */
       translate(
-        v: Phaser.Math.Vector2 | Phaser.Math.Vector3 | Phaser.Math.Vector4,
+        v: Phaser.Math.Vector2 | Phaser.Math.Vector3 | Phaser.Math.Vector4
       ): Phaser.Math.Matrix3;
 
       /**
@@ -48596,7 +47112,7 @@ declare namespace Phaser {
        * @param v The Vector to scale this Matrix with.
        */
       scale(
-        v: Phaser.Math.Vector2 | Phaser.Math.Vector3 | Phaser.Math.Vector4,
+        v: Phaser.Math.Vector2 | Phaser.Math.Vector3 | Phaser.Math.Vector4
       ): Phaser.Math.Matrix3;
 
       /**
@@ -48714,9 +47230,7 @@ declare namespace Phaser {
        * Translate this Matrix using the given Vector.
        * @param v The Vector to translate this Matrix with.
        */
-      translate(
-        v: Phaser.Math.Vector3 | Phaser.Math.Vector4,
-      ): Phaser.Math.Matrix4;
+      translate(v: Phaser.Math.Vector3 | Phaser.Math.Vector4): Phaser.Math.Matrix4;
 
       /**
        * Apply a scale transformation to this Matrix.
@@ -48733,7 +47247,7 @@ declare namespace Phaser {
        */
       makeRotationAxis(
         axis: Phaser.Math.Vector3 | Phaser.Math.Vector4,
-        angle: number,
+        angle: number
       ): Phaser.Math.Matrix4;
 
       /**
@@ -48768,7 +47282,7 @@ declare namespace Phaser {
        */
       fromRotationTranslation(
         q: Phaser.Math.Quaternion,
-        v: Phaser.Math.Vector3,
+        v: Phaser.Math.Vector3
       ): Phaser.Math.Matrix4;
 
       /**
@@ -48792,7 +47306,7 @@ declare namespace Phaser {
         bottom: number,
         top: number,
         near: number,
-        far: number,
+        far: number
       ): Phaser.Math.Matrix4;
 
       /**
@@ -48802,12 +47316,7 @@ declare namespace Phaser {
        * @param near Near bound of the frustum.
        * @param far Far bound of the frustum.
        */
-      perspective(
-        fovy: number,
-        aspect: number,
-        near: number,
-        far: number,
-      ): Phaser.Math.Matrix4;
+      perspective(fovy: number, aspect: number, near: number, far: number): Phaser.Math.Matrix4;
 
       /**
        * Generate a perspective projection matrix with the given bounds.
@@ -48816,12 +47325,7 @@ declare namespace Phaser {
        * @param near Near bound of the frustum.
        * @param far Far bound of the frustum.
        */
-      perspectiveLH(
-        width: number,
-        height: number,
-        near: number,
-        far: number,
-      ): Phaser.Math.Matrix4;
+      perspectiveLH(width: number, height: number, near: number, far: number): Phaser.Math.Matrix4;
 
       /**
        * Generate an orthogonal projection matrix with the given bounds.
@@ -48838,7 +47342,7 @@ declare namespace Phaser {
         bottom: number,
         top: number,
         near: number,
-        far: number,
+        far: number
       ): Phaser.Math.Matrix4;
 
       /**
@@ -48850,7 +47354,7 @@ declare namespace Phaser {
       lookAt(
         eye: Phaser.Math.Vector3,
         center: Phaser.Math.Vector3,
-        up: Phaser.Math.Vector3,
+        up: Phaser.Math.Vector3
       ): Phaser.Math.Matrix4;
 
       /**
@@ -48859,11 +47363,7 @@ declare namespace Phaser {
        * @param pitch [description]
        * @param roll [description]
        */
-      yawPitchRoll(
-        yaw: number,
-        pitch: number,
-        roll: number,
-      ): Phaser.Math.Matrix4;
+      yawPitchRoll(yaw: number, pitch: number, roll: number): Phaser.Math.Matrix4;
 
       /**
        * Generate a world matrix from the given rotation, position, scale, view matrix and projection matrix.
@@ -48878,7 +47378,7 @@ declare namespace Phaser {
         position: Phaser.Math.Vector3,
         scale: Phaser.Math.Vector3,
         viewMatrix?: Phaser.Math.Matrix4,
-        projectionMatrix?: Phaser.Math.Matrix4,
+        projectionMatrix?: Phaser.Math.Matrix4
       ): Phaser.Math.Matrix4;
     }
 
@@ -48908,12 +47408,7 @@ declare namespace Phaser {
      * @param max The maximum value.
      * @param upperMax The mid-way point in the range that represents 100%.
      */
-    function Percent(
-      value: number,
-      min: number,
-      max?: number,
-      upperMax?: number,
-    ): number;
+    function Percent(value: number, min: number, max?: number, upperMax?: number): number;
 
     namespace Pow2 {
       /**
@@ -48974,9 +47469,7 @@ declare namespace Phaser {
        * Copy the components of a given Quaternion or Vector into this Quaternion.
        * @param src The Quaternion or Vector to copy the components from.
        */
-      copy(
-        src: Phaser.Math.Quaternion | Phaser.Math.Vector4,
-      ): Phaser.Math.Quaternion;
+      copy(src: Phaser.Math.Quaternion | Phaser.Math.Vector4): Phaser.Math.Quaternion;
 
       /**
        * Set the components of this Quaternion.
@@ -48985,28 +47478,19 @@ declare namespace Phaser {
        * @param z The z component. Default 0.
        * @param w The w component. Default 0.
        */
-      set(
-        x?: number | object,
-        y?: number,
-        z?: number,
-        w?: number,
-      ): Phaser.Math.Quaternion;
+      set(x?: number | object, y?: number, z?: number, w?: number): Phaser.Math.Quaternion;
 
       /**
        * Add a given Quaternion or Vector to this Quaternion. Addition is component-wise.
        * @param v The Quaternion or Vector to add to this Quaternion.
        */
-      add(
-        v: Phaser.Math.Quaternion | Phaser.Math.Vector4,
-      ): Phaser.Math.Quaternion;
+      add(v: Phaser.Math.Quaternion | Phaser.Math.Vector4): Phaser.Math.Quaternion;
 
       /**
        * Subtract a given Quaternion or Vector from this Quaternion. Subtraction is component-wise.
        * @param v The Quaternion or Vector to subtract from this Quaternion.
        */
-      subtract(
-        v: Phaser.Math.Quaternion | Phaser.Math.Vector4,
-      ): Phaser.Math.Quaternion;
+      subtract(v: Phaser.Math.Quaternion | Phaser.Math.Vector4): Phaser.Math.Quaternion;
 
       /**
        * Scale this Quaternion by the given value.
@@ -49040,20 +47524,14 @@ declare namespace Phaser {
        * @param v The Quaternion or Vector to interpolate towards.
        * @param t The percentage of interpolation. Default 0.
        */
-      lerp(
-        v: Phaser.Math.Quaternion | Phaser.Math.Vector4,
-        t?: number,
-      ): Phaser.Math.Quaternion;
+      lerp(v: Phaser.Math.Quaternion | Phaser.Math.Vector4, t?: number): Phaser.Math.Quaternion;
 
       /**
        * [description]
        * @param a [description]
        * @param b [description]
        */
-      rotationTo(
-        a: Phaser.Math.Vector3,
-        b: Phaser.Math.Vector3,
-      ): Phaser.Math.Quaternion;
+      rotationTo(a: Phaser.Math.Vector3, b: Phaser.Math.Vector3): Phaser.Math.Quaternion;
 
       /**
        * Set the axes of this Quaternion.
@@ -49064,7 +47542,7 @@ declare namespace Phaser {
       setAxes(
         view: Phaser.Math.Vector3,
         right: Phaser.Math.Vector3,
-        up: Phaser.Math.Vector3,
+        up: Phaser.Math.Vector3
       ): Phaser.Math.Quaternion;
 
       /**
@@ -49077,28 +47555,20 @@ declare namespace Phaser {
        * @param axis The axis.
        * @param rad The angle in radians.
        */
-      setAxisAngle(
-        axis: Phaser.Math.Vector3,
-        rad: number,
-      ): Phaser.Math.Quaternion;
+      setAxisAngle(axis: Phaser.Math.Vector3, rad: number): Phaser.Math.Quaternion;
 
       /**
        * Multiply this Quaternion by the given Quaternion or Vector.
        * @param b The Quaternion or Vector to multiply this Quaternion by.
        */
-      multiply(
-        b: Phaser.Math.Quaternion | Phaser.Math.Vector4,
-      ): Phaser.Math.Quaternion;
+      multiply(b: Phaser.Math.Quaternion | Phaser.Math.Vector4): Phaser.Math.Quaternion;
 
       /**
        * Smoothly linearly interpolate this Quaternion towards the given Quaternion or Vector.
        * @param b The Quaternion or Vector to interpolate towards.
        * @param t The percentage of interpolation.
        */
-      slerp(
-        b: Phaser.Math.Quaternion | Phaser.Math.Vector4,
-        t: number,
-      ): Phaser.Math.Quaternion;
+      slerp(b: Phaser.Math.Quaternion | Phaser.Math.Vector4, t: number): Phaser.Math.Quaternion;
 
       /**
        * Invert this Quaternion.
@@ -49301,40 +47771,28 @@ declare namespace Phaser {
      * @param vector The Vector to compute random values for.
      * @param scale The scale of the random values. Default 1.
      */
-    function RandomXY(
-      vector: Phaser.Math.Vector2,
-      scale?: number,
-    ): Phaser.Math.Vector2;
+    function RandomXY(vector: Phaser.Math.Vector2, scale?: number): Phaser.Math.Vector2;
 
     /**
      * Compute a random position vector in a spherical area, optionally defined by the given radius.
      * @param vec3 The Vector to compute random values for.
      * @param radius The radius. Default 1.
      */
-    function RandomXYZ(
-      vec3: Phaser.Math.Vector3,
-      radius?: number,
-    ): Phaser.Math.Vector3;
+    function RandomXYZ(vec3: Phaser.Math.Vector3, radius?: number): Phaser.Math.Vector3;
 
     /**
      * Compute a random four-dimensional vector.
      * @param vec4 The Vector to compute random values for.
      * @param scale The scale of the random values. Default 1.
      */
-    function RandomXYZW(
-      vec4: Phaser.Math.Vector4,
-      scale?: number,
-    ): Phaser.Math.Vector4;
+    function RandomXYZW(vec4: Phaser.Math.Vector4, scale?: number): Phaser.Math.Vector4;
 
     /**
      * Rotate a given point by a given angle around the origin (0, 0), in an anti-clockwise direction.
      * @param point The point to be rotated.
      * @param angle The angle to be rotated by in an anticlockwise direction.
      */
-    function Rotate(
-      point: Phaser.Geom.Point | object,
-      angle: number,
-    ): Phaser.Geom.Point;
+    function Rotate(point: Phaser.Geom.Point | object, angle: number): Phaser.Geom.Point;
 
     /**
      * Rotate a `point` around `x` and `y` by the given `angle`.
@@ -49347,7 +47805,7 @@ declare namespace Phaser {
       point: Phaser.Geom.Point | object,
       x: number,
       y: number,
-      angle: number,
+      angle: number
     ): Phaser.Geom.Point;
 
     /**
@@ -49363,7 +47821,7 @@ declare namespace Phaser {
       x: number,
       y: number,
       angle: number,
-      distance: number,
+      distance: number
     ): Phaser.Geom.Point;
 
     /**
@@ -49378,7 +47836,7 @@ declare namespace Phaser {
     function RotateVec3(
       vec: Phaser.Math.Vector3,
       axis: Phaser.Math.Vector3,
-      radians: number,
+      radians: number
     ): Phaser.Math.Vector3;
 
     /**
@@ -49406,7 +47864,7 @@ declare namespace Phaser {
       length: number,
       sinAmp?: number,
       cosAmp?: number,
-      frequency?: number,
+      frequency?: number
     ): SinCosTable;
 
     /**
@@ -49446,12 +47904,7 @@ declare namespace Phaser {
        * @param start Optional starting offset for gap. Default 0.
        * @param divide If `true` it will divide the snapped value by the gap before returning. Default false.
        */
-      function Ceil(
-        value: number,
-        gap: number,
-        start?: number,
-        divide?: boolean,
-      ): number;
+      function Ceil(value: number, gap: number, start?: number, divide?: boolean): number;
 
       /**
        * Snap a value to nearest grid slice, using floor.
@@ -49463,12 +47916,7 @@ declare namespace Phaser {
        * @param start Optional starting offset for gap. Default 0.
        * @param divide If `true` it will divide the snapped value by the gap before returning. Default false.
        */
-      function Floor(
-        value: number,
-        gap: number,
-        start?: number,
-        divide?: boolean,
-      ): number;
+      function Floor(value: number, gap: number, start?: number, divide?: boolean): number;
 
       /**
        * Snap a value to nearest grid slice, using rounding.
@@ -49479,12 +47927,7 @@ declare namespace Phaser {
        * @param start Optional starting offset for gap. Default 0.
        * @param divide If `true` it will divide the snapped value by the gap before returning. Default false.
        */
-      function To(
-        value: number,
-        gap: number,
-        start?: number,
-        divide?: boolean,
-      ): number;
+      function To(value: number, gap: number, start?: number, divide?: boolean): number;
     }
 
     /**
@@ -49507,7 +47950,7 @@ declare namespace Phaser {
       rotation: number,
       scaleX: number,
       scaleY: number,
-      output?: Phaser.Math.Vector2 | Phaser.Geom.Point | object,
+      output?: Phaser.Math.Vector2 | Phaser.Geom.Point | object
     ): Phaser.Math.Vector2 | Phaser.Geom.Point | object;
 
     /**
@@ -49747,10 +48190,7 @@ declare namespace Phaser {
        * @param a The first Vector to multiply.
        * @param b The second Vector to multiply.
        */
-      crossVectors(
-        a: Phaser.Math.Vector3,
-        b: Phaser.Math.Vector3,
-      ): Phaser.Math.Vector3;
+      crossVectors(a: Phaser.Math.Vector3, b: Phaser.Math.Vector3): Phaser.Math.Vector3;
 
       /**
        * Check whether this Vector is equal to a given Vector.
@@ -49784,9 +48224,7 @@ declare namespace Phaser {
        * Subtract the given Vector from this Vector. Subtraction is component-wise.
        * @param v The Vector to subtract from this Vector.
        */
-      subtract(
-        v: Phaser.Math.Vector2 | Phaser.Math.Vector3,
-      ): Phaser.Math.Vector3;
+      subtract(v: Phaser.Math.Vector2 | Phaser.Math.Vector3): Phaser.Math.Vector3;
 
       /**
        * Perform a component-wise multiplication between this Vector and the given Vector.
@@ -49794,9 +48232,7 @@ declare namespace Phaser {
        * Multiplies this Vector by the given Vector.
        * @param v The Vector to multiply this Vector by.
        */
-      multiply(
-        v: Phaser.Math.Vector2 | Phaser.Math.Vector3,
-      ): Phaser.Math.Vector3;
+      multiply(v: Phaser.Math.Vector2 | Phaser.Math.Vector3): Phaser.Math.Vector3;
 
       /**
        * Scale this Vector by the given value.
@@ -49912,7 +48348,7 @@ declare namespace Phaser {
        */
       unproject(
         viewport: Phaser.Math.Vector4,
-        invProjectionView: Phaser.Math.Matrix4,
+        invProjectionView: Phaser.Math.Matrix4
       ): Phaser.Math.Vector3;
 
       /**
@@ -49982,27 +48418,20 @@ declare namespace Phaser {
        * @param z The z value to set for this Vector.
        * @param w The z value to set for this Vector.
        */
-      set(
-        x: number | object,
-        y: number,
-        z: number,
-        w: number,
-      ): Phaser.Math.Vector4;
+      set(x: number | object, y: number, z: number, w: number): Phaser.Math.Vector4;
 
       /**
        * Add a given Vector to this Vector. Addition is component-wise.
        * @param v The Vector to add to this Vector.
        */
-      add(
-        v: Phaser.Math.Vector2 | Phaser.Math.Vector3 | Phaser.Math.Vector4,
-      ): Phaser.Math.Vector4;
+      add(v: Phaser.Math.Vector2 | Phaser.Math.Vector3 | Phaser.Math.Vector4): Phaser.Math.Vector4;
 
       /**
        * Subtract the given Vector from this Vector. Subtraction is component-wise.
        * @param v The Vector to subtract from this Vector.
        */
       subtract(
-        v: Phaser.Math.Vector2 | Phaser.Math.Vector3 | Phaser.Math.Vector4,
+        v: Phaser.Math.Vector2 | Phaser.Math.Vector3 | Phaser.Math.Vector4
       ): Phaser.Math.Vector4;
 
       /**
@@ -50050,7 +48479,7 @@ declare namespace Phaser {
        * @param v The Vector to multiply this Vector by.
        */
       multiply(
-        v: Phaser.Math.Vector2 | Phaser.Math.Vector3 | Phaser.Math.Vector4,
+        v: Phaser.Math.Vector2 | Phaser.Math.Vector3 | Phaser.Math.Vector4
       ): Phaser.Math.Vector4;
 
       /**
@@ -50060,24 +48489,20 @@ declare namespace Phaser {
        * @param v The Vector to divide this Vector by.
        */
       divide(
-        v: Phaser.Math.Vector2 | Phaser.Math.Vector3 | Phaser.Math.Vector4,
+        v: Phaser.Math.Vector2 | Phaser.Math.Vector3 | Phaser.Math.Vector4
       ): Phaser.Math.Vector4;
 
       /**
        * Calculate the distance between this Vector and the given Vector.
        * @param v The Vector to calculate the distance to.
        */
-      distance(
-        v: Phaser.Math.Vector2 | Phaser.Math.Vector3 | Phaser.Math.Vector4,
-      ): number;
+      distance(v: Phaser.Math.Vector2 | Phaser.Math.Vector3 | Phaser.Math.Vector4): number;
 
       /**
        * Calculate the distance between this Vector and the given Vector, squared.
        * @param v The Vector to calculate the distance to.
        */
-      distanceSq(
-        v: Phaser.Math.Vector2 | Phaser.Math.Vector3 | Phaser.Math.Vector4,
-      ): number;
+      distanceSq(v: Phaser.Math.Vector2 | Phaser.Math.Vector3 | Phaser.Math.Vector4): number;
 
       /**
        * Negate the `x`, `y`, `z` and `w` components of this Vector.
@@ -50172,7 +48597,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           texture: string,
-          frame?: string | integer,
+          frame?: string | integer
         );
 
         /**
@@ -50202,7 +48627,7 @@ declare namespace Phaser {
           topLeft?: number,
           topRight?: number,
           bottomLeft?: number,
-          bottomRight?: number,
+          bottomRight?: number
         ): this;
 
         /**
@@ -50369,10 +48794,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getTopLeft<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -50380,10 +48802,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getTopRight<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -50391,10 +48810,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getBottomLeft<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -50402,10 +48818,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getBottomRight<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the bounds of this Game Object, regardless of origin.
@@ -50417,9 +48830,7 @@ declare namespace Phaser {
         /**
          * The Mask this Game Object is using during render.
          */
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask;
+        mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask;
 
         /**
          * Sets the mask that this Game Object will use to render with.
@@ -50436,11 +48847,7 @@ declare namespace Phaser {
          * that allows you to limit what is visible during the render pass.
          * @param mask The mask this Game Object will use when rendering.
          */
-        setMask(
-          mask:
-            | Phaser.Display.Masks.BitmapMask
-            | Phaser.Display.Masks.GeometryMask,
-        ): this;
+        setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
         /**
          * Clears the mask that this Game Object was using.
@@ -50462,7 +48869,7 @@ declare namespace Phaser {
          * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
          */
         createBitmapMask(
-          renderable?: Phaser.GameObjects.GameObject,
+          renderable?: Phaser.GameObjects.GameObject
         ): Phaser.Display.Masks.BitmapMask;
 
         /**
@@ -50478,7 +48885,7 @@ declare namespace Phaser {
          * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
          */
         createGeometryMask(
-          graphics?: Phaser.GameObjects.Graphics,
+          graphics?: Phaser.GameObjects.Graphics
         ): Phaser.Display.Masks.GeometryMask;
 
         /**
@@ -50766,7 +49173,7 @@ declare namespace Phaser {
           x?: number | Phaser.Geom.Rectangle,
           y?: number,
           width?: number,
-          height?: number,
+          height?: number
         ): this;
 
         /**
@@ -50791,11 +49198,7 @@ declare namespace Phaser {
          * @param updateSize Should this call adjust the size of the Game Object? Default true.
          * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
          */
-        setFrame(
-          frame: string | integer,
-          updateSize?: boolean,
-          updateOrigin?: boolean,
-        ): this;
+        setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
 
         /**
          * Fill or additive?
@@ -50834,7 +49237,7 @@ declare namespace Phaser {
           topLeft?: integer,
           topRight?: integer,
           bottomLeft?: integer,
-          bottomRight?: integer,
+          bottomRight?: integer
         ): this;
 
         /**
@@ -50862,7 +49265,7 @@ declare namespace Phaser {
           topLeft?: integer,
           topRight?: integer,
           bottomLeft?: integer,
-          bottomRight?: integer,
+          bottomRight?: integer
         ): this;
 
         /**
@@ -50968,12 +49371,7 @@ declare namespace Phaser {
          * @param width The width of the random area.
          * @param height The height of the random area.
          */
-        setRandomPosition(
-          x?: number,
-          y?: number,
-          width?: number,
-          height?: number,
-        ): this;
+        setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
         /**
          * Sets the rotation of this Game Object.
@@ -51023,7 +49421,7 @@ declare namespace Phaser {
          * @param tempMatrix The matrix to populate with the values from this Game Object.
          */
         getLocalTransformMatrix(
-          tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+          tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
         ): Phaser.GameObjects.Components.TransformMatrix;
 
         /**
@@ -51033,7 +49431,7 @@ declare namespace Phaser {
          */
         getWorldTransformMatrix(
           tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-          parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+          parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
         ): Phaser.GameObjects.Components.TransformMatrix;
 
         /**
@@ -51119,11 +49517,7 @@ declare namespace Phaser {
          * @param showVelocity [description]
          * @param bodyColor [description]
          */
-        setDebug(
-          showBody: boolean,
-          showVelocity: boolean,
-          bodyColor: number,
-        ): this;
+        setDebug(showBody: boolean, showVelocity: boolean, bodyColor: number): this;
 
         /**
          * [description]
@@ -51184,7 +49578,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           enableGameObject: boolean,
-          showGameObject: boolean,
+          showGameObject: boolean
         ): this;
 
         /**
@@ -51192,10 +49586,7 @@ declare namespace Phaser {
          * @param disableGameObject Also deactivate this Game Object. Default false.
          * @param hideGameObject Also hide this Game Object. Default false.
          */
-        disableBody(
-          disableGameObject?: boolean,
-          hideGameObject?: boolean,
-        ): this;
+        disableBody(disableGameObject?: boolean, hideGameObject?: boolean): this;
 
         /**
          * Syncs the Body's position and size with its parent Game Object.
@@ -51359,7 +49750,7 @@ declare namespace Phaser {
           object2?: ArcadeColliderType,
           collideCallback?: ArcadePhysicsCallback,
           processCallback?: ArcadePhysicsCallback,
-          callbackContext?: any,
+          callbackContext?: any
         ): boolean;
 
         /**
@@ -51375,7 +49766,7 @@ declare namespace Phaser {
           object2?: ArcadeColliderType,
           collideCallback?: ArcadePhysicsCallback,
           processCallback?: ArcadePhysicsCallback,
-          callbackContext?: any,
+          callbackContext?: any
         ): boolean;
 
         /**
@@ -51408,7 +49799,7 @@ declare namespace Phaser {
           y: number,
           speed?: number,
           xSpeedMax?: number,
-          ySpeedMax?: number,
+          ySpeedMax?: number
         ): number;
 
         /**
@@ -51429,7 +49820,7 @@ declare namespace Phaser {
           destination: Phaser.GameObjects.GameObject,
           speed?: number,
           xSpeedMax?: number,
-          ySpeedMax?: number,
+          ySpeedMax?: number
         ): number;
 
         /**
@@ -51462,7 +49853,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           speed?: number,
-          maxTime?: number,
+          maxTime?: number
         ): number;
 
         /**
@@ -51481,7 +49872,7 @@ declare namespace Phaser {
           gameObject: Phaser.GameObjects.GameObject,
           destination: object,
           speed?: number,
-          maxTime?: number,
+          maxTime?: number
         ): number;
 
         /**
@@ -51494,7 +49885,7 @@ declare namespace Phaser {
         velocityFromAngle(
           angle: number,
           speed?: number,
-          vec2?: Phaser.Math.Vector2,
+          vec2?: Phaser.Math.Vector2
         ): Phaser.Math.Vector2;
 
         /**
@@ -51507,7 +49898,7 @@ declare namespace Phaser {
         velocityFromRotation(
           rotation: number,
           speed?: number,
-          vec2?: Phaser.Math.Vector2,
+          vec2?: Phaser.Math.Vector2
         ): Phaser.Math.Vector2;
 
         /**
@@ -51577,7 +49968,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           texture: string,
-          frame?: string | integer,
+          frame?: string | integer
         );
 
         /**
@@ -51607,7 +49998,7 @@ declare namespace Phaser {
           topLeft?: number,
           topRight?: number,
           bottomLeft?: number,
-          bottomRight?: number,
+          bottomRight?: number
         ): this;
 
         /**
@@ -51774,10 +50165,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getTopLeft<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -51785,10 +50173,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getTopRight<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -51796,10 +50181,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getBottomLeft<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -51807,10 +50189,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getBottomRight<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the bounds of this Game Object, regardless of origin.
@@ -51822,9 +50201,7 @@ declare namespace Phaser {
         /**
          * The Mask this Game Object is using during render.
          */
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask;
+        mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask;
 
         /**
          * Sets the mask that this Game Object will use to render with.
@@ -51841,11 +50218,7 @@ declare namespace Phaser {
          * that allows you to limit what is visible during the render pass.
          * @param mask The mask this Game Object will use when rendering.
          */
-        setMask(
-          mask:
-            | Phaser.Display.Masks.BitmapMask
-            | Phaser.Display.Masks.GeometryMask,
-        ): this;
+        setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
         /**
          * Clears the mask that this Game Object was using.
@@ -51867,7 +50240,7 @@ declare namespace Phaser {
          * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
          */
         createBitmapMask(
-          renderable?: Phaser.GameObjects.GameObject,
+          renderable?: Phaser.GameObjects.GameObject
         ): Phaser.Display.Masks.BitmapMask;
 
         /**
@@ -51883,7 +50256,7 @@ declare namespace Phaser {
          * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
          */
         createGeometryMask(
-          graphics?: Phaser.GameObjects.Graphics,
+          graphics?: Phaser.GameObjects.Graphics
         ): Phaser.Display.Masks.GeometryMask;
 
         /**
@@ -52171,7 +50544,7 @@ declare namespace Phaser {
           x?: number | Phaser.Geom.Rectangle,
           y?: number,
           width?: number,
-          height?: number,
+          height?: number
         ): this;
 
         /**
@@ -52196,11 +50569,7 @@ declare namespace Phaser {
          * @param updateSize Should this call adjust the size of the Game Object? Default true.
          * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
          */
-        setFrame(
-          frame: string | integer,
-          updateSize?: boolean,
-          updateOrigin?: boolean,
-        ): this;
+        setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
 
         /**
          * Fill or additive?
@@ -52239,7 +50608,7 @@ declare namespace Phaser {
           topLeft?: integer,
           topRight?: integer,
           bottomLeft?: integer,
-          bottomRight?: integer,
+          bottomRight?: integer
         ): this;
 
         /**
@@ -52267,7 +50636,7 @@ declare namespace Phaser {
           topLeft?: integer,
           topRight?: integer,
           bottomLeft?: integer,
-          bottomRight?: integer,
+          bottomRight?: integer
         ): this;
 
         /**
@@ -52373,12 +50742,7 @@ declare namespace Phaser {
          * @param width The width of the random area.
          * @param height The height of the random area.
          */
-        setRandomPosition(
-          x?: number,
-          y?: number,
-          width?: number,
-          height?: number,
-        ): this;
+        setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
         /**
          * Sets the rotation of this Game Object.
@@ -52428,7 +50792,7 @@ declare namespace Phaser {
          * @param tempMatrix The matrix to populate with the values from this Game Object.
          */
         getLocalTransformMatrix(
-          tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+          tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
         ): Phaser.GameObjects.Components.TransformMatrix;
 
         /**
@@ -52438,7 +50802,7 @@ declare namespace Phaser {
          */
         getWorldTransformMatrix(
           tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-          parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+          parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
         ): Phaser.GameObjects.Components.TransformMatrix;
 
         /**
@@ -52524,11 +50888,7 @@ declare namespace Phaser {
          * @param showVelocity [description]
          * @param bodyColor [description]
          */
-        setDebug(
-          showBody: boolean,
-          showVelocity: boolean,
-          bodyColor: number,
-        ): this;
+        setDebug(showBody: boolean, showVelocity: boolean, bodyColor: number): this;
 
         /**
          * [description]
@@ -52589,7 +50949,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           enableGameObject: boolean,
-          showGameObject: boolean,
+          showGameObject: boolean
         ): this;
 
         /**
@@ -52597,10 +50957,7 @@ declare namespace Phaser {
          * @param disableGameObject Also deactivate this Game Object. Default false.
          * @param hideGameObject Also hide this Game Object. Default false.
          */
-        disableBody(
-          disableGameObject?: boolean,
-          hideGameObject?: boolean,
-        ): this;
+        disableBody(disableGameObject?: boolean, hideGameObject?: boolean): this;
 
         /**
          * Syncs the Body's position and size with its parent Game Object.
@@ -52719,10 +51076,7 @@ declare namespace Phaser {
          * @param world The Arcade Physics simulation this Body belongs to.
          * @param gameObject The Game Object this Body belongs to.
          */
-        constructor(
-          world: Phaser.Physics.Arcade.World,
-          gameObject: Phaser.GameObjects.GameObject,
-        );
+        constructor(world: Phaser.Physics.Arcade.World, gameObject: Phaser.GameObjects.GameObject);
 
         /**
          * The Arcade Physics simulation this Body belongs to.
@@ -53118,11 +51472,7 @@ declare namespace Phaser {
          * @param height The height of the Body in pixels. Cannot be zero. If not given, and the parent Game Object has a frame, it will use the frame height.
          * @param center Modify the Body's `offset`, placing the Body's center on its Game Object's center. Only works if the Game Object has the `getCenter` method. Default true.
          */
-        setSize(
-          width?: integer,
-          height?: integer,
-          center?: boolean,
-        ): Phaser.Physics.Arcade.Body;
+        setSize(width?: integer, height?: integer, center?: boolean): Phaser.Physics.Arcade.Body;
 
         /**
          * Sizes and positions this Body's boundary, as a circle.
@@ -53130,11 +51480,7 @@ declare namespace Phaser {
          * @param offsetX The horizontal offset of the Body from its Game Object, in source pixels.
          * @param offsetY The vertical offset of the Body from its Game Object, in source pixels.
          */
-        setCircle(
-          radius: number,
-          offsetX?: number,
-          offsetY?: number,
-        ): Phaser.Physics.Arcade.Body;
+        setCircle(radius: number, offsetX?: number, offsetY?: number): Phaser.Physics.Arcade.Body;
 
         /**
          * Resets this Body to the given coordinates. Also positions its parent Game Object to the same coordinates.
@@ -53453,7 +51799,7 @@ declare namespace Phaser {
           object2: ArcadeColliderType,
           collideCallback: ArcadePhysicsCallback,
           processCallback: ArcadePhysicsCallback,
-          callbackContext: any,
+          callbackContext: any
         );
 
         /**
@@ -53599,11 +51945,7 @@ declare namespace Phaser {
            * @param showVelocity [description]
            * @param bodyColor [description]
            */
-          setDebug(
-            showBody: boolean,
-            showVelocity: boolean,
-            bodyColor: number,
-          ): this;
+          setDebug(showBody: boolean, showVelocity: boolean, bodyColor: number): this;
           /**
            * [description]
            * @param value [description]
@@ -53667,17 +52009,14 @@ declare namespace Phaser {
             x: number,
             y: number,
             enableGameObject: boolean,
-            showGameObject: boolean,
+            showGameObject: boolean
           ): this;
           /**
            * Stops and disables this Game Object's Body.
            * @param disableGameObject Also deactivate this Game Object. Default false.
            * @param hideGameObject Also hide this Game Object. Default false.
            */
-          disableBody(
-            disableGameObject?: boolean,
-            hideGameObject?: boolean,
-          ): this;
+          disableBody(disableGameObject?: boolean, hideGameObject?: boolean): this;
           /**
            * Syncs the Body's position and size with its parent Game Object.
            * You don't need to call this for Dynamic Bodies, as it happens automatically.
@@ -53909,7 +52248,7 @@ declare namespace Phaser {
             | Phaser.GameObjects.Group[],
           collideCallback?: ArcadePhysicsCallback,
           processCallback?: ArcadePhysicsCallback,
-          callbackContext?: any,
+          callbackContext?: any
         ): Phaser.Physics.Arcade.Collider;
 
         /**
@@ -53933,7 +52272,7 @@ declare namespace Phaser {
             | Phaser.GameObjects.Group[],
           collideCallback?: ArcadePhysicsCallback,
           processCallback?: ArcadePhysicsCallback,
-          callbackContext?: any,
+          callbackContext?: any
         ): Phaser.Physics.Arcade.Collider;
 
         /**
@@ -53943,7 +52282,7 @@ declare namespace Phaser {
          */
         existing(
           gameObject: Phaser.GameObjects.GameObject,
-          isStatic?: boolean,
+          isStatic?: boolean
         ): Phaser.GameObjects.GameObject;
 
         /**
@@ -53957,7 +52296,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           texture: string,
-          frame?: string | integer,
+          frame?: string | integer
         ): Phaser.Physics.Arcade.Image;
 
         /**
@@ -53971,7 +52310,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           texture: string,
-          frame?: string | integer,
+          frame?: string | integer
         ): Phaser.Physics.Arcade.Image;
 
         /**
@@ -53985,7 +52324,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           texture: string,
-          frame?: string | integer,
+          frame?: string | integer
         ): Phaser.Physics.Arcade.Sprite;
 
         /**
@@ -53999,7 +52338,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           key: string,
-          frame?: string | integer,
+          frame?: string | integer
         ): Phaser.Physics.Arcade.Sprite;
 
         /**
@@ -54009,11 +52348,8 @@ declare namespace Phaser {
          * @param config Settings for this group.
          */
         staticGroup(
-          children?:
-            | Phaser.GameObjects.GameObject[]
-            | GroupConfig
-            | GroupCreateConfig,
-          config?: GroupConfig | GroupCreateConfig,
+          children?: Phaser.GameObjects.GameObject[] | GroupConfig | GroupCreateConfig,
+          config?: GroupConfig | GroupCreateConfig
         ): Phaser.Physics.Arcade.StaticGroup;
 
         /**
@@ -54023,11 +52359,8 @@ declare namespace Phaser {
          * @param config Settings for this group.
          */
         group(
-          children?:
-            | Phaser.GameObjects.GameObject[]
-            | PhysicsGroupConfig
-            | GroupCreateConfig,
-          config?: PhysicsGroupConfig | GroupCreateConfig,
+          children?: Phaser.GameObjects.GameObject[] | PhysicsGroupConfig | GroupCreateConfig,
+          config?: PhysicsGroupConfig | GroupCreateConfig
         ): Phaser.Physics.Arcade.Group;
 
         /**
@@ -54047,7 +52380,7 @@ declare namespace Phaser {
         body1: Phaser.Physics.Arcade.Body,
         body2: Phaser.Physics.Arcade.Body,
         overlapOnly: boolean,
-        bias: number,
+        bias: number
       ): number;
 
       /**
@@ -54061,7 +52394,7 @@ declare namespace Phaser {
         body1: Phaser.Physics.Arcade.Body,
         body2: Phaser.Physics.Arcade.Body,
         overlapOnly: boolean,
-        bias: number,
+        bias: number
       ): number;
 
       /**
@@ -54082,11 +52415,8 @@ declare namespace Phaser {
         constructor(
           world: Phaser.Physics.Arcade.World,
           scene: Phaser.Scene,
-          children?:
-            | Phaser.GameObjects.GameObject[]
-            | PhysicsGroupConfig
-            | GroupCreateConfig,
-          config?: PhysicsGroupConfig | GroupCreateConfig,
+          children?: Phaser.GameObjects.GameObject[] | PhysicsGroupConfig | GroupCreateConfig,
+          config?: PhysicsGroupConfig | GroupCreateConfig
         );
 
         /**
@@ -54128,11 +52458,7 @@ declare namespace Phaser {
          * @param y The vertical velocity.
          * @param step The velocity increment. When set, the first member receives velocity (x, y), the second (x + step, y + step), and so on. Default 0.
          */
-        setVelocity(
-          x: number,
-          y: number,
-          step?: number,
-        ): Phaser.Physics.Arcade.Group;
+        setVelocity(x: number, y: number, step?: number): Phaser.Physics.Arcade.Group;
 
         /**
          * Sets the horizontal velocity of each Group member.
@@ -54160,7 +52486,7 @@ declare namespace Phaser {
         body1: Phaser.Physics.Arcade.Body,
         body2: Phaser.Physics.Arcade.Body,
         overlapOnly: boolean,
-        bias: number,
+        bias: number
       ): boolean;
 
       /**
@@ -54174,7 +52500,7 @@ declare namespace Phaser {
         body1: Phaser.Physics.Arcade.Body,
         body2: Phaser.Physics.Arcade.Body,
         overlapOnly: boolean,
-        bias: number,
+        bias: number
       ): boolean;
 
       /**
@@ -54193,10 +52519,7 @@ declare namespace Phaser {
          * @param world [description]
          * @param gameObject [description]
          */
-        constructor(
-          world: Phaser.Physics.Arcade.World,
-          gameObject: Phaser.GameObjects.GameObject,
-        );
+        constructor(world: Phaser.Physics.Arcade.World, gameObject: Phaser.GameObjects.GameObject);
 
         /**
          * [description]
@@ -54382,7 +52705,7 @@ declare namespace Phaser {
          */
         setGameObject(
           gameObject: Phaser.GameObjects.GameObject,
-          update?: boolean,
+          update?: boolean
         ): Phaser.Physics.Arcade.StaticBody;
 
         /**
@@ -54410,7 +52733,7 @@ declare namespace Phaser {
           width?: integer,
           height?: integer,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): Phaser.Physics.Arcade.StaticBody;
 
         /**
@@ -54422,7 +52745,7 @@ declare namespace Phaser {
         setCircle(
           radius: number,
           offsetX?: number,
-          offsetY?: number,
+          offsetY?: number
         ): Phaser.Physics.Arcade.StaticBody;
 
         /**
@@ -54557,11 +52880,8 @@ declare namespace Phaser {
         constructor(
           world: Phaser.Physics.Arcade.World,
           scene: Phaser.Scene,
-          children?:
-            | Phaser.GameObjects.GameObject[]
-            | GroupConfig
-            | GroupCreateConfig,
-          config?: GroupConfig | GroupCreateConfig,
+          children?: Phaser.GameObjects.GameObject[] | GroupConfig | GroupCreateConfig,
+          config?: GroupConfig | GroupCreateConfig
         );
 
         /**
@@ -54590,9 +52910,7 @@ declare namespace Phaser {
          * Refreshes the group.
          * @param entries The newly created group members.
          */
-        createMultipleCallbackHandler(
-          entries: Phaser.GameObjects.GameObject[],
-        ): void;
+        createMultipleCallbackHandler(entries: Phaser.GameObjects.GameObject[]): void;
 
         /**
          * Resets each Body to the position of its parent Game Object.
@@ -54609,7 +52927,7 @@ declare namespace Phaser {
          */
         function ProcessTileCallbacks(
           tile: Phaser.Tilemaps.Tilemap,
-          sprite: Phaser.GameObjects.Sprite,
+          sprite: Phaser.GameObjects.Sprite
         ): boolean;
 
         /**
@@ -54617,20 +52935,14 @@ declare namespace Phaser {
          * @param body The Body object to separate.
          * @param x The x separation amount.
          */
-        function ProcessTileSeparationX(
-          body: Phaser.Physics.Arcade.Body,
-          x: number,
-        ): void;
+        function ProcessTileSeparationX(body: Phaser.Physics.Arcade.Body, x: number): void;
 
         /**
          * Internal function to process the separation of a physics body from a tile.
          * @param body The Body object to separate.
          * @param y The y separation amount.
          */
-        function ProcessTileSeparationY(
-          body: Phaser.Physics.Arcade.Body,
-          y: number,
-        ): void;
+        function ProcessTileSeparationY(body: Phaser.Physics.Arcade.Body, y: number): void;
 
         /**
          * The core separation function to separate a physics body and a tile.
@@ -54646,10 +52958,8 @@ declare namespace Phaser {
           body: Phaser.Physics.Arcade.Body,
           tile: Phaser.Tilemaps.Tile,
           tileWorldRect: Phaser.Geom.Rectangle,
-          tilemapLayer:
-            | Phaser.Tilemaps.DynamicTilemapLayer
-            | Phaser.Tilemaps.StaticTilemapLayer,
-          tileBias: number,
+          tilemapLayer: Phaser.Tilemaps.DynamicTilemapLayer | Phaser.Tilemaps.StaticTilemapLayer,
+          tileBias: number
         ): boolean;
 
         /**
@@ -54665,7 +52975,7 @@ declare namespace Phaser {
           tile: Phaser.Tilemaps.Tile,
           tileLeft: number,
           tileRight: number,
-          tileBias: number,
+          tileBias: number
         ): number;
 
         /**
@@ -54681,7 +52991,7 @@ declare namespace Phaser {
           tile: Phaser.Tilemaps.Tile,
           tileTop: number,
           tileBottom: number,
-          tileBias: number,
+          tileBias: number
         ): number;
 
         /**
@@ -54691,7 +53001,7 @@ declare namespace Phaser {
          */
         function TileIntersectsBody(
           tileWorldRect: Object,
-          body: Phaser.Physics.Arcade.Body,
+          body: Phaser.Physics.Arcade.Body
         ): boolean;
       }
 
@@ -54887,7 +53197,7 @@ declare namespace Phaser {
             | Phaser.GameObjects.GameObject[]
             | Phaser.GameObjects.Group
             | Phaser.GameObjects.Group[],
-          bodyType?: integer,
+          bodyType?: integer
         ): void;
 
         /**
@@ -54916,7 +53226,7 @@ declare namespace Phaser {
          */
         enableBody(
           object: Phaser.GameObjects.GameObject,
-          bodyType?: integer,
+          bodyType?: integer
         ): Phaser.GameObjects.GameObject;
 
         /**
@@ -54926,7 +53236,7 @@ declare namespace Phaser {
          * @param body The Body to be added to the simulation.
          */
         add(
-          body: Phaser.Physics.Arcade.Body | Phaser.Physics.Arcade.StaticBody,
+          body: Phaser.Physics.Arcade.Body | Phaser.Physics.Arcade.StaticBody
         ): Phaser.Physics.Arcade.Body | Phaser.Physics.Arcade.StaticBody;
 
         /**
@@ -54944,7 +53254,7 @@ declare namespace Phaser {
             | Phaser.GameObjects.GameObject
             | Phaser.GameObjects.GameObject[]
             | Phaser.GameObjects.Group
-            | Phaser.GameObjects.Group[],
+            | Phaser.GameObjects.Group[]
         ): void;
 
         /**
@@ -54956,9 +53266,7 @@ declare namespace Phaser {
          * means you can re-enable it again at any point by passing it to enable `World.enable` or `World.add`.
          * @param body The Body to be disabled.
          */
-        disableBody(
-          body: Phaser.Physics.Arcade.Body | Phaser.Physics.Arcade.StaticBody,
-        ): void;
+        disableBody(body: Phaser.Physics.Arcade.Body | Phaser.Physics.Arcade.StaticBody): void;
 
         /**
          * Removes an existing Arcade Physics Body or StaticBody from the simulation.
@@ -54969,9 +53277,7 @@ declare namespace Phaser {
          * means you can re-enable it again at any point by passing it to enable `enable` or `add`.
          * @param body The body to be removed from the simulation.
          */
-        remove(
-          body: Phaser.Physics.Arcade.Body | Phaser.Physics.Arcade.StaticBody,
-        ): void;
+        remove(body: Phaser.Physics.Arcade.Body | Phaser.Physics.Arcade.StaticBody): void;
 
         /**
          * Creates a Graphics Game Object that the world will use to render the debug display to.
@@ -55011,7 +53317,7 @@ declare namespace Phaser {
           checkLeft?: boolean,
           checkRight?: boolean,
           checkUp?: boolean,
-          checkDown?: boolean,
+          checkDown?: boolean
         ): Phaser.Physics.Arcade.World;
 
         /**
@@ -55025,7 +53331,7 @@ declare namespace Phaser {
           left?: boolean,
           right?: boolean,
           up?: boolean,
-          down?: boolean,
+          down?: boolean
         ): Phaser.Physics.Arcade.World;
 
         /**
@@ -55064,7 +53370,7 @@ declare namespace Phaser {
           object2: ArcadeColliderType,
           collideCallback?: ArcadePhysicsCallback,
           processCallback?: ArcadePhysicsCallback,
-          callbackContext?: any,
+          callbackContext?: any
         ): Phaser.Physics.Arcade.Collider;
 
         /**
@@ -55088,7 +53394,7 @@ declare namespace Phaser {
           object2: ArcadeColliderType,
           collideCallback?: ArcadePhysicsCallback,
           processCallback?: ArcadePhysicsCallback,
-          callbackContext?: any,
+          callbackContext?: any
         ): Phaser.Physics.Arcade.Collider;
 
         /**
@@ -55102,9 +53408,7 @@ declare namespace Phaser {
          * a Collider you _don't_ need to pass it to this method too.
          * @param collider The Collider to remove from the simulation.
          */
-        removeCollider(
-          collider: Phaser.Physics.Arcade.Collider,
-        ): Phaser.Physics.Arcade.World;
+        removeCollider(collider: Phaser.Physics.Arcade.Collider): Phaser.Physics.Arcade.World;
 
         /**
          * Sets the frame rate to run the simulation at.
@@ -55153,10 +53457,7 @@ declare namespace Phaser {
          * @param body The Body to compute the velocity for.
          * @param delta The delta value to be used in the calculation.
          */
-        computeAngularVelocity(
-          body: Phaser.Physics.Arcade.Body,
-          delta: number,
-        ): void;
+        computeAngularVelocity(body: Phaser.Physics.Arcade.Body, delta: number): void;
 
         /**
          * Calculates a Body's per-axis velocity.
@@ -55178,7 +53479,7 @@ declare namespace Phaser {
           body2: Phaser.Physics.Arcade.Body,
           processCallback?: ArcadePhysicsCallback,
           callbackContext?: any,
-          overlapOnly?: boolean,
+          overlapOnly?: boolean
         ): boolean;
 
         /**
@@ -55192,7 +53493,7 @@ declare namespace Phaser {
           body1: Phaser.Physics.Arcade.Body,
           body2: Phaser.Physics.Arcade.Body,
           overlapOnly?: boolean,
-          bias?: number,
+          bias?: number
         ): boolean;
 
         /**
@@ -55200,10 +53501,7 @@ declare namespace Phaser {
          * @param body1 The first body to check.
          * @param body2 The second body to check.
          */
-        intersects(
-          body1: Phaser.Physics.Arcade.Body,
-          body2: Phaser.Physics.Arcade.Body,
-        ): boolean;
+        intersects(body1: Phaser.Physics.Arcade.Body, body2: Phaser.Physics.Arcade.Body): boolean;
 
         /**
          * Tests if a circular Body intersects with another Body.
@@ -55212,7 +53510,7 @@ declare namespace Phaser {
          */
         circleBodyIntersects(
           circle: Phaser.Physics.Arcade.Body,
-          body: Phaser.Physics.Arcade.Body,
+          body: Phaser.Physics.Arcade.Body
         ): boolean;
 
         /**
@@ -55228,7 +53526,7 @@ declare namespace Phaser {
           object2?: ArcadeColliderType,
           overlapCallback?: ArcadePhysicsCallback,
           processCallback?: ArcadePhysicsCallback,
-          callbackContext?: any,
+          callbackContext?: any
         ): boolean;
 
         /**
@@ -55259,7 +53557,7 @@ declare namespace Phaser {
           object2?: ArcadeColliderType,
           collideCallback?: ArcadePhysicsCallback,
           processCallback?: ArcadePhysicsCallback,
-          callbackContext?: any,
+          callbackContext?: any
         ): boolean;
 
         /**
@@ -55277,7 +53575,7 @@ declare namespace Phaser {
           collideCallback?: ArcadePhysicsCallback,
           processCallback?: ArcadePhysicsCallback,
           callbackContext?: any,
-          overlapOnly?: boolean,
+          overlapOnly?: boolean
         ): boolean;
 
         /**
@@ -55295,7 +53593,7 @@ declare namespace Phaser {
           collideCallback?: ArcadePhysicsCallback,
           processCallback?: ArcadePhysicsCallback,
           callbackContext?: any,
-          overlapOnly?: boolean,
+          overlapOnly?: boolean
         ): boolean;
 
         /**
@@ -55313,7 +53611,7 @@ declare namespace Phaser {
           collideCallback: ArcadePhysicsCallback,
           processCallback: ArcadePhysicsCallback,
           callbackContext: any,
-          overlapOnly: boolean,
+          overlapOnly: boolean
         ): boolean;
 
         /**
@@ -55331,7 +53629,7 @@ declare namespace Phaser {
           collideCallback: ArcadePhysicsCallback,
           processCallback: ArcadePhysicsCallback,
           callbackContext: any,
-          overlapOnly: boolean,
+          overlapOnly: boolean
         ): boolean;
 
         /**
@@ -55345,13 +53643,11 @@ declare namespace Phaser {
          */
         collideGroupVsTilemapLayer(
           group: Phaser.GameObjects.Group,
-          tilemapLayer:
-            | Phaser.Tilemaps.DynamicTilemapLayer
-            | Phaser.Tilemaps.StaticTilemapLayer,
+          tilemapLayer: Phaser.Tilemaps.DynamicTilemapLayer | Phaser.Tilemaps.StaticTilemapLayer,
           collideCallback: ArcadePhysicsCallback,
           processCallback: ArcadePhysicsCallback,
           callbackContext: any,
-          overlapOnly: boolean,
+          overlapOnly: boolean
         ): boolean;
 
         /**
@@ -55365,13 +53661,11 @@ declare namespace Phaser {
          */
         collideSpriteVsTilemapLayer(
           sprite: Phaser.GameObjects.GameObject,
-          tilemapLayer:
-            | Phaser.Tilemaps.DynamicTilemapLayer
-            | Phaser.Tilemaps.StaticTilemapLayer,
+          tilemapLayer: Phaser.Tilemaps.DynamicTilemapLayer | Phaser.Tilemaps.StaticTilemapLayer,
           collideCallback: ArcadePhysicsCallback,
           processCallback: ArcadePhysicsCallback,
           callbackContext: any,
-          overlapOnly: boolean,
+          overlapOnly: boolean
         ): boolean;
 
         /**
@@ -55389,7 +53683,7 @@ declare namespace Phaser {
           collideCallback: ArcadePhysicsCallback,
           processCallback: ArcadePhysicsCallback,
           callbackContext: any,
-          overlapOnly: boolean,
+          overlapOnly: boolean
         ): boolean;
 
         /**
@@ -55459,7 +53753,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           sx?: number,
-          sy?: number,
+          sy?: number
         );
 
         /**
@@ -55652,12 +53946,7 @@ declare namespace Phaser {
          * @param width The width of the body.
          * @param height The height of the body.
          */
-        resetSize(
-          x: number,
-          y: number,
-          width: number,
-          height: number,
-        ): Phaser.Physics.Impact.Body;
+        resetSize(x: number, y: number, width: number, height: number): Phaser.Physics.Impact.Body;
 
         /**
          * [description]
@@ -55783,7 +54072,7 @@ declare namespace Phaser {
           vx: number,
           vy: number,
           objectWidth: number,
-          objectHeight: number,
+          objectHeight: number
         ): boolean;
 
         /**
@@ -55809,7 +54098,7 @@ declare namespace Phaser {
           height: number,
           rvx: number,
           rvy: number,
-          step: number,
+          step: number
         ): void;
 
         /**
@@ -55835,7 +54124,7 @@ declare namespace Phaser {
           width: number,
           height: number,
           tileX: number,
-          tileY: number,
+          tileY: number
         ): boolean;
       }
 
@@ -55968,10 +54257,7 @@ declare namespace Phaser {
            * @param callback [description]
            * @param scope [description]
            */
-          setCollideCallback(
-            callback: CollideCallback,
-            scope: any,
-          ): Phaser.GameObjects.GameObject;
+          setCollideCallback(callback: CollideCallback, scope: any): Phaser.GameObjects.GameObject;
           /**
            * [description]
            */
@@ -56012,7 +54298,7 @@ declare namespace Phaser {
           setDebug(
             showBody: boolean,
             showVelocity: boolean,
-            bodyColor: number,
+            bodyColor: number
           ): Phaser.GameObjects.GameObject;
           /**
            * [description]
@@ -56088,7 +54374,7 @@ declare namespace Phaser {
             x: number,
             y: number,
             width?: number,
-            height?: number,
+            height?: number
           ): Phaser.GameObjects.GameObject;
         }
 
@@ -56104,7 +54390,7 @@ declare namespace Phaser {
            */
           setGameObject(
             gameObject: Phaser.GameObjects.GameObject,
-            sync?: boolean,
+            sync?: boolean
           ): Phaser.GameObjects.GameObject;
           /**
            * [description]
@@ -56170,20 +54456,13 @@ declare namespace Phaser {
          * @param width The width of the body.
          * @param height The height of the body.
          */
-        body(
-          x: number,
-          y: number,
-          width: number,
-          height: number,
-        ): Phaser.Physics.Impact.ImpactBody;
+        body(x: number, y: number, width: number, height: number): Phaser.Physics.Impact.ImpactBody;
 
         /**
          * Adds an Impact Physics Body to the given Game Object.
          * @param gameObject The Game Object to receive the physics body.
          */
-        existing(
-          gameObject: Phaser.GameObjects.GameObject,
-        ): Phaser.GameObjects.GameObject;
+        existing(gameObject: Phaser.GameObjects.GameObject): Phaser.GameObjects.GameObject;
 
         /**
          * Creates a new ImpactImage object and adds it to the physics world.
@@ -56196,7 +54475,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           key: string,
-          frame?: string | integer,
+          frame?: string | integer
         ): Phaser.Physics.Impact.ImpactImage;
 
         /**
@@ -56210,7 +54489,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           key: string,
-          frame?: string | integer,
+          frame?: string | integer
         ): Phaser.Physics.Impact.ImpactSprite;
 
         /**
@@ -56232,7 +54511,7 @@ declare namespace Phaser {
         vel: number,
         accel: number,
         friction: number,
-        max: number,
+        max: number
       ): number;
 
       /**
@@ -56266,7 +54545,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           width: number,
-          height: number,
+          height: number
         );
 
         /**
@@ -56410,10 +54689,7 @@ declare namespace Phaser {
          * @param callback [description]
          * @param scope [description]
          */
-        setCollideCallback(
-          callback: CollideCallback,
-          scope: any,
-        ): Phaser.GameObjects.GameObject;
+        setCollideCallback(callback: CollideCallback, scope: any): Phaser.GameObjects.GameObject;
 
         /**
          * [description]
@@ -56454,7 +54730,7 @@ declare namespace Phaser {
         setDebug(
           showBody: boolean,
           showVelocity: boolean,
-          bodyColor: number,
+          bodyColor: number
         ): Phaser.GameObjects.GameObject;
 
         /**
@@ -56519,7 +54795,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           width?: number,
-          height?: number,
+          height?: number
         ): Phaser.GameObjects.GameObject;
 
         /**
@@ -56529,7 +54805,7 @@ declare namespace Phaser {
          */
         setGameObject(
           gameObject: Phaser.GameObjects.GameObject,
-          sync?: boolean,
+          sync?: boolean
         ): Phaser.GameObjects.GameObject;
 
         /**
@@ -56615,7 +54891,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           texture: string,
-          frame?: string | integer,
+          frame?: string | integer
         );
 
         /**
@@ -56675,7 +54951,7 @@ declare namespace Phaser {
           topLeft?: number,
           topRight?: number,
           bottomLeft?: number,
-          bottomRight?: number,
+          bottomRight?: number
         ): this;
 
         /**
@@ -56842,10 +55118,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getTopLeft<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -56853,10 +55126,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getTopRight<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -56864,10 +55134,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getBottomLeft<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -56875,10 +55142,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getBottomRight<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the bounds of this Game Object, regardless of origin.
@@ -56890,9 +55154,7 @@ declare namespace Phaser {
         /**
          * The Mask this Game Object is using during render.
          */
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask;
+        mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask;
 
         /**
          * Sets the mask that this Game Object will use to render with.
@@ -56909,11 +55171,7 @@ declare namespace Phaser {
          * that allows you to limit what is visible during the render pass.
          * @param mask The mask this Game Object will use when rendering.
          */
-        setMask(
-          mask:
-            | Phaser.Display.Masks.BitmapMask
-            | Phaser.Display.Masks.GeometryMask,
-        ): this;
+        setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
         /**
          * Clears the mask that this Game Object was using.
@@ -56935,7 +55193,7 @@ declare namespace Phaser {
          * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
          */
         createBitmapMask(
-          renderable?: Phaser.GameObjects.GameObject,
+          renderable?: Phaser.GameObjects.GameObject
         ): Phaser.Display.Masks.BitmapMask;
 
         /**
@@ -56951,7 +55209,7 @@ declare namespace Phaser {
          * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
          */
         createGeometryMask(
-          graphics?: Phaser.GameObjects.Graphics,
+          graphics?: Phaser.GameObjects.Graphics
         ): Phaser.Display.Masks.GeometryMask;
 
         /**
@@ -57239,7 +55497,7 @@ declare namespace Phaser {
           x?: number | Phaser.Geom.Rectangle,
           y?: number,
           width?: number,
-          height?: number,
+          height?: number
         ): this;
 
         /**
@@ -57264,11 +55522,7 @@ declare namespace Phaser {
          * @param updateSize Should this call adjust the size of the Game Object? Default true.
          * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
          */
-        setFrame(
-          frame: string | integer,
-          updateSize?: boolean,
-          updateOrigin?: boolean,
-        ): this;
+        setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
 
         /**
          * Fill or additive?
@@ -57307,7 +55561,7 @@ declare namespace Phaser {
           topLeft?: integer,
           topRight?: integer,
           bottomLeft?: integer,
-          bottomRight?: integer,
+          bottomRight?: integer
         ): this;
 
         /**
@@ -57335,7 +55589,7 @@ declare namespace Phaser {
           topLeft?: integer,
           topRight?: integer,
           bottomLeft?: integer,
-          bottomRight?: integer,
+          bottomRight?: integer
         ): this;
 
         /**
@@ -57441,12 +55695,7 @@ declare namespace Phaser {
          * @param width The width of the random area.
          * @param height The height of the random area.
          */
-        setRandomPosition(
-          x?: number,
-          y?: number,
-          width?: number,
-          height?: number,
-        ): this;
+        setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
         /**
          * Sets the rotation of this Game Object.
@@ -57496,7 +55745,7 @@ declare namespace Phaser {
          * @param tempMatrix The matrix to populate with the values from this Game Object.
          */
         getLocalTransformMatrix(
-          tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+          tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
         ): Phaser.GameObjects.Components.TransformMatrix;
 
         /**
@@ -57506,7 +55755,7 @@ declare namespace Phaser {
          */
         getWorldTransformMatrix(
           tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-          parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+          parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
         ): Phaser.GameObjects.Components.TransformMatrix;
 
         /**
@@ -57630,10 +55879,7 @@ declare namespace Phaser {
          * @param callback [description]
          * @param scope [description]
          */
-        setCollideCallback(
-          callback: CollideCallback,
-          scope: any,
-        ): Phaser.GameObjects.GameObject;
+        setCollideCallback(callback: CollideCallback, scope: any): Phaser.GameObjects.GameObject;
 
         /**
          * [description]
@@ -57674,7 +55920,7 @@ declare namespace Phaser {
         setDebug(
           showBody: boolean,
           showVelocity: boolean,
-          bodyColor: number,
+          bodyColor: number
         ): Phaser.GameObjects.GameObject;
 
         /**
@@ -57739,7 +55985,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           width?: number,
-          height?: number,
+          height?: number
         ): Phaser.GameObjects.GameObject;
 
         /**
@@ -57749,7 +55995,7 @@ declare namespace Phaser {
          */
         setGameObject(
           gameObject: Phaser.GameObjects.GameObject,
-          sync?: boolean,
+          sync?: boolean
         ): Phaser.GameObjects.GameObject;
 
         /**
@@ -57889,7 +56135,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           texture: string,
-          frame?: string | integer,
+          frame?: string | integer
         );
 
         /**
@@ -57949,7 +56195,7 @@ declare namespace Phaser {
           topLeft?: number,
           topRight?: number,
           bottomLeft?: number,
-          bottomRight?: number,
+          bottomRight?: number
         ): this;
 
         /**
@@ -58116,10 +56362,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getTopLeft<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -58127,10 +56370,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getTopRight<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -58138,10 +56378,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getBottomLeft<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -58149,10 +56386,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getBottomRight<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the bounds of this Game Object, regardless of origin.
@@ -58164,9 +56398,7 @@ declare namespace Phaser {
         /**
          * The Mask this Game Object is using during render.
          */
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask;
+        mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask;
 
         /**
          * Sets the mask that this Game Object will use to render with.
@@ -58183,11 +56415,7 @@ declare namespace Phaser {
          * that allows you to limit what is visible during the render pass.
          * @param mask The mask this Game Object will use when rendering.
          */
-        setMask(
-          mask:
-            | Phaser.Display.Masks.BitmapMask
-            | Phaser.Display.Masks.GeometryMask,
-        ): this;
+        setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
         /**
          * Clears the mask that this Game Object was using.
@@ -58209,7 +56437,7 @@ declare namespace Phaser {
          * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
          */
         createBitmapMask(
-          renderable?: Phaser.GameObjects.GameObject,
+          renderable?: Phaser.GameObjects.GameObject
         ): Phaser.Display.Masks.BitmapMask;
 
         /**
@@ -58225,7 +56453,7 @@ declare namespace Phaser {
          * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
          */
         createGeometryMask(
-          graphics?: Phaser.GameObjects.Graphics,
+          graphics?: Phaser.GameObjects.Graphics
         ): Phaser.Display.Masks.GeometryMask;
 
         /**
@@ -58513,7 +56741,7 @@ declare namespace Phaser {
           x?: number | Phaser.Geom.Rectangle,
           y?: number,
           width?: number,
-          height?: number,
+          height?: number
         ): this;
 
         /**
@@ -58538,11 +56766,7 @@ declare namespace Phaser {
          * @param updateSize Should this call adjust the size of the Game Object? Default true.
          * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
          */
-        setFrame(
-          frame: string | integer,
-          updateSize?: boolean,
-          updateOrigin?: boolean,
-        ): this;
+        setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
 
         /**
          * Fill or additive?
@@ -58581,7 +56805,7 @@ declare namespace Phaser {
           topLeft?: integer,
           topRight?: integer,
           bottomLeft?: integer,
-          bottomRight?: integer,
+          bottomRight?: integer
         ): this;
 
         /**
@@ -58609,7 +56833,7 @@ declare namespace Phaser {
           topLeft?: integer,
           topRight?: integer,
           bottomLeft?: integer,
-          bottomRight?: integer,
+          bottomRight?: integer
         ): this;
 
         /**
@@ -58715,12 +56939,7 @@ declare namespace Phaser {
          * @param width The width of the random area.
          * @param height The height of the random area.
          */
-        setRandomPosition(
-          x?: number,
-          y?: number,
-          width?: number,
-          height?: number,
-        ): this;
+        setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
         /**
          * Sets the rotation of this Game Object.
@@ -58770,7 +56989,7 @@ declare namespace Phaser {
          * @param tempMatrix The matrix to populate with the values from this Game Object.
          */
         getLocalTransformMatrix(
-          tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+          tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
         ): Phaser.GameObjects.Components.TransformMatrix;
 
         /**
@@ -58780,7 +56999,7 @@ declare namespace Phaser {
          */
         getWorldTransformMatrix(
           tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-          parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+          parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
         ): Phaser.GameObjects.Components.TransformMatrix;
 
         /**
@@ -58904,10 +57123,7 @@ declare namespace Phaser {
          * @param callback [description]
          * @param scope [description]
          */
-        setCollideCallback(
-          callback: CollideCallback,
-          scope: any,
-        ): Phaser.GameObjects.GameObject;
+        setCollideCallback(callback: CollideCallback, scope: any): Phaser.GameObjects.GameObject;
 
         /**
          * [description]
@@ -58948,7 +57164,7 @@ declare namespace Phaser {
         setDebug(
           showBody: boolean,
           showVelocity: boolean,
-          bodyColor: number,
+          bodyColor: number
         ): Phaser.GameObjects.GameObject;
 
         /**
@@ -59013,7 +57229,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           width?: number,
-          height?: number,
+          height?: number
         ): Phaser.GameObjects.GameObject;
 
         /**
@@ -59023,7 +57239,7 @@ declare namespace Phaser {
          */
         setGameObject(
           gameObject: Phaser.GameObjects.GameObject,
-          sync?: boolean,
+          sync?: boolean
         ): Phaser.GameObjects.GameObject;
 
         /**
@@ -59069,7 +57285,7 @@ declare namespace Phaser {
         world: Phaser.Physics.Impact.World,
         left: Phaser.Physics.Impact.Body,
         right: Phaser.Physics.Impact.Body,
-        weak?: Phaser.Physics.Impact.Body,
+        weak?: Phaser.Physics.Impact.Body
       ): void;
 
       /**
@@ -59083,7 +57299,7 @@ declare namespace Phaser {
         world: Phaser.Physics.Impact.World,
         top: Phaser.Physics.Impact.Body,
         bottom: Phaser.Physics.Impact.Body,
-        weak?: Phaser.Physics.Impact.Body,
+        weak?: Phaser.Physics.Impact.Body
       ): void;
 
       /**
@@ -59095,7 +57311,7 @@ declare namespace Phaser {
       function Solver(
         world: Phaser.Physics.Impact.World,
         bodyA: Phaser.Physics.Impact.Body,
-        bodyB: Phaser.Physics.Impact.Body,
+        bodyB: Phaser.Physics.Impact.Body
       ): void;
 
       /**
@@ -59136,10 +57352,7 @@ declare namespace Phaser {
        * @param body [description]
        * @param res [description]
        */
-      function UpdateMotion(
-        body: Phaser.Physics.Impact.Body,
-        res: object,
-      ): void;
+      function UpdateMotion(body: Phaser.Physics.Impact.Body, res: object): void;
 
       type WorldConfig = {
         /**
@@ -59209,39 +57422,39 @@ declare namespace Phaser {
         /**
          * The x coordinate of the world bounds.
          */
-        "setBounds.x"?: number;
+        'setBounds.x'?: number;
         /**
          * The y coordinate of the world bounds.
          */
-        "setBounds.y"?: number;
+        'setBounds.y'?: number;
         /**
          * The width of the world bounds.
          */
-        "setBounds.width"?: number;
+        'setBounds.width'?: number;
         /**
          * The height of the world bounds.
          */
-        "setBounds.height"?: number;
+        'setBounds.height'?: number;
         /**
          * The thickness of the walls of the world bounds.
          */
-        "setBounds.thickness"?: number;
+        'setBounds.thickness'?: number;
         /**
          * Should the left-side world bounds wall be created?
          */
-        "setBounds.left"?: boolean;
+        'setBounds.left'?: boolean;
         /**
          * Should the right-side world bounds wall be created?
          */
-        "setBounds.right"?: boolean;
+        'setBounds.right'?: boolean;
         /**
          * Should the top world bounds wall be created?
          */
-        "setBounds.top"?: boolean;
+        'setBounds.top'?: boolean;
         /**
          * Should the bottom world bounds wall be created?
          */
-        "setBounds.bottom"?: boolean;
+        'setBounds.bottom'?: boolean;
       };
 
       /**
@@ -59314,10 +57527,7 @@ declare namespace Phaser {
          * @param scene [description]
          * @param config [description]
          */
-        constructor(
-          scene: Phaser.Scene,
-          config: Phaser.Physics.Impact.WorldConfig,
-        );
+        constructor(scene: Phaser.Scene, config: Phaser.Physics.Impact.WorldConfig);
 
         /**
          * [description]
@@ -59394,7 +57604,7 @@ declare namespace Phaser {
          */
         setCollisionMap(
           key: string | integer[][],
-          tileSize: integer,
+          tileSize: integer
         ): Phaser.Physics.Impact.CollisionMap;
 
         /**
@@ -59415,10 +57625,8 @@ declare namespace Phaser {
          * non-colliding tile. Default 0.
          */
         setCollisionMapFromTilemapLayer(
-          tilemapLayer:
-            | Phaser.Tilemaps.DynamicTilemapLayer
-            | Phaser.Tilemaps.StaticTilemapLayer,
-          options?: object,
+          tilemapLayer: Phaser.Tilemaps.DynamicTilemapLayer | Phaser.Tilemaps.StaticTilemapLayer,
+          options?: object
         ): Phaser.Physics.Impact.CollisionMap;
 
         /**
@@ -59447,7 +57655,7 @@ declare namespace Phaser {
           left?: boolean,
           right?: boolean,
           top?: boolean,
-          bottom?: boolean,
+          bottom?: boolean
         ): Phaser.Physics.Impact.World;
 
         /**
@@ -59465,7 +57673,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           width: number,
-          height: number,
+          height: number
         ): void;
 
         /**
@@ -59485,12 +57693,7 @@ declare namespace Phaser {
          * @param sizeX [description]
          * @param sizeY [description]
          */
-        create(
-          x: number,
-          y: number,
-          sizeX: number,
-          sizeY: number,
-        ): Phaser.Physics.Impact.Body;
+        create(x: number, y: number, sizeX: number, sizeY: number): Phaser.Physics.Impact.Body;
 
         /**
          * [description]
@@ -59521,125 +57724,92 @@ declare namespace Phaser {
          * @param hash [description]
          * @param size [description]
          */
-        checkHash(
-          body: Phaser.Physics.Impact.Body,
-          hash: object,
-          size: number,
-        ): void;
+        checkHash(body: Phaser.Physics.Impact.Body, hash: object, size: number): void;
 
         /**
          * [description]
          * @param bodyA [description]
          * @param bodyB [description]
          */
-        checkBodies(
-          bodyA: Phaser.Physics.Impact.Body,
-          bodyB: Phaser.Physics.Impact.Body,
-        ): void;
+        checkBodies(bodyA: Phaser.Physics.Impact.Body, bodyB: Phaser.Physics.Impact.Body): void;
 
         /**
          * [description]
          * @param bodies An Array of Impact Bodies to set the collides value on.
          */
-        setCollidesNever(
-          bodies: Phaser.Physics.Impact.Body[],
-        ): Phaser.Physics.Impact.World;
+        setCollidesNever(bodies: Phaser.Physics.Impact.Body[]): Phaser.Physics.Impact.World;
 
         /**
          * [description]
          * @param bodies An Array of Impact Bodies to set the collides value on.
          */
-        setLite(
-          bodies: Phaser.Physics.Impact.Body[],
-        ): Phaser.Physics.Impact.World;
+        setLite(bodies: Phaser.Physics.Impact.Body[]): Phaser.Physics.Impact.World;
 
         /**
          * [description]
          * @param bodies An Array of Impact Bodies to set the collides value on.
          */
-        setPassive(
-          bodies: Phaser.Physics.Impact.Body[],
-        ): Phaser.Physics.Impact.World;
+        setPassive(bodies: Phaser.Physics.Impact.Body[]): Phaser.Physics.Impact.World;
 
         /**
          * [description]
          * @param bodies An Array of Impact Bodies to set the collides value on.
          */
-        setActive(
-          bodies: Phaser.Physics.Impact.Body[],
-        ): Phaser.Physics.Impact.World;
+        setActive(bodies: Phaser.Physics.Impact.Body[]): Phaser.Physics.Impact.World;
 
         /**
          * [description]
          * @param bodies An Array of Impact Bodies to set the collides value on.
          */
-        setFixed(
-          bodies: Phaser.Physics.Impact.Body[],
-        ): Phaser.Physics.Impact.World;
+        setFixed(bodies: Phaser.Physics.Impact.Body[]): Phaser.Physics.Impact.World;
 
         /**
          * [description]
          * @param bodies An Array of Impact Bodies to set the type value on.
          */
-        setTypeNone(
-          bodies: Phaser.Physics.Impact.Body[],
-        ): Phaser.Physics.Impact.World;
+        setTypeNone(bodies: Phaser.Physics.Impact.Body[]): Phaser.Physics.Impact.World;
 
         /**
          * [description]
          * @param bodies An Array of Impact Bodies to set the type value on.
          */
-        setTypeA(
-          bodies: Phaser.Physics.Impact.Body[],
-        ): Phaser.Physics.Impact.World;
+        setTypeA(bodies: Phaser.Physics.Impact.Body[]): Phaser.Physics.Impact.World;
 
         /**
          * [description]
          * @param bodies An Array of Impact Bodies to set the type value on.
          */
-        setTypeB(
-          bodies: Phaser.Physics.Impact.Body[],
-        ): Phaser.Physics.Impact.World;
+        setTypeB(bodies: Phaser.Physics.Impact.Body[]): Phaser.Physics.Impact.World;
 
         /**
          * [description]
          * @param bodies An Array of Impact Bodies to set the type value on.
          */
-        setAvsB(
-          bodies: Phaser.Physics.Impact.Body[],
-        ): Phaser.Physics.Impact.World;
+        setAvsB(bodies: Phaser.Physics.Impact.Body[]): Phaser.Physics.Impact.World;
 
         /**
          * [description]
          * @param bodies An Array of Impact Bodies to set the type value on.
          */
-        setBvsA(
-          bodies: Phaser.Physics.Impact.Body[],
-        ): Phaser.Physics.Impact.World;
+        setBvsA(bodies: Phaser.Physics.Impact.Body[]): Phaser.Physics.Impact.World;
 
         /**
          * [description]
          * @param bodies An Array of Impact Bodies to set the type value on.
          */
-        setCheckAgainstNone(
-          bodies: Phaser.Physics.Impact.Body[],
-        ): Phaser.Physics.Impact.World;
+        setCheckAgainstNone(bodies: Phaser.Physics.Impact.Body[]): Phaser.Physics.Impact.World;
 
         /**
          * [description]
          * @param bodies An Array of Impact Bodies to set the type value on.
          */
-        setCheckAgainstA(
-          bodies: Phaser.Physics.Impact.Body[],
-        ): Phaser.Physics.Impact.World;
+        setCheckAgainstA(bodies: Phaser.Physics.Impact.Body[]): Phaser.Physics.Impact.World;
 
         /**
          * [description]
          * @param bodies An Array of Impact Bodies to set the type value on.
          */
-        setCheckAgainstB(
-          bodies: Phaser.Physics.Impact.Body[],
-        ): Phaser.Physics.Impact.World;
+        setCheckAgainstB(bodies: Phaser.Physics.Impact.Body[]): Phaser.Physics.Impact.World;
 
         /**
          * [description]
@@ -59684,9 +57854,7 @@ declare namespace Phaser {
            * [description]
            * @param categories A unique category bitfield, or an array of them.
            */
-          setCollidesWith(
-            categories: number | number[],
-          ): Phaser.GameObjects.GameObject;
+          setCollidesWith(categories: number | number[]): Phaser.GameObjects.GameObject;
         }
 
         /**
@@ -59705,7 +57873,7 @@ declare namespace Phaser {
            */
           applyForceFrom(
             position: Phaser.Math.Vector2,
-            force: Phaser.Math.Vector2,
+            force: Phaser.Math.Vector2
           ): Phaser.GameObjects.GameObject;
           /**
            * Apply thrust to the forward position of the body.
@@ -59739,11 +57907,7 @@ declare namespace Phaser {
            * @param air [description]
            * @param fstatic [description]
            */
-          setFriction(
-            value: number,
-            air?: number,
-            fstatic?: number,
-          ): Phaser.GameObjects.GameObject;
+          setFriction(value: number, air?: number, fstatic?: number): Phaser.GameObjects.GameObject;
           /**
            * [description]
            * @param value [description]
@@ -59815,28 +57979,21 @@ declare namespace Phaser {
           setRectangle(
             width: number,
             height: number,
-            options: object,
+            options: object
           ): Phaser.GameObjects.GameObject;
           /**
            * [description]
            * @param radius [description]
            * @param options [description]
            */
-          setCircle(
-            radius: number,
-            options: object,
-          ): Phaser.GameObjects.GameObject;
+          setCircle(radius: number, options: object): Phaser.GameObjects.GameObject;
           /**
            * [description]
            * @param radius [description]
            * @param sides [description]
            * @param options [description]
            */
-          setPolygon(
-            radius: number,
-            sides: number,
-            options: object,
-          ): Phaser.GameObjects.GameObject;
+          setPolygon(radius: number, sides: number, options: object): Phaser.GameObjects.GameObject;
           /**
            * [description]
            * @param width [description]
@@ -59848,26 +58005,20 @@ declare namespace Phaser {
             width: number,
             height: number,
             slope: number,
-            options: object,
+            options: object
           ): Phaser.GameObjects.GameObject;
           /**
            * [description]
            * @param body [description]
            * @param addToWorld [description] Default true.
            */
-          setExistingBody(
-            body: MatterJS.Body,
-            addToWorld?: boolean,
-          ): Phaser.GameObjects.GameObject;
+          setExistingBody(body: MatterJS.Body, addToWorld?: boolean): Phaser.GameObjects.GameObject;
           /**
            * [description]
            * @param config [description]
            * @param options [description]
            */
-          setBody(
-            config: object,
-            options: object,
-          ): Phaser.GameObjects.GameObject;
+          setBody(config: object, options: object): Phaser.GameObjects.GameObject;
         }
 
         /**
@@ -59884,10 +58035,7 @@ declare namespace Phaser {
            * @param start [description]
            * @param end [description]
            */
-          setSleepEvents(
-            start: boolean,
-            end: boolean,
-          ): Phaser.GameObjects.GameObject;
+          setSleepEvents(start: boolean, end: boolean): Phaser.GameObjects.GameObject;
           /**
            * [description]
            * @param value [description]
@@ -60038,7 +58186,7 @@ declare namespace Phaser {
           y: number,
           width: number,
           height: number,
-          options: object,
+          options: object
         ): MatterJS.Body;
 
         /**
@@ -60056,7 +58204,7 @@ declare namespace Phaser {
           width: number,
           height: number,
           slope: number,
-          options: object,
+          options: object
         ): MatterJS.Body;
 
         /**
@@ -60072,7 +58220,7 @@ declare namespace Phaser {
           y: number,
           radius: number,
           options: object,
-          maxSides: number,
+          maxSides: number
         ): MatterJS.Body;
 
         /**
@@ -60088,7 +58236,7 @@ declare namespace Phaser {
           y: number,
           sides: number,
           radius: number,
-          options: object,
+          options: object
         ): MatterJS.Body;
 
         /**
@@ -60108,7 +58256,7 @@ declare namespace Phaser {
           options: object,
           flagInternal: boolean,
           removeCollinear: boolean,
-          minimumArea: number,
+          minimumArea: number
         ): MatterJS.Body;
 
         /**
@@ -60133,7 +58281,7 @@ declare namespace Phaser {
           rows: number,
           columnGap?: number,
           rowGap?: number,
-          options?: object,
+          options?: object
         ): MatterJS.Composite;
 
         /**
@@ -60154,7 +58302,7 @@ declare namespace Phaser {
           rows: number,
           columnGap: number,
           rowGap: number,
-          callback: Function,
+          callback: Function
         ): MatterJS.Composite;
 
         /**
@@ -60175,7 +58323,7 @@ declare namespace Phaser {
           rows: number,
           columnGap: number,
           rowGap: number,
-          callback: Function,
+          callback: Function
         ): MatterJS.Composite;
 
         /**
@@ -60193,7 +58341,7 @@ declare namespace Phaser {
           yOffsetA: number,
           xOffsetB: number,
           yOffsetB: number,
-          options: object,
+          options: object
         ): MatterJS.Composite;
 
         /**
@@ -60209,7 +58357,7 @@ declare namespace Phaser {
           columns: number,
           rows: number,
           crossBrace: boolean,
-          options: object,
+          options: object
         ): MatterJS.Composite;
 
         /**
@@ -60225,7 +58373,7 @@ declare namespace Phaser {
           y: number,
           number: number,
           size: number,
-          length: number,
+          length: number
         ): MatterJS.Composite;
 
         /**
@@ -60241,7 +58389,7 @@ declare namespace Phaser {
           y: number,
           width: number,
           height: number,
-          wheelSize: number,
+          wheelSize: number
         ): MatterJS.Composite;
 
         /**
@@ -60267,7 +58415,7 @@ declare namespace Phaser {
           crossBrace: boolean,
           particleRadius: number,
           particleOptions: object,
-          constraintOptions: object,
+          constraintOptions: object
         ): MatterJS.Composite;
 
         /**
@@ -60283,7 +58431,7 @@ declare namespace Phaser {
           bodyB: MatterJS.Body,
           length: number,
           stiffness?: number,
-          options?: object,
+          options?: object
         ): MatterJS.Constraint;
 
         /**
@@ -60299,7 +58447,7 @@ declare namespace Phaser {
           bodyB: MatterJS.Body,
           length: number,
           stiffness?: number,
-          options?: object,
+          options?: object
         ): MatterJS.Constraint;
 
         /**
@@ -60315,7 +58463,7 @@ declare namespace Phaser {
           bodyB: MatterJS.Body,
           length: number,
           stiffness?: number,
-          options?: object,
+          options?: object
         ): MatterJS.Constraint;
 
         /**
@@ -60329,7 +58477,7 @@ declare namespace Phaser {
           bodyB: MatterJS.Body,
           length: number,
           stiffness?: number,
-          options?: object,
+          options?: object
         ): MatterJS.Constraint;
 
         /**
@@ -60357,7 +58505,7 @@ declare namespace Phaser {
           y: number,
           key: string,
           frame?: string | integer,
-          options?: object,
+          options?: object
         ): Phaser.Physics.Matter.Image;
 
         /**
@@ -60365,10 +58513,7 @@ declare namespace Phaser {
          * @param tile [description]
          * @param options [description]
          */
-        tileBody(
-          tile: Phaser.Tilemaps.Tile,
-          options: object,
-        ): Phaser.Physics.Matter.TileBody;
+        tileBody(tile: Phaser.Tilemaps.Tile, options: object): Phaser.Physics.Matter.TileBody;
 
         /**
          * [description]
@@ -60383,7 +58528,7 @@ declare namespace Phaser {
           y: number,
           key: string,
           frame?: string | integer,
-          options?: object,
+          options?: object
         ): Phaser.Physics.Matter.Sprite;
 
         /**
@@ -60393,7 +58538,7 @@ declare namespace Phaser {
          */
         gameObject(
           gameObject: Phaser.GameObjects.GameObject,
-          options: object,
+          options: object
         ): Phaser.GameObjects.GameObject;
 
         /**
@@ -60411,7 +58556,7 @@ declare namespace Phaser {
       function MatterGameObject(
         world: Phaser.Physics.Matter.World,
         gameObject: Phaser.GameObjects.GameObject,
-        options: object,
+        options: object
       ): Phaser.GameObjects.GameObject;
 
       /**
@@ -60467,7 +58612,7 @@ declare namespace Phaser {
           y: number,
           texture: string,
           frame?: string | integer,
-          options?: object,
+          options?: object
         );
 
         /**
@@ -60497,7 +58642,7 @@ declare namespace Phaser {
           topLeft?: number,
           topRight?: number,
           bottomLeft?: number,
-          bottomRight?: number,
+          bottomRight?: number
         ): this;
 
         /**
@@ -60664,10 +58809,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getTopLeft<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -60675,10 +58817,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getTopRight<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -60686,10 +58825,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getBottomLeft<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -60697,10 +58833,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getBottomRight<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the bounds of this Game Object, regardless of origin.
@@ -60712,9 +58845,7 @@ declare namespace Phaser {
         /**
          * The Mask this Game Object is using during render.
          */
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask;
+        mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask;
 
         /**
          * Sets the mask that this Game Object will use to render with.
@@ -60731,11 +58862,7 @@ declare namespace Phaser {
          * that allows you to limit what is visible during the render pass.
          * @param mask The mask this Game Object will use when rendering.
          */
-        setMask(
-          mask:
-            | Phaser.Display.Masks.BitmapMask
-            | Phaser.Display.Masks.GeometryMask,
-        ): this;
+        setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
         /**
          * Clears the mask that this Game Object was using.
@@ -60757,7 +58884,7 @@ declare namespace Phaser {
          * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
          */
         createBitmapMask(
-          renderable?: Phaser.GameObjects.GameObject,
+          renderable?: Phaser.GameObjects.GameObject
         ): Phaser.Display.Masks.BitmapMask;
 
         /**
@@ -60773,7 +58900,7 @@ declare namespace Phaser {
          * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
          */
         createGeometryMask(
-          graphics?: Phaser.GameObjects.Graphics,
+          graphics?: Phaser.GameObjects.Graphics
         ): Phaser.Display.Masks.GeometryMask;
 
         /**
@@ -61061,7 +59188,7 @@ declare namespace Phaser {
           x?: number | Phaser.Geom.Rectangle,
           y?: number,
           width?: number,
-          height?: number,
+          height?: number
         ): this;
 
         /**
@@ -61086,11 +59213,7 @@ declare namespace Phaser {
          * @param updateSize Should this call adjust the size of the Game Object? Default true.
          * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
          */
-        setFrame(
-          frame: string | integer,
-          updateSize?: boolean,
-          updateOrigin?: boolean,
-        ): this;
+        setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
 
         /**
          * Fill or additive?
@@ -61129,7 +59252,7 @@ declare namespace Phaser {
           topLeft?: integer,
           topRight?: integer,
           bottomLeft?: integer,
-          bottomRight?: integer,
+          bottomRight?: integer
         ): this;
 
         /**
@@ -61157,7 +59280,7 @@ declare namespace Phaser {
           topLeft?: integer,
           topRight?: integer,
           bottomLeft?: integer,
-          bottomRight?: integer,
+          bottomRight?: integer
         ): this;
 
         /**
@@ -61263,12 +59386,7 @@ declare namespace Phaser {
          * @param width The width of the random area.
          * @param height The height of the random area.
          */
-        setRandomPosition(
-          x?: number,
-          y?: number,
-          width?: number,
-          height?: number,
-        ): this;
+        setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
         /**
          * Sets the rotation of this Game Object.
@@ -61318,7 +59436,7 @@ declare namespace Phaser {
          * @param tempMatrix The matrix to populate with the values from this Game Object.
          */
         getLocalTransformMatrix(
-          tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+          tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
         ): Phaser.GameObjects.Components.TransformMatrix;
 
         /**
@@ -61328,7 +59446,7 @@ declare namespace Phaser {
          */
         getWorldTransformMatrix(
           tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-          parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+          parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
         ): Phaser.GameObjects.Components.TransformMatrix;
 
         /**
@@ -61368,9 +59486,7 @@ declare namespace Phaser {
          * [description]
          * @param categories A unique category bitfield, or an array of them.
          */
-        setCollidesWith(
-          categories: number | number[],
-        ): Phaser.GameObjects.GameObject;
+        setCollidesWith(categories: number | number[]): Phaser.GameObjects.GameObject;
 
         /**
          * Applies a force to a body.
@@ -61385,7 +59501,7 @@ declare namespace Phaser {
          */
         applyForceFrom(
           position: Phaser.Math.Vector2,
-          force: Phaser.Math.Vector2,
+          force: Phaser.Math.Vector2
         ): Phaser.GameObjects.GameObject;
 
         /**
@@ -61418,11 +59534,7 @@ declare namespace Phaser {
          * @param air [description]
          * @param fstatic [description]
          */
-        setFriction(
-          value: number,
-          air?: number,
-          fstatic?: number,
-        ): Phaser.GameObjects.GameObject;
+        setFriction(value: number, air?: number, fstatic?: number): Phaser.GameObjects.GameObject;
 
         /**
          * [description]
@@ -61476,21 +59588,14 @@ declare namespace Phaser {
          * @param height [description]
          * @param options [description]
          */
-        setRectangle(
-          width: number,
-          height: number,
-          options: object,
-        ): Phaser.GameObjects.GameObject;
+        setRectangle(width: number, height: number, options: object): Phaser.GameObjects.GameObject;
 
         /**
          * [description]
          * @param radius [description]
          * @param options [description]
          */
-        setCircle(
-          radius: number,
-          options: object,
-        ): Phaser.GameObjects.GameObject;
+        setCircle(radius: number, options: object): Phaser.GameObjects.GameObject;
 
         /**
          * [description]
@@ -61498,11 +59603,7 @@ declare namespace Phaser {
          * @param sides [description]
          * @param options [description]
          */
-        setPolygon(
-          radius: number,
-          sides: number,
-          options: object,
-        ): Phaser.GameObjects.GameObject;
+        setPolygon(radius: number, sides: number, options: object): Phaser.GameObjects.GameObject;
 
         /**
          * [description]
@@ -61515,7 +59616,7 @@ declare namespace Phaser {
           width: number,
           height: number,
           slope: number,
-          options: object,
+          options: object
         ): Phaser.GameObjects.GameObject;
 
         /**
@@ -61523,10 +59624,7 @@ declare namespace Phaser {
          * @param body [description]
          * @param addToWorld [description] Default true.
          */
-        setExistingBody(
-          body: MatterJS.Body,
-          addToWorld?: boolean,
-        ): Phaser.GameObjects.GameObject;
+        setExistingBody(body: MatterJS.Body, addToWorld?: boolean): Phaser.GameObjects.GameObject;
 
         /**
          * [description]
@@ -61546,10 +59644,7 @@ declare namespace Phaser {
          * @param start [description]
          * @param end [description]
          */
-        setSleepEvents(
-          start: boolean,
-          end: boolean,
-        ): Phaser.GameObjects.GameObject;
+        setSleepEvents(start: boolean, end: boolean): Phaser.GameObjects.GameObject;
 
         /**
          * [description]
@@ -61766,7 +59861,7 @@ declare namespace Phaser {
           y: number,
           texture: string,
           frame?: string | integer,
-          options?: object,
+          options?: object
         );
 
         /**
@@ -61796,7 +59891,7 @@ declare namespace Phaser {
           topLeft?: number,
           topRight?: number,
           bottomLeft?: number,
-          bottomRight?: number,
+          bottomRight?: number
         ): this;
 
         /**
@@ -61963,10 +60058,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getTopLeft<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -61974,10 +60066,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getTopRight<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -61985,10 +60074,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getBottomLeft<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -61996,10 +60082,7 @@ declare namespace Phaser {
          * @param output An object to store the values in. If not provided a new Vector2 will be created.
          * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
          */
-        getBottomRight<O extends Phaser.Math.Vector2>(
-          output?: O,
-          includeParent?: boolean,
-        ): O;
+        getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
         /**
          * Gets the bounds of this Game Object, regardless of origin.
@@ -62011,9 +60094,7 @@ declare namespace Phaser {
         /**
          * The Mask this Game Object is using during render.
          */
-        mask:
-          | Phaser.Display.Masks.BitmapMask
-          | Phaser.Display.Masks.GeometryMask;
+        mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask;
 
         /**
          * Sets the mask that this Game Object will use to render with.
@@ -62030,11 +60111,7 @@ declare namespace Phaser {
          * that allows you to limit what is visible during the render pass.
          * @param mask The mask this Game Object will use when rendering.
          */
-        setMask(
-          mask:
-            | Phaser.Display.Masks.BitmapMask
-            | Phaser.Display.Masks.GeometryMask,
-        ): this;
+        setMask(mask: Phaser.Display.Masks.BitmapMask | Phaser.Display.Masks.GeometryMask): this;
 
         /**
          * Clears the mask that this Game Object was using.
@@ -62056,7 +60133,7 @@ declare namespace Phaser {
          * @param renderable A renderable Game Object that uses a texture, such as a Sprite.
          */
         createBitmapMask(
-          renderable?: Phaser.GameObjects.GameObject,
+          renderable?: Phaser.GameObjects.GameObject
         ): Phaser.Display.Masks.BitmapMask;
 
         /**
@@ -62072,7 +60149,7 @@ declare namespace Phaser {
          * @param graphics A Graphics Game Object. The geometry within it will be used as the mask.
          */
         createGeometryMask(
-          graphics?: Phaser.GameObjects.Graphics,
+          graphics?: Phaser.GameObjects.Graphics
         ): Phaser.Display.Masks.GeometryMask;
 
         /**
@@ -62360,7 +60437,7 @@ declare namespace Phaser {
           x?: number | Phaser.Geom.Rectangle,
           y?: number,
           width?: number,
-          height?: number,
+          height?: number
         ): this;
 
         /**
@@ -62385,11 +60462,7 @@ declare namespace Phaser {
          * @param updateSize Should this call adjust the size of the Game Object? Default true.
          * @param updateOrigin Should this call adjust the origin of the Game Object? Default true.
          */
-        setFrame(
-          frame: string | integer,
-          updateSize?: boolean,
-          updateOrigin?: boolean,
-        ): this;
+        setFrame(frame: string | integer, updateSize?: boolean, updateOrigin?: boolean): this;
 
         /**
          * Fill or additive?
@@ -62428,7 +60501,7 @@ declare namespace Phaser {
           topLeft?: integer,
           topRight?: integer,
           bottomLeft?: integer,
-          bottomRight?: integer,
+          bottomRight?: integer
         ): this;
 
         /**
@@ -62456,7 +60529,7 @@ declare namespace Phaser {
           topLeft?: integer,
           topRight?: integer,
           bottomLeft?: integer,
-          bottomRight?: integer,
+          bottomRight?: integer
         ): this;
 
         /**
@@ -62562,12 +60635,7 @@ declare namespace Phaser {
          * @param width The width of the random area.
          * @param height The height of the random area.
          */
-        setRandomPosition(
-          x?: number,
-          y?: number,
-          width?: number,
-          height?: number,
-        ): this;
+        setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
         /**
          * Sets the rotation of this Game Object.
@@ -62617,7 +60685,7 @@ declare namespace Phaser {
          * @param tempMatrix The matrix to populate with the values from this Game Object.
          */
         getLocalTransformMatrix(
-          tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+          tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
         ): Phaser.GameObjects.Components.TransformMatrix;
 
         /**
@@ -62627,7 +60695,7 @@ declare namespace Phaser {
          */
         getWorldTransformMatrix(
           tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-          parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+          parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
         ): Phaser.GameObjects.Components.TransformMatrix;
 
         /**
@@ -62667,9 +60735,7 @@ declare namespace Phaser {
          * [description]
          * @param categories A unique category bitfield, or an array of them.
          */
-        setCollidesWith(
-          categories: number | number[],
-        ): Phaser.GameObjects.GameObject;
+        setCollidesWith(categories: number | number[]): Phaser.GameObjects.GameObject;
 
         /**
          * Applies a force to a body.
@@ -62684,7 +60750,7 @@ declare namespace Phaser {
          */
         applyForceFrom(
           position: Phaser.Math.Vector2,
-          force: Phaser.Math.Vector2,
+          force: Phaser.Math.Vector2
         ): Phaser.GameObjects.GameObject;
 
         /**
@@ -62717,11 +60783,7 @@ declare namespace Phaser {
          * @param air [description]
          * @param fstatic [description]
          */
-        setFriction(
-          value: number,
-          air?: number,
-          fstatic?: number,
-        ): Phaser.GameObjects.GameObject;
+        setFriction(value: number, air?: number, fstatic?: number): Phaser.GameObjects.GameObject;
 
         /**
          * [description]
@@ -62775,21 +60837,14 @@ declare namespace Phaser {
          * @param height [description]
          * @param options [description]
          */
-        setRectangle(
-          width: number,
-          height: number,
-          options: object,
-        ): Phaser.GameObjects.GameObject;
+        setRectangle(width: number, height: number, options: object): Phaser.GameObjects.GameObject;
 
         /**
          * [description]
          * @param radius [description]
          * @param options [description]
          */
-        setCircle(
-          radius: number,
-          options: object,
-        ): Phaser.GameObjects.GameObject;
+        setCircle(radius: number, options: object): Phaser.GameObjects.GameObject;
 
         /**
          * [description]
@@ -62797,11 +60852,7 @@ declare namespace Phaser {
          * @param sides [description]
          * @param options [description]
          */
-        setPolygon(
-          radius: number,
-          sides: number,
-          options: object,
-        ): Phaser.GameObjects.GameObject;
+        setPolygon(radius: number, sides: number, options: object): Phaser.GameObjects.GameObject;
 
         /**
          * [description]
@@ -62814,7 +60865,7 @@ declare namespace Phaser {
           width: number,
           height: number,
           slope: number,
-          options: object,
+          options: object
         ): Phaser.GameObjects.GameObject;
 
         /**
@@ -62822,10 +60873,7 @@ declare namespace Phaser {
          * @param body [description]
          * @param addToWorld [description] Default true.
          */
-        setExistingBody(
-          body: MatterJS.Body,
-          addToWorld?: boolean,
-        ): Phaser.GameObjects.GameObject;
+        setExistingBody(body: MatterJS.Body, addToWorld?: boolean): Phaser.GameObjects.GameObject;
 
         /**
          * [description]
@@ -62845,10 +60893,7 @@ declare namespace Phaser {
          * @param start [description]
          * @param end [description]
          */
-        setSleepEvents(
-          start: boolean,
-          end: boolean,
-        ): Phaser.GameObjects.GameObject;
+        setSleepEvents(start: boolean, end: boolean): Phaser.GameObjects.GameObject;
 
         /**
          * [description]
@@ -62943,7 +60988,7 @@ declare namespace Phaser {
         constructor(
           world: Phaser.Physics.Matter.World,
           tile: Phaser.Tilemaps.Tile,
-          options?: object,
+          options?: object
         );
 
         /**
@@ -62990,10 +61035,7 @@ declare namespace Phaser {
          * @param body The new Matter body to use.
          * @param addToWorld Whether or not to add the body to the Matter world. Default true.
          */
-        setBody(
-          body: MatterJS.Body,
-          addToWorld?: boolean,
-        ): Phaser.Physics.Matter.TileBody;
+        setBody(body: MatterJS.Body, addToWorld?: boolean): Phaser.Physics.Matter.TileBody;
 
         /**
          * Removes the current body from the TileBody and from the Matter world
@@ -63027,9 +61069,7 @@ declare namespace Phaser {
          * [description]
          * @param categories A unique category bitfield, or an array of them.
          */
-        setCollidesWith(
-          categories: number | number[],
-        ): Phaser.GameObjects.GameObject;
+        setCollidesWith(categories: number | number[]): Phaser.GameObjects.GameObject;
 
         /**
          * [description]
@@ -63037,11 +61077,7 @@ declare namespace Phaser {
          * @param air [description]
          * @param fstatic [description]
          */
-        setFriction(
-          value: number,
-          air?: number,
-          fstatic?: number,
-        ): Phaser.GameObjects.GameObject;
+        setFriction(value: number, air?: number, fstatic?: number): Phaser.GameObjects.GameObject;
 
         /**
          * [description]
@@ -63100,10 +61136,7 @@ declare namespace Phaser {
          * @param start [description]
          * @param end [description]
          */
-        setSleepEvents(
-          start: boolean,
-          end: boolean,
-        ): Phaser.GameObjects.GameObject;
+        setSleepEvents(start: boolean, end: boolean): Phaser.GameObjects.GameObject;
 
         /**
          * [description]
@@ -63142,13 +61175,7 @@ declare namespace Phaser {
          * @param h height.
          * @param config body configuration and fixture (child body) definitions.
          */
-        function parseBody(
-          x: number,
-          y: number,
-          w: number,
-          h: number,
-          config: object,
-        ): object;
+        function parseBody(x: number, y: number, w: number, h: number, config: object): object;
 
         /**
          * Parses an element of the "fixtures" list exported by PhysicsEditor
@@ -63174,11 +61201,7 @@ declare namespace Phaser {
          * @param world [description]
          * @param options [description]
          */
-        constructor(
-          scene: Phaser.Scene,
-          world: Phaser.Physics.Matter.World,
-          options: object,
-        );
+        constructor(scene: Phaser.Scene, world: Phaser.Physics.Matter.World, options: object);
 
         /**
          * [description]
@@ -63231,10 +61254,7 @@ declare namespace Phaser {
          * @param body [description]
          * @param position [description]
          */
-        getBodyPart(
-          body: MatterJS.Body,
-          position: Phaser.Math.Vector2,
-        ): boolean;
+        getBodyPart(body: MatterJS.Body, position: Phaser.Math.Vector2): boolean;
 
         /**
          * [description]
@@ -63371,7 +61391,7 @@ declare namespace Phaser {
           left?: boolean,
           right?: boolean,
           top?: boolean,
-          bottom?: boolean,
+          bottom?: boolean
         ): Phaser.Physics.Matter.World;
 
         /**
@@ -63389,7 +61409,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           width: number,
-          height: number,
+          height: number
         ): void;
 
         /**
@@ -63408,11 +61428,7 @@ declare namespace Phaser {
          * @param y [description] Default 1.
          * @param scale [description]
          */
-        setGravity(
-          x?: number,
-          y?: number,
-          scale?: number,
-        ): Phaser.Physics.Matter.World;
+        setGravity(x?: number, y?: number, scale?: number): Phaser.Physics.Matter.World;
 
         /**
          * Creates a rectangle Matter body and adds it to the world.
@@ -63422,13 +61438,7 @@ declare namespace Phaser {
          * @param height The height of the body.
          * @param options Optional Matter configuration object.
          */
-        create(
-          x: number,
-          y: number,
-          width: number,
-          height: number,
-          options: object,
-        ): MatterJS.Body;
+        create(x: number, y: number, width: number, height: number, options: object): MatterJS.Body;
 
         /**
          * [description]
@@ -63450,7 +61460,7 @@ declare namespace Phaser {
          */
         removeConstraint(
           constraint: MatterJS.Constraint,
-          deep: boolean,
+          deep: boolean
         ): Phaser.Physics.Matter.World;
 
         /**
@@ -63460,10 +61470,8 @@ declare namespace Phaser {
          * @param options Options to be passed to the MatterTileBody constructor. {@ee Phaser.Physics.Matter.TileBody}
          */
         convertTilemapLayer(
-          tilemapLayer:
-            | Phaser.Tilemaps.DynamicTilemapLayer
-            | Phaser.Tilemaps.StaticTilemapLayer,
-          options?: object,
+          tilemapLayer: Phaser.Tilemaps.DynamicTilemapLayer | Phaser.Tilemaps.StaticTilemapLayer,
+          options?: object
         ): Phaser.Physics.Matter.World;
 
         /**
@@ -63472,10 +61480,7 @@ declare namespace Phaser {
          * @param tiles An array of tiles.
          * @param options Options to be passed to the MatterTileBody constructor. {@see Phaser.Physics.Matter.TileBody}
          */
-        convertTiles(
-          tiles: Phaser.Tilemaps.Tile[],
-          options?: object,
-        ): Phaser.Physics.Matter.World;
+        convertTiles(tiles: Phaser.Tilemaps.Tile[], options?: object): Phaser.Physics.Matter.World;
 
         /**
          * [description]
@@ -63754,7 +61759,7 @@ declare namespace Phaser {
       protected addToScene(
         sys: Phaser.Scenes.Systems,
         globalPlugins: any[],
-        scenePlugins: any[],
+        scenePlugins: any[]
       ): void;
 
       /**
@@ -63790,7 +61795,7 @@ declare namespace Phaser {
         key: string,
         plugin: Function,
         mapping?: string,
-        addToScene?: Phaser.Scene,
+        addToScene?: Phaser.Scene
       ): void;
 
       /**
@@ -63818,13 +61823,7 @@ declare namespace Phaser {
        * @param mapping If this plugin is injected into the Phaser.Scene class, this is the property key to use.
        * @param data A value passed to the plugin's `init` method.
        */
-      install(
-        key: string,
-        plugin: Function,
-        start?: boolean,
-        mapping?: string,
-        data?: any,
-      ): void;
+      install(key: string, plugin: Function, start?: boolean, mapping?: string, data?: any): void;
 
       /**
        * Gets an index of a global plugin based on the given key.
@@ -63878,10 +61877,7 @@ declare namespace Phaser {
        * @param key The key of the plugin to get.
        * @param autoStart Automatically start a new instance of the plugin if found in the cache, but not actively running. Default true.
        */
-      get(
-        key: string,
-        autoStart?: boolean,
-      ): Phaser.Plugins.BasePlugin | Function;
+      get(key: string, autoStart?: boolean): Phaser.Plugins.BasePlugin | Function;
 
       /**
        * Returns the plugin class from the cache.
@@ -63938,11 +61934,7 @@ declare namespace Phaser {
        * @param factoryCallback The callback to invoke when the Game Object Factory is called.
        * @param creatorCallback The callback to invoke when the Game Object Creator is called.
        */
-      registerGameObject(
-        key: string,
-        factoryCallback?: Function,
-        creatorCallback?: Function,
-      ): void;
+      registerGameObject(key: string, factoryCallback?: Function, creatorCallback?: Function): void;
 
       /**
        * Registers a new file type with the global File Types Manager, making it available to all Loader
@@ -63974,11 +61966,7 @@ declare namespace Phaser {
        * @param callback The callback to invoke when the Game Object Factory is called.
        * @param addToScene Optionally add this file type into the Loader Plugin owned by the given Scene.
        */
-      registerFileType(
-        key: string,
-        callback: Function,
-        addToScene?: Phaser.Scene,
-      ): void;
+      registerFileType(key: string, callback: Function, addToScene?: Phaser.Scene): void;
 
       /**
        * Destroys this Plugin Manager and all associated plugins.
@@ -64000,10 +61988,7 @@ declare namespace Phaser {
        * @param scene A reference to the Scene that has installed this plugin.
        * @param pluginManager A reference to the Plugin Manager.
        */
-      constructor(
-        scene: Phaser.Scene,
-        pluginManager: Phaser.Plugins.PluginManager,
-      );
+      constructor(scene: Phaser.Scene, pluginManager: Phaser.Plugins.PluginManager);
 
       /**
        * This method is called when the Scene boots. It is only ever called once.
@@ -64269,7 +62254,7 @@ declare namespace Phaser {
           scene: Phaser.Scene,
           children: Phaser.GameObjects.DisplayList,
           interpolationPercentage: number,
-          camera: Phaser.Cameras.Scene2D.Camera,
+          camera: Phaser.Cameras.Scene2D.Camera
         ): void;
 
         /**
@@ -64283,11 +62268,7 @@ declare namespace Phaser {
          * @param type [description]
          * @param encoderOptions [description]
          */
-        snapshot(
-          callback: SnapshotCallback,
-          type: string,
-          encoderOptions: number,
-        ): void;
+        snapshot(callback: SnapshotCallback, type: string, encoderOptions: number): void;
 
         /**
          * Takes a Sprite Game Object, or any object that extends it, and draws it to the current context.
@@ -64300,7 +62281,7 @@ declare namespace Phaser {
           sprite: Phaser.GameObjects.GameObject,
           frame: Phaser.Textures.Frame,
           camera: Phaser.Cameras.Scene2D.Camera,
-          parentTransformMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+          parentTransformMatrix?: Phaser.GameObjects.Components.TransformMatrix
         ): void;
 
         /**
@@ -64337,7 +62318,7 @@ declare namespace Phaser {
         ctx: CanvasRenderingContext2D,
         src: Phaser.GameObjects.GameObject,
         camera: Phaser.Cameras.Scene2D.Camera,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): boolean;
     }
 
@@ -64351,7 +62332,7 @@ declare namespace Phaser {
       function Canvas(
         canvas: HTMLCanvasElement,
         type?: string,
-        encoderOptions?: number,
+        encoderOptions?: number
       ): HTMLImageElement;
 
       /**
@@ -64363,7 +62344,7 @@ declare namespace Phaser {
       function WebGL(
         sourceCanvas: HTMLCanvasElement,
         type?: string,
-        encoderOptions?: number,
+        encoderOptions?: number
       ): HTMLImageElement;
     }
 
@@ -64429,7 +62410,7 @@ declare namespace Phaser {
           beginMask(
             mask: Phaser.GameObjects.GameObject,
             maskedObject: Phaser.GameObjects.GameObject,
-            camera: Phaser.Cameras.Scene2D.Camera,
+            camera: Phaser.Cameras.Scene2D.Camera
           ): void;
 
           /**
@@ -64447,8 +62428,8 @@ declare namespace Phaser {
          * This pipeline extends TextureTintPipeline so it implements all it's rendering functions
          * and batching system.
          */
-        class ForwardDiffuseLightPipeline extends Phaser.Renderer.WebGL
-          .Pipelines.TextureTintPipeline {
+        class ForwardDiffuseLightPipeline extends Phaser.Renderer.WebGL.Pipelines
+          .TextureTintPipeline {
           /**
            *
            * @param config [description]
@@ -64460,10 +62441,7 @@ declare namespace Phaser {
            * @param scene [description]
            * @param camera [description]
            */
-          onRender(
-            scene: Phaser.Scene,
-            camera: Phaser.Cameras.Scene2D.Camera,
-          ): this;
+          onRender(scene: Phaser.Scene, camera: Phaser.Cameras.Scene2D.Camera): this;
 
           /**
            * Sets the Game Objects normal map as the active texture.
@@ -64480,7 +62458,7 @@ declare namespace Phaser {
           batchSprite(
             sprite: Phaser.GameObjects.Sprite,
             camera: Phaser.Cameras.Scene2D.Camera,
-            parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix,
+            parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix
           ): void;
         }
 
@@ -64567,7 +62545,7 @@ declare namespace Phaser {
             uOffset: number,
             vOffset: number,
             camera: Phaser.Cameras.Scene2D.Camera,
-            parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix,
+            parentTransformMatrix: Phaser.GameObjects.Components.TransformMatrix
           ): void;
 
           /**
@@ -64612,7 +62590,7 @@ declare namespace Phaser {
            */
           setTexture2D(
             texture: WebGLTexture,
-            textureUnit: integer,
+            textureUnit: integer
           ): Phaser.Renderer.WebGL.Pipelines.TextureTintPipeline;
 
           /**
@@ -64637,7 +62615,7 @@ declare namespace Phaser {
           batchSprite(
             sprite: Phaser.GameObjects.Image | Phaser.GameObjects.Sprite,
             camera: Phaser.Cameras.Scene2D.Camera,
-            parentTransformMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+            parentTransformMatrix?: Phaser.GameObjects.Components.TransformMatrix
           ): void;
 
           /**
@@ -64691,7 +62669,7 @@ declare namespace Phaser {
             tintTR: number,
             tintBL: number,
             tintBR: number,
-            tintEffect: number | boolean,
+            tintEffect: number | boolean
           ): boolean;
 
           /**
@@ -64737,7 +62715,7 @@ declare namespace Phaser {
             tintTL: number,
             tintTR: number,
             tintBL: number,
-            tintEffect: number | boolean,
+            tintEffect: number | boolean
           ): boolean;
 
           /**
@@ -64757,7 +62735,7 @@ declare namespace Phaser {
             tint: number,
             alpha: number,
             transformMatrix: Phaser.GameObjects.Components.TransformMatrix,
-            parentTransformMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+            parentTransformMatrix?: Phaser.GameObjects.Components.TransformMatrix
           ): void;
 
           /**
@@ -64777,7 +62755,7 @@ declare namespace Phaser {
             width: number,
             height: number,
             color: number,
-            alpha: number,
+            alpha: number
           ): void;
 
           /**
@@ -64796,7 +62774,7 @@ declare namespace Phaser {
             width: number,
             height: number,
             currentMatrix: Phaser.GameObjects.Components.TransformMatrix,
-            parentMatrix: Phaser.GameObjects.Components.TransformMatrix,
+            parentMatrix: Phaser.GameObjects.Components.TransformMatrix
           ): void;
 
           /**
@@ -64819,7 +62797,7 @@ declare namespace Phaser {
             x2: number,
             y2: number,
             currentMatrix: Phaser.GameObjects.Components.TransformMatrix,
-            parentMatrix: Phaser.GameObjects.Components.TransformMatrix,
+            parentMatrix: Phaser.GameObjects.Components.TransformMatrix
           ): void;
 
           /**
@@ -64845,7 +62823,7 @@ declare namespace Phaser {
             y2: number,
             lineWidth: number,
             currentMatrix: Phaser.GameObjects.Components.TransformMatrix,
-            parentMatrix: Phaser.GameObjects.Components.TransformMatrix,
+            parentMatrix: Phaser.GameObjects.Components.TransformMatrix
           ): void;
 
           /**
@@ -64862,7 +62840,7 @@ declare namespace Phaser {
           batchFillPath(
             path: any[],
             currentMatrix: Phaser.GameObjects.Components.TransformMatrix,
-            parentMatrix: Phaser.GameObjects.Components.TransformMatrix,
+            parentMatrix: Phaser.GameObjects.Components.TransformMatrix
           ): void;
 
           /**
@@ -64883,7 +62861,7 @@ declare namespace Phaser {
             lineWidth: number,
             pathOpen: boolean,
             currentMatrix: Phaser.GameObjects.Components.TransformMatrix,
-            parentMatrix: Phaser.GameObjects.Components.TransformMatrix,
+            parentMatrix: Phaser.GameObjects.Components.TransformMatrix
           ): void;
 
           /**
@@ -64903,7 +62881,7 @@ declare namespace Phaser {
             by: number,
             aLineWidth: number,
             bLineWidth: number,
-            currentMatrix: Float32Array,
+            currentMatrix: Float32Array
           ): void;
         }
       }
@@ -64916,12 +62894,7 @@ declare namespace Phaser {
          * @param b [description]
          * @param a Alpha component in a range from 0.0 to 1.0
          */
-        function getTintFromFloats(
-          r: number,
-          g: number,
-          b: number,
-          a: number,
-        ): number;
+        function getTintFromFloats(r: number, g: number, b: number, a: number): number;
 
         /**
          * Packs a Uint24, representing RGB components, with a Float32, representing
@@ -64951,10 +62924,7 @@ declare namespace Phaser {
          * @param attributes Array of attributes
          * @param glContext WebGLContext used for check types
          */
-        function getComponentCount(
-          attributes: any[],
-          glContext: WebGLRenderingContext,
-        ): number;
+        function getComponentCount(attributes: any[], glContext: WebGLRenderingContext): number;
       }
 
       /**
@@ -65119,7 +63089,7 @@ declare namespace Phaser {
           size: integer,
           type: integer,
           normalized: boolean,
-          offset: integer,
+          offset: integer
         ): this;
 
         /**
@@ -65155,10 +63125,7 @@ declare namespace Phaser {
          * @param scene [description]
          * @param camera [description]
          */
-        onRender(
-          scene: Phaser.Scene,
-          camera: Phaser.Cameras.Scene2D.Camera,
-        ): this;
+        onRender(scene: Phaser.Scene, camera: Phaser.Cameras.Scene2D.Camera): this;
 
         /**
          * [description]
@@ -65208,13 +63175,7 @@ declare namespace Phaser {
          * @param z Z component of the uniform
          * @param w W component of the uniform
          */
-        setFloat4(
-          name: string,
-          x: number,
-          y: number,
-          z: number,
-          w: number,
-        ): this;
+        setFloat4(name: string, x: number, y: number, z: number, w: number): this;
 
         /**
          * Set a uniform value of the current pipeline program.
@@ -65276,13 +63237,7 @@ declare namespace Phaser {
          * @param z Z component of the uniform
          * @param w W component of the uniform
          */
-        setInt4(
-          name: string,
-          x: integer,
-          y: integer,
-          z: integer,
-          w: integer,
-        ): this;
+        setInt4(name: string, x: integer, y: integer, z: integer, w: integer): this;
 
         /**
          * Set a uniform value of the current pipeline program.
@@ -65290,11 +63245,7 @@ declare namespace Phaser {
          * @param transpose [description]
          * @param matrix [description]
          */
-        setMatrix2(
-          name: string,
-          transpose: boolean,
-          matrix: Float32Array,
-        ): this;
+        setMatrix2(name: string, transpose: boolean, matrix: Float32Array): this;
 
         /**
          * Set a uniform value of the current pipeline program.
@@ -65302,11 +63253,7 @@ declare namespace Phaser {
          * @param transpose [description]
          * @param matrix [description]
          */
-        setMatrix3(
-          name: string,
-          transpose: boolean,
-          matrix: Float32Array,
-        ): this;
+        setMatrix3(name: string, transpose: boolean, matrix: Float32Array): this;
 
         /**
          * Set a uniform value of the current pipeline program.
@@ -65314,11 +63261,7 @@ declare namespace Phaser {
          * @param transpose Should the matrix be transpose
          * @param matrix Matrix data
          */
-        setMatrix4(
-          name: string,
-          transpose: boolean,
-          matrix: Float32Array,
-        ): this;
+        setMatrix4(name: string, transpose: boolean, matrix: Float32Array): this;
       }
 
       /**
@@ -65567,7 +63510,7 @@ declare namespace Phaser {
          */
         addPipeline(
           pipelineName: string,
-          pipelineInstance: Phaser.Renderer.WebGL.WebGLPipeline,
+          pipelineInstance: Phaser.Renderer.WebGL.WebGLPipeline
         ): Phaser.Renderer.WebGL.WebGLPipeline;
 
         /**
@@ -65577,12 +63520,7 @@ declare namespace Phaser {
          * @param width The width of the scissor.
          * @param height The height of the scissor.
          */
-        pushScissor(
-          x: integer,
-          y: integer,
-          width: integer,
-          height: integer,
-        ): integer[];
+        pushScissor(x: integer, y: integer, width: integer, height: integer): integer[];
 
         /**
          * Sets the current scissor state.
@@ -65591,12 +63529,7 @@ declare namespace Phaser {
          * @param width The width of the scissor.
          * @param height The height of the scissor.
          */
-        setScissor(
-          x: integer,
-          y: integer,
-          width: integer,
-          height: integer,
-        ): void;
+        setScissor(x: integer, y: integer, width: integer, height: integer): void;
 
         /**
          * Pops the last scissor state and sets it.
@@ -65610,7 +63543,7 @@ declare namespace Phaser {
          */
         setPipeline(
           pipelineInstance: Phaser.Renderer.WebGL.WebGLPipeline,
-          gameObject?: Phaser.GameObjects.GameObject,
+          gameObject?: Phaser.GameObjects.GameObject
         ): Phaser.Renderer.WebGL.WebGLPipeline;
 
         /**
@@ -65635,11 +63568,7 @@ declare namespace Phaser {
          * @param func The function to use for the blend mode.
          * @param equation The equation to use for the blend mode.
          */
-        updateBlendMode(
-          index: integer,
-          func: Function,
-          equation: Function,
-        ): this;
+        updateBlendMode(index: integer, func: Function, equation: Function): this;
 
         /**
          * Removes a custom blend mode from the renderer.
@@ -65691,7 +63620,7 @@ declare namespace Phaser {
           source: object,
           width: integer,
           height: integer,
-          scaleMode: integer,
+          scaleMode: integer
         ): WebGLTexture;
 
         /**
@@ -65717,7 +63646,7 @@ declare namespace Phaser {
           pixels: object,
           width: integer,
           height: integer,
-          pma: boolean,
+          pma: boolean
         ): WebGLTexture;
 
         /**
@@ -65731,7 +63660,7 @@ declare namespace Phaser {
           width: integer,
           height: integer,
           renderTexture: WebGLTexture,
-          addDepthStencilBuffer: boolean,
+          addDepthStencilBuffer: boolean
         ): WebGLFramebuffer;
 
         /**
@@ -65739,30 +63668,21 @@ declare namespace Phaser {
          * @param vertexShader Source to the vertex shader
          * @param fragmentShader Source to the fragment shader
          */
-        createProgram(
-          vertexShader: string,
-          fragmentShader: string,
-        ): WebGLProgram;
+        createProgram(vertexShader: string, fragmentShader: string): WebGLProgram;
 
         /**
          * Wrapper for creating a vertex buffer.
          * @param initialDataOrSize It's either ArrayBuffer or an integer indicating the size of the vbo
          * @param bufferUsage How the buffer is used. gl.DYNAMIC_DRAW, gl.STATIC_DRAW or gl.STREAM_DRAW
          */
-        createVertexBuffer(
-          initialDataOrSize: ArrayBuffer,
-          bufferUsage: integer,
-        ): WebGLBuffer;
+        createVertexBuffer(initialDataOrSize: ArrayBuffer, bufferUsage: integer): WebGLBuffer;
 
         /**
          * Wrapper for creating a vertex buffer.
          * @param initialDataOrSize Either ArrayBuffer or an integer indicating the size of the vbo.
          * @param bufferUsage How the buffer is used. gl.DYNAMIC_DRAW, gl.STATIC_DRAW or gl.STREAM_DRAW.
          */
-        createIndexBuffer(
-          initialDataOrSize: ArrayBuffer,
-          bufferUsage: integer,
-        ): WebGLBuffer;
+        createIndexBuffer(initialDataOrSize: ArrayBuffer, bufferUsage: integer): WebGLBuffer;
 
         /**
          * Removes the given texture from the nativeTextures array and then deletes it from the GPU.
@@ -65819,7 +63739,7 @@ declare namespace Phaser {
           scene: Phaser.Scene,
           children: Phaser.GameObjects.GameObject,
           interpolationPercentage: number,
-          camera: Phaser.Cameras.Scene2D.Camera,
+          camera: Phaser.Cameras.Scene2D.Camera
         ): void;
 
         /**
@@ -65836,7 +63756,7 @@ declare namespace Phaser {
         snapshot(
           callback: SnapshotCallback,
           type: string,
-          encoderOptions: number,
+          encoderOptions: number
         ): Phaser.Renderer.WebGL.WebGLRenderer;
 
         /**
@@ -65848,7 +63768,7 @@ declare namespace Phaser {
         canvasToTexture(
           srcCanvas: HTMLCanvasElement,
           dstTexture?: WebGLTexture,
-          noRepeat?: boolean,
+          noRepeat?: boolean
         ): WebGLTexture;
 
         /**
@@ -65873,12 +63793,7 @@ declare namespace Phaser {
          * @param x [description]
          * @param y [description]
          */
-        setFloat2(
-          program: WebGLProgram,
-          name: string,
-          x: number,
-          y: number,
-        ): this;
+        setFloat2(program: WebGLProgram, name: string, x: number, y: number): this;
 
         /**
          * [description]
@@ -65888,13 +63803,7 @@ declare namespace Phaser {
          * @param y [description]
          * @param z [description]
          */
-        setFloat3(
-          program: WebGLProgram,
-          name: string,
-          x: number,
-          y: number,
-          z: number,
-        ): this;
+        setFloat3(program: WebGLProgram, name: string, x: number, y: number, z: number): this;
 
         /**
          * Sets uniform of a WebGLProgram
@@ -65911,7 +63820,7 @@ declare namespace Phaser {
           x: number,
           y: number,
           z: number,
-          w: number,
+          w: number
         ): this;
 
         /**
@@ -65920,11 +63829,7 @@ declare namespace Phaser {
          * @param name The name of the uniform to look-up and modify.
          * @param arr The new value to be used for the uniform variable.
          */
-        setFloat1v(
-          program: WebGLProgram,
-          name: string,
-          arr: Float32Array,
-        ): this;
+        setFloat1v(program: WebGLProgram, name: string, arr: Float32Array): this;
 
         /**
          * Sets the value of a uniform variable in the given WebGLProgram.
@@ -65932,11 +63837,7 @@ declare namespace Phaser {
          * @param name The name of the uniform to look-up and modify.
          * @param arr The new value to be used for the uniform variable.
          */
-        setFloat2v(
-          program: WebGLProgram,
-          name: string,
-          arr: Float32Array,
-        ): this;
+        setFloat2v(program: WebGLProgram, name: string, arr: Float32Array): this;
 
         /**
          * Sets the value of a uniform variable in the given WebGLProgram.
@@ -65944,11 +63845,7 @@ declare namespace Phaser {
          * @param name The name of the uniform to look-up and modify.
          * @param arr The new value to be used for the uniform variable.
          */
-        setFloat3v(
-          program: WebGLProgram,
-          name: string,
-          arr: Float32Array,
-        ): this;
+        setFloat3v(program: WebGLProgram, name: string, arr: Float32Array): this;
 
         /**
          * Sets the value of a uniform variable in the given WebGLProgram.
@@ -65956,11 +63853,7 @@ declare namespace Phaser {
          * @param name The name of the uniform to look-up and modify.
          * @param arr The new value to be used for the uniform variable.
          */
-        setFloat4v(
-          program: WebGLProgram,
-          name: string,
-          arr: Float32Array,
-        ): this;
+        setFloat4v(program: WebGLProgram, name: string, arr: Float32Array): this;
 
         /**
          * Sets the value of a uniform variable in the given WebGLProgram.
@@ -65977,12 +63870,7 @@ declare namespace Phaser {
          * @param x [description]
          * @param y [description]
          */
-        setInt2(
-          program: WebGLProgram,
-          name: string,
-          x: integer,
-          y: integer,
-        ): this;
+        setInt2(program: WebGLProgram, name: string, x: integer, y: integer): this;
 
         /**
          * Sets the value of a uniform variable in the given WebGLProgram.
@@ -65992,13 +63880,7 @@ declare namespace Phaser {
          * @param y [description]
          * @param z [description]
          */
-        setInt3(
-          program: WebGLProgram,
-          name: string,
-          x: integer,
-          y: integer,
-          z: integer,
-        ): this;
+        setInt3(program: WebGLProgram, name: string, x: integer, y: integer, z: integer): this;
 
         /**
          * Sets the value of a uniform variable in the given WebGLProgram.
@@ -66015,7 +63897,7 @@ declare namespace Phaser {
           x: integer,
           y: integer,
           z: integer,
-          w: integer,
+          w: integer
         ): this;
 
         /**
@@ -66029,7 +63911,7 @@ declare namespace Phaser {
           program: WebGLProgram,
           name: string,
           transpose: boolean,
-          matrix: Float32Array,
+          matrix: Float32Array
         ): this;
 
         /**
@@ -66043,7 +63925,7 @@ declare namespace Phaser {
           program: WebGLProgram,
           name: string,
           transpose: boolean,
-          matrix: Float32Array,
+          matrix: Float32Array
         ): this;
 
         /**
@@ -66057,7 +63939,7 @@ declare namespace Phaser {
           program: WebGLProgram,
           name: string,
           transpose: boolean,
-          matrix: Float32Array,
+          matrix: Float32Array
         ): this;
 
         /**
@@ -66233,7 +64115,7 @@ declare namespace Phaser {
         key: string,
         sceneConfig: Phaser.Scene | Phaser.Scenes.Settings.Config | Function,
         autoStart?: boolean,
-        data?: object,
+        data?: object
       ): Phaser.Scene;
 
       /**
@@ -66267,9 +64149,7 @@ declare namespace Phaser {
        * @param renderer The renderer to use.
        */
       render(
-        renderer:
-          | Phaser.Renderer.Canvas.CanvasRenderer
-          | Phaser.Renderer.WebGL.WebGLRenderer,
+        renderer: Phaser.Renderer.Canvas.CanvasRenderer | Phaser.Renderer.WebGL.WebGLRenderer
       ): void;
 
       /**
@@ -66406,7 +64286,7 @@ declare namespace Phaser {
        */
       moveAbove(
         keyA: string | Phaser.Scene,
-        keyB: string | Phaser.Scene,
+        keyB: string | Phaser.Scene
       ): Phaser.Scenes.SceneManager;
 
       /**
@@ -66418,7 +64298,7 @@ declare namespace Phaser {
        */
       moveBelow(
         keyA: string | Phaser.Scene,
-        keyB: string | Phaser.Scene,
+        keyB: string | Phaser.Scene
       ): Phaser.Scenes.SceneManager;
 
       /**
@@ -66428,7 +64308,7 @@ declare namespace Phaser {
        */
       swapPosition(
         keyA: string | Phaser.Scene,
-        keyB: string | Phaser.Scene,
+        keyB: string | Phaser.Scene
       ): Phaser.Scenes.SceneManager;
 
       /**
@@ -66527,9 +64407,7 @@ declare namespace Phaser {
        * override this understand that until the target Scene completes it might never be unlocked for input events.
        * @param config The transition configuration object.
        */
-      transition(
-        config: Phaser.Scenes.ScenePlugin.SceneTransitionConfig,
-      ): boolean;
+      transition(config: Phaser.Scenes.ScenePlugin.SceneTransitionConfig): boolean;
 
       /**
        * Add the Scene into the Scene Manager and start it if 'autoStart' is true or the Scene config 'active' property is set.
@@ -66540,7 +64418,7 @@ declare namespace Phaser {
       add(
         key: string,
         sceneConfig: Phaser.Scene | Phaser.Scenes.Settings.Config | Function,
-        autoStart: boolean,
+        autoStart: boolean
       ): Phaser.Scenes.ScenePlugin;
 
       /**
@@ -66609,11 +64487,7 @@ declare namespace Phaser {
        * @param key The Scene to set the active state of.
        * @param data An optional data object that will be passed to the Scene and emitted with its events.
        */
-      setActive(
-        value: boolean,
-        key?: string,
-        data?: object,
-      ): Phaser.Scenes.ScenePlugin;
+      setActive(value: boolean, key?: string, data?: object): Phaser.Scenes.ScenePlugin;
 
       /**
        * Sets the visible state of the given Scene.
@@ -66836,7 +64710,7 @@ declare namespace Phaser {
        * @param config [description]
        */
       function create(
-        config: string | Phaser.Scenes.Settings.Config,
+        config: string | Phaser.Scenes.Settings.Config
       ): Phaser.Scenes.Settings.Object;
     }
 
@@ -66853,10 +64727,7 @@ declare namespace Phaser {
        * @param scene The Scene that owns this Systems instance.
        * @param config Scene specific configuration settings.
        */
-      constructor(
-        scene: Phaser.Scene,
-        config: string | Phaser.Scenes.Settings.Config,
-      );
+      constructor(scene: Phaser.Scene, config: string | Phaser.Scenes.Settings.Config);
 
       /**
        * A reference to the Scene that these Systems belong to.
@@ -67028,9 +64899,7 @@ declare namespace Phaser {
        * @param renderer The renderer that invoked the render call.
        */
       render(
-        renderer:
-          | Phaser.Renderer.Canvas.CanvasRenderer
-          | Phaser.Renderer.WebGL.WebGLRenderer,
+        renderer: Phaser.Renderer.Canvas.CanvasRenderer | Phaser.Renderer.WebGL.WebGLRenderer
       ): void;
 
       /**
@@ -67311,11 +65180,7 @@ declare namespace Phaser {
        * @param key Asset key for the sound.
        * @param config An optional config object containing default sound settings.
        */
-      constructor(
-        manager: Phaser.Sound.BaseSoundManager,
-        key: string,
-        config?: SoundConfig,
-      );
+      constructor(manager: Phaser.Sound.BaseSoundManager, key: string, config?: SoundConfig);
 
       /**
        * Asset key for the sound.
@@ -67494,10 +65359,7 @@ declare namespace Phaser {
        * @param key Asset key for the sound.
        * @param config An optional config object containing default sound settings.
        */
-      addAudioSprite(
-        key: string,
-        config?: SoundConfig,
-      ): Phaser.Sound.BaseSound.AudioSpriteSound;
+      addAudioSprite(key: string, config?: SoundConfig): Phaser.Sound.BaseSound.AudioSpriteSound;
 
       /**
        * Enables playing sound on the fly without the need to keep a reference to it.
@@ -67514,11 +65376,7 @@ declare namespace Phaser {
        * @param spriteName The name of the sound sprite to play.
        * @param config An optional config object containing default sound settings.
        */
-      playAudioSprite(
-        key: string,
-        spriteName: string,
-        config?: SoundConfig,
-      ): boolean;
+      playAudioSprite(key: string, spriteName: string, config?: SoundConfig): boolean;
 
       /**
        * Removes a sound from the sound manager.
@@ -67622,11 +65480,7 @@ declare namespace Phaser {
        * @param key Asset key for the sound.
        * @param config An optional config object containing default sound settings. Default {}.
        */
-      constructor(
-        manager: Phaser.Sound.HTML5AudioSoundManager,
-        key: string,
-        config?: SoundConfig,
-      );
+      constructor(manager: Phaser.Sound.HTML5AudioSoundManager, key: string, config?: SoundConfig);
 
       /**
        * Play this sound, or a marked section of it.
@@ -67825,11 +65679,7 @@ declare namespace Phaser {
        * @param prop Name of the method to be called or property to be assigned a value to.
        * @param value An optional parameter that either holds an array of arguments to be passed to the method call or value to be set to the property.
        */
-      protected isLocked(
-        sound: Phaser.Sound.HTML5AudioSound,
-        prop: string,
-        value?: any,
-      ): boolean;
+      protected isLocked(sound: Phaser.Sound.HTML5AudioSound, prop: string, value?: any): boolean;
 
       /**
        * Sets the muted state of all this Sound Manager.
@@ -67863,11 +65713,7 @@ declare namespace Phaser {
        * @param key Asset key for the sound.
        * @param config An optional config object containing default sound settings. Default {}.
        */
-      constructor(
-        manager: Phaser.Sound.NoAudioSoundManager,
-        key: string,
-        config?: SoundConfig,
-      );
+      constructor(manager: Phaser.Sound.NoAudioSoundManager, key: string, config?: SoundConfig);
     }
 
     /**
@@ -67904,11 +65750,7 @@ declare namespace Phaser {
        * @param key Asset key for the sound.
        * @param config An optional config object containing default sound settings. Default {}.
        */
-      constructor(
-        manager: Phaser.Sound.WebAudioSoundManager,
-        key: string,
-        config?: SoundConfig,
-      );
+      constructor(manager: Phaser.Sound.WebAudioSoundManager, key: string, config?: SoundConfig);
 
       /**
        * Play this sound, or a marked section of it.
@@ -68196,12 +66038,7 @@ declare namespace Phaser {
        * @param startIndex The position in the List to start the search at. Default 0.
        * @param endIndex The position in the List to optionally stop the search at. It won't be checked.
        */
-      getFirst(
-        property: string,
-        value: T,
-        startIndex?: number,
-        endIndex?: number,
-      ): T | null;
+      getFirst(property: string, value: T, startIndex?: number, endIndex?: number): T | null;
 
       /**
        * Returns all children in this List.
@@ -68222,12 +66059,7 @@ declare namespace Phaser {
        * @param startIndex The first child index to start the search from.
        * @param endIndex The last child index to search up until.
        */
-      getAll(
-        property?: string,
-        value?: T,
-        startIndex?: integer,
-        endIndex?: integer,
-      ): T[];
+      getAll(property?: string, value?: T, startIndex?: integer, endIndex?: integer): T[];
 
       /**
        * Returns the total number of items in the List which have a property matching the given value.
@@ -68270,11 +66102,7 @@ declare namespace Phaser {
        * @param endIndex The position to stop removing at. The item at this position won't be removed.
        * @param skipCallback Skip calling the List.removeCallback. Default false.
        */
-      removeBetween(
-        startIndex?: integer,
-        endIndex?: integer,
-        skipCallback?: boolean,
-      ): T[];
+      removeBetween(startIndex?: integer, endIndex?: integer, skipCallback?: boolean): T[];
 
       /**
        * Removes all the items.
@@ -68336,12 +66164,7 @@ declare namespace Phaser {
        * @param startIndex The first child index to start the search from.
        * @param endIndex The last child index to search up until.
        */
-      setAll(
-        property: string,
-        value: T,
-        startIndex?: integer,
-        endIndex?: integer,
-      ): void;
+      setAll(property: string, value: T, startIndex?: integer, endIndex?: integer): void;
 
       /**
        * Passes all children to the given callback.
@@ -68487,10 +66310,7 @@ declare namespace Phaser {
        * @param map The Map to merge in to this Map.
        * @param override Set to `true` to replace values in this Map with those from the source map, or `false` to skip them. Default false.
        */
-      merge(
-        map: Phaser.Structs.Map<K, V>,
-        override?: boolean,
-      ): Phaser.Structs.Map<K, V>;
+      merge(map: Phaser.Structs.Map<K, V>, override?: boolean): Phaser.Structs.Map<K, V>;
     }
 
     /**
@@ -68588,10 +66408,7 @@ declare namespace Phaser {
        * @param callback The callback to be invoked and passed each value this Set contains.
        * @param callbackScope The scope of the callback.
        */
-      each(
-        callback: EachSetCallback<T>,
-        callbackScope: any,
-      ): Phaser.Structs.Set<T>;
+      each(callback: EachSetCallback<T>, callbackScope: any): Phaser.Structs.Set<T>;
 
       /**
        * Passes each value in this Set to the given callback.
@@ -68599,10 +66416,7 @@ declare namespace Phaser {
        * @param callback The callback to be invoked and passed each value this Set contains.
        * @param callbackScope The scope of the callback.
        */
-      iterate(
-        callback: EachSetCallback<T>,
-        callbackScope: any,
-      ): Phaser.Structs.Set<T>;
+      iterate(callback: EachSetCallback<T>, callbackScope: any): Phaser.Structs.Set<T>;
 
       /**
        * Goes through each entry in this Set and invokes the given function on them, passing in the arguments.
@@ -68683,7 +66497,7 @@ declare namespace Phaser {
         key: string,
         source: HTMLCanvasElement,
         width: integer,
-        height: integer,
+        height: integer
       );
 
       /**
@@ -68749,7 +66563,7 @@ declare namespace Phaser {
       draw(
         x: integer,
         y: integer,
-        source: HTMLImageElement | HTMLCanvasElement,
+        source: HTMLImageElement | HTMLCanvasElement
       ): Phaser.Textures.CanvasTexture;
 
       /**
@@ -68761,11 +66575,7 @@ declare namespace Phaser {
        * @param y The y coordinate of the pixel to be set. Must lay within the dimensions of this CanvasTexture and be an integer.
        * @param out An object into which 4 properties will be set: r, g, b and a. If not provided a Color object will be created.
        */
-      getPixel(
-        x: integer,
-        y: integer,
-        out?: Phaser.Display.Color,
-      ): Phaser.Display.Color;
+      getPixel(x: integer, y: integer, out?: Phaser.Display.Color): Phaser.Display.Color;
 
       /**
        * This should be called manually if you are running under WebGL.
@@ -68832,7 +66642,7 @@ declare namespace Phaser {
         x: number,
         y: number,
         width: number,
-        height: number,
+        height: number
       );
 
       /**
@@ -68990,12 +66800,7 @@ declare namespace Phaser {
        * @param x The x coordinate of the top-left of this Frame. Default 0.
        * @param y The y coordinate of the top-left of this Frame. Default 0.
        */
-      setSize(
-        width: integer,
-        height: integer,
-        x?: integer,
-        y?: integer,
-      ): Phaser.Textures.Frame;
+      setSize(width: integer, height: integer, x?: integer, y?: integer): Phaser.Textures.Frame;
 
       /**
        * If the frame was trimmed when added to the Texture Atlas, this records the trim and source data.
@@ -69012,7 +66817,7 @@ declare namespace Phaser {
         destX: number,
         destY: number,
         destWidth: number,
-        destHeight: number,
+        destHeight: number
       ): Phaser.Textures.Frame;
 
       /**
@@ -69036,7 +66841,7 @@ declare namespace Phaser {
         width: number,
         height: number,
         flipX: boolean,
-        flipY: boolean,
+        flipY: boolean
       ): object;
 
       /**
@@ -69133,7 +66938,7 @@ declare namespace Phaser {
         key: string,
         source: HTMLImageElement[] | HTMLCanvasElement[],
         width?: number,
-        height?: number,
+        height?: number
       );
 
       /**
@@ -69196,7 +67001,7 @@ declare namespace Phaser {
         x: number,
         y: number,
         width: number,
-        height: number,
+        height: number
       ): Phaser.Textures.Frame;
 
       /**
@@ -69231,7 +67036,7 @@ declare namespace Phaser {
        */
       getFramesFromTextureSource(
         sourceIndex: integer,
-        includeBase?: boolean,
+        includeBase?: boolean
       ): Phaser.Textures.Frame[];
 
       /**
@@ -69250,11 +67055,8 @@ declare namespace Phaser {
        * @param name The string-based name, or integer based index, of the Frame to get from this Texture.
        */
       getSourceImage(
-        name?: string | integer,
-      ):
-        | HTMLImageElement
-        | HTMLCanvasElement
-        | Phaser.GameObjects.RenderTexture;
+        name?: string | integer
+      ): HTMLImageElement | HTMLCanvasElement | Phaser.GameObjects.RenderTexture;
 
       /**
        * Given a Frame name, return the data source image it uses to render with.
@@ -69263,9 +67065,7 @@ declare namespace Phaser {
        * This will return the actual DOM Image.
        * @param name The string-based name, or integer based index, of the Frame to get from this Texture.
        */
-      getDataSourceImage(
-        name?: string | integer,
-      ): HTMLImageElement | HTMLCanvasElement;
+      getDataSourceImage(name?: string | integer): HTMLImageElement | HTMLCanvasElement;
 
       /**
        * Adds a data source image to this Texture.
@@ -69342,9 +67142,7 @@ declare namespace Phaser {
        * step when clearing down to avoid this.
        * @param key The key of the Texture to remove, or a reference to it.
        */
-      remove(
-        key: string | Phaser.Textures.Texture,
-      ): Phaser.Textures.TextureManager;
+      remove(key: string | Phaser.Textures.Texture): Phaser.Textures.TextureManager;
 
       /**
        * Adds a new Texture to the Texture Manager created from the given Base64 encoded data.
@@ -69366,7 +67164,7 @@ declare namespace Phaser {
         key: string,
         frame?: string | integer,
         type?: string,
-        encoderOptions?: number,
+        encoderOptions?: number
       ): string;
 
       /**
@@ -69378,7 +67176,7 @@ declare namespace Phaser {
       addImage(
         key: string,
         source: HTMLImageElement,
-        dataSource?: HTMLImageElement,
+        dataSource?: HTMLImageElement
       ): Phaser.Textures.Texture;
 
       /**
@@ -69389,7 +67187,7 @@ declare namespace Phaser {
        */
       addRenderTexture(
         key: string,
-        renderTexture: Phaser.GameObjects.RenderTexture,
+        renderTexture: Phaser.GameObjects.RenderTexture
       ): Phaser.Textures.Texture;
 
       /**
@@ -69410,11 +67208,7 @@ declare namespace Phaser {
        * @param width The width of the Canvas element. Default 256.
        * @param height The height of the Canvas element. Default 256.
        */
-      createCanvas(
-        key: string,
-        width?: integer,
-        height?: integer,
-      ): Phaser.Textures.CanvasTexture;
+      createCanvas(key: string, width?: integer, height?: integer): Phaser.Textures.CanvasTexture;
 
       /**
        * Creates a new Canvas Texture object from an existing Canvas element
@@ -69426,7 +67220,7 @@ declare namespace Phaser {
       addCanvas(
         key: string,
         source: HTMLCanvasElement,
-        skipCache?: boolean,
+        skipCache?: boolean
       ): Phaser.Textures.CanvasTexture;
 
       /**
@@ -69441,7 +67235,7 @@ declare namespace Phaser {
         key: string,
         source: HTMLImageElement,
         data: object,
-        dataSource?: HTMLImageElement,
+        dataSource?: HTMLImageElement
       ): Phaser.Textures.Texture;
 
       /**
@@ -69457,7 +67251,7 @@ declare namespace Phaser {
         key: string,
         source: HTMLImageElement | HTMLImageElement[],
         data: object | object[],
-        dataSource?: HTMLImageElement,
+        dataSource?: HTMLImageElement
       ): Phaser.Textures.Texture;
 
       /**
@@ -69473,7 +67267,7 @@ declare namespace Phaser {
         key: string,
         source: HTMLImageElement,
         data: object,
-        dataSource?: HTMLImageElement,
+        dataSource?: HTMLImageElement
       ): Phaser.Textures.Texture;
 
       /**
@@ -69488,7 +67282,7 @@ declare namespace Phaser {
         key: string,
         source: HTMLImageElement,
         data: object,
-        dataSource?: HTMLImageElement,
+        dataSource?: HTMLImageElement
       ): Phaser.Textures.Texture;
 
       /**
@@ -69503,7 +67297,7 @@ declare namespace Phaser {
         key: string,
         source: HTMLImageElement,
         data: object,
-        dataSource?: HTMLImageElement,
+        dataSource?: HTMLImageElement
       ): Phaser.Textures.Texture;
 
       /**
@@ -69518,7 +67312,7 @@ declare namespace Phaser {
       addSpriteSheet(
         key: string,
         source: HTMLImageElement,
-        config: SpriteSheetConfig,
+        config: SpriteSheetConfig
       ): Phaser.Textures.Texture;
 
       /**
@@ -69531,7 +67325,7 @@ declare namespace Phaser {
        */
       addSpriteSheetFromAtlas(
         key: string,
-        config: SpriteSheetFromAtlasConfig,
+        config: SpriteSheetFromAtlasConfig
       ): Phaser.Textures.Texture;
 
       /**
@@ -69545,7 +67339,7 @@ declare namespace Phaser {
         key: string,
         source: HTMLImageElement,
         width: integer,
-        height: integer,
+        height: integer
       ): Phaser.Textures.Texture;
 
       /**
@@ -69591,12 +67385,7 @@ declare namespace Phaser {
        * @param key The unique string-based key of the Texture.
        * @param frame The string or index of the Frame.
        */
-      getPixel(
-        x: integer,
-        y: integer,
-        key: string,
-        frame: string | integer,
-      ): Phaser.Display.Color;
+      getPixel(x: integer, y: integer, key: string, frame: string | integer): Phaser.Display.Color;
 
       /**
        * Given a Texture and an `x` and `y` coordinate this method will return a value between 0 and 255
@@ -69607,12 +67396,7 @@ declare namespace Phaser {
        * @param key The unique string-based key of the Texture.
        * @param frame The string or index of the Frame.
        */
-      getPixelAlpha(
-        x: integer,
-        y: integer,
-        key: string,
-        frame: string | integer,
-      ): integer;
+      getPixelAlpha(x: integer, y: integer, key: string, frame: string | integer): integer;
 
       /**
        * Sets the given Game Objects `texture` and `frame` properties so that it uses
@@ -69624,7 +67408,7 @@ declare namespace Phaser {
       setTexture(
         gameObject: Phaser.GameObjects.GameObject,
         key: string,
-        frame: string | integer,
+        frame: string | integer
       ): Phaser.GameObjects.GameObject;
 
       /**
@@ -69671,15 +67455,13 @@ declare namespace Phaser {
         texture: Phaser.Textures.Texture,
         source: HTMLImageElement | HTMLCanvasElement,
         width?: integer,
-        height?: integer,
+        height?: integer
       );
 
       /**
        * The Texture this TextureSource belongs to.
        */
-      renderer:
-        | Phaser.Renderer.Canvas.CanvasRenderer
-        | Phaser.Renderer.WebGL.WebGLRenderer;
+      renderer: Phaser.Renderer.Canvas.CanvasRenderer | Phaser.Renderer.WebGL.WebGLRenderer;
 
       /**
        * The Texture this TextureSource belongs to.
@@ -69690,10 +67472,7 @@ declare namespace Phaser {
        * The source of the image data.
        * This is either an Image Element, a Canvas Element or a RenderTexture.
        */
-      source:
-        | HTMLImageElement
-        | HTMLCanvasElement
-        | Phaser.GameObjects.RenderTexture;
+      source: HTMLImageElement | HTMLCanvasElement | Phaser.GameObjects.RenderTexture;
 
       /**
        * The image data.
@@ -69820,13 +67599,9 @@ declare namespace Phaser {
         scene: Phaser.Scene,
         tilemap: Phaser.Tilemaps.Tilemap,
         layerIndex: integer,
-        tileset:
-          | string
-          | string[]
-          | Phaser.Tilemaps.Tileset
-          | Phaser.Tilemaps.Tileset[],
+        tileset: string | string[] | Phaser.Tilemaps.Tileset | Phaser.Tilemaps.Tileset[],
         x?: number,
-        y?: number,
+        y?: number
       );
 
       /**
@@ -69944,10 +67719,7 @@ declare namespace Phaser {
        * @param tileX The x coordinate.
        * @param tileY The y coordinate.
        */
-      calculateFacesAt(
-        tileX: integer,
-        tileY: integer,
-      ): Phaser.Tilemaps.DynamicTilemapLayer;
+      calculateFacesAt(tileX: integer, tileY: integer): Phaser.Tilemaps.DynamicTilemapLayer;
 
       /**
        * Calculates interesting faces within the rectangular area specified (in tile coordinates) of the
@@ -69962,7 +67734,7 @@ declare namespace Phaser {
         tileX?: integer,
         tileY?: integer,
         width?: integer,
-        height?: integer,
+        height?: integer
       ): Phaser.Tilemaps.DynamicTilemapLayer;
 
       /**
@@ -69984,7 +67756,7 @@ declare namespace Phaser {
         replacements: integer | any[],
         spriteConfig: SpriteConfig,
         scene?: Phaser.Scene,
-        camera?: Phaser.Cameras.Scene2D.Camera,
+        camera?: Phaser.Cameras.Scene2D.Camera
       ): Phaser.GameObjects.Sprite[];
 
       /**
@@ -70013,7 +67785,7 @@ declare namespace Phaser {
         height: integer,
         destTileX: integer,
         destTileY: integer,
-        recalculateFaces?: boolean,
+        recalculateFaces?: boolean
       ): Phaser.Tilemaps.DynamicTilemapLayer;
 
       /**
@@ -70038,7 +67810,7 @@ declare namespace Phaser {
         tileY?: integer,
         width?: integer,
         height?: integer,
-        recalculateFaces?: boolean,
+        recalculateFaces?: boolean
       ): Phaser.Tilemaps.DynamicTilemapLayer;
 
       /**
@@ -70065,7 +67837,7 @@ declare namespace Phaser {
         tileY?: integer,
         width?: integer,
         height?: integer,
-        filteringOptions?: object,
+        filteringOptions?: object
       ): Phaser.Tilemaps.Tile[];
 
       /**
@@ -70079,11 +67851,7 @@ declare namespace Phaser {
        * @param reverse If true it will scan the layer in reverse, starting at the
        * bottom-right. Otherwise it scans from the top-left. Default false.
        */
-      findByIndex(
-        index: integer,
-        skip?: integer,
-        reverse?: boolean,
-      ): Phaser.Tilemaps.Tile;
+      findByIndex(index: integer, skip?: integer, reverse?: boolean): Phaser.Tilemaps.Tile;
 
       /**
        * Find the first tile in the given rectangular area (in tile coordinates) of the layer that
@@ -70107,7 +67875,7 @@ declare namespace Phaser {
         tileY?: integer,
         width?: integer,
         height?: integer,
-        filteringOptions?: object,
+        filteringOptions?: object
       ): Phaser.Tilemaps.Tile;
 
       /**
@@ -70131,7 +67899,7 @@ declare namespace Phaser {
         tileY?: integer,
         width?: integer,
         height?: integer,
-        filteringOptions?: object,
+        filteringOptions?: object
       ): Phaser.Tilemaps.DynamicTilemapLayer;
 
       /**
@@ -70140,11 +67908,7 @@ declare namespace Phaser {
        * @param tileY Y position to get the tile from (given in tile units, not pixels).
        * @param nonNull If true getTile won't return null for empty tiles, but a Tile object with an index of -1. Default false.
        */
-      getTileAt(
-        tileX: integer,
-        tileY: integer,
-        nonNull?: boolean,
-      ): Phaser.Tilemaps.Tile;
+      getTileAt(tileX: integer, tileY: integer, nonNull?: boolean): Phaser.Tilemaps.Tile;
 
       /**
        * Gets a tile at the given world coordinates from the given layer.
@@ -70157,7 +67921,7 @@ declare namespace Phaser {
         worldX: number,
         worldY: number,
         nonNull?: boolean,
-        camera?: Phaser.Cameras.Scene2D.Camera,
+        camera?: Phaser.Cameras.Scene2D.Camera
       ): Phaser.Tilemaps.Tile;
 
       /**
@@ -70176,7 +67940,7 @@ declare namespace Phaser {
         tileY?: integer,
         width?: integer,
         height?: integer,
-        filteringOptions?: object,
+        filteringOptions?: object
       ): Phaser.Tilemaps.Tile[];
 
       /**
@@ -70190,13 +67954,9 @@ declare namespace Phaser {
        * @param camera The Camera to use when factoring in which tiles to return. Default main camera.
        */
       getTilesWithinShape(
-        shape:
-          | Phaser.Geom.Circle
-          | Phaser.Geom.Line
-          | Phaser.Geom.Rectangle
-          | Phaser.Geom.Triangle,
+        shape: Phaser.Geom.Circle | Phaser.Geom.Line | Phaser.Geom.Rectangle | Phaser.Geom.Triangle,
         filteringOptions?: object,
-        camera?: Phaser.Cameras.Scene2D.Camera,
+        camera?: Phaser.Cameras.Scene2D.Camera
       ): Phaser.Tilemaps.Tile[];
 
       /**
@@ -70217,7 +67977,7 @@ declare namespace Phaser {
         width: number,
         height: number,
         filteringOptions?: object,
-        camera?: Phaser.Cameras.Scene2D.Camera,
+        camera?: Phaser.Cameras.Scene2D.Camera
       ): Phaser.Tilemaps.Tile[];
 
       /**
@@ -70238,7 +67998,7 @@ declare namespace Phaser {
       hasTileAtWorldXY(
         worldX: number,
         worldY: number,
-        camera?: Phaser.Cameras.Scene2D.Camera,
+        camera?: Phaser.Cameras.Scene2D.Camera
       ): boolean;
 
       /**
@@ -70255,7 +68015,7 @@ declare namespace Phaser {
         tile: integer | Phaser.Tilemaps.Tile,
         tileX: integer,
         tileY: integer,
-        recalculateFaces?: boolean,
+        recalculateFaces?: boolean
       ): Phaser.Tilemaps.Tile;
 
       /**
@@ -70274,7 +68034,7 @@ declare namespace Phaser {
         worldX: number,
         worldY: number,
         recalculateFaces?: boolean,
-        camera?: Phaser.Cameras.Scene2D.Camera,
+        camera?: Phaser.Cameras.Scene2D.Camera
       ): Phaser.Tilemaps.Tile;
 
       /**
@@ -70289,14 +68049,10 @@ declare namespace Phaser {
        * @param recalculateFaces `true` if the faces data should be recalculated. Default true.
        */
       putTilesAt(
-        tile:
-          | integer[]
-          | integer[][]
-          | Phaser.Tilemaps.Tile[]
-          | Phaser.Tilemaps.Tile[][],
+        tile: integer[] | integer[][] | Phaser.Tilemaps.Tile[] | Phaser.Tilemaps.Tile[][],
         tileX: integer,
         tileY: integer,
-        recalculateFaces?: boolean,
+        recalculateFaces?: boolean
       ): Phaser.Tilemaps.DynamicTilemapLayer;
 
       /**
@@ -70316,7 +68072,7 @@ declare namespace Phaser {
         tileY?: integer,
         width?: integer,
         height?: integer,
-        indexes?: integer[],
+        indexes?: integer[]
       ): Phaser.Tilemaps.DynamicTilemapLayer;
 
       /**
@@ -70331,7 +68087,7 @@ declare namespace Phaser {
         tileX: integer,
         tileY: integer,
         replaceWithNull?: boolean,
-        recalculateFaces?: boolean,
+        recalculateFaces?: boolean
       ): Phaser.Tilemaps.Tile;
 
       /**
@@ -70348,7 +68104,7 @@ declare namespace Phaser {
         worldY: number,
         replaceWithNull?: boolean,
         recalculateFaces?: boolean,
-        camera?: Phaser.Cameras.Scene2D.Camera,
+        camera?: Phaser.Cameras.Scene2D.Camera
       ): Phaser.Tilemaps.Tile;
 
       /**
@@ -70367,7 +68123,7 @@ declare namespace Phaser {
        */
       renderDebug(
         graphics: Phaser.GameObjects.Graphics,
-        styleConfig: object,
+        styleConfig: object
       ): Phaser.Tilemaps.DynamicTilemapLayer;
 
       /**
@@ -70387,7 +68143,7 @@ declare namespace Phaser {
         tileX?: integer,
         tileY?: integer,
         width?: integer,
-        height?: integer,
+        height?: integer
       ): Phaser.Tilemaps.DynamicTilemapLayer;
 
       /**
@@ -70423,7 +68179,7 @@ declare namespace Phaser {
       setCollision(
         indexes: integer | any[],
         collides?: boolean,
-        recalculateFaces?: boolean,
+        recalculateFaces?: boolean
       ): Phaser.Tilemaps.DynamicTilemapLayer;
 
       /**
@@ -70442,7 +68198,7 @@ declare namespace Phaser {
         start: integer,
         stop: integer,
         collides?: boolean,
-        recalculateFaces?: boolean,
+        recalculateFaces?: boolean
       ): Phaser.Tilemaps.DynamicTilemapLayer;
 
       /**
@@ -70463,7 +68219,7 @@ declare namespace Phaser {
       setCollisionByProperty(
         properties: object,
         collides?: boolean,
-        recalculateFaces?: boolean,
+        recalculateFaces?: boolean
       ): Phaser.Tilemaps.DynamicTilemapLayer;
 
       /**
@@ -70479,7 +68235,7 @@ declare namespace Phaser {
       setCollisionByExclusion(
         indexes: integer[],
         collides?: boolean,
-        recalculateFaces?: boolean,
+        recalculateFaces?: boolean
       ): Phaser.Tilemaps.DynamicTilemapLayer;
 
       /**
@@ -70494,7 +68250,7 @@ declare namespace Phaser {
        */
       setCollisionFromCollisionGroup(
         collides?: boolean,
-        recalculateFaces?: boolean,
+        recalculateFaces?: boolean
       ): Phaser.Tilemaps.DynamicTilemapLayer;
 
       /**
@@ -70510,7 +68266,7 @@ declare namespace Phaser {
       setTileIndexCallback(
         indexes: integer | any[],
         callback: Function,
-        callbackContext: object,
+        callbackContext: object
       ): Phaser.Tilemaps.DynamicTilemapLayer;
 
       /**
@@ -70530,7 +68286,7 @@ declare namespace Phaser {
         width?: integer,
         height?: integer,
         callback?: Function,
-        callbackContext?: object,
+        callbackContext?: object
       ): Phaser.Tilemaps.DynamicTilemapLayer;
 
       /**
@@ -70547,7 +68303,7 @@ declare namespace Phaser {
         tileX?: integer,
         tileY?: integer,
         width?: integer,
-        height?: integer,
+        height?: integer
       ): Phaser.Tilemaps.DynamicTilemapLayer;
 
       /**
@@ -70567,7 +68323,7 @@ declare namespace Phaser {
         tileX?: integer,
         tileY?: integer,
         width?: integer,
-        height?: integer,
+        height?: integer
       ): Phaser.Tilemaps.DynamicTilemapLayer;
 
       /**
@@ -70576,10 +68332,7 @@ declare namespace Phaser {
        * @param tileX The x coordinate, in tiles, not pixels.
        * @param camera The Camera to use when calculating the tile index from the world values. Default main camera.
        */
-      tileToWorldX(
-        tileX: integer,
-        camera?: Phaser.Cameras.Scene2D.Camera,
-      ): number;
+      tileToWorldX(tileX: integer, camera?: Phaser.Cameras.Scene2D.Camera): number;
 
       /**
        * Converts from tile Y coordinates (tile units) to world Y coordinates (pixels), factoring in the
@@ -70587,10 +68340,7 @@ declare namespace Phaser {
        * @param tileY The y coordinate, in tiles, not pixels.
        * @param camera The Camera to use when calculating the tile index from the world values. Default main camera.
        */
-      tileToWorldY(
-        tileY: integer,
-        camera?: Phaser.Cameras.Scene2D.Camera,
-      ): number;
+      tileToWorldY(tileY: integer, camera?: Phaser.Cameras.Scene2D.Camera): number;
 
       /**
        * Converts from tile XY coordinates (tile units) to world XY coordinates (pixels), factoring in the
@@ -70605,7 +68355,7 @@ declare namespace Phaser {
         tileX: integer,
         tileY: integer,
         point?: Phaser.Math.Vector2,
-        camera?: Phaser.Cameras.Scene2D.Camera,
+        camera?: Phaser.Cameras.Scene2D.Camera
       ): Phaser.Math.Vector2;
 
       /**
@@ -70635,7 +68385,7 @@ declare namespace Phaser {
         tileY?: integer,
         width?: integer,
         height?: integer,
-        weightedIndexes?: object[],
+        weightedIndexes?: object[]
       ): Phaser.Tilemaps.DynamicTilemapLayer;
 
       /**
@@ -70648,7 +68398,7 @@ declare namespace Phaser {
       worldToTileX(
         worldX: number,
         snapToFloor?: boolean,
-        camera?: Phaser.Cameras.Scene2D.Camera,
+        camera?: Phaser.Cameras.Scene2D.Camera
       ): number;
 
       /**
@@ -70661,7 +68411,7 @@ declare namespace Phaser {
       worldToTileY(
         worldY: number,
         snapToFloor?: boolean,
-        camera?: Phaser.Cameras.Scene2D.Camera,
+        camera?: Phaser.Cameras.Scene2D.Camera
       ): number;
 
       /**
@@ -70679,7 +68429,7 @@ declare namespace Phaser {
         worldY: number,
         snapToFloor?: boolean,
         point?: Phaser.Math.Vector2,
-        camera?: Phaser.Cameras.Scene2D.Camera,
+        camera?: Phaser.Cameras.Scene2D.Camera
       ): Phaser.Math.Vector2;
 
       /**
@@ -70704,7 +68454,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -70931,10 +68681,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -70942,10 +68689,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -70953,10 +68697,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -70964,10 +68705,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -71208,12 +68946,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -71263,7 +68996,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -71273,7 +69006,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -71337,7 +69070,7 @@ declare namespace Phaser {
         height?: integer,
         margin?: integer,
         spacing?: integer,
-        properties?: object,
+        properties?: object
       );
 
       /**
@@ -71512,9 +69245,7 @@ declare namespace Phaser {
       /**
        * [description]
        */
-      tilemapLayer:
-        | Phaser.Tilemaps.DynamicTilemapLayer
-        | Phaser.Tilemaps.StaticTilemapLayer;
+      tilemapLayer: Phaser.Tilemaps.DynamicTilemapLayer | Phaser.Tilemaps.StaticTilemapLayer;
     }
 
     /**
@@ -71702,11 +69433,7 @@ declare namespace Phaser {
          * consumption. However if your map is small or you need to update the tiles dynamically, then leave
          * the default value set.
          */
-        function ParseWeltmeister(
-          name: string,
-          json: object,
-          insertNull: boolean,
-        ): object;
+        function ParseWeltmeister(name: string, json: object, insertNull: boolean): object;
       }
 
       /**
@@ -71734,7 +69461,7 @@ declare namespace Phaser {
         data: integer[][] | string | object,
         tileWidth: integer,
         tileHeight: integer,
-        insertNull: boolean,
+        insertNull: boolean
       ): Phaser.Tilemaps.MapData;
 
       /**
@@ -71755,7 +69482,7 @@ declare namespace Phaser {
         data: integer[][],
         tileWidth: integer,
         tileHeight: integer,
-        insertNull: boolean,
+        insertNull: boolean
       ): Phaser.Tilemaps.MapData;
 
       /**
@@ -71776,7 +69503,7 @@ declare namespace Phaser {
         data: string,
         tileWidth: integer,
         tileHeight: integer,
-        insertNull: boolean,
+        insertNull: boolean
       ): Phaser.Tilemaps.MapData;
 
       namespace Tiled {
@@ -71825,7 +69552,7 @@ declare namespace Phaser {
         function ParseJSONTiled(
           name: string,
           json: object,
-          insertNull: boolean,
+          insertNull: boolean
         ): Phaser.Tilemaps.MapData;
 
         /**
@@ -71834,11 +69561,7 @@ declare namespace Phaser {
          * @param offsetX [description] Default 0.
          * @param offsetY [description] Default 0.
          */
-        function ParseObject(
-          tiledObject: object,
-          offsetX?: number,
-          offsetY?: number,
-        ): object;
+        function ParseObject(tiledObject: object, offsetX?: number, offsetY?: number): object;
 
         /**
          * [description]
@@ -71896,7 +69619,7 @@ declare namespace Phaser {
       width?: integer,
       height?: integer,
       data?: integer[][],
-      insertNull?: boolean,
+      insertNull?: boolean
     ): Phaser.Tilemaps.Tilemap;
 
     /**
@@ -71937,13 +69660,9 @@ declare namespace Phaser {
         scene: Phaser.Scene,
         tilemap: Phaser.Tilemaps.Tilemap,
         layerIndex: integer,
-        tileset:
-          | string
-          | string[]
-          | Phaser.Tilemaps.Tileset
-          | Phaser.Tilemaps.Tileset[],
+        tileset: string | string[] | Phaser.Tilemaps.Tileset | Phaser.Tilemaps.Tileset[],
         x?: number,
-        y?: number,
+        y?: number
       );
 
       /**
@@ -72054,7 +69773,7 @@ declare namespace Phaser {
        */
       upload(
         camera: Phaser.Cameras.Scene2D.Camera,
-        tilesetIndex: integer,
+        tilesetIndex: integer
       ): Phaser.Tilemaps.StaticTilemapLayer;
 
       /**
@@ -72085,10 +69804,7 @@ declare namespace Phaser {
        * @param tileX The x coordinate.
        * @param tileY The y coordinate.
        */
-      calculateFacesAt(
-        tileX: integer,
-        tileY: integer,
-      ): Phaser.Tilemaps.StaticTilemapLayer;
+      calculateFacesAt(tileX: integer, tileY: integer): Phaser.Tilemaps.StaticTilemapLayer;
 
       /**
        * Calculates interesting faces within the rectangular area specified (in tile coordinates) of the
@@ -72103,7 +69819,7 @@ declare namespace Phaser {
         tileX?: integer,
         tileY?: integer,
         width?: integer,
-        height?: integer,
+        height?: integer
       ): Phaser.Tilemaps.StaticTilemapLayer;
 
       /**
@@ -72125,7 +69841,7 @@ declare namespace Phaser {
         replacements: integer | any[],
         spriteConfig: SpriteConfig,
         scene?: Phaser.Scene,
-        camera?: Phaser.Cameras.Scene2D.Camera,
+        camera?: Phaser.Cameras.Scene2D.Camera
       ): Phaser.GameObjects.Sprite[];
 
       /**
@@ -72170,11 +69886,7 @@ declare namespace Phaser {
        * @param reverse If true it will scan the layer in reverse, starting at the
        * bottom-right. Otherwise it scans from the top-left. Default false.
        */
-      findByIndex(
-        index: integer,
-        skip?: integer,
-        reverse?: boolean,
-      ): Phaser.Tilemaps.Tile;
+      findByIndex(index: integer, skip?: integer, reverse?: boolean): Phaser.Tilemaps.Tile;
 
       /**
        * Find the first tile in the given rectangular area (in tile coordinates) of the layer that
@@ -72202,7 +69914,7 @@ declare namespace Phaser {
         tileY?: integer,
         width?: integer,
         height?: integer,
-        filteringOptions?: object,
+        filteringOptions?: object
       ): Phaser.Tilemaps.Tile;
 
       /**
@@ -72232,7 +69944,7 @@ declare namespace Phaser {
         tileY?: integer,
         width?: integer,
         height?: integer,
-        filteringOptions?: object,
+        filteringOptions?: object
       ): Phaser.Tilemaps.Tile[];
 
       /**
@@ -72260,7 +69972,7 @@ declare namespace Phaser {
         tileY?: integer,
         width?: integer,
         height?: integer,
-        filteringOptions?: object,
+        filteringOptions?: object
       ): Phaser.Tilemaps.StaticTilemapLayer;
 
       /**
@@ -72270,11 +69982,7 @@ declare namespace Phaser {
        * @param nonNull If true getTile won't return null for empty tiles, but a Tile
        * object with an index of -1. Default false.
        */
-      getTileAt(
-        tileX: integer,
-        tileY: integer,
-        nonNull?: boolean,
-      ): Phaser.Tilemaps.Tile;
+      getTileAt(tileX: integer, tileY: integer, nonNull?: boolean): Phaser.Tilemaps.Tile;
 
       /**
        * Gets a tile at the given world coordinates from the given layer.
@@ -72288,7 +69996,7 @@ declare namespace Phaser {
         worldX: number,
         worldY: number,
         nonNull?: boolean,
-        camera?: Phaser.Cameras.Scene2D.Camera,
+        camera?: Phaser.Cameras.Scene2D.Camera
       ): Phaser.Tilemaps.Tile;
 
       /**
@@ -72310,7 +70018,7 @@ declare namespace Phaser {
         tileY?: integer,
         width?: integer,
         height?: integer,
-        filteringOptions?: object,
+        filteringOptions?: object
       ): Phaser.Tilemaps.Tile[];
 
       /**
@@ -72334,7 +70042,7 @@ declare namespace Phaser {
         width: number,
         height: number,
         filteringOptions?: object,
-        camera?: Phaser.Cameras.Scene2D.Camera,
+        camera?: Phaser.Cameras.Scene2D.Camera
       ): Phaser.Tilemaps.Tile[];
 
       /**
@@ -72351,13 +70059,9 @@ declare namespace Phaser {
        * @param camera [description] Default main camera.
        */
       getTilesWithinShape(
-        shape:
-          | Phaser.Geom.Circle
-          | Phaser.Geom.Line
-          | Phaser.Geom.Rectangle
-          | Phaser.Geom.Triangle,
+        shape: Phaser.Geom.Circle | Phaser.Geom.Line | Phaser.Geom.Rectangle | Phaser.Geom.Triangle,
         filteringOptions?: object,
-        camera?: Phaser.Cameras.Scene2D.Camera,
+        camera?: Phaser.Cameras.Scene2D.Camera
       ): Phaser.Tilemaps.Tile[];
 
       /**
@@ -72378,7 +70082,7 @@ declare namespace Phaser {
       hasTileAtWorldXY(
         worldX: number,
         worldY: number,
-        camera?: Phaser.Cameras.Scene2D.Camera,
+        camera?: Phaser.Cameras.Scene2D.Camera
       ): boolean;
 
       /**
@@ -72397,7 +70101,7 @@ declare namespace Phaser {
        */
       renderDebug(
         graphics: Phaser.GameObjects.Graphics,
-        styleConfig: object,
+        styleConfig: object
       ): Phaser.Tilemaps.StaticTilemapLayer;
 
       /**
@@ -72413,7 +70117,7 @@ declare namespace Phaser {
       setCollision(
         indexes: integer | any[],
         collides?: boolean,
-        recalculateFaces?: boolean,
+        recalculateFaces?: boolean
       ): Phaser.Tilemaps.StaticTilemapLayer;
 
       /**
@@ -72432,7 +70136,7 @@ declare namespace Phaser {
         start: integer,
         stop: integer,
         collides?: boolean,
-        recalculateFaces?: boolean,
+        recalculateFaces?: boolean
       ): Phaser.Tilemaps.StaticTilemapLayer;
 
       /**
@@ -72453,7 +70157,7 @@ declare namespace Phaser {
       setCollisionByProperty(
         properties: object,
         collides?: boolean,
-        recalculateFaces?: boolean,
+        recalculateFaces?: boolean
       ): Phaser.Tilemaps.StaticTilemapLayer;
 
       /**
@@ -72469,7 +70173,7 @@ declare namespace Phaser {
       setCollisionByExclusion(
         indexes: integer[],
         collides?: boolean,
-        recalculateFaces?: boolean,
+        recalculateFaces?: boolean
       ): Phaser.Tilemaps.StaticTilemapLayer;
 
       /**
@@ -72485,7 +70189,7 @@ declare namespace Phaser {
       setTileIndexCallback(
         indexes: integer | any[],
         callback: Function,
-        callbackContext: object,
+        callbackContext: object
       ): Phaser.Tilemaps.StaticTilemapLayer;
 
       /**
@@ -72500,7 +70204,7 @@ declare namespace Phaser {
        */
       setCollisionFromCollisionGroup(
         collides?: boolean,
-        recalculateFaces?: boolean,
+        recalculateFaces?: boolean
       ): Phaser.Tilemaps.StaticTilemapLayer;
 
       /**
@@ -72520,7 +70224,7 @@ declare namespace Phaser {
         width: integer,
         height: integer,
         callback: Function,
-        callbackContext?: object,
+        callbackContext?: object
       ): Phaser.Tilemaps.StaticTilemapLayer;
 
       /**
@@ -72529,10 +70233,7 @@ declare namespace Phaser {
        * @param tileX [description]
        * @param camera [description] Default main camera.
        */
-      tileToWorldX(
-        tileX: integer,
-        camera?: Phaser.Cameras.Scene2D.Camera,
-      ): number;
+      tileToWorldX(tileX: integer, camera?: Phaser.Cameras.Scene2D.Camera): number;
 
       /**
        * Converts from tile Y coordinates (tile units) to world Y coordinates (pixels), factoring in the
@@ -72540,10 +70241,7 @@ declare namespace Phaser {
        * @param tileY [description]
        * @param camera [description] Default main camera.
        */
-      tileToWorldY(
-        tileY: integer,
-        camera?: Phaser.Cameras.Scene2D.Camera,
-      ): number;
+      tileToWorldY(tileY: integer, camera?: Phaser.Cameras.Scene2D.Camera): number;
 
       /**
        * Converts from tile XY coordinates (tile units) to world XY coordinates (pixels), factoring in the
@@ -72558,7 +70256,7 @@ declare namespace Phaser {
         tileX: integer,
         tileY: integer,
         point?: Phaser.Math.Vector2,
-        camera?: Phaser.Cameras.Scene2D.Camera,
+        camera?: Phaser.Cameras.Scene2D.Camera
       ): Phaser.Math.Vector2;
 
       /**
@@ -72572,7 +70270,7 @@ declare namespace Phaser {
       worldToTileX(
         worldX: number,
         snapToFloor?: boolean,
-        camera?: Phaser.Cameras.Scene2D.Camera,
+        camera?: Phaser.Cameras.Scene2D.Camera
       ): number;
 
       /**
@@ -72586,7 +70284,7 @@ declare namespace Phaser {
       worldToTileY(
         worldY: number,
         snapToFloor?: boolean,
-        camera?: Phaser.Cameras.Scene2D.Camera,
+        camera?: Phaser.Cameras.Scene2D.Camera
       ): number;
 
       /**
@@ -72605,7 +70303,7 @@ declare namespace Phaser {
         worldY: number,
         snapToFloor?: boolean,
         point?: Phaser.Math.Vector2,
-        camera?: Phaser.Cameras.Scene2D.Camera,
+        camera?: Phaser.Cameras.Scene2D.Camera
       ): Phaser.Math.Vector2;
 
       /**
@@ -72635,7 +70333,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -72862,10 +70560,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the top-right corner coordinate of this Game Object, regardless of origin.
@@ -72873,10 +70568,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getTopRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getTopRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-left corner coordinate of this Game Object, regardless of origin.
@@ -72884,10 +70576,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomLeft<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomLeft<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bottom-right corner coordinate of this Game Object, regardless of origin.
@@ -72895,10 +70584,7 @@ declare namespace Phaser {
        * @param output An object to store the values in. If not provided a new Vector2 will be created.
        * @param includeParent If this Game Object has a parent Container, include it (and all other ancestors) in the resulting vector? Default false.
        */
-      getBottomRight<O extends Phaser.Math.Vector2>(
-        output?: O,
-        includeParent?: boolean,
-      ): O;
+      getBottomRight<O extends Phaser.Math.Vector2>(output?: O, includeParent?: boolean): O;
 
       /**
        * Gets the bounds of this Game Object, regardless of origin.
@@ -73080,12 +70766,7 @@ declare namespace Phaser {
        * @param width The width of the random area.
        * @param height The height of the random area.
        */
-      setRandomPosition(
-        x?: number,
-        y?: number,
-        width?: number,
-        height?: number,
-      ): this;
+      setRandomPosition(x?: number, y?: number, width?: number, height?: number): this;
 
       /**
        * Sets the rotation of this Game Object.
@@ -73135,7 +70816,7 @@ declare namespace Phaser {
        * @param tempMatrix The matrix to populate with the values from this Game Object.
        */
       getLocalTransformMatrix(
-        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        tempMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -73145,7 +70826,7 @@ declare namespace Phaser {
        */
       getWorldTransformMatrix(
         tempMatrix?: Phaser.GameObjects.Components.TransformMatrix,
-        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix,
+        parentMatrix?: Phaser.GameObjects.Components.TransformMatrix
       ): Phaser.GameObjects.Components.TransformMatrix;
 
       /**
@@ -73257,7 +70938,7 @@ declare namespace Phaser {
         width: integer,
         height: integer,
         baseWidth: integer,
-        baseHeight: integer,
+        baseHeight: integer
       );
 
       /**
@@ -73454,7 +71135,7 @@ declare namespace Phaser {
        */
       getBounds(
         camera?: Phaser.Cameras.Scene2D.Camera,
-        output?: object,
+        output?: object
       ): Phaser.Geom.Rectangle | object;
 
       /**
@@ -73518,7 +71199,7 @@ declare namespace Phaser {
         right?: boolean,
         up?: boolean,
         down?: boolean,
-        recalculateFaces?: boolean,
+        recalculateFaces?: boolean
       ): Phaser.Tilemaps.Tile;
 
       /**
@@ -73527,10 +71208,7 @@ declare namespace Phaser {
        * @param callback Callback function.
        * @param context Callback will be called within this context.
        */
-      setCollisionCallback(
-        callback: Function,
-        context: object,
-      ): Phaser.Tilemaps.Tile;
+      setCollisionCallback(callback: Function, context: object): Phaser.Tilemaps.Tile;
 
       /**
        * Sets the size of the tile and updates its pixelX and pixelY.
@@ -73543,7 +71221,7 @@ declare namespace Phaser {
         tileWidth: integer,
         tileHeight: integer,
         baseWidth: integer,
-        baseHeight: integer,
+        baseHeight: integer
       ): Phaser.Tilemaps.Tile;
 
       /**
@@ -73609,7 +71287,7 @@ declare namespace Phaser {
         topLeft?: number,
         topRight?: number,
         bottomLeft?: number,
-        bottomRight?: number,
+        bottomRight?: number
       ): this;
 
       /**
@@ -73879,7 +71557,7 @@ declare namespace Phaser {
         tileHeight?: integer,
         tileMargin?: integer,
         tileSpacing?: integer,
-        gid?: integer,
+        gid?: integer
       ): Phaser.Tilemaps.Tileset;
 
       /**
@@ -73892,7 +71570,7 @@ declare namespace Phaser {
        * index of the layer in the map, or a DynamicTilemapLayer.
        */
       convertLayerToStatic(
-        layer?: string | integer | Phaser.Tilemaps.DynamicTilemapLayer,
+        layer?: string | integer | Phaser.Tilemaps.DynamicTilemapLayer
       ): Phaser.Tilemaps.StaticTilemapLayer;
 
       /**
@@ -73918,7 +71596,7 @@ declare namespace Phaser {
         destTileX: integer,
         destTileY: integer,
         recalculateFaces?: boolean,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -73934,17 +71612,13 @@ declare namespace Phaser {
        */
       createBlankDynamicLayer(
         name: string,
-        tileset:
-          | string
-          | string[]
-          | Phaser.Tilemaps.Tileset
-          | Phaser.Tilemaps.Tileset[],
+        tileset: string | string[] | Phaser.Tilemaps.Tileset | Phaser.Tilemaps.Tileset[],
         x?: number,
         y?: number,
         width?: integer,
         height?: integer,
         tileWidth?: integer,
-        tileHeight?: integer,
+        tileHeight?: integer
       ): Phaser.Tilemaps.DynamicTilemapLayer;
 
       /**
@@ -73964,13 +71638,9 @@ declare namespace Phaser {
        */
       createDynamicLayer(
         layerID: integer | string,
-        tileset:
-          | string
-          | string[]
-          | Phaser.Tilemaps.Tileset
-          | Phaser.Tilemaps.Tileset[],
+        tileset: string | string[] | Phaser.Tilemaps.Tileset | Phaser.Tilemaps.Tileset[],
         x: number,
-        y: number,
+        y: number
       ): Phaser.Tilemaps.DynamicTilemapLayer;
 
       /**
@@ -73993,7 +71663,7 @@ declare namespace Phaser {
         name: string,
         id: integer | string,
         spriteConfig: SpriteConfig,
-        scene?: Phaser.Scene,
+        scene?: Phaser.Scene
       ): Phaser.GameObjects.Sprite[];
 
       /**
@@ -74016,7 +71686,7 @@ declare namespace Phaser {
         spriteConfig: SpriteConfig,
         scene?: Phaser.Scene,
         camera?: Phaser.Cameras.Scene2D.Camera,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.GameObjects.Sprite[];
 
       /**
@@ -74036,13 +71706,9 @@ declare namespace Phaser {
        */
       createStaticLayer(
         layerID: integer | string,
-        tileset:
-          | string
-          | string[]
-          | Phaser.Tilemaps.Tileset
-          | Phaser.Tilemaps.Tileset[],
+        tileset: string | string[] | Phaser.Tilemaps.Tileset | Phaser.Tilemaps.Tileset[],
         x: number,
-        y: number,
+        y: number
       ): Phaser.Tilemaps.StaticTilemapLayer;
 
       /**
@@ -74073,7 +71739,7 @@ declare namespace Phaser {
         width?: integer,
         height?: integer,
         recalculateFaces?: boolean,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -74087,7 +71753,7 @@ declare namespace Phaser {
       filterObjects(
         objectLayer: Phaser.Tilemaps.ObjectLayer | string,
         callback: TilemapFilterCallback,
-        context?: object,
+        context?: object
       ): Phaser.GameObjects.GameObject[];
 
       /**
@@ -74117,7 +71783,7 @@ declare namespace Phaser {
         width?: integer,
         height?: integer,
         filteringOptions?: object,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tile[];
 
       /**
@@ -74136,7 +71802,7 @@ declare namespace Phaser {
         index: integer,
         skip?: integer,
         reverse?: boolean,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tile;
 
       /**
@@ -74150,7 +71816,7 @@ declare namespace Phaser {
       findObject(
         objectLayer: Phaser.Tilemaps.ObjectLayer | string,
         callback: TilemapFindCallback,
-        context?: object,
+        context?: object
       ): Phaser.GameObjects.GameObject;
 
       /**
@@ -74178,7 +71844,7 @@ declare namespace Phaser {
         width?: integer,
         height?: integer,
         filteringOptions?: object,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tile;
 
       /**
@@ -74206,7 +71872,7 @@ declare namespace Phaser {
         width?: integer,
         height?: integer,
         filteringOptions?: object,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -74235,7 +71901,7 @@ declare namespace Phaser {
           | string
           | integer
           | Phaser.Tilemaps.DynamicTilemapLayer
-          | Phaser.Tilemaps.StaticTilemapLayer,
+          | Phaser.Tilemaps.StaticTilemapLayer
       ): Phaser.Tilemaps.LayerData;
 
       /**
@@ -74257,7 +71923,7 @@ declare namespace Phaser {
           | string
           | integer
           | Phaser.Tilemaps.DynamicTilemapLayer
-          | Phaser.Tilemaps.StaticTilemapLayer,
+          | Phaser.Tilemaps.StaticTilemapLayer
       ): integer;
 
       /**
@@ -74279,7 +71945,7 @@ declare namespace Phaser {
         tileX: integer,
         tileY: integer,
         nonNull?: boolean,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tile;
 
       /**
@@ -74296,7 +71962,7 @@ declare namespace Phaser {
         worldY: number,
         nonNull?: boolean,
         camera?: Phaser.Cameras.Scene2D.Camera,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tile;
 
       /**
@@ -74318,7 +71984,7 @@ declare namespace Phaser {
         width?: integer,
         height?: integer,
         filteringOptions?: object,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tile[];
 
       /**
@@ -74334,14 +72000,10 @@ declare namespace Phaser {
        * @param layer The tile layer to search. If not given the current layer is used.
        */
       getTilesWithinShape(
-        shape:
-          | Phaser.Geom.Circle
-          | Phaser.Geom.Line
-          | Phaser.Geom.Rectangle
-          | Phaser.Geom.Triangle,
+        shape: Phaser.Geom.Circle | Phaser.Geom.Line | Phaser.Geom.Rectangle | Phaser.Geom.Triangle,
         filteringOptions?: object,
         camera?: Phaser.Cameras.Scene2D.Camera,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tile[];
 
       /**
@@ -74365,7 +72027,7 @@ declare namespace Phaser {
         height: number,
         filteringOptions?: object,
         camera?: Phaser.Cameras.Scene2D.Camera,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tile[];
 
       /**
@@ -74390,11 +72052,7 @@ declare namespace Phaser {
        * @param tileY The y coordinate, in tiles, not pixels.
        * @param layer The tile layer to search. If not given the current layer is used.
        */
-      hasTileAt(
-        tileX: integer,
-        tileY: integer,
-        layer?: Phaser.Tilemaps.LayerData,
-      ): boolean;
+      hasTileAt(tileX: integer, tileY: integer, layer?: Phaser.Tilemaps.LayerData): boolean;
 
       /**
        * Checks if there is a tile at the given location (in world coordinates) in the given layer. Returns
@@ -74410,7 +72068,7 @@ declare namespace Phaser {
         worldX: number,
         worldY: number,
         camera?: Phaser.Cameras.Scene2D.Camera,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): boolean;
 
       /**
@@ -74439,7 +72097,7 @@ declare namespace Phaser {
         tileX: integer,
         tileY: integer,
         recalculateFaces?: boolean,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tile;
 
       /**
@@ -74463,7 +72121,7 @@ declare namespace Phaser {
         worldY: number,
         recalculateFaces?: boolean,
         camera?: Phaser.Cameras.Scene2D.Camera,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tile;
 
       /**
@@ -74482,15 +72140,11 @@ declare namespace Phaser {
        * @param layer The tile layer to use. If not given the current layer is used.
        */
       putTilesAt(
-        tile:
-          | integer[]
-          | integer[][]
-          | Phaser.Tilemaps.Tile[]
-          | Phaser.Tilemaps.Tile[][],
+        tile: integer[] | integer[][] | Phaser.Tilemaps.Tile[] | Phaser.Tilemaps.Tile[][],
         tileX: integer,
         tileY: integer,
         recalculateFaces?: boolean,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -74515,7 +72169,7 @@ declare namespace Phaser {
         width?: integer,
         height?: integer,
         indexes?: integer[],
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -74531,7 +72185,7 @@ declare namespace Phaser {
       calculateFacesAt(
         tileX: integer,
         tileY: integer,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -74551,7 +72205,7 @@ declare namespace Phaser {
         tileY?: integer,
         width?: integer,
         height?: integer,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -74577,7 +72231,7 @@ declare namespace Phaser {
         tileY: integer,
         replaceWithNull?: boolean,
         recalculateFaces?: boolean,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tile;
 
       /**
@@ -74599,7 +72253,7 @@ declare namespace Phaser {
         replaceWithNull?: boolean,
         recalculateFaces?: boolean,
         camera?: Phaser.Cameras.Scene2D.Camera,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tile;
 
       /**
@@ -74619,7 +72273,7 @@ declare namespace Phaser {
       renderDebug(
         graphics: Phaser.GameObjects.Graphics,
         styleConfig: object,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -74644,7 +72298,7 @@ declare namespace Phaser {
         tileY?: integer,
         width?: integer,
         height?: integer,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -74662,7 +72316,7 @@ declare namespace Phaser {
         indexes: integer | any[],
         collides?: boolean,
         recalculateFaces?: boolean,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -74683,7 +72337,7 @@ declare namespace Phaser {
         stop: integer,
         collides?: boolean,
         recalculateFaces?: boolean,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -74705,7 +72359,7 @@ declare namespace Phaser {
         properties: object,
         collides?: boolean,
         recalculateFaces?: boolean,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -74723,7 +72377,7 @@ declare namespace Phaser {
         indexes: integer[],
         collides?: boolean,
         recalculateFaces?: boolean,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -74740,7 +72394,7 @@ declare namespace Phaser {
       setCollisionFromCollisionGroup(
         collides?: boolean,
         recalculateFaces?: boolean,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -74759,7 +72413,7 @@ declare namespace Phaser {
         indexes: integer | any[],
         callback: Function,
         callbackContext: object,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -74783,7 +72437,7 @@ declare namespace Phaser {
         height: integer,
         callback: Function,
         callbackContext?: object,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -74797,7 +72451,7 @@ declare namespace Phaser {
           | string
           | integer
           | Phaser.Tilemaps.DynamicTilemapLayer
-          | Phaser.Tilemaps.StaticTilemapLayer,
+          | Phaser.Tilemaps.StaticTilemapLayer
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -74806,10 +72460,7 @@ declare namespace Phaser {
        * @param tileWidth The width of the tiles the map uses for calculations.
        * @param tileHeight The height of the tiles the map uses for calculations.
        */
-      setBaseTileSize(
-        tileWidth: integer,
-        tileHeight: integer,
-      ): Phaser.Tilemaps.Tilemap;
+      setBaseTileSize(tileWidth: integer, tileHeight: integer): Phaser.Tilemaps.Tilemap;
 
       /**
        * Sets the tile size for a specific `layer`. Note: this does not necessarily match the map's
@@ -74828,7 +72479,7 @@ declare namespace Phaser {
           | string
           | integer
           | Phaser.Tilemaps.DynamicTilemapLayer
-          | Phaser.Tilemaps.StaticTilemapLayer,
+          | Phaser.Tilemaps.StaticTilemapLayer
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -74850,7 +72501,7 @@ declare namespace Phaser {
         tileY?: integer,
         width?: integer,
         height?: integer,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -74875,7 +72526,7 @@ declare namespace Phaser {
         tileY?: integer,
         width?: integer,
         height?: integer,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -74890,7 +72541,7 @@ declare namespace Phaser {
       tileToWorldX(
         tileX: integer,
         camera?: Phaser.Cameras.Scene2D.Camera,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): number;
 
       /**
@@ -74905,7 +72556,7 @@ declare namespace Phaser {
       tileToWorldY(
         tileY: integer,
         camera?: Phaser.Cameras.Scene2D.Camera,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): number;
 
       /**
@@ -74925,7 +72576,7 @@ declare namespace Phaser {
         tileY: integer,
         point?: Phaser.Math.Vector2,
         camera?: Phaser.Cameras.Scene2D.Camera,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Math.Vector2;
 
       /**
@@ -74960,7 +72611,7 @@ declare namespace Phaser {
         width?: integer,
         height?: integer,
         weightedIndexes?: object[],
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Tilemaps.Tilemap;
 
       /**
@@ -74977,7 +72628,7 @@ declare namespace Phaser {
         worldX: number,
         snapToFloor?: boolean,
         camera?: Phaser.Cameras.Scene2D.Camera,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): number;
 
       /**
@@ -74994,7 +72645,7 @@ declare namespace Phaser {
         worldY: number,
         snapToFloor?: boolean,
         camera?: Phaser.Cameras.Scene2D.Camera,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): number;
 
       /**
@@ -75016,7 +72667,7 @@ declare namespace Phaser {
         snapToFloor?: boolean,
         point?: Phaser.Math.Vector2,
         camera?: Phaser.Cameras.Scene2D.Camera,
-        layer?: Phaser.Tilemaps.LayerData,
+        layer?: Phaser.Tilemaps.LayerData
       ): Phaser.Math.Vector2;
     }
 
@@ -75046,7 +72697,7 @@ declare namespace Phaser {
         tileMargin?: integer,
         tileSpacing?: integer,
         tileProperties?: object,
-        tileData?: object,
+        tileData?: object
       );
 
       /**
@@ -75168,10 +72819,7 @@ declare namespace Phaser {
        * @param tileWidth The width of a tile in pixels.
        * @param tileHeight The height of a tile in pixels.
        */
-      setTileSize(
-        tileWidth?: integer,
-        tileHeight?: integer,
-      ): Phaser.Tilemaps.Tileset;
+      setTileSize(tileWidth?: integer, tileHeight?: integer): Phaser.Tilemaps.Tileset;
 
       /**
        * Sets the tile margin & spacing and updates the tile data (rows, columns, etc.).
@@ -75185,10 +72833,7 @@ declare namespace Phaser {
        * @param imageWidth The (expected) width of the image to slice.
        * @param imageHeight The (expected) height of the image to slice.
        */
-      updateTileData(
-        imageWidth: integer,
-        imageHeight: integer,
-      ): Phaser.Tilemaps.Tileset;
+      updateTileData(imageWidth: integer, imageHeight: integer): Phaser.Tilemaps.Tileset;
     }
   }
 
@@ -75245,7 +72890,7 @@ declare namespace Phaser {
         delay: number,
         callback: Function,
         args: any[],
-        callbackScope: any,
+        callbackScope: any
       ): Phaser.Time.TimerEvent;
 
       /**
@@ -75402,10 +73047,7 @@ declare namespace Phaser {
        * @param ease [description]
        * @param easeParams [description]
        */
-      function GetEaseFunction(
-        ease: string | Function,
-        easeParams: any[],
-      ): Function;
+      function GetEaseFunction(ease: string | Function, easeParams: any[]): Function;
 
       /**
        * [description]
@@ -75413,11 +73055,7 @@ declare namespace Phaser {
        * @param key [description]
        * @param defaultValue [description]
        */
-      function GetNewValue(
-        source: object,
-        key: string,
-        defaultValue: any,
-      ): Function;
+      function GetNewValue(source: object, key: string, defaultValue: any): Function;
 
       /**
        * [description]
@@ -75453,7 +73091,7 @@ declare namespace Phaser {
       function NumberTweenBuilder(
         parent: Phaser.Tweens.TweenManager | Phaser.Tweens.Timeline,
         config: object,
-        defaults: Phaser.Tweens.TweenConfigDefaults,
+        defaults: Phaser.Tweens.TweenConfigDefaults
       ): Phaser.Tweens.Tween;
 
       /**
@@ -75463,7 +73101,7 @@ declare namespace Phaser {
        */
       function TimelineBuilder(
         manager: Phaser.Tweens.TweenManager,
-        config: object,
+        config: object
       ): Phaser.Tweens.Timeline;
 
       /**
@@ -75475,7 +73113,7 @@ declare namespace Phaser {
       function TweenBuilder(
         parent: Phaser.Tweens.TweenManager | Phaser.Tweens.Timeline,
         config: object,
-        defaults: Phaser.Tweens.TweenConfigDefaults,
+        defaults: Phaser.Tweens.TweenConfigDefaults
       ): Phaser.Tweens.Tween;
     }
 
@@ -75667,7 +73305,7 @@ declare namespace Phaser {
         type: string,
         callback: Function,
         params?: any[],
-        scope?: object,
+        scope?: object
       ): Phaser.Tweens.Timeline;
 
       /**
@@ -75866,7 +73504,7 @@ declare namespace Phaser {
       constructor(
         parent: Phaser.Tweens.TweenManager | Phaser.Tweens.Timeline,
         data: Phaser.Tweens.TweenDataConfig[],
-        targets: any[],
+        targets: any[]
       );
 
       /**
@@ -76029,11 +73667,7 @@ declare namespace Phaser {
        * @param value [description]
        * @param startToCurrent [description]
        */
-      updateTo(
-        key: string,
-        value: any,
-        startToCurrent: boolean,
-      ): Phaser.Tweens.Tween;
+      updateTo(key: string, value: any, startToCurrent: boolean): Phaser.Tweens.Tween;
 
       /**
        * [description]
@@ -76095,7 +73729,7 @@ declare namespace Phaser {
         type: string,
         callback: Function,
         params?: any[],
-        scope?: object,
+        scope?: object
       ): Phaser.Tweens.Tween;
 
       /**
@@ -76131,7 +73765,7 @@ declare namespace Phaser {
       setStateFromEnd(
         tween: Phaser.Tweens.Tween,
         tweenData: Phaser.Tweens.TweenDataConfig,
-        diff: number,
+        diff: number
       ): integer;
 
       /**
@@ -76143,7 +73777,7 @@ declare namespace Phaser {
       setStateFromStart(
         tween: Phaser.Tweens.Tween,
         tweenData: Phaser.Tweens.TweenDataConfig,
-        diff: number,
+        diff: number
       ): integer;
 
       /**
@@ -76155,7 +73789,7 @@ declare namespace Phaser {
       updateTweenData(
         tween: Phaser.Tweens.Tween,
         tweenData: Phaser.Tweens.TweenDataConfig,
-        delta: number,
+        delta: number
       ): boolean;
     }
 
@@ -76287,7 +73921,7 @@ declare namespace Phaser {
       repeat: number,
       repeatDelay: number,
       flipX: boolean,
-      flipY: boolean,
+      flipY: boolean
     ): TweenDataConfig;
 
     /**
@@ -76464,7 +74098,7 @@ declare namespace Phaser {
         item: any | any[],
         limit?: integer,
         callback?: Function,
-        context?: object,
+        context?: object
       ): any[];
 
       /**
@@ -76493,7 +74127,7 @@ declare namespace Phaser {
         index?: integer,
         limit?: integer,
         callback?: Function,
-        context?: object,
+        context?: object
       ): any[];
 
       /**
@@ -76517,7 +74151,7 @@ declare namespace Phaser {
         property: string,
         value: any,
         startIndex?: integer,
-        endIndex?: integer,
+        endIndex?: integer
       ): integer;
 
       /**
@@ -76527,12 +74161,7 @@ declare namespace Phaser {
        * @param context The context in which the callback is invoked.
        * @param args Additional arguments that will be passed to the callback, after the current array item.
        */
-      function Each(
-        array: any[],
-        callback: Function,
-        context: object,
-        ...args: any[]
-      ): any[];
+      function Each(array: any[], callback: Function, context: object, ...args: any[]): any[];
 
       /**
        * Passes each element in the array, between the start and end indexes, to the given callback.
@@ -76558,11 +74187,7 @@ declare namespace Phaser {
        * @param array The array to search, which must be sorted.
        * @param key An optional property key. If specified the array elements property will be checked against value.
        */
-      function FindClosestInSorted(
-        value: number,
-        array: any[],
-        key?: string,
-      ): number | object;
+      function FindClosestInSorted(value: number, array: any[], key?: string): number | object;
 
       /**
        * Returns all elements in the array.
@@ -76585,7 +74210,7 @@ declare namespace Phaser {
         property?: string,
         value?: any,
         startIndex?: integer,
-        endIndex?: integer,
+        endIndex?: integer
       ): any[];
 
       /**
@@ -76608,7 +74233,7 @@ declare namespace Phaser {
         property?: string,
         value?: any,
         startIndex?: integer,
-        endIndex?: integer,
+        endIndex?: integer
       ): object;
 
       /**
@@ -76617,11 +74242,7 @@ declare namespace Phaser {
        * @param startIndex An optional start index. Default 0.
        * @param length An optional length, the total number of elements (from the startIndex) to choose from. Default array.length.
        */
-      function GetRandom(
-        array: any[],
-        startIndex?: integer,
-        length?: integer,
-      ): any;
+      function GetRandom(array: any[], startIndex?: integer, length?: integer): any;
 
       namespace Matrix {
         /**
@@ -76665,10 +74286,7 @@ declare namespace Phaser {
          * @param matrix The array to rotate.
          * @param direction The amount to rotate the matrix by. The value can be given in degrees: 90, -90, 270, -270 or 180, or a string command: `rotateLeft`, `rotateRight` or `rotate180`. Default 90.
          */
-        function RotateMatrix(
-          matrix: any[],
-          direction?: number | string,
-        ): any[];
+        function RotateMatrix(matrix: any[], direction?: number | string): any[];
 
         /**
          * [description]
@@ -76731,7 +74349,7 @@ declare namespace Phaser {
         start: number,
         end: number,
         prefix?: string,
-        suffix?: string,
+        suffix?: string
       ): number[] | string[];
 
       /**
@@ -76746,11 +74364,7 @@ declare namespace Phaser {
        * @param end The end of the range. Default null.
        * @param step The value to increment or decrement by. Default 1.
        */
-      function NumberArrayStep(
-        start?: number,
-        end?: number,
-        step?: number,
-      ): number[];
+      function NumberArrayStep(start?: number, end?: number, step?: number): number[];
 
       /**
        * [description]
@@ -76765,7 +74379,7 @@ declare namespace Phaser {
         k: number,
         left: number,
         right: number,
-        compare: Function,
+        compare: Function
       ): void;
 
       /**
@@ -76791,7 +74405,7 @@ declare namespace Phaser {
         array: any[],
         item: any | any[],
         callback?: Function,
-        context?: object,
+        context?: object
       ): any | any[];
 
       /**
@@ -76805,12 +74419,7 @@ declare namespace Phaser {
        * @param callback A callback to be invoked for the item removed from the array.
        * @param context The context in which the callback is invoked.
        */
-      function RemoveAt(
-        array: any[],
-        index: integer,
-        callback?: Function,
-        context?: object,
-      ): any;
+      function RemoveAt(array: any[], index: integer, callback?: Function, context?: object): any;
 
       /**
        * Removes the item within the given range in the array.
@@ -76829,7 +74438,7 @@ declare namespace Phaser {
         startIndex: integer,
         endIndex: integer,
         callback?: Function,
-        context?: object,
+        context?: object
       ): any[];
 
       /**
@@ -76839,11 +74448,7 @@ declare namespace Phaser {
        * @param start The array index to start the search from. Default 0.
        * @param length Optional restriction on the number of elements to randomly select from. Default array.length.
        */
-      function RemoveRandomElement(
-        array: any[],
-        start?: integer,
-        length?: integer,
-      ): object;
+      function RemoveRandomElement(array: any[], start?: integer, length?: integer): object;
 
       /**
        * Replaces an element of the array with the new element.
@@ -76881,7 +74486,7 @@ declare namespace Phaser {
         array: any[],
         startIndex: integer,
         endIndex: integer,
-        throwError?: boolean,
+        throwError?: boolean
       ): boolean;
 
       /**
@@ -76910,7 +74515,7 @@ declare namespace Phaser {
         property: string,
         value: any,
         startIndex?: integer,
-        endIndex?: integer,
+        endIndex?: integer
       ): any[];
 
       /**
@@ -76985,12 +74590,7 @@ declare namespace Phaser {
        * @param pad The string to pad it out with (defaults to a space). Default " ".
        * @param dir The direction dir = 1 (left), 2 (right), 3 (both). Default 3.
        */
-      function Pad(
-        str: string,
-        len?: integer,
-        pad?: string,
-        dir?: integer,
-      ): string;
+      function Pad(str: string, len?: integer, pad?: string, dir?: integer): string;
 
       /**
        * Takes the given string and reverses it, returning the reversed string.
@@ -77450,12 +75050,7 @@ declare namespace Phaser {
      * @param frame The frame of the texture to use as the share image. Set to `null` if you don't require a frame, but do need to set session data.
      * @param sessionData A blob of data to attach to the share.
      */
-    openShare(
-      text: string,
-      key: string,
-      frame?: string,
-      sessionData?: object,
-    ): this;
+    openShare(text: string, key: string, frame?: string, sessionData?: object): this;
 
     /**
      * This invokes a dialog to let the user invite a friend to play this game, either as a message in Messenger or as a post on the user's timeline.
@@ -77472,12 +75067,7 @@ declare namespace Phaser {
      * @param frame The frame of the texture to use as the share image. Set to `null` if you don't require a frame, but do need to set session data.
      * @param sessionData A blob of data to attach to the share.
      */
-    openInvite(
-      text: string,
-      key: string,
-      frame?: string,
-      sessionData?: object,
-    ): this;
+    openInvite(text: string, key: string, frame?: string, sessionData?: object): this;
 
     /**
      * This invokes a dialog to let the user share specified content, either as a message in Messenger or as a post on the user's timeline.
@@ -77494,12 +75084,7 @@ declare namespace Phaser {
      * @param frame The frame of the texture to use as the share image. Set to `null` if you don't require a frame, but do need to set session data.
      * @param sessionData A blob of data to attach to the share.
      */
-    openRequest(
-      text: string,
-      key: string,
-      frame?: string,
-      sessionData?: object,
-    ): this;
+    openRequest(text: string, key: string, frame?: string, sessionData?: object): this;
 
     /**
      * This invokes a dialog to let the user share specified content, either as a message in Messenger or as a post on the user's timeline.
@@ -77516,12 +75101,7 @@ declare namespace Phaser {
      * @param frame The frame of the texture to use as the share image. Set to `null` if you don't require a frame, but do need to set session data.
      * @param sessionData A blob of data to attach to the share.
      */
-    openChallenge(
-      text: string,
-      key: string,
-      frame?: string,
-      sessionData?: object,
-    ): this;
+    openChallenge(text: string, key: string, frame?: string, sessionData?: object): this;
 
     /**
      * This function determines whether the number of participants in the current game context is between a given minimum and maximum, inclusive.
@@ -77665,7 +75245,7 @@ declare namespace Phaser {
       key: string,
       frame?: string | integer,
       template?: string,
-      updateData?: object,
+      updateData?: object
     ): this;
 
     /**
@@ -77701,7 +75281,7 @@ declare namespace Phaser {
       key: string,
       frame?: string | integer,
       template?: string,
-      updateData?: object,
+      updateData?: object
     ): this;
 
     /**
@@ -77857,7 +75437,7 @@ declare type ArcadeBodyCollision = {
 
 declare type ArcadePhysicsCallback = (
   object1: Phaser.GameObjects.GameObject,
-  object2: Phaser.GameObjects.GameObject,
+  object2: Phaser.GameObjects.GameObject
 ) => void;
 
 declare type PhysicsGroupConfig = GroupConfig & {
@@ -78058,11 +75638,11 @@ declare type ArcadeWorldConfig = {
   /**
    * The horizontal world gravity value.
    */
-  "gravity.x"?: number;
+  'gravity.x'?: number;
   /**
    * The vertical world gravity value.
    */
-  "gravity.y"?: number;
+  'gravity.y'?: number;
   /**
    * Sets {@link Phaser.Physics.Arcade.World#bounds bounds.x}.
    */
@@ -78086,19 +75666,19 @@ declare type ArcadeWorldConfig = {
   /**
    * Should bodies collide with the top of the world bounds?
    */
-  "checkCollision.up"?: boolean;
+  'checkCollision.up'?: boolean;
   /**
    * Should bodies collide with the bottom of the world bounds?
    */
-  "checkCollision.down"?: boolean;
+  'checkCollision.down'?: boolean;
   /**
    * Should bodies collide with the left of the world bounds?
    */
-  "checkCollision.left"?: boolean;
+  'checkCollision.left'?: boolean;
   /**
    * Should bodies collide with the right of the world bounds?
    */
-  "checkCollision.right"?: boolean;
+  'checkCollision.right'?: boolean;
   /**
    * Sets {@link Phaser.Physics.Arcade.World#OVERLAP_BIAS}.
    */
@@ -78283,7 +75863,7 @@ declare type JSONImpactBody = {
 declare type CollideCallback = (
   body: Phaser.Physics.Impact.Body,
   other: Phaser.Physics.Impact.Body,
-  axis: string,
+  axis: string
 ) => void;
 
 declare namespace MatterJS {
@@ -78373,12 +75953,7 @@ declare namespace Phaser.Plugins.PluginCache {
    * @param mapping If this plugin is to be injected into the Scene Systems, this is the property key map used.
    * @param custom Core Scene plugin or a Custom Scene plugin? Default false.
    */
-  function register(
-    key: string,
-    plugin: Function,
-    mapping: string,
-    custom?: boolean,
-  ): void;
+  function register(key: string, plugin: Function, mapping: string, custom?: boolean): void;
 
   /**
    * Stores a custom plugin in the global plugin cache.
@@ -78388,12 +75963,7 @@ declare namespace Phaser.Plugins.PluginCache {
    * @param mapping If this plugin is to be injected into the Scene Systems, this is the property key map used.
    * @param data A value to be passed to the plugin's `init` method.
    */
-  function registerCustom(
-    key: string,
-    plugin: Function,
-    mapping: string,
-    data: any,
-  ): void;
+  function registerCustom(key: string, plugin: Function, mapping: string, data: any): void;
 
   /**
    * Checks if the given key is already being used in the core plugin cache.
@@ -78606,9 +76176,7 @@ declare interface ModelViewProjection {
   projPersp(): void;
 }
 
-declare type WebGLContextCallback = (
-  renderer: Phaser.Renderer.WebGL.WebGLRenderer,
-) => void;
+declare type WebGLContextCallback = (renderer: Phaser.Renderer.WebGL.WebGLRenderer) => void;
 
 declare type SnapshotState = {
   /**
@@ -78670,7 +76238,7 @@ declare type EachActiveSoundCallback = (
   manager: Phaser.Sound.BaseSoundManager,
   sound: Phaser.Sound.BaseSound,
   index: number,
-  sounds: Phaser.Sound.BaseSound[],
+  sounds: Phaser.Sound.BaseSound[]
 ) => void;
 
 declare namespace Phaser.Sound.BaseSound {
@@ -78742,10 +76310,7 @@ declare type EachMapCallback<E> = (key: string, entry: any) => void;
 
 declare type EachSetCallback<E> = (entry: any, index: number) => void;
 
-declare type EachTextureCallback = (
-  texture: Phaser.Textures.Texture,
-  ...args: any[]
-) => void;
+declare type EachTextureCallback = (texture: Phaser.Textures.Texture, ...args: any[]) => void;
 
 declare type SpriteSheetConfig = {
   /**
@@ -78812,13 +76377,13 @@ declare type SpriteSheetFromAtlasConfig = {
 declare type FindTileCallback = (
   value: Phaser.Tilemaps.Tile,
   index: integer,
-  array: Phaser.Tilemaps.Tile[],
+  array: Phaser.Tilemaps.Tile[]
 ) => void;
 
 declare type EachTileCallback = (
   value: Phaser.Tilemaps.Tile,
   index: integer,
-  array: Phaser.Tilemaps.Tile[],
+  array: Phaser.Tilemaps.Tile[]
 ) => void;
 
 declare type GetTilesWithinFilteringOptions = {
@@ -78839,13 +76404,13 @@ declare type GetTilesWithinFilteringOptions = {
 declare type TilemapFilterCallback = (
   value: Phaser.GameObjects.GameObject,
   index: number,
-  array: Phaser.GameObjects.GameObject[],
+  array: Phaser.GameObjects.GameObject[]
 ) => void;
 
 declare type TilemapFindCallback = (
   value: Phaser.GameObjects.GameObject,
   index: number,
-  array: Phaser.GameObjects.GameObject[],
+  array: Phaser.GameObjects.GameObject[]
 ) => void;
 
 declare type TilemapConfig = {
@@ -78975,11 +76540,7 @@ declare namespace Phaser.Utils.Objects {
    * @param key [description]
    * @param defaultValue [description]
    */
-  function GetAdvancedValue(
-    source: object,
-    key: string,
-    defaultValue: any,
-  ): any;
+  function GetAdvancedValue(source: object, key: string, defaultValue: any): any;
 
   /**
    * Finds the key within the top level of the {@link source} object, or returns {@link defaultValue}
@@ -79002,7 +76563,7 @@ declare namespace Phaser.Utils.Objects {
     key: string,
     min: number,
     max: number,
-    defaultValue: number,
+    defaultValue: number
   ): number;
 
   /**
@@ -79266,6 +76827,6 @@ declare type Purchase = {
 
 declare type integer = number;
 
-declare module "phaser" {
+declare module 'phaser' {
   export = Phaser;
 }

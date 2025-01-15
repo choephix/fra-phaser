@@ -1,10 +1,10 @@
-import { App, BackgroundScene } from "src/app";
-import { DebugKeyboardController } from "src/debug/debug-ctrl";
-import { GameEvent } from "src/game/events";
-import { Game } from "../game/game";
-import { GameSession } from "../game/game-session";
-import { GameWorldView } from "./game-world-view";
-import { GameWorldEffects } from "./effects";
+import { App, BackgroundScene } from 'src/app';
+import { DebugKeyboardController } from 'src/debug/debug-ctrl';
+import { GameEvent } from 'src/game/events';
+import { Game } from '../game/game';
+import { GameSession } from '../game/game-session';
+import { GameWorldView } from './game-world-view';
+import { GameWorldEffects } from './effects';
 
 export class GameWorld {
   // session: GameSession
@@ -19,7 +19,7 @@ export class GameWorld {
   }
 
   get touch_zome() {
-    return (<BackgroundScene>this.scene.scene.get("bg")).img;
+    return (<BackgroundScene>this.scene.scene.get('bg')).img;
   }
 
   constructor(
@@ -27,16 +27,16 @@ export class GameWorld {
     private stageWidth: number,
     private stageHeight: number,
     x: number,
-    y: number,
+    y: number
   ) {
     this.touch_zome
-      .setInteractive({ cursor: "move" })
-      .on("pointerdown", (e) => {
+      .setInteractive({ cursor: 'move' })
+      .on('pointerdown', e => {
         if (this.session.ingame) App.ctrl.start(e.x, e.y);
       })
-      .on("pointermove", (e) => App.ctrl.move(e.x, e.y))
-      .on("pointerup", (e) => App.ctrl.end());
-    this.touch_zome.on("pointerdown", (e) => {
+      .on('pointermove', e => App.ctrl.move(e.x, e.y))
+      .on('pointerup', e => App.ctrl.end());
+    this.touch_zome.on('pointerdown', e => {
       if (this.game.over) this.initNextStage();
     });
 
@@ -47,7 +47,7 @@ export class GameWorld {
     // this.session = new GameSession
     App.gameplay.events.on(GameEvent.GAMESTART, () => this.buildWorld());
     App.gameplay.events.on(GameEvent.CHANGE, () => this.onAnyChange());
-    App.gameplay.events.on(GameEvent.DECOYDIE, (d) =>
+    App.gameplay.events.on(GameEvent.DECOYDIE, d =>
       GameWorldEffects.poof({
         x: this.view.decoy.x,
         y: this.view.decoy.y,
@@ -56,13 +56,13 @@ export class GameWorld {
         // delay: 250,
         scene: this.scene,
         container: this.view,
-      }),
+      })
     );
     // this.session.reset()
 
-    this.scene.game.input.events.on("move", (x, y) => this.moveMayBe(x, y));
-    this.scene.game.input.events.on("skill", (index: number) =>
-      this.session.useSkill(this.session.skills[index]),
+    this.scene.game.input.events.on('move', (x, y) => this.moveMayBe(x, y));
+    this.scene.game.input.events.on('skill', (index: number) =>
+      this.session.useSkill(this.session.skills[index])
     );
   }
 
@@ -93,7 +93,7 @@ export class GameWorld {
     function tweenFall(thing, delay = 0) {
       return tweens.add({
         targets: thing,
-        y: "+=100",
+        y: '+=100',
         alpha: 0,
         delay: delay,
         duration: 200,
@@ -103,17 +103,10 @@ export class GameWorld {
       return Math.max(Math.abs(a.x - b.x), Math.abs(a.y - b.y));
     }
 
-    tweenMove(
-      this.view.player,
-      this.game.player.tile.x,
-      this.game.player.tile.y,
-    );
-    if (this.game.player.dead && !this.view.player.dead)
-      this.view.player.setState_FALL();
+    tweenMove(this.view.player, this.game.player.tile.x, this.game.player.tile.y);
+    if (this.game.player.dead && !this.view.player.dead) this.view.player.setState_FALL();
 
-    let pt = this.game.decoy.active
-      ? this.game.decoy.tile
-      : this.game.player.tile;
+    let pt = this.game.decoy.active ? this.game.decoy.tile : this.game.player.tile;
 
     for (let bot of this.view.bots) {
       if (bot.model.dead && bot.dead) continue;
@@ -146,12 +139,12 @@ export class GameWorld {
                 }
               },
               null,
-              this,
+              this
             );
           }
         },
         null,
-        this,
+        this
       );
     }
 
@@ -163,7 +156,7 @@ export class GameWorld {
       }
     }
 
-    this.scene.game.events.emit("score_change", this.session.score);
+    this.scene.game.events.emit('score_change', this.session.score);
   }
 
   initNextStage() {
