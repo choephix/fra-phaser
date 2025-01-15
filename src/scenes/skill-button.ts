@@ -1,16 +1,7 @@
 import { Scene } from 'phaser';
-import { App } from 'src/app';
 
 export class SkillButton extends Phaser.GameObjects.Text {
-  private readonly gameSession = App.gameplay;
-
-  constructor(
-    scene: Scene,
-    x: number,
-    y: number,
-    private readonly skillId: string,
-    icon: string
-  ) {
+  constructor(scene: Scene, x: number, y: number, skillId: string, icon: string) {
     super(scene, x, y, icon, {
       fill: '#Ff0',
       font: '10em Verdana',

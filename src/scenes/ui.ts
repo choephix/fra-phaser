@@ -37,8 +37,8 @@ export class UIScene extends Phaser.Scene {
       this.skillButtons.push(button);
 
       App.gameplay.events.on(GameEvent.ANY, () => {
-        const state = App.gameplay.canUseSkill(skill) ? 'available' : 'used';
-        button.setState(state);
+        button.setState(App.gameplay.canUseSkill(skill) ? 'available' : 'used');
+        button.alpha = App.gameplay.canUseSkill(skill) ? 1 : 0.5;
       });
     });
 
