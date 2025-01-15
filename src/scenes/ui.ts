@@ -1,43 +1,46 @@
-import { App } from "src/app";
-import { SkillBook } from "src/game/skills";
-import { ControllerSprite } from "src/view/ctrl-view";
+import { App } from 'src/app';
+import { SkillBook } from 'src/game/skills';
+import { ControllerSprite } from 'src/view/ctrl-view';
+import { SkillButton } from './skill-button';
+import { GameEvent } from 'src/game/events';
 
 export class UIScene extends Phaser.Scene {
   private tLevel: Phaser.GameObjects.Text;
   private tScore: ScoreText;
+  private skillButtons: SkillButton[] = [];
 
   create() {
     let cam = this.cameras.main;
 
-    this.tLevel = this.add.text(cam.centerX, cam.height * 0.07, "$");
+    this.tLevel = this.add.text(cam.centerX, cam.height * 0.07, '$');
     this.tLevel.setOrigin(0.5);
     this.tLevel.setFontSize(128);
-    this.tLevel.setFontFamily("IMPACT");
-    this.tLevel.setColor("white");
-    this.tLevel.setStroke("#000B", 8);
+    this.tLevel.setFontFamily('IMPACT');
+    this.tLevel.setColor('white');
+    this.tLevel.setStroke('#000B', 8);
 
     this.tScore = new ScoreText(this);
     this.tScore.setPosition(cam.centerX, cam.height * 0.17);
-    this.tScore.setStroke("#000B", 8);
+    this.tScore.setStroke('#000B', 8);
     this.tScore.setFontSize(48);
     this.tScore.setOrigin(0.5);
-    this.tScore.setFontStyle("bold");
-    this.game.events.on("score_change", (score: number) =>
-      this.tScore.setValue(score),
-    );
+    this.tScore.setFontStyle('bold');
+    this.game.events.on('score_change', (score: number) => this.tScore.setValue(score));
 
-    let skills = SkillBook.makeSkillList();
-    for (let si in skills) {
-      let label = skills[si].icon;
-      let button: Phaser.GameObjects.Text;
-      let x = (cam.width / (skills.length + 1)) * (1 + parseInt(si));
-      let y = cam.height - 100;
-      button = this.add
-        .text(x, y, label, { fill: "#Ff0", font: "10em Verdana" })
-        .setOrigin(0.5, 0.5);
-      button.setInteractive({ useHandCursor: true });
-      button.on("pointerdown", () => this.game.input.events.emit("skill", si));
-    }
+    const skills = SkillBook.makeSkillList();
+    skills.forEach((skill, index) => {
+      const x = (cam.width / (skills.length + 1)) * (1 + index);
+      const y = cam.height - 100;
+
+      const button = new SkillButton(this, x, y, index.toString(), skill.icon);
+      this.add.existing(button);
+      this.skillButtons.push(button);
+
+      App.gameplay.events.on(GameEvent.ANY, () => {
+        const state = App.gameplay.canUseSkill(skill) ? 'available' : 'used';
+        button.setState(state);
+      });
+    });
 
     new ControllerSprite(this, App.ctrl);
 
@@ -52,12 +55,12 @@ class ScoreText extends Phaser.GameObjects.Text {
   }
   public set value(v: number) {
     this._value = v;
-    this.text = v > 0 ? Math.floor(v).toString() : "O";
+    this.text = v > 0 ? Math.floor(v).toString() : 'O';
     // this.x = this.scene.cameras.main.centerX - this.width * .05
   }
 
   constructor(scene) {
-    super(scene, 0, 0, "", { fill: "white" });
+    super(scene, 0, 0, '', { fill: 'white' });
     this.scene.add.existing(this);
     this.setValue(0);
   }
@@ -74,17 +77,17 @@ class ScoreText extends Phaser.GameObjects.Text {
 export class ContinueSplashScene extends Phaser.Scene {
   private title: Phaser.GameObjects.Text;
   preload() {
-    console.log("win");
+    console.log('win');
     let cam = this.cameras.main;
-    this.title = this.add.text(cam.centerX, cam.centerY, "NEXT", {});
+    this.title = this.add.text(cam.centerX, cam.centerY, 'NEXT', {});
     this.title.setOrigin(0.5);
     this.title.setFontSize(400);
-    this.title.setFontFamily("IMPACT");
-    this.title.setColor("white");
-    this.title.setStroke("#000B", 12);
+    this.title.setFontFamily('IMPACT');
+    this.title.setColor('white');
+    this.title.setStroke('#000B', 12);
     this.title.setAlpha(0.0);
 
-    this.events.on("wake", () => {
+    this.events.on('wake', () => {
       this.tweens.add({
         targets: this.title,
         alpha: 1,
@@ -99,18 +102,18 @@ export class ContinueSplashScene extends Phaser.Scene {
 export class GameOverSplashScene extends Phaser.Scene {
   private title: Phaser.GameObjects.Text;
   preload() {
-    console.log("sad");
+    console.log('sad');
     let cam = this.cameras.main;
-    this.title = this.add.text(cam.centerX, cam.centerY, "GAME\nOVER", {});
+    this.title = this.add.text(cam.centerX, cam.centerY, 'GAME\nOVER', {});
     this.title.setOrigin(0.5);
     this.title.setFontSize(400);
-    this.title.setFontFamily("IMPACT");
-    this.title.setColor("white");
-    this.title.setStroke("#000B", 12);
+    this.title.setFontFamily('IMPACT');
+    this.title.setColor('white');
+    this.title.setStroke('#000B', 12);
     this.title.setRotation(-0.13);
     this.title.setAlpha(0.0);
 
-    this.events.on("wake", () => {
+    this.events.on('wake', () => {
       this.tweens.add({
         targets: this.title,
         alpha: 1,

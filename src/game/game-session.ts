@@ -1,7 +1,7 @@
-import { Game } from "./game";
-import { GameConsts } from "./game-consts";
-import { Skill, SkillBook } from "./skills";
-import { EventBus, GameEvent } from "./events";
+import { Game } from './game';
+import { GameConsts } from './game-consts';
+import { Skill, SkillBook } from './skills';
+import { EventBus, GameEvent } from './events';
 
 export class GameSession {
   public currentGame: Game;
@@ -10,7 +10,7 @@ export class GameSession {
   public skills: Skill[];
 
   public score: number;
-  public usedSkills: Skill[];
+  public usedSkillIds: string[];
 
   public events: EventBus = new EventBus();
 
@@ -25,7 +25,7 @@ export class GameSession {
   public reset(): void {
     this.skills = SkillBook.makeSkillList();
 
-    this.usedSkills = [];
+    this.usedSkillIds = [];
     this.score = GameConsts.scoreRewards.initial;
 
     this.currentStageNumber = 1;
@@ -34,7 +34,7 @@ export class GameSession {
   }
 
   public next(): void {
-    this.usedSkills = [];
+    this.usedSkillIds = [];
     this.score += GameConsts.scoreRewards.levelClear;
 
     this.currentStageNumber++;
@@ -45,10 +45,7 @@ export class GameSession {
   ///
 
   private addEventListeners() {
-    this.events.on(
-      GameEvent.PLAYERMOVE,
-      () => (this.score += GameConsts.scoreRewards.move),
-    );
+    this.events.on(GameEvent.PLAYERMOVE, () => (this.score += GameConsts.scoreRewards.move));
 
     this.events.on(GameEvent.BOTDIE, () => {
       if (!this.currentGame.player.dead) {
@@ -62,24 +59,24 @@ export class GameSession {
       if (this.currentGame.victory) {
         this.score += GameConsts.scoreRewards.levelClear;
         for (let skill of this.skills)
-          if (!skill.infiniteUses)
-            if (this.usedSkills.indexOf(skill) < 0)
-              this.score += GameConsts.scoreRewards.levelClearPerUnusedSkill;
+          if (skill.infiniteUses) continue;
+          else if (this.usedSkillIds.indexOf(skill.id) < 0)
+            this.score += GameConsts.scoreRewards.levelClearPerUnusedSkill;
       }
     });
   }
 
   public useSkill(skill: Skill) {
     if (this.canUseSkill(skill)) {
+      this.usedSkillIds.push(skill.id);
       skill.func(this.currentGame);
-      this.usedSkills.push(skill);
       this.events.raise(GameEvent.PLAYERSPECIAL, skill);
       this.currentGame.recheck();
     }
   }
 
   public canUseSkill(skill: Skill) {
-    return skill.infiniteUses || this.usedSkills.indexOf(skill) < 0;
+    return skill.infiniteUses || this.usedSkillIds.indexOf(skill.id) < 0;
   }
 
   ///

@@ -1,6 +1,7 @@
 import { Game } from "./game";
 
 export class Skill {
+  id: string;
   icon: string;
   name: string;
   hint?: string;
@@ -12,6 +13,7 @@ export class SkillBook {
   public static makeSkillList(): Skill[] {
     return [
       {
+        id: 'fast-forward',
         icon: "😎",
         name: "Fast Forward",
         hint: "Automatically skip every turn until you win or you die.\n(yields better rewards per kill)",
@@ -19,15 +21,17 @@ export class SkillBook {
         func: (game: Game) => game.runAuto(),
       },
       {
-        icon: "⛄",
-        name: "Leave Decoy",
-        hint: "On this move, bots will move to your last position, instead of your new one.",
+        id: 'leave-decoy',
+        icon: '⛄',
+        name: 'Leave Decoy',
+        hint: 'On this move, bots will move to your last position, instead of your new one.',
         func: (game: Game) => (game.decoy.active = true),
       },
       {
-        icon: "⚡",
-        name: "Stun Nearby",
-        hint: "Stun adjacent bots for one turn (incl. diagonally).",
+        id: 'stun-nearby',
+        icon: '⚡',
+        name: 'Stun Nearby',
+        hint: 'Stun adjacent bots for one turn (incl. diagonally).',
         func: (game: Game) => {
           for (let bot of game.bots)
             if (Math.abs(bot.tile.x - game.player.tile.x) <= 1.0)
@@ -36,15 +40,17 @@ export class SkillBook {
         },
       },
       {
-        icon: "🕑",
-        name: "Freeze x2",
-        hint: "Freeze all bots for two turns.",
+        id: 'freeze-x2',
+        icon: '🕑',
+        name: 'Freeze x2',
+        hint: 'Freeze all bots for two turns.',
         func: (game: Game) => (game.frozenTurns += 2),
       },
       {
-        icon: "❔",
-        name: "Random Teleport",
-        hint: "Teleport to any random tile.",
+        id: 'random-teleport',
+        icon: '❔',
+        name: 'Random Teleport',
+        hint: 'Teleport to any random tile.',
         infiniteUses: true,
         func: (game: Game) => game.moveTo(game.getRandomTile()),
       },
