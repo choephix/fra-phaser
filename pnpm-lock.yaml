@@ -9,23 +9,23 @@ importers:
   .:
     dependencies:
       phaser:
-        specifier: ^3.15.1
+        specifier: ^3.87.0
         version: 3.87.0
       phaser-plugin-game-scale:
         specifier: github:samme/phaser-plugin-game-scale
         version: https://codeload.github.com/samme/phaser-plugin-game-scale/tar.gz/a6b9958f716df111fdc6e3a16b7af5da3c017e4a(phaser@3.87.0)
     devDependencies:
       concurrently:
-        specifier: ^4.1.0
+        specifier: ^4.1.2
         version: 4.1.2
       lite-server:
-        specifier: ^2.4.0
+        specifier: ^2.6.1
         version: 2.6.1
       prettier:
         specifier: ^3.4.2
         version: 3.4.2
       typescript:
-        specifier: ^3.2.2
+        specifier: ^3.9.10
         version: 3.9.10
 
 packages:
